@@ -12,9 +12,10 @@ namespace LogicaNegocio.EntidadesNegocio
         public int Id { get; set; }
         public int NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }
+    
 
 
-        public Envio (int Id)
+        public Envio (int Id, int numerotracking, int pesoPaquete)
         {
             Id = Id;
             ;

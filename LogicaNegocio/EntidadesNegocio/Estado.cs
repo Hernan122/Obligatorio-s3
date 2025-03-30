@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaNegocio.EntidadesNegocio
 {
-    internal class Estado
+    public enum Estado
     {
+        EnProceso = 1,
+        Finalizado = 2,
     }
 }
