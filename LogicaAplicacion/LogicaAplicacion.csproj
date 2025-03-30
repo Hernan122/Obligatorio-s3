@@ -11,4 +11,15 @@
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ImplementacionCasosUso\ComunCU\" />
+    <Folder Include="ImplementacionCasosUso\EstadoCU\" />
+    <Folder Include="ImplementacionCasosUso\AgenciaCU\" />
+    <Folder Include="ImplementacionCasosUso\UbicacionCU\" />
+    <Folder Include="ImplementacionCasosUso\RolCU\" />
+    <Folder Include="ImplementacionCasosUso\UsuarioCU\" />
+    <Folder Include="ImplementacionCasosUso\SeguimientoCU\" />
+    <Folder Include="ImplementacionCasosUso\UrgenteCU\" />
+  </ItemGroup>
+
 </Project>
