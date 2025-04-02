@@ -1,0 +1,31 @@
+﻿@model MVC.Models.Usuarios.UsuarioViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="Create">
+
+    <h1>LOGIN USUARIO</h1>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="control-label"></input>
+        <br>
+        <label asp-for="Contrasenia" class="control-label"></label>
+        <input asp-for="Contrasenia" class="control-label"></input>
+
+    </div>
+
+    <br>
+    <div class="form-group">
+        <input type="submit" value="Loguearse" class="btn btn-primary" />
+    </div>
+
+
+
+
+
+
+</form>

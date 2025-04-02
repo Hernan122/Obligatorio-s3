@@ -1,0 +1,32 @@
+﻿@model MVC.Models.Usuarios.UsuarioViewModel
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>REGISTRAR USUARIO</h1>
+<form asp-action="Index">
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label"></label>
+        <input asp-for="Nombre" class="control-label"></input>
+        <br>
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="control-label"></input>
+        <br>
+        <label asp-for="Contrasenia" class="control-label"></label>
+        <input asp-for="Contrasenia" class="control-label"></input>
+        <br>
+        <select asp-for="Rol" class="control-label"><option>Administrador</option><option>Funcionario</option></select>
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="submit" value="Registarse" class="btn btn-primary" />
+    </div>
+
+
+
+
+
+</form>
