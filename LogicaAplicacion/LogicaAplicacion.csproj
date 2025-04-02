@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Compartido\Compartido.csproj" />
+    <ProjectReference Include="..\LogicaAccesoDatos\LogicaAccesoDatos.csproj" />
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj" />
   </ItemGroup>
 
@@ -17,7 +18,6 @@
     <Folder Include="ImplementacionCasosUso\AgenciaCU\" />
     <Folder Include="ImplementacionCasosUso\UbicacionCU\" />
     <Folder Include="ImplementacionCasosUso\RolCU\" />
-    <Folder Include="ImplementacionCasosUso\UsuarioCU\" />
     <Folder Include="ImplementacionCasosUso\SeguimientoCU\" />
     <Folder Include="ImplementacionCasosUso\UrgenteCU\" />
   </ItemGroup>

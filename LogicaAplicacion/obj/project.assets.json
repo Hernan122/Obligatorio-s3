@@ -15,6 +15,19 @@
           "bin/placeholder/Compartido.dll": {}
         }
       },
+      "LogicaAccesoDatos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "LogicaNegocio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LogicaAccesoDatos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LogicaAccesoDatos.dll": {}
+        }
+      },
       "LogicaNegocio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -33,6 +46,11 @@
       "path": "../Compartido/Compartido.csproj",
       "msbuildProject": "../Compartido/Compartido.csproj"
     },
+    "LogicaAccesoDatos/1.0.0": {
+      "type": "project",
+      "path": "../LogicaAccesoDatos/LogicaAccesoDatos.csproj",
+      "msbuildProject": "../LogicaAccesoDatos/LogicaAccesoDatos.csproj"
+    },
     "LogicaNegocio/1.0.0": {
       "type": "project",
       "path": "../LogicaNegocio/LogicaNegocio.csproj",
@@ -42,6 +60,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Compartido >= 1.0.0",
+      "LogicaAccesoDatos >= 1.0.0",
       "LogicaNegocio >= 1.0.0"
     ]
   },
@@ -75,6 +94,9 @@
           "projectReferences": {
             "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\Compartido\\Compartido.csproj": {
               "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\Compartido\\Compartido.csproj"
+            },
+            "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\LogicaAccesoDatos\\LogicaAccesoDatos.csproj": {
+              "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\LogicaAccesoDatos\\LogicaAccesoDatos.csproj"
             },
             "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {
               "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj"

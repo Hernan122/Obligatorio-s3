@@ -8,7 +8,7 @@ using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaNegocio.EntidadesNegocio
 {
-    internal class Usuario
+    public class Usuario
 
 
     {
@@ -18,6 +18,12 @@ namespace LogicaNegocio.EntidadesNegocio
         public string Contrasenia { get; set; }
         public Rol Rol { get; set; }
 
-        public Usuario(int id, string nombreUsuario, string email, string contrasenia, Rol rol) { }
+        public Usuario(int id, string nombreUsuario, string email, string contrasenia, Rol rol) {
+        }
+        
+        public Usuario(int id)
+        {
+            Id = id;
+        }
     }
 }

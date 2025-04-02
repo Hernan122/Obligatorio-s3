@@ -3,44 +3,64 @@
   "WorkspaceRootPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\compartido\\mappers\\enviomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\enviomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\compartido\\dtos\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\dtos\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\mvc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\mvc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\usuario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\usuario\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\usuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\usuario\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\altausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\altausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\usuariocu\\ialtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\usuariocu\\ialtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\compartido\\mappers\\usuariomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\usuariomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\urgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\urgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\ubicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\ubicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\estado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\envio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\envio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\comun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\comun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\agencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\agencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\logicanegocio.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\logicanegocio.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicanegocio\\excepcionesentidades\\usuarioexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\excepcionesentidades\\usuarioexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +70,201 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Envio.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Envio.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Envio.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Envio.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Envio.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:08:16.276Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
+              "Title": "EnvioMapper.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\Compartido\\Mappers\\EnvioMapper.cs",
+              "RelativeDocumentMoniker": "Compartido\\Mappers\\EnvioMapper.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\Compartido\\Mappers\\EnvioMapper.cs",
+              "RelativeToolTip": "Compartido\\Mappers\\EnvioMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:08:08.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Urgente.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:08:04.116Z",
+              "WhenOpened": "2025-04-02T01:36:37.171Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Seguimiento.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:07:56.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Ubicacion.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Ubicacion.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Ubicacion.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Ubicacion.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Ubicacion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:08:00.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Estado.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Estado.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Estado.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Estado.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Estado.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:07:48.96Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Usuario\\Index.cshtml",
+              "RelativeDocumentMoniker": "MVC\\Views\\Usuario\\Index.cshtml",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Usuario\\Index.cshtml",
+              "RelativeToolTip": "MVC\\Views\\Usuario\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T01:28:16.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Rol.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Rol.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Rol.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Rol.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Rol.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Usuario\\Create.cshtml",
+              "RelativeDocumentMoniker": "MVC\\Views\\Usuario\\Create.cshtml",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Usuario\\Create.cshtml",
+              "RelativeToolTip": "MVC\\Views\\Usuario\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T01:27:58.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "MVC\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "MVC\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:07:53.147Z",
+              "WhenOpened": "2025-04-02T01:21:28.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MVC",
+              "DocumentMoniker": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\MVC\\MVC.csproj",
+              "RelativeDocumentMoniker": "MVC\\MVC.csproj",
+              "ToolTip": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\MVC\\MVC.csproj",
+              "RelativeToolTip": "MVC\\MVC.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-02T01:16:33.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
+              "RelativeDocumentMoniker": "MVC\\Program.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
+              "RelativeToolTip": "MVC\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T23:09:47.467Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Agencia.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "Title": "IAltaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:07:40.448Z",
+              "WhenOpened": "2025-04-02T01:11:22.981Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Comun.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Comun.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Comun.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Comun.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Comun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Title": "AltaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T22:07:31.409Z",
+              "WhenOpened": "2025-04-01T22:35:53.241Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "LogicaNegocio.csproj",
-              "DocumentMoniker": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
-              "RelativeDocumentMoniker": "LogicaNegocio\\LogicaNegocio.csproj",
-              "ToolTip": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
-              "RelativeToolTip": "LogicaNegocio\\LogicaNegocio.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-29T20:30:25.347Z",
+              "Title": "IRepositorioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T01:04:12.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\Compartido\\DTOs\\UsuarioDTO.cs",
+              "RelativeDocumentMoniker": "Compartido\\DTOs\\UsuarioDTO.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\Compartido\\DTOs\\UsuarioDTO.cs",
+              "RelativeToolTip": "Compartido\\DTOs\\UsuarioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T22:37:03.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T01:01:39.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RepositorioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T22:38:52.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UsuarioMapper.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\Compartido\\Mappers\\UsuarioMapper.cs",
+              "RelativeDocumentMoniker": "Compartido\\Mappers\\UsuarioMapper.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\Compartido\\Mappers\\UsuarioMapper.cs",
+              "RelativeToolTip": "Compartido\\Mappers\\UsuarioMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T22:42:47.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T22:38:05.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UsuarioException.cs",
+              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\ExcepcionesEntidades\\UsuarioException.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\ExcepcionesEntidades\\UsuarioException.cs",
+              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\ExcepcionesEntidades\\UsuarioException.cs",
+              "RelativeToolTip": "LogicaNegocio\\ExcepcionesEntidades\\UsuarioException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T22:33:53.323Z",
               "EditorCaption": ""
             }
           ]

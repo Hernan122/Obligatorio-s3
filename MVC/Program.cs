@@ -1,3 +1,10 @@
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAccesoDatos.Repositorios;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+using LogicaAccesoDatos;
+
+
 namespace MVC
 {
     public class Program

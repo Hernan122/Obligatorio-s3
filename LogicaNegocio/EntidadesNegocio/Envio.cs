@@ -21,10 +21,11 @@ namespace LogicaNegocio.EntidadesNegocio
             ;
         }
 
-       
-
-
+        public Envio(int numeroTracking)
+        {
+            NumeroTracking = numeroTracking;
         }
+    }
 
     }
 
