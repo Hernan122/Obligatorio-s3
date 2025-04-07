@@ -30,3 +30,5 @@ C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0
 C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\refint\LogicaAccesoDatos.dll
 C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.pdb
 C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\ref\LogicaAccesoDatos.dll
+C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaAccesoDatos\bin\Debug\net8.0\LogicaAccesoDatos.runtimeconfig.json
+C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.genruntimeconfig.cache
