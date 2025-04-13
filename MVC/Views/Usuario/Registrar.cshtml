@@ -1,32 +1,38 @@
-﻿@model MVC.Models.Usuarios.UsuarioViewModel
-
+﻿@model MVC.Models.UsuarioViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>REGISTRAR USUARIO</h1>
-<form asp-action="Index">
-    <div class="form-group">
-        <label asp-for="Nombre" class="control-label"></label>
-        <input asp-for="Nombre" class="control-label"></input>
-        <br>
-        <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="control-label"></input>
-        <br>
-        <label asp-for="Contrasenia" class="control-label"></label>
-        <input asp-for="Contrasenia" class="control-label"></input>
-        <br>
-        <select asp-for="Rol" class="control-label"><option>Administrador</option><option>Funcionario</option></select>
-        <span asp-validation-for="Nombre" class="text-danger"></span>
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<h1 class="mb-3">Registrarse</h1>
+<form asp-action="Registrar">
+    <div class="form-floating mb-3">
+        <input asp-for="Nombre" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Nombre de Usuario</label>
     </div>
-    <br>
-    <div class="form-group">
-        <input type="submit" value="Registarse" class="btn btn-primary" />
+    <div class="form-floating mb-3">
+        <input asp-for="Email" type="email" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Email</label>
     </div>
-
-
-
-
-
+    <div class="form-floating mb-3">
+        <input asp-for="Password" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Contraseña</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option value="Administrador">Administrador</option>
+            <option value="Funcionario">Funcionario</option>
+        </select>
+        <label for="floatingSelect">Rol</label>
+    </div>
+     <input type="submit" value="Registarse" class="btn btn-primary w-100" />
 </form>

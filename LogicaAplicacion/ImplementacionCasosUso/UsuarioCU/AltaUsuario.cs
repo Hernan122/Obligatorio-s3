@@ -1,35 +1,25 @@
-﻿using Compartido.DTOs;
+﻿using Compartido.DTOs.UsuarioDTO;
 using Compartido.Mappers;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class AltaUsuario: IAltaUsuario
+    public class AltaUsuario
     {
 
-        private IRepositorioUsuario RepoUsuario { get; set; }
-            
+        private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
 
-        public AltaUsuario(IRepositorioUsuario RepoUsuario) 
-        { 
-            RepoUsuario = RepoUsuario;
-        }
-        public void Ejecutar(UsuarioDTO usuarioDTO)
+        public void Ejecutar(AltaUsuarioDTO usuarioDTO)
         {
             if (usuarioDTO == null)
             {
                 throw new ArgumentNullException("Datos incorrectos");
             }
             Usuario usuario = UsuarioMapper.UsuarioFromUsuarioDTO(usuarioDTO);
-            RepoUsuario.Add (usuario);
+            RepoUsuarios.Add(usuario);
         }
     }
 }

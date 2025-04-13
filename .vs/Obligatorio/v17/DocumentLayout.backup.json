@@ -1,39 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\",
+  "WorkspaceRootPath": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alumnoFI\\AppData\\Local\\Temp\\uy4bb4gp..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\pokea\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\pokea\\desktop\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\altausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\altausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\logicaaccesodatos\\migrations\\20250407130506_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\migrations\\20250407130506_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alumnoFI\\AppData\\Local\\Temp\\tfx3qgck..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\alumnoFI\\AppData\\Local\\Temp\\uy4bb4gp..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\pokea\\desktop\\obligatorio-s3\\mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -48,99 +27,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SQLQuery1.sql ",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\AppData\\Local\\Temp\\uy4bb4gp..sql",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\uy4bb4gp..sql",
-              "ToolTip": "SQLQuery1.sql ",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-07T13:39:21.014Z",
+              "Title": "RepositorioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "ToolTip": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T03:03:10.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AltaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "ToolTip": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\AltaUsuario.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAowBUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T03:00:00.351Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "20250407130506_init.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\Migrations\\20250407130506_init.cs",
-              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Migrations\\20250407130506_init.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\Migrations\\20250407130506_init.cs",
-              "RelativeToolTip": "LogicaAccesoDatos\\Migrations\\20250407130506_init.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAATAAAAAAAAAA==",
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "MVC\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\pokea\\Desktop\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "MVC\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAwwCUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T13:05:06.285Z",
+              "WhenOpened": "2025-04-13T02:58:56.312Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:34:48.988Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
-              "RelativeDocumentMoniker": "MVC\\Program.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
-              "RelativeToolTip": "MVC\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T11:37:41.429Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "tfx3qgck..sql",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\AppData\\Local\\Temp\\tfx3qgck..sql",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\tfx3qgck..sql",
-              "ToolTip": "C:\\Users\\alumnoFI\\AppData\\Local\\Temp\\tfx3qgck..sql",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\tfx3qgck..sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-04-07T11:31:45.556Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "MVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\appsettings.json",
-              "RelativeToolTip": "MVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-07T11:29:27.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DemoContext.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
-              "RelativeDocumentMoniker": "LogicaAccesoDatos\\DemoContext.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
-              "RelativeToolTip": "LogicaAccesoDatos\\DemoContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T11:21:58.767Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "MVC\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "MVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T11:44:59.451Z"
             }
           ]
         }

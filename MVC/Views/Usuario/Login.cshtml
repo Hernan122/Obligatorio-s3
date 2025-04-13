@@ -1,31 +1,21 @@
-﻿@model MVC.Models.Usuarios.UsuarioViewModel
-
+﻿@model MVC.Models.UsuarioViewModel
 
 @{
     ViewData["Title"] = "Create";
 }
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.Mensaje</h5>
+}
 
-
-<form asp-action="Create">
-
-    <h1>LOGIN USUARIO</h1>
-    <div class="form-group">
-        <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="control-label"></input>
-        <br>
-        <label asp-for="Contrasenia" class="control-label"></label>
-        <input asp-for="Contrasenia" class="control-label"></input>
-
+<form asp-action="Login">
+    <div class="form-floating mb-3">
+        <input asp-for="Email" type="email" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Nombre de Usuario</label>
     </div>
-
-    <br>
-    <div class="form-group">
-        <input type="submit" value="Loguearse" class="btn btn-primary" />
+    <div class="form-floating mb-3">
+        <input asp-for="Password" type="email" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Email</label>
     </div>
-
-
-
-
-
-
+    <input type="submit" value="Login" class="btn btn-primary w-100" />
 </form>

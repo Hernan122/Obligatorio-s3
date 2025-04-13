@@ -1,13 +1,12 @@
-﻿namespace MVC.Models.Usuarios
+﻿using LogicaNegocio.EntidadesNegocio;
+
+namespace MVC.Models
 {
     public class UsuarioViewModel
     {
         public string Nombre { get; set; }
         public string Email { get; set; }
-        public string Contrasenia { get; set; }
-
-        public  Cargos Rol { get; set; } 
-        public enum Cargos { Administrador, Funcionario, Cliente}
-
+        public string Password { get; set; }
+        public Rol Rol { get; set; } 
     }
 }
