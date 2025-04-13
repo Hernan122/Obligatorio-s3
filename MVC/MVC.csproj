@@ -7,14 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ValueObject\**" />
+    <Content Remove="ValueObject\**" />
+    <EmbeddedResource Remove="ValueObject\**" />
+    <None Remove="ValueObject\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Compartido\Compartido.csproj" />
     <ProjectReference Include="..\LogicaAccesoDatos\LogicaAccesoDatos.csproj" />
     <ProjectReference Include="..\LogicaAplicacion\LogicaAplicacion.csproj" />
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ValueObject\" />
   </ItemGroup>
 
   <ItemGroup>
