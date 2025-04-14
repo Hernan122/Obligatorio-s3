@@ -7,18 +7,17 @@ namespace LogicaNegocio.EntidadesNegocio
     {
         public int Id { get; set; }
         private static int s_ultId;
-        //public string NombreUsuario { get; set; }
         public NombreUsuario Nombre { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public EmailUsuario Email { get; set; }
+        public PasswordUsuario Password { get; set; }
         public Rol Rol { get; set; }
 
         public Usuario(string nombreUsuario, string email, string password, Rol rol)
         {
             Id = s_ultId++;
             Nombre = new NombreUsuario(nombreUsuario);
-            Email = email;
-            Password = password;
+            Email = new EmailUsuario(email);
+            Password = new PasswordUsuario(password);
             Rol = rol;
             Validar();
         }
@@ -32,14 +31,6 @@ namespace LogicaNegocio.EntidadesNegocio
 
         private void Validar()
         {
-            if (string.IsNullOrWhiteSpace(Email))
-            {
-                throw new UsuarioException("El email no puede estar vacío.");
-            }
-            if (string.IsNullOrWhiteSpace(Password))
-            {
-                throw new UsuarioException("La contraseña no puede estar vacía.");
-            }
             if (Rol == null)
             {
                 throw new UsuarioException("El rol no puede estar vacío.");

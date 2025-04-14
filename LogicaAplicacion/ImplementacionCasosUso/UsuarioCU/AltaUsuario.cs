@@ -1,9 +1,9 @@
-﻿using Compartido.DTOs.UsuarioDTO;
-using Compartido.Mappers;
+﻿using Compartido.Mappers;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using Compartido.DTOs.UsuarioDTO.CRUD;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {

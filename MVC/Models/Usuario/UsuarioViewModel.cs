@@ -1,6 +1,6 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 
-namespace MVC.Models
+namespace MVC.Models.Usuario
 {
     public class UsuarioViewModel
     {

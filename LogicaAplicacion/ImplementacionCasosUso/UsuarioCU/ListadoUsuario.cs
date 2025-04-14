@@ -1,4 +1,4 @@
-﻿using Compartido.DTOs.UsuarioDTO;
+﻿using Compartido.DTOs.UsuarioDTO.CRUD;
 using Compartido.Mappers;
 using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.EntidadesNegocio;
@@ -9,9 +9,9 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
     {
         private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
 
-        public List<ListadoUsuarioDTO> Ejecutar()
+        public List<VerUsuarioDTO> Ejecutar()
         {
-            List<ListadoUsuarioDTO> usuariosDTO = new List<ListadoUsuarioDTO>();
+            List<VerUsuarioDTO> usuariosDTO = new List<VerUsuarioDTO>();
             List<Usuario> usuarios = RepoUsuarios.GetAll();
             usuariosDTO = UsuarioMapper.ListadoCarreraAListadoCarreraDTO(usuarios);
             return usuariosDTO;

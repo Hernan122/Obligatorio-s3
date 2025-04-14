@@ -1,5 +1,4 @@
 ﻿// Alta/Registro de usuarios:
-using Compartido.DTOs.UsuarioDTO;
 
 // Exception de usuario:
 using LogicaNegocio.ExcepcionesEntidades;
@@ -7,7 +6,8 @@ using LogicaNegocio.ExcepcionesEntidades;
 using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 using Microsoft.AspNetCore.Mvc;
-using MVC.Models;
+using Compartido.DTOs.UsuarioDTO.CRUD;
+using MVC.Models.Usuario;
 
 namespace MVC.Controllers
 {
@@ -52,7 +52,7 @@ namespace MVC.Controllers
 
         public ActionResult ListadoUsuarios()
         {
-            List<ListadoUsuarioDTO> usuariosDTO = CUListadoUsuario.Ejecutar();
+            List<VerUsuarioDTO> usuariosDTO = CUListadoUsuario.Ejecutar();
             List<ListadoUsuarioViewModel> listadoUsuarioViewModel = new List<ListadoUsuarioViewModel>();
             try
             {
@@ -70,6 +70,27 @@ namespace MVC.Controllers
             return View(listadoUsuarioViewModel);
         }
 
-        //private IAltaUsuario CUAltaUsuario { get; set; }
+        // CRUD
+
+        public ActionResult AgregarUsuario()
+        {
+            return null;
+        }
+
+        public ActionResult VerUsuario()
+        {
+            return null;
+        }
+
+        public ActionResult ModificarUsuario()
+        {
+            return null;
+        }
+
+        public ActionResult EliminarUsuario()
+        {
+            return null;
+        }
+
     }
 }

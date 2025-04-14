@@ -1,4 +1,4 @@
-﻿namespace Compartido.DTOs
+﻿namespace Compartido.DTOs.UbicacionDTO
 {
     internal class UbicacionDTO
     {

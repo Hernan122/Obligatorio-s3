@@ -1,4 +1,4 @@
-﻿using Compartido.DTOs.UsuarioDTO;
+﻿using Compartido.DTOs.UsuarioDTO.CRUD;
 
 namespace LogicaAplicacion.InterfacesCasosUso.UsuarioCU
 {

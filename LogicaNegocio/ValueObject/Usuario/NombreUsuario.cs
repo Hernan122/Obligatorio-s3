@@ -4,7 +4,7 @@ namespace LogicaNegocio.ValueObject.Usuario
 {
     public record NombreUsuario
     {
-        private string Valor { get; set; }
+        public string Valor { get; init; }
         public NombreUsuario(string valor)
         {
             Valor = valor;
@@ -17,7 +17,10 @@ namespace LogicaNegocio.ValueObject.Usuario
             {
                 throw new UsuarioException("Nombre obligatorio");
             }
+            if (Valor.Length < 8)
+            {
+                throw new UsuarioException("Valores deben ser mayores a 8");
+            }
         }
-
     }
 }

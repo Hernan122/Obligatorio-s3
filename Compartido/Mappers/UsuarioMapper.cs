@@ -1,4 +1,4 @@
-﻿using Compartido.DTOs.UsuarioDTO;
+﻿using Compartido.DTOs.UsuarioDTO.CRUD;
 using LogicaNegocio.EntidadesNegocio;
 
 namespace Compartido.Mappers
@@ -19,13 +19,13 @@ namespace Compartido.Mappers
             );
         }
 
-        public static List<ListadoUsuarioDTO> ListadoCarreraAListadoCarreraDTO(List<Usuario> usuarios)
+        public static List<VerUsuarioDTO> ListadoCarreraAListadoCarreraDTO(List<Usuario> usuarios)
         {
-            List<ListadoUsuarioDTO> listadoUsuariosDTO = new List<ListadoUsuarioDTO>();
-            listadoUsuariosDTO = usuarios.Select(user => new ListadoUsuarioDTO()
+            List<VerUsuarioDTO> listadoUsuariosDTO = new List<VerUsuarioDTO>();
+            listadoUsuariosDTO = usuarios.Select(user => new VerUsuarioDTO()
             {
                 Id = user.Id,
-                NombreUsuario = user.NombreUsuario,
+                NombreUsuario = user.Nombre.Valor,
             }).ToList();
             return listadoUsuariosDTO;
         }
