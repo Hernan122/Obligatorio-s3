@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,25 +15,42 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                @* <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> *@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <!-- Home Link -->
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        <!-- Registrar Usuario Link -->
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="AltaUsuario">Registrar Usuario</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Iniciar Sesión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="ListadoUsuarios">Listado de Usuarios</a>
-                        </li>
+
+                        <!-- Iniciar Sesión Link (visible si el usuario no ha iniciado sesión) -->
+                        @if (HttpContext.Session.GetString("Rol") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Iniciar Sesión</a>
+                            </li>
+                        }
+
+                        <!-- Link de Listado de Usuarios solo visible para Administradores -->
+                        @if (HttpContext.Session.GetString("Rol") == "Administrador")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Usuario" asp-action="ListadoUsuarios">Listado de Usuarios</a>
+                            </li>
+                        }
+
+                        <!-- Cerrar Sesión (visible si el usuario ha iniciado sesión) -->
+                        @if (HttpContext.Session.GetString("Rol") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Logout", "Usuario")">Cerrar Sesión</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
@@ -43,7 +63,6 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

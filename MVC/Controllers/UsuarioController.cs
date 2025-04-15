@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Compartido.DTOs.UsuarioDTO.CRUD;
 using Compartido.DTOs.UsuarioDTO;
 using MVC.Models.Usuario;
+using Microsoft.AspNetCore.Http;
 
 namespace MVC.Controllers
 {
@@ -61,37 +62,54 @@ namespace MVC.Controllers
                     Password = usuario.Password
                 };
 
-                CULoginUsuario.Ejecutar(usuarioDTO);
+                LoginUsuarioDTO usuarioLogueado = CULoginUsuario.Ejecutar(usuarioDTO);
+
+                HttpContext.Session.SetString("Rol", usuarioLogueado.Rol);
                 ViewBag.Mensaje = "Sesion iniciada con exito";
-                return RedirectToAction(nameof(ListadoUsuarios));
+
+                if (usuarioLogueado.Rol == "Administrador")
+                {
+                    return RedirectToAction(nameof(ListadoUsuarios), "Usuario");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
                 return View();
             }
-            
         }
 
         [HttpGet]
         public ActionResult ListadoUsuarios()
         {
-            List<VerUsuarioDTO> usuariosDTO = CUListadoUsuario.Ejecutar();
-            List<ListadoUsuarioViewModel> listadoUsuarioViewModel = new List<ListadoUsuarioViewModel>();
+            var rol = HttpContext.Session.GetString("Rol");
+            if (rol != "Administrador")
+            {
+                return RedirectToAction("Login");
+            }
+
             try
             {
-                listadoUsuarioViewModel = usuariosDTO.Select(u => new ListadoUsuarioViewModel()
+                var usuariosDTO = CUListadoUsuario.Ejecutar();
+                var listadoUsuarioViewModel = usuariosDTO.Select(u => new ListadoUsuarioViewModel()
                 {
                     Id = u.Id,
                     NombreUsuario = u.NombreUsuario,
                 }).ToList();
+
+                return View(listadoUsuarioViewModel);
             }
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
+                return View(new List<ListadoUsuarioViewModel>());
             }
-            return View(listadoUsuarioViewModel);
         }
+
 
         [HttpGet]
         public ActionResult VerUsuario(int id)

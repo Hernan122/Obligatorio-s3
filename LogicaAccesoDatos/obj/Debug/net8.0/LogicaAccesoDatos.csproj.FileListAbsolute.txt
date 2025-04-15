@@ -50,3 +50,5 @@ C:\Users\pokea\Desktop\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\refint\
 C:\Users\pokea\Desktop\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.pdb
 C:\Users\pokea\Desktop\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.genruntimeconfig.cache
 C:\Users\pokea\Desktop\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\ref\LogicaAccesoDatos.dll
+C:\Users\herna\source\repos\Obligatorio-s3\LogicaAccesoDatos\bin\Debug\net8.0\LogicaAccesoDatos.runtimeconfig.json
+C:\Users\herna\source\repos\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.genruntimeconfig.cache
