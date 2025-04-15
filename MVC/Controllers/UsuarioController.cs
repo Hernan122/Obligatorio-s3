@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace MVC.Controllers
 {
+
     public class UsuarioController : Controller
     {
         private CUListadoUsuario CUListadoUsuario = new CUListadoUsuario();
@@ -67,7 +68,7 @@ namespace MVC.Controllers
                 HttpContext.Session.SetString("Rol", usuarioLogueado.Rol);
                 ViewBag.Mensaje = "Sesion iniciada con exito";
 
-                if (usuarioLogueado.Rol == "Administrador")
+                if (HttpContext.Session.GetString("rol") == "Administrador")
                 {
                     return RedirectToAction(nameof(ListadoUsuarios), "Usuario");
                 }
@@ -196,6 +197,12 @@ namespace MVC.Controllers
                 ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
             }
             return RedirectToAction(nameof(ListadoUsuarios));
+        }
+
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Login));
         }
     }
 }

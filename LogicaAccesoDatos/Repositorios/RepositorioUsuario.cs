@@ -76,7 +76,7 @@ namespace LogicaAccesoDatos.Repositorios
             {
                 if (item.Email.Valor == usuario.Email.Valor && item.Password.Valor == usuario.Password.Valor)
                 {
-                    return usuario;
+                    return item;
                 }
             }
             return null;
