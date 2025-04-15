@@ -22,7 +22,22 @@ namespace LogicaNegocio.EntidadesNegocio
             Validar();
         }
 
+        public Usuario(int id, string nombreUsuario, string email, string password, Rol rol)
+        {
+            Id = id;
+            Nombre = new NombreUsuario(nombreUsuario);
+            Email = new EmailUsuario(email);
+            Password = new PasswordUsuario(password);
+            Rol = rol;
+        }
+
         public Usuario(){}
+
+        public Usuario(string email, string password) 
+        {
+            Email = new EmailUsuario(email);
+            Password = new PasswordUsuario(password);
+        }
 
         public Usuario(int id)
         {

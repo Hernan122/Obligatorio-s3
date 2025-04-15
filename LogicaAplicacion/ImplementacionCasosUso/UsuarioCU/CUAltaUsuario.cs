@@ -16,7 +16,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             {
                 throw new ArgumentNullException("Datos incorrectos");
             }
-            Usuario usuario = UsuarioMapper.UsuarioFromUsuarioDTO(usuarioDTO);
+            Usuario usuario = UsuarioMapper.UsuarioFromAltaUsuarioDTO(usuarioDTO);
             RepoUsuarios.Add(usuario);
         }
     }

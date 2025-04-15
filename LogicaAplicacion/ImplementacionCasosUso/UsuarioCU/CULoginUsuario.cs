@@ -12,11 +12,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
         private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
         public void Ejecutar(LoginUsuarioDTO usuarioDTO)
         {
-            Usuario usuario = new Usuario()
-            {
-                Email = new EmailUsuario(usuarioDTO.Email),
-                Password = new PasswordUsuario(usuarioDTO.Password)
-            };
+            Usuario usuario = UsuarioMapper.UsuarioFromLoginUsuarioDTO(usuarioDTO);
             if (RepoUsuarios.FindByEmailAndPassword(usuario) == null)
             {
                 throw new Exception("Usuario inexistente, o credenciales incorrectas");
