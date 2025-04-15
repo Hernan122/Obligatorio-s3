@@ -5,14 +5,14 @@ using LogicaNegocio.EntidadesNegocio;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class ListadoUsuario
+    public class CUListadoUsuario
     {
         private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
 
         public List<VerUsuarioDTO> Ejecutar()
         {
             List<VerUsuarioDTO> usuariosDTO = new List<VerUsuarioDTO>();
-            List<Usuario> usuarios = RepoUsuarios.GetAll();
+            List<Usuario> usuarios = RepoUsuarios.FindAll().ToList();
             usuariosDTO = UsuarioMapper.ListadoCarreraAListadoCarreraDTO(usuarios);
             return usuariosDTO;
         }

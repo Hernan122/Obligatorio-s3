@@ -1,0 +1,18 @@
+﻿@using MVC.Models.Usuario
+@model VerDetallesUsuarioViewModel
+
+@{
+    ViewData["Title"] = "Detalles del Usuario";
+}
+
+<h1>Detalles del Usuario</h1>
+
+<div>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Nombre:</strong> @Model.Nombre</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Password:</strong> @Model.Password</p>
+    <p><strong>Rol:</strong> @Model.Rol</p>
+</div>
+
+<a asp-action="ListadoUsuarios" class="btn btn-primary">Volver al Listado</a>

@@ -2,7 +2,7 @@
 {
     public record PasswordUsuario
     {
-        private string Valor {  get; set; }
+        public string Valor {  get; set; }
 
         public PasswordUsuario(string valor)
         {

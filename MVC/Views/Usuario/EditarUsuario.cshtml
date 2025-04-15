@@ -1,0 +1,44 @@
+﻿@using LogicaNegocio.EntidadesNegocio;
+@using MVC.Models.Usuario
+@model VerDetallesUsuarioViewModel
+
+@{
+    ViewData["Title"] = "Detalles del Usuario";
+}
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<a asp-action="ListadoUsuarios" class="btn btn-primary">Volver al Listado</a>
+<h1 class="mb-3">Modificar Usuario <span class="text-warning">@Model.Id</span></h1>
+
+<form asp-action="EditarUsuario" class="mb-3">
+    <div class="form-floating mb-3">
+        <input asp-for="Nombre" type="text" class="form-control" id="floatingInputInvalid" placeholder value="@Model.Nombre">
+        <label for="floatingInputInvalid">Nombre de Usuario</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Email" type="email" class="form-control" id="floatingInputInvalid" placeholder value="@Model.Email">
+        <label for="floatingInputInvalid">Email</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Password" type="text" class="form-control" id="floatingInputInvalid" placeholder value="@Model.Password">
+        <label for="floatingInputInvalid">Contraseña</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" value="@Model.Rol">
+            @foreach (var item in Enum.GetValues(typeof(Rol)))
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+        <label for="floatingSelect">Rol</label>
+    </div>
+    <input type="submit" value="Modificar" class="btn btn-warning w-100" />
+</form>

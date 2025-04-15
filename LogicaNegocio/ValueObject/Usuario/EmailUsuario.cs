@@ -2,7 +2,7 @@
 {
     public record EmailUsuario
     {
-        private string Valor { get; set; }
+        public string Valor { get; set; }
 
         public EmailUsuario(string valor)
         {

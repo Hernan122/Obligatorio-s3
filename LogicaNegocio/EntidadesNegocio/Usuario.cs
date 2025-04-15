@@ -22,7 +22,7 @@ namespace LogicaNegocio.EntidadesNegocio
             Validar();
         }
 
-        private Usuario(){}
+        public Usuario(){}
 
         public Usuario(int id)
         {

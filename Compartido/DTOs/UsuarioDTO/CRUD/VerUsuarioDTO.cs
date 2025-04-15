@@ -6,6 +6,5 @@ namespace Compartido.DTOs.UsuarioDTO.CRUD
     {
         public int Id { get; set; }
         public string NombreUsuario { get; set; }
-        public Usuario usuario { get; set; }
     }
 }

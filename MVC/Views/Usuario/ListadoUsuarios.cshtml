@@ -1,6 +1,15 @@
 ﻿@using MVC.Models.Usuario
 @model IEnumerable<ListadoUsuarioViewModel>
 
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -26,7 +35,7 @@
             <td>
                 @Html.ActionLink("Editar", "EditarUsuario", new { id = item.Id }) |
                 @Html.ActionLink("Ver Detalles", "VerUsuario", new { id = item.Id }) |
-                @Html.ActionLink("Borrar", "EliminarUsuario", new { id = item.Id })
+                @Html.ActionLink("Borrar", "BajaUsuario", new { id = item.Id })
             </td>
         </tr>
     }

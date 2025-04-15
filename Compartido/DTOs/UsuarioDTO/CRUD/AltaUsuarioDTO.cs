@@ -8,6 +8,5 @@ namespace Compartido.DTOs.UsuarioDTO.CRUD
         public string Email { get; set; }
         public string Password { get; set; }
         public Rol Rol { get; set; }
-        public Usuario Usuario { get; set; }
     }
 }

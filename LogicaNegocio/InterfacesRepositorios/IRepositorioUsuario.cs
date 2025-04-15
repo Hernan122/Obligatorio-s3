@@ -2,7 +2,7 @@
 
 namespace LogicaNegocio.InterfacesRepositorios
 {
-    public interface IRepositorioUsuario: IRepositorio <Usuario>
+    public interface IRepositorioUsuario : IRepositorio <Usuario>
     {
     }
 }

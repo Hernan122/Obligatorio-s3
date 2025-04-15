@@ -1,22 +1,26 @@
-﻿@using MVC.Models.Usuario
-@model UsuarioViewModel
+﻿@using MVC.Models.Usuario;
+@model LoginUsuarioViewModel;
 
 @{
     ViewData["Title"] = "Create";
 }
 @if (ViewBag.Mensaje != null)
 {
-    <h5 class="alert alert-danger">@ViewBag.Mensaje</h5>
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
 }
 
 <form asp-action="Login">
     <div class="form-floating mb-3">
-        <input asp-for="Email" type="email" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">Nombre de Usuario</label>
+        <input asp-for="Email" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Correo</label>
     </div>
     <div class="form-floating mb-3">
-        <input asp-for="Password" type="email" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">Email</label>
+        <input asp-for="Password" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Contraseña</label>
     </div>
     <input type="submit" value="Login" class="btn btn-primary w-100" />
 </form>

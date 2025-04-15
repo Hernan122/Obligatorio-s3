@@ -30,5 +30,12 @@ namespace Compartido.Mappers
             return listadoUsuariosDTO;
         }
 
+        public static VerDetallesUsuarioDTO UsuarioAUsuarioDTO(int i)
+        {
+            VerDetallesUsuarioDTO usuario = null;
+            return usuario;
+        }
+
+
     }
 }

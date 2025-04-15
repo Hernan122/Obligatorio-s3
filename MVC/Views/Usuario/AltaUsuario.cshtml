@@ -1,5 +1,6 @@
-﻿@using MVC.Models.Usuario
-@model UsuarioViewModel
+﻿@using LogicaNegocio.EntidadesNegocio;
+@using MVC.Models.Usuario;
+@model AltaUsuarioViewModel;
 
 @{
     ViewData["Title"] = "Index";
@@ -15,7 +16,8 @@
 }
 
 <h1 class="mb-3">Registrarse</h1>
-<form asp-action="Registrar">
+
+<form asp-action="AltaUsuario">
     <div class="form-floating mb-3">
         <input asp-for="Nombre" type="text" class="form-control" id="floatingInputInvalid" placeholder>
         <label for="floatingInputInvalid">Nombre de Usuario</label>
@@ -29,11 +31,14 @@
         <label for="floatingInputInvalid">Contraseña</label>
     </div>
     <div class="form-floating mb-3">
-        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option value="Administrador">Administrador</option>
-            <option value="Funcionario">Funcionario</option>
+        <select asp-for="Rol" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option value="">Seleccione Rol</option>
+            @foreach (Rol item in Enum.GetValues(typeof(Rol)))
+            {
+                <option value="@item">@item</option>
+            }
         </select>
         <label for="floatingSelect">Rol</label>
     </div>
-     <input type="submit" value="Registarse" class="btn btn-primary w-100" />
+    <input type="submit" value="Registarse" class="btn btn-primary w-100" />
 </form>

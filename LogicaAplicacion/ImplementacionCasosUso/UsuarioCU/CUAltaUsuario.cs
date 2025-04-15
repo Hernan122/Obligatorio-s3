@@ -1,13 +1,11 @@
 ﻿using Compartido.Mappers;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaAccesoDatos.Repositorios;
-using LogicaNegocio.InterfacesRepositorios;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 using Compartido.DTOs.UsuarioDTO.CRUD;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class AltaUsuario
+    public class CUAltaUsuario
     {
 
         private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
