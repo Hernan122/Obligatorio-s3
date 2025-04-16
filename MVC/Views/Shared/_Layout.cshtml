@@ -23,12 +23,11 @@
                         </li>
 
                         <!-- Registrar Usuario Link -->
-                        @if (Context.Session.GetString("Rol") == "Administrador" || Context.Session.GetString("Rol") == "Funcionario")
-                        {
+                        
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="AltaUsuario">Registrar Usuario</a>
                             </li>
-                        }
+                        
 
                         <!-- Iniciar Sesión Link (visible si el usuario no ha iniciado sesión) -->
                         @if (Context.Session.GetString("Rol") == null)
