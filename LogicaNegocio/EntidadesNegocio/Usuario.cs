@@ -33,12 +33,6 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public Usuario(){}
 
-        public Usuario(string email, string password) 
-        {
-            Email = new EmailUsuario(email);
-            Password = new PasswordUsuario(password);
-        }
-
         public Usuario(int id)
         {
             Id = s_ultId++;

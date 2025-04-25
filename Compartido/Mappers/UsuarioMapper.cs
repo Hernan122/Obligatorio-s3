@@ -45,11 +45,11 @@ namespace Compartido.Mappers
 
         public static Usuario UsuarioFromLoginUsuarioDTO(LoginUsuarioDTO usuarioDTO)
         {
-            return new Usuario
-            (
-                usuarioDTO.Email,
-                usuarioDTO.Password
-            );
+            return new Usuario()
+            { 
+                Email = new EmailUsuario(usuarioDTO.Email),
+                Password = new PasswordUsuario(usuarioDTO.Password)
+            };
         }
 
         public static List<VerUsuarioDTO> ListadoCarreraAListadoCarreraDTO(List<Usuario> usuarios)
@@ -62,7 +62,5 @@ namespace Compartido.Mappers
             }).ToList();
             return listadoUsuariosDTO;
         }
-
-
     }
 }

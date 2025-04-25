@@ -34,3 +34,15 @@ C:\Users\pokea\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegoc
 C:\Users\pokea\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\refint\LogicaNegocio.dll
 C:\Users\pokea\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.pdb
 C:\Users\pokea\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\ref\LogicaNegocio.dll
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\bin\Debug\net8.0\LogicaNegocio.deps.json
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\bin\Debug\net8.0\LogicaNegocio.dll
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\bin\Debug\net8.0\LogicaNegocio.pdb
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.AssemblyInfoInputs.cache
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.AssemblyInfo.cs
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.sourcelink.json
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.dll
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\refint\LogicaNegocio.dll
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.pdb
+C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\ref\LogicaNegocio.dll

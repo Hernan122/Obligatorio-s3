@@ -28,16 +28,19 @@ namespace MVC.Controllers
         {
             try
             {
-                AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
+                if (ModelState.IsValid)
                 {
-                    NombreUsuario = usuario.Nombre,
-                    Email = usuario.Email,
-                    Password = usuario.Password,
-                    Rol = usuario.Rol,
-                };
+                    AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
+                    {
+                        NombreUsuario = usuario.Nombre,
+                        Email = usuario.Email,
+                        Password = usuario.Password,
+                        Rol = usuario.Rol,
+                    };
 
-                CUAltaUsuario.Ejecutar(usuarioDTO);
-                ViewBag.Mensaje = "Usuario agregado";
+                    CUAltaUsuario.Ejecutar(usuarioDTO);
+                    ViewBag.Mensaje = "Usuario agregado";
+                }
             }
             catch (Exception e)
             {
@@ -111,7 +114,6 @@ namespace MVC.Controllers
             }
         }
 
-
         [HttpGet]
         public ActionResult VerUsuario(int id)
         {
@@ -165,17 +167,20 @@ namespace MVC.Controllers
         {
             try
             {
-                EditarUsuarioDTO usuarioDTO = new EditarUsuarioDTO
+                if (ModelState.IsValid)
                 {
-                    Id = usuario.Id,
-                    NombreUsuario = usuario.Nombre,
-                    Email = usuario.Email,
-                    Password = usuario.Password,
-                    Rol = usuario.Rol
-                };
-                CUEditarUsuario.Ejecutar(usuarioDTO);
+                    EditarUsuarioDTO usuarioDTO = new EditarUsuarioDTO
+                    {
+                        Id = usuario.Id,
+                        NombreUsuario = usuario.Nombre,
+                        Email = usuario.Email,
+                        Password = usuario.Password,
+                        Rol = usuario.Rol
+                    };
+                    CUEditarUsuario.Ejecutar(usuarioDTO);
 
-                ViewBag.Mensaje = "Editado con exito";
+                    ViewBag.Mensaje = "Editado con exito";
+                }
             }
             catch (Exception e)
             {

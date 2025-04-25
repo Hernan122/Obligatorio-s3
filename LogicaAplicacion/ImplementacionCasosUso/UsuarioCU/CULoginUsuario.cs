@@ -22,7 +22,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             }
 
             // Devolvés los datos que necesitás (por ejemplo, el rol)
-            return new LoginUsuarioDTO
+            return new LoginUsuarioDTO()
             {
                 Email = usuarioEncontrado.Email.Valor,
                 Rol = usuarioEncontrado.Rol.ToString()
