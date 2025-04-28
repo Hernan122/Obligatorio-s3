@@ -1,33 +1,21 @@
-﻿using LogicaAccesoDatos.Repositorios;
-using Compartido.DTOs.UsuarioDTO.CRUD;
+﻿using Compartido.DTOs.UsuarioDTO;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.ValueObject.Usuario;
 using Compartido.Mappers;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class CUEditarUsuario
+    public class CUEditarUsuario : IEditarUsuario
     {
-        private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
+        private IRepositorioUsuario RepoUsuarios { get; set; }
 
-        //public void Ejecutar(EditarUsuarioDTO usuarioDTO)
-        //{
-        //    Usuario usuario = RepoUsuarios.FindById(usuarioDTO.Id);
-        //    if (usuario == null)
-        //    {
-        //        throw new UsuarioException("Usuario no existente");
-        //    }
-        //    Usuario usuarioFromUsuarioDTO = new Usuario
-        //    {
-        //        Id = usuarioDTO.Id,
-        //        Nombre = new NombreUsuario(usuarioDTO.NombreUsuario),
-        //        Email = new EmailUsuario(usuarioDTO.Email),
-        //        Password = new PasswordUsuario(usuarioDTO.Password),
-        //        Rol = usuarioDTO.Rol
-        //    };
-        //    RepoUsuarios.Update(usuarioFromUsuarioDTO);
-        //}
+        public CUEditarUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
 
         public void Ejecutar(EditarUsuarioDTO usuarioDTO)
         {

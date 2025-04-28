@@ -1,6 +1,6 @@
 ﻿namespace Compartido.Mappers
 {
-    internal class AgenciaMapper
+    public class AgenciaMapper
     {
     }
 }

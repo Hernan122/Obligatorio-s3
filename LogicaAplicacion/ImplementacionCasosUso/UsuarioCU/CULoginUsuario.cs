@@ -1,15 +1,21 @@
 ﻿using Compartido.DTOs.UsuarioDTO;
-using Compartido.DTOs.UsuarioDTO.CRUD;
 using Compartido.Mappers;
 using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ValueObject.Usuario;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class CULoginUsuario
+    public class CULoginUsuario : ILoginUsuario
     {
-        private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CULoginUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
 
         public LoginUsuarioDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
         {

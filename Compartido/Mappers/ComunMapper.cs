@@ -1,6 +1,6 @@
 ﻿namespace Compartido.Mappers
 {
-    internal class ComunMapper
+    public class ComunMapper
     {
     }
 }

@@ -1,9 +1,10 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
 
 namespace LogicaAccesoDatos.Repositorios
 {
-    public class RepositorioEnvio
+    public class RepositorioEnvio : IRepositorioEnvio
     {
         private List <Envio> Envios = new List <Envio>();
 
@@ -19,5 +20,29 @@ namespace LogicaAccesoDatos.Repositorios
             }
         }
 
+        public void Add(Usuario item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Usuario> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Usuario FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Usuario item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

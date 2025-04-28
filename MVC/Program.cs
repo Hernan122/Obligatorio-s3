@@ -16,17 +16,27 @@ namespace MVC
             // Agregar servicios al contenedor
             builder.Services.AddControllersWithViews();
 
-            // Configuración de la cadena de conexión a la base de datos
+            // InversiÃ³n de control
+            builder.Services.AddScoped<IRepositorioAgencia, RepositorioAgencia>();
+            builder.Services.AddScoped<IRepositorioComun, RepositorioComun>();
+            builder.Services.AddScoped<IRepositorioEnvio, RepositorioEnvio>();
+            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimiento>();
+            builder.Services.AddScoped<IRepositorioUbicacion, RepositorioUbicacion>();
+            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimiento>();
+            builder.Services.AddScoped<IRepositorioUrgente, RepositorioUrgente>();
+            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+
+            // Configuraciï¿½n de la cadena de conexiï¿½n a la base de datos
             string cadenaConexion = builder.Configuration.GetConnectionString("cadenaConexion");
             builder.Services.AddDbContext<DemoContext>(option => option.UseSqlServer(cadenaConexion));
 
-            // Agregar soporte para la sesión
-            builder.Services.AddDistributedMemoryCache(); // Usamos memoria distribuida para la sesión
+            // Agregar soporte para la sesiï¿½n
+            builder.Services.AddDistributedMemoryCache(); // Usamos memoria distribuida para la sesiï¿½n
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(30); // Configura el tiempo de inactividad de la sesión
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Configura el tiempo de inactividad de la sesiï¿½n
                 options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true; // Marca la cookie como esencial para la aplicación
+                options.Cookie.IsEssential = true; // Marca la cookie como esencial para la aplicaciï¿½n
             });
 
             var app = builder.Build();
@@ -43,12 +53,12 @@ namespace MVC
 
             app.UseRouting();
 
-            // Habilitar la sesión
+            // Habilitar la sesiï¿½n
             app.UseSession();
 
-            app.UseAuthorization();  // Authorization debe ir después de UseSession
+            app.UseAuthorization();  // Authorization debe ir despuï¿½s de UseSession
 
-            // Configuración de la ruta predeterminada
+            // Configuraciï¿½n de la ruta predeterminada
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

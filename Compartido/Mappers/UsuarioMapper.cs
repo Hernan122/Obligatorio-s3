@@ -1,5 +1,4 @@
 ﻿using LogicaNegocio.ExcepcionesEntidades;
-using Compartido.DTOs.UsuarioDTO.CRUD;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ValueObject.Usuario;
 using Compartido.DTOs.UsuarioDTO;

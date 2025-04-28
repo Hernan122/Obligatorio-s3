@@ -1,13 +1,19 @@
-﻿using Compartido.DTOs.UsuarioDTO.CRUD;
-using LogicaAccesoDatos.Repositorios;
+﻿using Compartido.DTOs.UsuarioDTO;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class CUVerDetalleUsuario
+    public class CUVerDetalleUsuario : IVerDetalleUsuario
     {
-        private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUVerDetalleUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
 
         public VerDetallesUsuarioDTO Ejecutar(int id)
         {

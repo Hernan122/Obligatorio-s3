@@ -1,21 +1,29 @@
 ﻿using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 using Microsoft.AspNetCore.Mvc;
-using Compartido.DTOs.UsuarioDTO.CRUD;
 using Compartido.DTOs.UsuarioDTO;
 using MVC.Models.Usuario;
 using Microsoft.AspNetCore.Http;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 
 namespace MVC.Controllers
 {
 
     public class UsuarioController : Controller
     {
-        private CUListadoUsuario CUListadoUsuario = new CUListadoUsuario();
-        private CUAltaUsuario CUAltaUsuario = new CUAltaUsuario();
-        private CUVerDetalleUsuario CUVerDetalleUsuario = new CUVerDetalleUsuario();
-        private CUBajaUsuario CUBajaUsuario = new CUBajaUsuario();
-        private CUEditarUsuario CUEditarUsuario = new CUEditarUsuario();
-        private CULoginUsuario CULoginUsuario = new CULoginUsuario();
+        private IListadoUsuario CUListadoUsuario { get; set; }
+        private IAltaUsuario CUAltaUsuario { get; set; }
+        private IVerDetalleUsuario CUVerDetalleUsuario { get; set; }
+        private IBajaUsuario CUBajaUsuario { get; set; }
+        private IEditarUsuario CUEditarUsuario { get; set; }
+        private ILoginUsuario CULoginUsuario { get; set; }
+
+        public UsuarioController(
+            IListadoUsuario cuListadoUsuario,
+            IAltaUsuario cuAltaUsuario
+        ){
+            CUListadoUsuario = cuListadoUsuario;
+            CUAltaUsuario = cuAltaUsuario;
+        }
 
         [HttpGet]
         public IActionResult AltaUsuario()

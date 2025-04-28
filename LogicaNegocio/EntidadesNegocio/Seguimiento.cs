@@ -2,7 +2,7 @@
 
 namespace LogicaNegocio.EntidadesNegocio
 {
-    internal class Seguimiento
+    public class Seguimiento : IEquatable<Seguimiento>
     {
         public int  Id { get; set; }
         public DateTime Fecha { get; set; }
@@ -11,5 +11,10 @@ namespace LogicaNegocio.EntidadesNegocio
         public Usuario usuario { get; set; }
 
         public Seguimiento(int id, DateTime fecha, string comentario, Envio envio, Usuario usuario ) { }
+
+        public bool Equals(Seguimiento? other)
+        {
+            return Id == other.Id;
+        }
     }
 }

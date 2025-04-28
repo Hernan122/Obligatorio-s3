@@ -1,6 +1,34 @@
-﻿namespace LogicaAccesoDatos.Repositorios
+﻿using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAccesoDatos.Repositorios
 {
-    internal class RepositorioAgencia
+    public class RepositorioAgencia : IRepositorioAgencia
     {
+        public void Add(Usuario item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Usuario> FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Usuario FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Usuario item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,14 +1,21 @@
 ﻿using Compartido.Mappers;
 using LogicaNegocio.EntidadesNegocio;
-using LogicaAccesoDatos.Repositorios;
-using Compartido.DTOs.UsuarioDTO.CRUD;
+using LogicaNegocio.InterfacesRepositorios;
+using Compartido.DTOs.UsuarioDTO;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class CUAltaUsuario
+    public class CUAltaUsuario : IAltaUsuario
     {
 
-        private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        // Inyección de dependencia
+        public CUAltaUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
 
         public void Ejecutar(AltaUsuarioDTO usuarioDTO)
         {

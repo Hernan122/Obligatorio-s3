@@ -1,13 +1,19 @@
-﻿using Compartido.DTOs.UsuarioDTO.CRUD;
+﻿using Compartido.DTOs.UsuarioDTO;
 using Compartido.Mappers;
-using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
-    public class CUListadoUsuario
+    public class CUListadoUsuario : IListadoUsuario
     {
-        private RepositorioUsuario RepoUsuarios = new RepositorioUsuario();
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUListadoUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
 
         public List<VerUsuarioDTO> Ejecutar()
         {
@@ -16,5 +22,6 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             usuariosDTO = UsuarioMapper.ListadoCarreraAListadoCarreraDTO(usuarios);
             return usuariosDTO;
         }
+
     }
 }

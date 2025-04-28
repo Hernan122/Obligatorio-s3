@@ -1,6 +1,6 @@
 ﻿namespace Compartido.Mappers
 {
-    internal class UbicacionMapper
+    public class UbicacionMapper
     {
     }
 }
