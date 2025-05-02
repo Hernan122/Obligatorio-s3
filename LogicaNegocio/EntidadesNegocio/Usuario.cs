@@ -1,42 +1,35 @@
 ﻿using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.ValueObject.Usuario;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogicaNegocio.EntidadesNegocio
 {
+    [Index(nameof(Email), IsUnique = true)]
     public class Usuario : IEquatable<Usuario>
     {
         public int Id { get; set; }
-        private static int s_ultId;
+        public Rol Rol { get; set; }
         public NombreUsuario Nombre { get; set; }
         public EmailUsuario Email { get; set; }
         public PasswordUsuario Password { get; set; }
-        public Rol Rol { get; set; }
 
-        public Usuario(string nombreUsuario, string email, string password, Rol rol)
+        //public enum Rol
+        //{
+        //    Administrador,
+        //    Funcionario,
+        //    Cliente,
+        //}
+
+        public Usuario(string nombre, string email, string password, Rol rol)
         {
-            Id = s_ultId++;
-            Nombre = new NombreUsuario(nombreUsuario);
+            Nombre = new NombreUsuario(nombre);
             Email = new EmailUsuario(email);
             Password = new PasswordUsuario(password);
             Rol = rol;
             Validar();
         }
 
-        public Usuario(int id, string nombreUsuario, string email, string password, Rol rol)
-        {
-            Id = id;
-            Nombre = new NombreUsuario(nombreUsuario);
-            Email = new EmailUsuario(email);
-            Password = new PasswordUsuario(password);
-            Rol = rol;
-        }
-
         public Usuario(){}
-
-        public Usuario(int id)
-        {
-            Id = s_ultId++;
-        }
 
         private void Validar()
         {

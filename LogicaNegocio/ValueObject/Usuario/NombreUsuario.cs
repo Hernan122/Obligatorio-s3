@@ -1,7 +1,9 @@
-﻿using LogicaNegocio.ExcepcionesEntidades;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaNegocio.ValueObject.Usuario
 {
+    [ComplexType]
     public record NombreUsuario
     {
         public string Valor { get; init; }

@@ -1077,3 +1077,4 @@ C:\Users\Bruno\Desktop\Obligatorio-s3\MVC\obj\Debug\net8.0\staticwebassets.pack.
 C:\Users\Bruno\Desktop\Obligatorio-s3\MVC\obj\Debug\net8.0\MVC.csproj.Up2Date
 C:\Users\Bruno\Desktop\Obligatorio-s3\MVC\obj\Debug\net8.0\MVC.genruntimeconfig.cache
 C:\Users\Bruno\Desktop\Obligatorio-s3\MVC\obj\Debug\net8.0\ref\MVC.dll
+C:\Users\Bruno\Desktop\Obligatorio-s3\MVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -2,7 +2,7 @@
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
 
-namespace LogicaAccesoDatos.Repositorios
+namespace LogicaAccesoDatos.Repositorios.RepoUsuario
 {
     public class RepositorioUsuario : IRepositorioUsuario
     {

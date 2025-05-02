@@ -4,6 +4,7 @@ using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
 using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 using LogicaAccesoDatos;
 using Microsoft.EntityFrameworkCore;
+using LogicaAccesoDatos.Repositorios.RepoUsuario;
 
 namespace MVC
 {
@@ -17,14 +18,14 @@ namespace MVC
             builder.Services.AddControllersWithViews();
 
             // Inversión de control
-            builder.Services.AddScoped<IRepositorioAgencia, RepositorioAgencia>();
-            builder.Services.AddScoped<IRepositorioComun, RepositorioComun>();
-            builder.Services.AddScoped<IRepositorioEnvio, RepositorioEnvio>();
-            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimiento>();
-            builder.Services.AddScoped<IRepositorioUbicacion, RepositorioUbicacion>();
-            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimiento>();
-            builder.Services.AddScoped<IRepositorioUrgente, RepositorioUrgente>();
-            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+            builder.Services.AddScoped<IRepositorioAgencia,     RepositorioAgenciaEF>();
+            builder.Services.AddScoped<IRepositorioComun,       RepositorioComunEF>();
+            builder.Services.AddScoped<IRepositorioEnvio,       RepositorioEnvioEF>();
+            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimientoEF>();
+            builder.Services.AddScoped<IRepositorioUbicacion,   RepositorioUbicacionEF>();
+            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimientoEF>();
+            builder.Services.AddScoped<IRepositorioUrgente,     RepositorioUrgenteEF>();
+            builder.Services.AddScoped<IRepositorioUsuario,     RepositorioUsuario>();
 
             // Configuraci�n de la cadena de conexi�n a la base de datos
             string cadenaConexion = builder.Configuration.GetConnectionString("cadenaConexion");

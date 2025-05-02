@@ -19,10 +19,19 @@ namespace MVC.Controllers
 
         public UsuarioController(
             IListadoUsuario cuListadoUsuario,
-            IAltaUsuario cuAltaUsuario
-        ){
+            IAltaUsuario cuAltaUsuario,
+            IVerDetalleUsuario cuVerDetalleUsuario,
+            IBajaUsuario cuBajaUsuario,
+            IEditarUsuario cuEditarUsuario,
+            ILoginUsuario cuLoginUsuario
+        )
+        {
             CUListadoUsuario = cuListadoUsuario;
             CUAltaUsuario = cuAltaUsuario;
+            CUVerDetalleUsuario = cuVerDetalleUsuario;
+            CUBajaUsuario = cuBajaUsuario;
+            CUEditarUsuario = cuEditarUsuario;
+            CULoginUsuario = cuLoginUsuario;
         }
 
         [HttpGet]

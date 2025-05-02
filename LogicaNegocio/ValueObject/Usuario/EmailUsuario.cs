@@ -1,5 +1,8 @@
-﻿namespace LogicaNegocio.ValueObject.Usuario
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LogicaNegocio.ValueObject.Usuario
 {
+    [ComplexType]
     public record EmailUsuario
     {
         public string Valor { get; set; }

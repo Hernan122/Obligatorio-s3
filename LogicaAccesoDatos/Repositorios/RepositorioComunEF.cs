@@ -4,8 +4,14 @@ using LogicaNegocio.InterfacesRepositorios;
 
 namespace LogicaAccesoDatos.Repositorios
 {
-    public class RepositorioUrgente : IRepositorioUrgente
+    public class RepositorioComunEF : IRepositorioComun
     {
+        private DemoContext Contexto { get; set; }
+
+        public RepositorioComunEF(DemoContext contexto)
+        {
+            Contexto = contexto;
+        }
         public void Add(Urgente item)
         {
             throw new NotImplementedException();

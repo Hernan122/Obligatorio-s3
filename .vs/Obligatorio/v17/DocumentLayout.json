@@ -3,52 +3,92 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\mvc\\views\\usuario\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\usuario\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositorioagenciaef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositorioagenciaef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\cualtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\cualtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositoriocomunef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositoriocomunef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\usuariocu\\ialtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\usuariocu\\ialtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositorioseguimientoef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositorioseguimientoef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositorioubicacionef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositorioubicacionef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\compartido\\mappers\\estadomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\estadomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositoriourgenteef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositoriourgenteef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\compartido\\mappers\\comunmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\comunmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositoriousuarioef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositoriousuarioef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\compartido\\mappers\\enviomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\enviomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\compartido\\mappers\\agenciamapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\agenciamapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repousuario\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repousuario\\repositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\mvc\\views\\usuario\\altausuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\usuario\\altausuario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioagencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioagencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioseguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioseguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioubicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioubicacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositoriourgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositoriourgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\agencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\agencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\envio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\envio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\comun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\comun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\urgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\urgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\mvc\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,110 +98,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Views\\Usuario\\Login.cshtml",
-              "RelativeDocumentMoniker": "MVC\\Views\\Usuario\\Login.cshtml",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Views\\Usuario\\Login.cshtml",
-              "RelativeToolTip": "MVC\\Views\\Usuario\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T11:57:31.601Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CUAltaUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "RepositorioUbicacionEF.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUbicacionEF.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioUbicacionEF.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUbicacionEF.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioUbicacionEF.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:57:24.142Z",
+              "WhenOpened": "2025-05-01T21:30:35.852Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IAltaUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
-              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\UsuarioCU\\IAltaUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Title": "RepositorioSeguimientoEF.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioSeguimientoEF.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioSeguimientoEF.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioSeguimientoEF.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioSeguimientoEF.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:57:12.845Z",
+              "WhenOpened": "2025-05-01T21:30:35.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RepositorioUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
-              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
-              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "RepositorioComunEF.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioComunEF.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioComunEF.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioComunEF.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioComunEF.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:56:55.419Z",
+              "WhenOpened": "2025-05-01T21:30:32.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RepositorioAgenciaEF.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioAgenciaEF.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioAgenciaEF.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioAgenciaEF.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioAgenciaEF.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAgwAIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:29:47.761Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "EstadoMapper.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\EstadoMapper.cs",
-              "RelativeDocumentMoniker": "Compartido\\Mappers\\EstadoMapper.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\EstadoMapper.cs",
-              "RelativeToolTip": "Compartido\\Mappers\\EstadoMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Title": "RepositorioUrgenteEF.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUrgenteEF.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioUrgenteEF.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUrgenteEF.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioUrgenteEF.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:56:38.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EnvioMapper.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\EnvioMapper.cs",
-              "RelativeDocumentMoniker": "Compartido\\Mappers\\EnvioMapper.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\EnvioMapper.cs",
-              "RelativeToolTip": "Compartido\\Mappers\\EnvioMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:56:30.042Z",
+              "WhenOpened": "2025-05-01T21:30:19.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ComunMapper.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\ComunMapper.cs",
-              "RelativeDocumentMoniker": "Compartido\\Mappers\\ComunMapper.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\ComunMapper.cs",
-              "RelativeToolTip": "Compartido\\Mappers\\ComunMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Title": "RepositorioUsuarioEF.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuarioEF.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuarioEF.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioUsuarioEF.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioUsuarioEF.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:56:27.27Z",
+              "WhenOpened": "2025-05-01T21:29:59.027Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AgenciaMapper.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\AgenciaMapper.cs",
-              "RelativeDocumentMoniker": "Compartido\\Mappers\\AgenciaMapper.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\Mappers\\AgenciaMapper.cs",
-              "RelativeToolTip": "Compartido\\Mappers\\AgenciaMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "RepositorioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepoUsuario\\RepositorioUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepoUsuario\\RepositorioUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepoUsuario\\RepositorioUsuario.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepoUsuario\\RepositorioUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:56:12.611Z",
+              "WhenOpened": "2025-05-01T23:17:23.963Z",
               "EditorCaption": ""
             },
             {
@@ -172,48 +199,191 @@
               "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
               "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
               "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:55:58.216Z",
+              "WhenOpened": "2025-05-02T01:50:53.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "IRepositorioUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "IRepositorioAgencia.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioAgencia.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioAgencia.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioAgencia.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioAgencia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:55:56.33Z",
+              "WhenOpened": "2025-05-02T01:51:33.294Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "AltaUsuario.cshtml",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Views\\Usuario\\AltaUsuario.cshtml",
-              "RelativeDocumentMoniker": "MVC\\Views\\Usuario\\AltaUsuario.cshtml",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Views\\Usuario\\AltaUsuario.cshtml",
-              "RelativeToolTip": "MVC\\Views\\Usuario\\AltaUsuario.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACUAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-23T11:52:23.575Z",
+              "Title": "IRepositorioSeguimiento.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:50:48.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "MVC\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "MVC\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCAAAAAWAAAAAAAAAA==",
+              "Title": "IRepositorioUbicacion.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUbicacion.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUbicacion.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUbicacion.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUbicacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T11:51:59.472Z",
+              "WhenOpened": "2025-05-02T01:50:47.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IRepositorioUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:50:43.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IRepositorioUrgente.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUrgente.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUrgente.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUrgente.cs",
+              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUrgente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:50:47.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Rol.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Rol.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Rol.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Rol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T01:06:10.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Urgente.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Urgente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T22:43:13.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Envio.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Envio.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Envio.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Envio.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Envio.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwDUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T22:40:06.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Comun.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Comun.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Comun.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Comun.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Comun.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T22:38:32.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Agencia.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Agencia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T22:36:08.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Seguimiento.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:51:39.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:31:22.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:31:11.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DemoContext.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\DemoContext.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\DemoContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T21:30:20.248Z",
               "EditorCaption": ""
             }
           ]

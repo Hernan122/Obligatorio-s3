@@ -4,20 +4,14 @@ using LogicaNegocio.InterfacesRepositorios;
 
 namespace LogicaAccesoDatos.Repositorios
 {
-    public class RepositorioEnvio : IRepositorioEnvio
+    public class RepositorioAgenciaEF : IRepositorioAgencia
     {
-        private List <Envio> Envios = new List <Envio>();
 
-        public void Add (Envio envio)
+        private DemoContext Contexto { get; set; }
+
+        public RepositorioAgenciaEF(DemoContext contexto)
         {
-            if (Envios.Contains(envio))
-            {
-                Envios.Add(envio);
-            }
-            else
-            {
-                throw new EnvioException("Ya existe un envio asi");
-            }
+            Contexto = contexto;
         }
 
         public void Add(Usuario item)
