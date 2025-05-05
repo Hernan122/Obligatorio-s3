@@ -7,5 +7,18 @@ namespace LogicaNegocio.ValueObject.Agencia
     {
         public int CoordenadasLatitud { get; init; }
         public int CoordenadasLongitud { get; init; }
+
+        public UbicacionAgencia(int coordenadasLatitud, int coordenadasLongitud)
+        {
+            CoordenadasLatitud = coordenadasLatitud;
+            CoordenadasLongitud = coordenadasLongitud;
+            Validar();
+        }
+
+        public void Validar()
+        {
+
+        }
+
     }
 }

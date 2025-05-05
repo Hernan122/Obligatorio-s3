@@ -35,7 +35,34 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult AltaUsuario()
+        public ActionResult Index()
+        {
+            var rol = HttpContext.Session.GetString("Rol");
+            if (rol != "Administrador")
+            {
+                return RedirectToAction("Login");
+            }
+
+            try
+            {
+                var usuariosDTO = CUListadoUsuario.Ejecutar();
+                var listadoUsuarioViewModel = usuariosDTO.Select(u => new ListadoUsuarioViewModel()
+                {
+                    Id = u.Id,
+                    NombreUsuario = u.NombreUsuario,
+                }).ToList();
+
+                return View(listadoUsuarioViewModel);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
+                return View(new List<ListadoUsuarioViewModel>());
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AltaUsuario()
         {
             return View();
         }
@@ -90,7 +117,7 @@ namespace MVC.Controllers
 
                 if (HttpContext.Session.GetString("rol") == "Administrador")
                 {
-                    return RedirectToAction(nameof(ListadoUsuarios), "Usuario");
+                    return RedirectToAction(nameof(Index), "Usuario");
                 }
                 else
                 {
@@ -101,33 +128,6 @@ namespace MVC.Controllers
             {
                 ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
                 return View();
-            }
-        }
-
-        [HttpGet]
-        public ActionResult ListadoUsuarios()
-        {
-            var rol = HttpContext.Session.GetString("Rol");
-            if (rol != "Administrador")
-            {
-                return RedirectToAction("Login");
-            }
-
-            try
-            {
-                var usuariosDTO = CUListadoUsuario.Ejecutar();
-                var listadoUsuarioViewModel = usuariosDTO.Select(u => new ListadoUsuarioViewModel()
-                {
-                    Id = u.Id,
-                    NombreUsuario = u.NombreUsuario,
-                }).ToList();
-
-                return View(listadoUsuarioViewModel);
-            }
-            catch (Exception e)
-            {
-                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
-                return View(new List<ListadoUsuarioViewModel>());
             }
         }
 
@@ -203,7 +203,7 @@ namespace MVC.Controllers
             {
                 ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
             }
-            return RedirectToAction(nameof(ListadoUsuarios));
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -218,7 +218,7 @@ namespace MVC.Controllers
             {
                 ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
             }
-            return RedirectToAction(nameof(ListadoUsuarios));
+            return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Logout()

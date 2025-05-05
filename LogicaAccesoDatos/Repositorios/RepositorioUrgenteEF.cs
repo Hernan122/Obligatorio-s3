@@ -4,7 +4,7 @@ using LogicaNegocio.InterfacesRepositorios;
 
 namespace LogicaAccesoDatos.Repositorios
 {
-    public class RepositorioUrgenteEF : IRepositorioUrgente
+    public class RepositorioUrgenteEF : IRepositorioEnvioUrgente
     {
         private DemoContext Contexto { get; set; }
 

@@ -586,6 +586,9 @@
         }
       },
       "LogicaNegocio/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.10"
+        },
         "runtime": {
           "LogicaNegocio.dll": {
             "assemblyVersion": "1.0.0.0",

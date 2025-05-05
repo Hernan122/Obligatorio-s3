@@ -15,11 +15,11 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public List<VerUsuarioDTO> Ejecutar()
+        public List<ListadoUsuarioDTO> Ejecutar()
         {
-            List<VerUsuarioDTO> usuariosDTO = new List<VerUsuarioDTO>();
+            List<ListadoUsuarioDTO> usuariosDTO = new List<ListadoUsuarioDTO>();
             List<Usuario> usuarios = RepoUsuarios.FindAll().ToList();
-            usuariosDTO = UsuarioMapper.ListadoCarreraAListadoCarreraDTO(usuarios);
+            usuariosDTO = UsuarioMapper.ListadoUsuarioToListadoUsuarioDTO(usuarios);
             return usuariosDTO;
         }
 

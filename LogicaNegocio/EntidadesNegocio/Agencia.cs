@@ -15,15 +15,16 @@ namespace LogicaNegocio.EntidadesNegocio
         [ForeignKey("Usuario")]
         public int UsuarioId { get; set; }
 
-        public Agencia (int ubPos, int ub, UbicacionAgencia ubicacion, NombreAgencia nombre, int usuarioId)
+        public Agencia (int ubPos, int ubicacionLatitud, int ubicacionLongitud, string nombre, int usuarioId)
         {
             UbPos = ubPos;
-            Ubicacion = ubicacion;
-            Nombre = nombre;
+            Ubicacion = new UbicacionAgencia(ubicacionLatitud, ubicacionLongitud);
+            Nombre = new NombreAgencia(nombre);
             UsuarioId = usuarioId;
-            Nombre = nombre;
             Validar();
         }
+
+        public Agencia() {}
 
         public void Validar()
         {

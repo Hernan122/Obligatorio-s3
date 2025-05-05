@@ -7,19 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ImplementacionCasosUso\EstadoCU\**" />
+    <Compile Remove="ImplementacionCasosUso\RolCU\**" />
+    <Compile Remove="ImplementacionCasosUso\UbicacionCU\**" />
+    <EmbeddedResource Remove="ImplementacionCasosUso\EstadoCU\**" />
+    <EmbeddedResource Remove="ImplementacionCasosUso\RolCU\**" />
+    <EmbeddedResource Remove="ImplementacionCasosUso\UbicacionCU\**" />
+    <None Remove="ImplementacionCasosUso\EstadoCU\**" />
+    <None Remove="ImplementacionCasosUso\RolCU\**" />
+    <None Remove="ImplementacionCasosUso\UbicacionCU\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Compartido\Compartido.csproj" />
     <ProjectReference Include="..\LogicaAccesoDatos\LogicaAccesoDatos.csproj" />
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ImplementacionCasosUso\ComunCU\" />
-    <Folder Include="ImplementacionCasosUso\EstadoCU\" />
     <Folder Include="ImplementacionCasosUso\AgenciaCU\" />
-    <Folder Include="ImplementacionCasosUso\UbicacionCU\" />
-    <Folder Include="ImplementacionCasosUso\RolCU\" />
     <Folder Include="ImplementacionCasosUso\SeguimientoCU\" />
-    <Folder Include="ImplementacionCasosUso\UrgenteCU\" />
+    <Folder Include="InterfacesCasosUso\IAgenciaCU\" />
+    <Folder Include="InterfacesCasosUso\ISeguimientoCU\" />
   </ItemGroup>
 
 </Project>

@@ -9,6 +9,21 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public Urgente() { }
 
+        public Urgente(
+            int direccionPostal,
+            bool entregaEficiente,
+            int numeroTracking,
+            int pesoPaquete,
+            Estado estado,
+            int clienteId,
+            int funcionarioId,
+            int seguimientoId
+        ) : base(numeroTracking, pesoPaquete, estado, clienteId, funcionarioId, seguimientoId)
+        {
+            DireccionPostal = direccionPostal;
+            EntregaEficiente = entregaEficiente;
+        }
+
         public bool Equals(Urgente? other)
         {
             return true;

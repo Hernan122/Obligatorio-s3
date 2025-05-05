@@ -45,6 +45,10 @@
                             </li>
                         }
 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Envio" asp-action="Create">Nuevo Envio</a>
+                        </li>
+
                         <!-- Cerrar Sesión (visible si el usuario ha iniciado sesión) -->
                         @if (Context.Session.GetString("Rol") != null)
                         {

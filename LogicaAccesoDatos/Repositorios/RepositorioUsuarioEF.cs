@@ -18,6 +18,7 @@ namespace LogicaAccesoDatos.Repositorios
             if (!Contexto.Usuarios.Contains(usuario))
             {
                 Contexto.Usuarios.Add(usuario);
+                Contexto.SaveChanges();
             }
             else
             {
@@ -33,51 +34,37 @@ namespace LogicaAccesoDatos.Repositorios
                 throw new UsuarioException("No se ha encontrado el usuario");
             }
             Contexto.Usuarios.Remove(usuario);
+            Contexto.SaveChanges();
         }
 
         public IEnumerable<Usuario> FindAll()
         {
-            //return Usuarios;
-            return null;
+            return Contexto.Usuarios;
         }
 
         public Usuario FindById(int id)
         {
-            //foreach (Usuario usuario in Usuarios)
-            //{
-            //    if (usuario.Id == id)
-            //    {
-            //        return usuario;
-            //    }
-            //}
-            return null;
+            return Contexto.Usuarios
+                    .Where(c => c.Id == id)
+                    .SingleOrDefault();
         }
 
         public void Update(Usuario usuario)
         {
-            //foreach (Usuario item in Usuarios)
-            //{
-            //    if (item.Id == usuario.Id)
-            //    {
-            //        item.Id = usuario.Id;
-            //        item.Nombre = usuario.Nombre;
-            //        item.Email = usuario.Email;
-            //        item.Password = usuario.Password;
-            //        item.Rol = usuario.Rol;
-            //    }
-            //}
+            Usuario newUsuario = FindById(usuario.Id);
+            if (newUsuario == null)
+            {
+                throw new UsuarioException("No se encontro al usuario a actualizar");
+            }
+            Contexto.Usuarios.Update(usuario);
+            Contexto.SaveChanges();
         }
 
         public Usuario FindByEmailAndPassword(Usuario usuario)
         {
-            //foreach (Usuario item in Usuarios)
-            //{
-            //    if (item.Email.Valor == usuario.Email.Valor && item.Password.Valor == usuario.Password.Valor)
-            //    {
-            //        return item;
-            //    }
-            //}
-            return null;
+            return Contexto.Usuarios
+                    .Where(c => c.Email.Valor == usuario.Email.Valor && c.Password.Valor == usuario.Password.Valor)
+                    .SingleOrDefault();
         }
 
     }

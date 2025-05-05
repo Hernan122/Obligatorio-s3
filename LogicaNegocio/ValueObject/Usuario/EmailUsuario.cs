@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaNegocio.ValueObject.Usuario
 {
@@ -15,7 +16,10 @@ namespace LogicaNegocio.ValueObject.Usuario
 
         private void Validar()
         {
-
+            if (string.IsNullOrEmpty(Valor))
+            {
+                throw new UsuarioException("Correo obligatorio");
+            }
         }
     }
 }

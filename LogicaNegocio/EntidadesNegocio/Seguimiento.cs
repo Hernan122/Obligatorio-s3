@@ -9,17 +9,23 @@ namespace LogicaNegocio.EntidadesNegocio
         public DateTime Fecha { get; set; }
         public string Comentario { get; set; }
         public Envio Envio { get; set; }
+
+        [ForeignKey("Envio")]
+        public int EnvioId { get; set; }
+
         public Usuario Funcionario { get; set; }
 
         [ForeignKey("Funcionario")]
         public int FuncionarioId { get; set; }
 
-        public Seguimiento(DateTime fecha, string comentario, Envio envio, Usuario funcionario) { 
+        public Seguimiento(DateTime fecha, string comentario, int envioId, int funcionarioId) { 
             Fecha = fecha;
             Comentario = comentario;
-            Envio = envio;
-            Funcionario = funcionario;
+            EnvioId = envioId;
+            FuncionarioId = funcionarioId;
         }
+
+        public Seguimiento() { }
 
         public bool Equals(Seguimiento? other)
         {
