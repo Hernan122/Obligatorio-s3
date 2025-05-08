@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Compartido.DTOs.UsuarioDTO;
 using MVC.Models.Usuario;
 using Microsoft.AspNetCore.Http;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace MVC.Controllers
 {
@@ -74,7 +74,7 @@ namespace MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
+                    AltaEnvioDTO usuarioDTO = new AltaEnvioDTO()
                     {
                         NombreUsuario = usuario.Nombre,
                         Email = usuario.Email,

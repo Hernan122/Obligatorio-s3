@@ -1,16 +1,17 @@
-﻿using LogicaNegocio.EntidadesNegocio;
+﻿using System.ComponentModel;
+using LogicaNegocio.EntidadesNegocio;
 
 namespace MVC.Models.Envio
 {
     public class AltaEnvioViewModel
     {
-        public int NumeroTracking { get; set; }
-        public Estado Estado { get; set; }
-        public int FuncionarioId { get; set; }
-        public int SeguimientoId { get; set; }
+        // RF: Tipo Envio
         public int TipoEnvio { get; set; }
+        // RF: Email Cliente
         public string EmailCliente { get; set; }
+        // RF: Direccion Postal
         public string DireccionPostal { get; set; }
+        // RF: Peso Paquete
         public int PesoPaquete { get; set; }
     }
 }

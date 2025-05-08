@@ -1,6 +1,6 @@
 ﻿using Compartido.DTOs.ComunDTO;
 
-namespace LogicaAplicacion.InterfacesCasosUso.IComunCU
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU
 {
     public interface IBajaEnvioComun
     {

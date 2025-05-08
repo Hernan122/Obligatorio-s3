@@ -1,10 +1,34 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
+
 namespace MVC.Controllers
 {
     public class EnvioController : Controller
     {
+        private IListadoEnvio CUListadoEnvio { get; set; }
+        private IAltaEnvio CUAltaEnvio { get; set; }
+        private IVerDetalleEnvio CUVerDetalleEnvio { get; set; }
+        private IBajaEnvio CUBajaEnvio { get; set; }
+        private IEditarEnvio CUEditarEnvio { get; set; }
+
+        public EnvioController(
+            IListadoEnvio cuListadoEnvio,
+            IAltaEnvio cuAltaEnvio,
+            IVerDetalleEnvio cuVerDetalleEnvio,
+            IBajaEnvio cuBajaEnvio,
+            IEditarEnvio cuEditarEnvio
+        )
+        {
+            CUListadoEnvio = cuListadoEnvio;
+            CUAltaEnvio = cuAltaEnvio;
+            CUVerDetalleEnvio = cuVerDetalleEnvio;
+            CUBajaEnvio = cuBajaEnvio;
+            CUEditarEnvio = cuEditarEnvio;
+        }
+
         // GET: EnvioController
         public ActionResult Index()
         {

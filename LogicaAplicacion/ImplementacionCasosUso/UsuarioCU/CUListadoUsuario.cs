@@ -2,7 +2,7 @@
 using Compartido.Mappers;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.InterfacesRepositorios;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -15,9 +15,9 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public List<ListadoUsuarioDTO> Ejecutar()
+        public List<ListadoEnvioDTO> Ejecutar()
         {
-            List<ListadoUsuarioDTO> usuariosDTO = new List<ListadoUsuarioDTO>();
+            List<ListadoEnvioDTO> usuariosDTO = new List<ListadoEnvioDTO>();
             List<Usuario> usuarios = RepoUsuarios.FindAll().ToList();
             usuariosDTO = UsuarioMapper.ListadoUsuarioToListadoUsuarioDTO(usuarios);
             return usuariosDTO;

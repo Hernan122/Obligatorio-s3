@@ -2,7 +2,7 @@
 
 namespace Compartido.DTOs.UsuarioDTO
 {
-    public class BajaUsuarioDTO
+    public class BajaEnvioDTO
     {
         public int Id { get; set; }
         //public Usuario usuario { get; set; }

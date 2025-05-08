@@ -2,7 +2,7 @@
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.InterfacesRepositorios;
 using Compartido.DTOs.UsuarioDTO;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {

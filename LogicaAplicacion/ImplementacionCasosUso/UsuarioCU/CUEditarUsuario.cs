@@ -4,7 +4,7 @@ using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.ValueObject.Usuario;
 using Compartido.Mappers;
 using LogicaNegocio.InterfacesRepositorios;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {

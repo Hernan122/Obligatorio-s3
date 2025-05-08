@@ -2,7 +2,7 @@
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {

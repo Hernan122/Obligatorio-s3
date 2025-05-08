@@ -1,11 +1,18 @@
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAccesoDatos.Repositorios;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
-using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+
 using LogicaAccesoDatos;
 using Microsoft.EntityFrameworkCore;
 using LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU;
-using LogicaAplicacion.InterfacesCasosUso.IComunCU;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
+
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+
+//using LogicaAplicacion.ImplementacionCasosUso.EnvioComunCU;
+//using LogicaAplicacion.InterfacesCasosUso.IEnvioUrgenteCU;
 
 namespace MVC
 {
@@ -19,25 +26,33 @@ namespace MVC
             builder.Services.AddControllersWithViews();
 
             // Inversión de control
-            builder.Services.AddScoped<IRepositorioAgencia,     RepositorioAgenciaEF>();
+            builder.Services.AddScoped<IRepositorioAgencia, RepositorioAgenciaEF>();
 
-            builder.Services.AddScoped<IRepositorioEnvioComun,       RepositorioComunEF>();
-            //builder.Services.AddScoped<IAltaEnvioUrgente, CUAltaEnvioUrgente>();
-            //builder.Services.AddScoped<IBajaEnvioUrgente, CUBajaEnvioUrgente>();
-            //builder.Services.AddScoped<IEditarEnvioUrgente, CUEditarEnvioUrgente>();
-            //builder.Services.AddScoped<IListadoEnvioUrgente, CUListadoEnvioUrgente>();
-            //builder.Services.AddScoped<IVerDetalleEnvioUrgente, CUVerDetalleEnvioUrgente>();
+            //builder.Services.AddScoped<IRepositorioEnvioComun, RepositorioComunEF>();
+            //builder.Services.AddScoped<IAltaEnvioComun, CUAltaEnvioComun>();
+            //builder.Services.AddScoped<IBajaEnvioComun, CUBajaEnvioComun>();
+            //builder.Services.AddScoped<IEditarEnvioComun, CUEditarEnvioComun>();
+            //builder.Services.AddScoped<IListadoEnvioComun, CUListadoEnvioComun>();
+            //builder.Services.AddScoped<IVerDetalleEnvioComun, CUVerDetalleEnvioComun>();
 
             builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimientoEF>();
 
-            builder.Services.AddScoped<IRepositorioEnvioUrgente,     RepositorioUrgenteEF>();
+            //builder.Services.AddScoped<IRepositorioEnvioComun, RepositorioComunEF>();
+            //builder.Services.AddScoped<IRepositorioEnvioUrgente, RepositorioUrgenteEF>();
+            builder.Services.AddScoped<IAltaEnvio, CUAltaEnvio>();
+            builder.Services.AddScoped<IBajaEnvio, CUBajaEnvio>();
+            builder.Services.AddScoped<IEditarEnvio, CUEditarEnvio>();
+            builder.Services.AddScoped<IListadoEnvio, CUListadoEnvio>();
+            builder.Services.AddScoped<IVerDetalleEnvio, CUVerDetalleEnvio>();
+
+            //builder.Services.AddScoped<IRepositorioEnvioUrgente,     RepositorioUrgenteEF>();
             //builder.Services.AddScoped<IAltaEnvioUrgente, CUAltaEnvioUrgente>();
             //builder.Services.AddScoped<IBajaEnvioUrgente, CUBajaEnvioUrgente>();
             //builder.Services.AddScoped<IEditarEnvioUrgente, CUEditarEnvioUrgente>();
             //builder.Services.AddScoped<IListadoEnvioUrgente, CUListadoEnvioUrgente>();
             //builder.Services.AddScoped<IVerDetalleEnvioUrgente, CUVerDetalleEnvioUrgente>();
 
-            builder.Services.AddScoped<IRepositorioUsuario,     RepositorioUsuarioEF>();
+            builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IAltaUsuario, CUAltaUsuario>();
             builder.Services.AddScoped<IBajaUsuario, CUBajaUsuario>();
             builder.Services.AddScoped<IEditarUsuario, CUEditarUsuario>();

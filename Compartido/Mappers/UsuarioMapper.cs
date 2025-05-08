@@ -7,7 +7,7 @@ namespace Compartido.Mappers
 {
     public class UsuarioMapper
     {
-        public static Usuario UsuarioFromAltaUsuarioDTO(AltaUsuarioDTO usuarioDTO)
+        public static Usuario UsuarioFromAltaUsuarioDTO(AltaEnvioDTO usuarioDTO)
         {
             if (usuarioDTO == null)
             {
@@ -22,7 +22,7 @@ namespace Compartido.Mappers
             };
         }
 
-        public static Usuario UsuarioFromBajaUsuarioDTO(BajaUsuarioDTO usuarioDTO)
+        public static Usuario UsuarioFromBajaUsuarioDTO(BajaEnvioDTO usuarioDTO)
         {
             return new Usuario()
             {
@@ -55,10 +55,10 @@ namespace Compartido.Mappers
             };
         }
 
-        public static List<ListadoUsuarioDTO> ListadoUsuarioToListadoUsuarioDTO(List<Usuario> usuarios)
+        public static List<ListadoEnvioDTO> ListadoUsuarioToListadoUsuarioDTO(List<Usuario> usuarios)
         {
-            List<ListadoUsuarioDTO> listadoUsuariosDTO = new List<ListadoUsuarioDTO>();
-            listadoUsuariosDTO = usuarios.Select(user => new ListadoUsuarioDTO()
+            List<ListadoEnvioDTO> listadoUsuariosDTO = new List<ListadoEnvioDTO>();
+            listadoUsuariosDTO = usuarios.Select(user => new ListadoEnvioDTO()
             {
                 Id = user.Id,
                 NombreUsuario = user.Nombre.Valor,

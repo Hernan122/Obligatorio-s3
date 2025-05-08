@@ -1,9 +1,9 @@
 using Compartido.DTOs.UsuarioDTO;
 
-namespace LogicaAplicacion.InterfacesCasosUso.UsuarioCU
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
 {
     public interface IListadoUsuario
     {
-        List<ListadoUsuarioDTO> Ejecutar ();
+        List<ListadoEnvioDTO> Ejecutar ();
     }
 }

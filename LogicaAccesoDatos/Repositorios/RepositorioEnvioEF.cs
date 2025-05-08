@@ -4,15 +4,17 @@ using LogicaNegocio.InterfacesRepositorios;
 
 namespace LogicaAccesoDatos.Repositorios
 {
-    public class RepositorioComunEF : IRepositorioEnvioComun
+    public class RepositorioEnvioEF : IRepositorioAgencia
     {
+
         private DemoContext Contexto { get; set; }
 
-        public RepositorioComunEF(DemoContext contexto)
+        public RepositorioEnvioEF(DemoContext contexto)
         {
             Contexto = contexto;
         }
-        public void Add(Comun item)
+
+        public void Add(Usuario item)
         {
             throw new NotImplementedException();
         }
@@ -22,17 +24,17 @@ namespace LogicaAccesoDatos.Repositorios
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Comun> FindAll()
+        public IEnumerable<Usuario> FindAll()
         {
             throw new NotImplementedException();
         }
 
-        public Comun FindById(int id)
+        public Usuario FindById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Comun item)
+        public void Update(Usuario item)
         {
             throw new NotImplementedException();
         }

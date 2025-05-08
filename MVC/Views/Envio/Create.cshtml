@@ -19,17 +19,17 @@
 
 <form asp-action="Create">
     
-    <div class="form-floating mb-3">
+    @* <div class="form-floating mb-3">
         <input asp-for="NumeroTracking" type="text" class="form-control" id="floatingInputInvalid" placeholder>
         <label for="floatingInputInvalid">NumeroTracking</label>
     </div>
-
-    <div class="form-floating mb-3">
+ *@
+    @* <div class="form-floating mb-3">
         <input asp-for="Estado" type="text" class="form-control" id="floatingInputInvalid" placeholder>
         <label for="floatingInputInvalid">Estado</label>
-    </div>
+    </div> *@
 
-    <div class="form-floating mb-3">
+   @*  <div class="form-floating mb-3">
         <input asp-for="FuncionarioId" type="text" class="form-control" id="floatingInputInvalid" placeholder>
         <label for="floatingInputInvalid">FuncionarioId</label>
     </div>
@@ -37,7 +37,7 @@
     <div class="form-floating mb-3">
         <input asp-for="SeguimientoId" type="text" class="form-control" id="floatingInputInvalid" placeholder>
         <label for="floatingInputInvalid">SeguimientoId</label>
-    </div>
+    </div> *@
 
     <div class="form-floating mb-3">
         <input asp-for="TipoEnvio" type="text" class="form-control" id="floatingInputInvalid" placeholder>
@@ -59,7 +59,7 @@
         <label for="floatingInputInvalid">PesoPaquete</label>
     </div>
 
-    <div class="form-floating mb-3">
+    @* <div class="form-floating mb-3">
         <select asp-for="Estado" class="form-select" id="floatingSelect" aria-label="Floating label select example">
             <option value="">Seleccione Rol</option>
             @foreach (Estado item in Enum.GetValues(typeof(Estado)))
@@ -68,7 +68,7 @@
             }
         </select>
         <label for="floatingSelect">Estado</label>
-    </div>
+    </div> *@
 
     <input type="submit" value="Generar Envio" class="btn btn-primary w-100" />
 

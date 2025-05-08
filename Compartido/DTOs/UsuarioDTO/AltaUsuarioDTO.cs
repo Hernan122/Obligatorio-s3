@@ -2,7 +2,7 @@
 
 namespace Compartido.DTOs.UsuarioDTO
 {
-    public class AltaUsuarioDTO
+    public class AltaEnvioDTO
     {
         public string NombreUsuario { get; set; }
         public string Email { get; set; }

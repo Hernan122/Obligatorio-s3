@@ -2,7 +2,7 @@
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.InterfacesRepositorios;
 using Compartido.DTOs.UsuarioDTO;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -17,7 +17,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public void Ejecutar(AltaUsuarioDTO usuarioDTO)
+        public void Ejecutar(AltaEnvioDTO usuarioDTO)
         {
             if (usuarioDTO == null)
             {

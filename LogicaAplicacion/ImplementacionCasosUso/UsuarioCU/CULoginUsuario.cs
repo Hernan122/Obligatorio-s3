@@ -4,7 +4,7 @@ using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ValueObject.Usuario;
 using LogicaNegocio.InterfacesRepositorios;
-using LogicaAplicacion.InterfacesCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
