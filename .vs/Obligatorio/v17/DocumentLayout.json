@@ -50,9 +50,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
               "RelativeDocumentMoniker": "MVC\\Program.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs*",
-              "RelativeToolTip": "MVC\\Program.cs*",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAgwBsAAAAjAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
+              "RelativeToolTip": "MVC\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T11:58:12.868Z",
               "EditorCaption": ""
@@ -115,8 +115,7 @@
               "RelativeToolTip": "WebApi\\Controllers\\UsuarioController.cs",
               "ViewState": "AgIAAHEAAAAAAAAAAAAAAIMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T11:36:47.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T11:36:47.931Z"
             }
           ]
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alumnoFI\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {}
+    "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alumnoFI\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {
+    "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alumnoFI\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
         "projectName": "LogicaNegocio",
-        "projectPath": "C:\\Users\\alumnoFI\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
+        "projectPath": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
         "packagesPath": "C:\\Users\\alumnoFI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alumnoFI\\Source\\Repos\\Obligatorio-s3\\LogicaNegocio\\obj\\",
+        "outputPath": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
