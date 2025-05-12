@@ -1,25 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\",
+  "WorkspaceRootPath": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\compartido\\excepcionesconflictos\\conflictexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\compartido\\excepcionesconflictos\\conflictexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\excepcionesconflictos\\conflictexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\entidadesnegocio\\seguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\desktop\\obligatorio-s3\\mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\source\\repos\\obligatorio-s3\\mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -30,67 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d84ee353-0bef-5a41-a649-8f89aca5d84d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConflictException.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\ExcepcionesConflictos\\ConflictException.cs",
-              "RelativeDocumentMoniker": "Compartido\\ExcepcionesConflictos\\ConflictException.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\Compartido\\ExcepcionesConflictos\\ConflictException.cs",
-              "RelativeToolTip": "Compartido\\ExcepcionesConflictos\\ConflictException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABrAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs",
+              "RelativeDocumentMoniker": "MVC\\Program.cs",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\Program.cs*",
+              "RelativeToolTip": "MVC\\Program.cs*",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAgwBsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T12:34:34.173Z",
+              "WhenOpened": "2025-05-12T11:58:12.868Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ConflictException.cs",
+              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\Compartido\\ExcepcionesConflictos\\ConflictException.cs",
+              "RelativeDocumentMoniker": "Compartido\\ExcepcionesConflictos\\ConflictException.cs",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\Compartido\\ExcepcionesConflictos\\ConflictException.cs",
+              "RelativeToolTip": "Compartido\\ExcepcionesConflictos\\ConflictException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T12:34:34.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Seguimiento.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
+              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
               "RelativeDocumentMoniker": "LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
               "RelativeToolTip": "LogicaNegocio\\EntidadesNegocio\\Seguimiento.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-07T11:49:01.961Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T11:49:01.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\appsettings.json",
+              "RelativeDocumentMoniker": "MVC\\appsettings.json",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\MVC\\appsettings.json",
+              "RelativeToolTip": "MVC\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-07T11:37:29.577Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "MVC\\appsettings.json",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\MVC\\appsettings.json",
-              "RelativeToolTip": "MVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-07T11:37:29.577Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\WebApi\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\WebApi\\appsettings.json",
               "RelativeDocumentMoniker": "WebApi\\appsettings.json",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\WebApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\WebApi\\appsettings.json",
               "RelativeToolTip": "WebApi\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-07T11:37:25.563Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-07T11:37:25.563Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "WebApi\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Desktop\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\alumnoFI\\source\\repos\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
               "RelativeToolTip": "WebApi\\Controllers\\UsuarioController.cs",
               "ViewState": "AgIAAHEAAAAAAAAAAAAAAIMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

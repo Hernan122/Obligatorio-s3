@@ -47,3 +47,4 @@ C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\refint\Logi
 C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.pdb
 C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\ref\LogicaNegocio.dll
 C:\Users\Bruno\Desktop\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.csproj.AssemblyReference.cache
+C:\Users\alumnoFI\Source\Repos\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.csproj.AssemblyReference.cache
