@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj": {}
+    "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj": {}
   },
   "projects": {
-    "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj": {
+    "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj",
+        "projectUniqueName": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj",
         "projectName": "Compartido",
-        "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj",
+        "projectPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\Compartido\\Compartido.csproj",
         "packagesPath": "C:\\Users\\herna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\Compartido\\obj\\",
+        "outputPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\Compartido\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\herna\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj": {
-                "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj"
+              "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj": {
+                "projectPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj": {
+    "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj",
         "projectName": "LogicaNegocio",
-        "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj",
+        "projectPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj",
         "packagesPath": "C:\\Users\\herna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\obj\\",
+        "outputPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\herna\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -4064,11 +4064,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaAccesoDatos\\LogicaAccesoDatos.csproj",
+      "projectUniqueName": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaAccesoDatos\\LogicaAccesoDatos.csproj",
       "projectName": "LogicaAccesoDatos",
-      "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaAccesoDatos\\LogicaAccesoDatos.csproj",
+      "projectPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaAccesoDatos\\LogicaAccesoDatos.csproj",
       "packagesPath": "C:\\Users\\herna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaAccesoDatos\\obj\\",
+      "outputPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaAccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\herna\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4086,8 +4086,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj": {
-              "projectPath": "C:\\Users\\herna\\Source\\Repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj"
+            "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj": {
+              "projectPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3.git\\LogicaNegocio\\LogicaNegocio.csproj"
             }
           }
         }
