@@ -74,7 +74,7 @@ namespace MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    AltaEnvioDTO usuarioDTO = new AltaEnvioDTO()
+                    AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
                     {
                         NombreUsuario = usuario.Nombre,
                         Email = usuario.Email,

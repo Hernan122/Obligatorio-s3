@@ -31,7 +31,15 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public override void Validar()
         {
-
+            base.Validar();
+            if (DireccionPostal > 0)
+            {
+                throw new UrgenteException("Direccion Postal invalido");
+            }
+            if (DireccionPostal == null)
+            {
+                throw new UrgenteException("Entrega Eficiente null");
+            }
         }
     }
 }

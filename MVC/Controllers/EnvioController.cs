@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
+using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+using LogicaNegocio.EntidadesNegocio;
 
 namespace MVC.Controllers
 {
@@ -50,16 +52,26 @@ namespace MVC.Controllers
         // POST: EnvioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(AltaUsuarioViewModel envio)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    AltaEnvioDTO usuarioDTO = new AltaEnvioDTO()
+                    {
+
+                    };
+
+                    CUAltaUsuario.Ejecutar(usuarioDTO);
+                    ViewBag.Mensaje = "Usuario agregado";
+                }
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
             }
+            return View();
         }
 
         // GET: EnvioController/Edit/5

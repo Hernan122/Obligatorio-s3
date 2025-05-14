@@ -1,6 +1,6 @@
 ﻿namespace Compartido.DTOs
 {
-    internal class AltaAgenciaDTO
+    public class AltaAgenciaDTO
     {
     }
 }

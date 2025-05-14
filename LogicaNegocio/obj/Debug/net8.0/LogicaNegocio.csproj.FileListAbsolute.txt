@@ -61,3 +61,16 @@ C:\Users\herna\Source\Repos\Obligatorio-s3.git\LogicaNegocio\obj\Debug\net8.0\Lo
 C:\Users\herna\Source\Repos\Obligatorio-s3.git\LogicaNegocio\obj\Debug\net8.0\refint\LogicaNegocio.dll
 C:\Users\herna\Source\Repos\Obligatorio-s3.git\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.pdb
 C:\Users\herna\Source\Repos\Obligatorio-s3.git\LogicaNegocio\obj\Debug\net8.0\ref\LogicaNegocio.dll
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\bin\Debug\net8.0\LogicaNegocio.deps.json
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\bin\Debug\net8.0\LogicaNegocio.dll
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\bin\Debug\net8.0\LogicaNegocio.pdb
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.csproj.AssemblyReference.cache
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.AssemblyInfoInputs.cache
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.AssemblyInfo.cs
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.sourcelink.json
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.dll
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\refint\LogicaNegocio.dll
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.pdb
+C:\Users\alumnoFI\Documents\Obligatorio-s3\LogicaNegocio\obj\Debug\net8.0\ref\LogicaNegocio.dll

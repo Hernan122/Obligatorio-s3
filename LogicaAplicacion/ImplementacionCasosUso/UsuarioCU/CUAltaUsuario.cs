@@ -17,7 +17,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public void Ejecutar(AltaEnvioDTO usuarioDTO)
+        public void Ejecutar(AltaUsuarioDTO usuarioDTO)
         {
             if (usuarioDTO == null)
             {

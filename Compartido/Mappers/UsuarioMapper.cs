@@ -7,7 +7,7 @@ namespace Compartido.Mappers
 {
     public class UsuarioMapper
     {
-        public static Usuario UsuarioFromAltaUsuarioDTO(AltaEnvioDTO usuarioDTO)
+        public static Usuario UsuarioFromAltaUsuarioDTO(AltaUsuarioDTO usuarioDTO)
         {
             if (usuarioDTO == null)
             {
@@ -22,7 +22,7 @@ namespace Compartido.Mappers
             };
         }
 
-        public static Usuario UsuarioFromBajaUsuarioDTO(BajaEnvioDTO usuarioDTO)
+        public static Usuario UsuarioFromBajaUsuarioDTO(BajaUsuarioDTO usuarioDTO)
         {
             return new Usuario()
             {
