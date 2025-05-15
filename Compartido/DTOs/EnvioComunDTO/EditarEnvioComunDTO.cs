@@ -1,6 +1,6 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 
-namespace Compartido.DTOs.ComunDTO
+namespace Compartido.DTOs.EnvioComunDTO
 {
     public class EditarEnvioComunDTO
     {

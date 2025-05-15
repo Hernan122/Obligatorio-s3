@@ -7,12 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ImplementacionCasosUso\EnvioComunCU\**" />
     <Compile Remove="ImplementacionCasosUso\EstadoCU\**" />
     <Compile Remove="ImplementacionCasosUso\RolCU\**" />
     <Compile Remove="ImplementacionCasosUso\UbicacionCU\**" />
+    <EmbeddedResource Remove="ImplementacionCasosUso\EnvioComunCU\**" />
     <EmbeddedResource Remove="ImplementacionCasosUso\EstadoCU\**" />
     <EmbeddedResource Remove="ImplementacionCasosUso\RolCU\**" />
     <EmbeddedResource Remove="ImplementacionCasosUso\UbicacionCU\**" />
+    <None Remove="ImplementacionCasosUso\EnvioComunCU\**" />
     <None Remove="ImplementacionCasosUso\EstadoCU\**" />
     <None Remove="ImplementacionCasosUso\RolCU\**" />
     <None Remove="ImplementacionCasosUso\UbicacionCU\**" />

@@ -1,30 +1,30 @@
-﻿using Compartido.DTOs.ComunDTO;
+﻿using Compartido.DTOs.EnvioComunDTO;
 using LogicaNegocio.EntidadesNegocio;
 
 namespace Compartido.Mappers
 {
     public class ComunMapper
     {
-        public static void ComunFromAltaComunDTO(AltaEnvioComunDTO comunDTO)
+        public static void AltaEnvioComunFromAltaComunDTO(AltaEnvioComunDTO comunDTO)
         {
         }
 
-        public static void ComunFromBajaComunDTO()
-        {
-
-        }
-
-        public static void ComunFromEditarComunDTO()
+        public static void EnvioComunFromBajaComunDTO(BajaEnvioComunDTO comunDTO)
         {
 
         }
 
-        public static void ComunFromVerDetalleComunDTO()
+        public static void EnvioComunFromEditarComunDTO(EditarEnvioComunDTO comunDTO)
         {
 
         }
 
-        public static void ComunFromVerComunaDTO()
+        public static void EnvioComunFromVerDetalleComunDTO(VerDetallesEnvioComunDTO comunDTO)
+        {
+
+        }
+
+        public static void ListadoComunFromListadoEnvioComunDTO(ListadoEnvioComunDTO comunDTO)
         {
 
         }

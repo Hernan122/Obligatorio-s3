@@ -1,6 +1,6 @@
-﻿namespace Compartido.DTOs.ComunDTO
+﻿namespace Compartido.DTOs.EnvioUrgenteDTO
 {
-    public class BajaComunDTO
+    public class BajaEnvioUrgenteDTO
     {
         public int Id { get; set; }
     }

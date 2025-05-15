@@ -5,6 +5,12 @@ using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
 using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using MVC.Models.Envio;
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.EnvioComunDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+using Compartido.DTOs.EnvioUrgenteDTO;
 
 namespace MVC.Controllers
 {
@@ -44,32 +50,90 @@ namespace MVC.Controllers
         }
 
         // GET: EnvioController/Create
-        public ActionResult Create()
+        public ActionResult CrearEnvio()
         {
             return View();
         }
 
-        // POST: EnvioController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(AltaUsuarioViewModel envio)
+        public ActionResult CrearEnvio(int tipoEnvio)
+        {
+            try
+            {
+                if (tipoEnvio == 0)
+                {
+                    return Redirect("CrearEnvioComun");
+                }
+                else if (tipoEnvio == 1)
+                {
+                    return Redirect("CrearEnvioUrgente");
+                }
+                else
+                {
+                    throw new EnvioException("No existe ese tipo de envio");
+                }
+            }
+            catch (EnvioException e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View();
+        }
+
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+        public ActionResult CrearEnvioComun(AltaEnvioViewModel envio)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    AltaEnvioDTO usuarioDTO = new AltaEnvioDTO()
+                    AltaEnvioComunDTO envioDTO = new AltaEnvioComunDTO()
                     {
-
+                        //TipoEnvio = envio.TipoEnvio,
+                        EmailCliente = envio.EmailCliente,
+                        DireccionPostal = envio.DireccionPostal,
+                        PesoPaquete = envio.PesoPaquete
                     };
-
-                    CUAltaUsuario.Ejecutar(usuarioDTO);
+                    CUAltaEnvio.Ejecutar(envioDTO, 0); // Dentro de AltaEnvio se valida el tipo de envio
                     ViewBag.Mensaje = "Usuario agregado";
                 }
+                ViewBag.Mensaje = "Envio creado con exito";
+                return RedirectToAction("Index");
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
+                ViewBag.MensajeError = e.Message;
+                //ViewBag.MensajeError += ", " + e.StackTrace;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CrearEnvioUrgente(AltaEnvioViewModel envio)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    AltaEnvioUrgenteDTO envioDTO = new AltaEnvioUrgenteDTO()
+                    {
+                        //TipoEnvio = envio.TipoEnvio,
+                        EmailCliente = envio.EmailCliente,
+                        DireccionPostal = envio.DireccionPostal,
+                        PesoPaquete = envio.PesoPaquete
+                    };
+
+                    CUAltaEnvio.Ejecutar(envioDTO, 1); // Dentro de AltaEnvio se valida el tipo de envio
+                    ViewBag.Mensaje = "Usuario agregado";
+                }
+                ViewBag.Mensaje = "Envio creado con exito";
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+                //ViewBag.MensajeError += ", " + e.StackTrace;
             }
             return View();
         }

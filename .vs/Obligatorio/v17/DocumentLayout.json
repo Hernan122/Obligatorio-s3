@@ -1,122 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\",
+  "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\models\\usuario\\altausuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\altausuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\models\\envio\\altaenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\altaenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\models\\envio\\verdetallesenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\verdetallesenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\models\\envio\\listadoenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\listadoenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\models\\envio\\bajaenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\bajaenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioenviocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioenviocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioenviourgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioenviourgente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioseguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioseguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositoriousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\valueobject\\agencia\\nombreagencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\valueobject\\agencia\\nombreagencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\valueobject\\agencia\\ubicacionagencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\valueobject\\agencia\\ubicacionagencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\culistadoenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\enviocu\\culistadoenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\cuverdetalleenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\enviocu\\cuverdetalleenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\cueditarenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\enviocu\\cueditarenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\cubajaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\enviocu\\cubajaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\cualtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\cualtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\enviocu\\cualtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\cualtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\cualtausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\compartido\\mappers\\urgentemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\urgentemapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\ienviocu\\iverdetalleenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\ienviocu\\iverdetalleenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\views\\envio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\ienviocu\\ilistadoenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\ienviocu\\ilistadoenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\ienviocu\\ibajaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\ienviocu\\ibajaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\ienviocu\\ialtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\ienviocu\\ialtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\compartido\\mappers\\comunmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\compartido\\mappers\\comunmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\comunmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\compartido\\mappers\\usuariomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\usuariomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\interfacescasosuso\\ienviocu\\ialtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\interfacescasosuso\\ienviocu\\ialtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicaaccesodatos\\repositorios\\repositorioenvioef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositorioenvioef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\culistadousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\culistadousuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|c:\\users\\alumnofi\\documents\\obligatorio-s3\\logicanegocio\\interfacesrepositorios\\irepositorioenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1379307-719D-4289-9EC5-4FEBE5BC6883}|LogicaNegocio\\LogicaNegocio.csproj|solutionrelative:logicanegocio\\interfacesrepositorios\\irepositorioenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\cueditarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\cueditarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\cubajausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\cubajausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -126,383 +54,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DemoContext.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
-              "RelativeDocumentMoniker": "LogicaAccesoDatos\\DemoContext.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
-              "RelativeToolTip": "LogicaAccesoDatos\\DemoContext.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAcwCsAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:45:47.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AltaUsuarioViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
-              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
-              "RelativeToolTip": "MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:43:17.278Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "MVC\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "MVC\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:35.672Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Envio\\Index.cshtml",
+              "RelativeDocumentMoniker": "MVC\\Views\\Envio\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Envio\\Index.cshtml",
+              "RelativeToolTip": "MVC\\Views\\Envio\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-15T15:19:53.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "VerDetallesEnvioViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "RelativeToolTip": "MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "IAltaEnvio.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
+              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:28.999Z",
+              "WhenOpened": "2025-05-15T15:14:15.166Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ListadoEnvioViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\ListadoEnvioViewModel.cs",
-              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\ListadoEnvioViewModel.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\ListadoEnvioViewModel.cs",
-              "RelativeToolTip": "MVC\\Models\\Envio\\ListadoEnvioViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CUAltaEnvio.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:25.751Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BajaEnvioViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\BajaEnvioViewModel.cs",
-              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\BajaEnvioViewModel.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\BajaEnvioViewModel.cs",
-              "RelativeToolTip": "MVC\\Models\\Envio\\BajaEnvioViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:23.367Z",
+              "WhenOpened": "2025-05-15T15:14:17.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AltaEnvioViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
-              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
-              "RelativeToolTip": "MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
+              "Title": "ComunMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\ComunMapper.cs",
+              "RelativeDocumentMoniker": "Compartido\\Mappers\\ComunMapper.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\ComunMapper.cs",
+              "RelativeToolTip": "Compartido\\Mappers\\ComunMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:17.407Z",
+              "WhenOpened": "2025-05-15T15:15:22.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UrgenteMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\UrgenteMapper.cs",
+              "RelativeDocumentMoniker": "Compartido\\Mappers\\UrgenteMapper.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\UrgenteMapper.cs",
+              "RelativeToolTip": "Compartido\\Mappers\\UrgenteMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T15:15:18.938Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "EnvioController.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
               "RelativeDocumentMoniker": "MVC\\Controllers\\EnvioController.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
               "RelativeToolTip": "MVC\\Controllers\\EnvioController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAArwDwAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAK8AAAAANx6cJnIswF0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:23:54.442Z",
+              "WhenOpened": "2025-05-15T15:13:08.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CUListadoUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUListadoUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUListadoUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUListadoUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUListadoUsuario.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T15:15:57.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CUEditarUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T15:15:51.148Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "IRepositorioEnvioComun.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioComun.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioComun.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioComun.cs",
-              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioComun.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "CUBajaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUBajaUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUBajaUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUBajaUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUBajaUsuario.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:10.487Z",
+              "WhenOpened": "2025-05-15T15:15:43.672Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "IRepositorioEnvioUrgente.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioUrgente.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioUrgente.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioUrgente.cs",
-              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvioUrgente.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "MVC\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "MVC\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:10.071Z",
+              "WhenOpened": "2025-05-15T15:13:16.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "IRepositorioSeguimiento.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
-              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioSeguimiento.cs",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "MVC\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "MVC\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:08.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UbicacionAgencia.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\ValueObject\\Agencia\\UbicacionAgencia.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\ValueObject\\Agencia\\UbicacionAgencia.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\ValueObject\\Agencia\\UbicacionAgencia.cs",
-              "RelativeToolTip": "LogicaNegocio\\ValueObject\\Agencia\\UbicacionAgencia.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:06.983Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "NombreAgencia.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\ValueObject\\Agencia\\NombreAgencia.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\ValueObject\\Agencia\\NombreAgencia.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\ValueObject\\Agencia\\NombreAgencia.cs",
-              "RelativeToolTip": "LogicaNegocio\\ValueObject\\Agencia\\NombreAgencia.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:06.351Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IRepositorioUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:42:04.383Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "CUVerDetalleEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUVerDetalleEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUVerDetalleEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUVerDetalleEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUVerDetalleEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:39:35.71Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CUListadoEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUListadoEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUListadoEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUListadoEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUListadoEnvio.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:39:34.416Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "CUEditarEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUEditarEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUEditarEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUEditarEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUEditarEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:39:33.922Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CUBajaEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUBajaEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUBajaEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUBajaEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUBajaEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:39:33.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "CUAltaUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUAltaUsuario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:39:25.231Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "CUAltaEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:39:09.447Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "IVerDetalleEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IVerDetalleEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IVerDetalleEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IVerDetalleEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IVerDetalleEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:38:54.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "IListadoEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IListadoEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IListadoEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IListadoEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IListadoEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:38:52.908Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "IBajaEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IBajaEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IBajaEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IBajaEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IBajaEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:38:52.059Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IAltaEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
-              "RelativeToolTip": "LogicaAplicacion\\InterfacesCasosUso\\IEnvioCU\\IAltaEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:38:50.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Program.cs",
-              "RelativeDocumentMoniker": "MVC\\Program.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\MVC\\Program.cs",
-              "RelativeToolTip": "MVC\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAiwAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:20:56.013Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "ComunMapper.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\ComunMapper.cs",
-              "RelativeDocumentMoniker": "Compartido\\Mappers\\ComunMapper.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\ComunMapper.cs",
-              "RelativeToolTip": "Compartido\\Mappers\\ComunMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:31:53.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "UsuarioMapper.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\UsuarioMapper.cs",
-              "RelativeDocumentMoniker": "Compartido\\Mappers\\UsuarioMapper.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\UsuarioMapper.cs",
-              "RelativeToolTip": "Compartido\\Mappers\\UsuarioMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:31:48.328Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "IRepositorioEnvio.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvio.cs",
-              "RelativeDocumentMoniker": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvio.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvio.cs",
-              "RelativeToolTip": "LogicaNegocio\\InterfacesRepositorios\\IRepositorioEnvio.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:21:21.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "RepositorioEnvioEF.cs",
-              "DocumentMoniker": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "ToolTip": "C:\\Users\\alumnoFI\\Documents\\Obligatorio-s3\\LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T12:21:09.019Z",
+              "WhenOpened": "2025-05-15T15:13:16.277Z",
               "EditorCaption": ""
             }
           ]

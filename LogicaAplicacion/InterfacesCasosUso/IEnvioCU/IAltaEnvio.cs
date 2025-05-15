@@ -4,6 +4,6 @@ namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
 {
     public interface IAltaEnvio
     {
-        void Ejecutar(AltaEnvioDTO usuarioDTO);
+        void Ejecutar(AltaEnvioDTO usuarioDTO, int tipoEnvio);
     }
 }

@@ -1,0 +1,49 @@
+﻿@using LogicaNegocio.EntidadesNegocio;
+@using MVC.Models.Envio;
+@model AltaEnvioViewModel;
+
+@{
+    ViewData["Title"] = "Nuevo Envio";
+}
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<h1 class="mb-3">Nuevo Envio</h1>
+
+<form asp-action="Create">
+
+    @* <div class="form-floating mb-3">
+        <select asp-for="TipoEnvio" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option value="">Seleccione Tipo de Envio</option>
+            @foreach (TipoEnvio item in Enum.GetValues(typeof(TipoEnvio)))
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+        <label for="floatingSelect">TipoEnvio</label>
+    </div> *@
+    
+    <div class="form-floating mb-3">
+        <input asp-for="EmailCliente" type="Email" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">EmailCliente</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="DireccionPostal" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">DireccionPostal</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="PesoPaquete" type="number" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">PesoPaquete</label>
+    </div>
+
+    <input type="submit" value="Generar Envio" class="btn btn-primary w-100" />
+</form>

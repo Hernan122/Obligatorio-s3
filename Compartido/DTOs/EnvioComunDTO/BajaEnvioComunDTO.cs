@@ -1,4 +1,4 @@
-﻿namespace Compartido.DTOs.ComunDTO
+﻿namespace Compartido.DTOs.EnvioComunDTO
 {
     public class BajaEnvioComunDTO
     {

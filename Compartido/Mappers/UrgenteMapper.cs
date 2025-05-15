@@ -1,9 +1,13 @@
-﻿namespace Compartido.Mappers
+﻿using Compartido.DTOs.EnvioUrgenteDTO;
+using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.Mappers
 {
     public class UrgenteMapper
     {
-        public static void UrgenteFromAltaUrgenteoDTO()
+        public static Envio AltaUrgenteFromAltaUrgenteDTO(AltaUrgenteDTO envio)
         {
+            return null;
         }
 
         public static void UrgenteFromBajaUrgenteDTO()
@@ -25,5 +29,6 @@
         {
 
         }
+
     }
 }

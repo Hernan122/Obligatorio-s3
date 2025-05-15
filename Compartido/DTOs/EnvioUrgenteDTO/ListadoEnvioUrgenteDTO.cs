@@ -1,8 +1,8 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 
-namespace Compartido.DTOs.ComunDTO
+namespace Compartido.DTOs.EnvioUrgenteDTO
 {
-    public class ListadoComunDTO
+    public class ListadoEnvioUrgenteDTO
     {
         public int NumeroTracking { get; set; }
         public Estado Estado { get; set; }
