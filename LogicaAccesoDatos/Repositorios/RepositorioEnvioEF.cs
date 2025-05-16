@@ -6,8 +6,12 @@ namespace LogicaAccesoDatos.Repositorios
 {
     public class RepositorioEnvioEF : IRepositorioEnvio
     {
-
         private DemoContext Contexto { get; set; }
+
+        public RepositorioEnvioEF(DemoContext contexto)
+        {
+            Contexto = contexto;
+        }
 
         public void Add(Envio item)
         {
@@ -21,7 +25,7 @@ namespace LogicaAccesoDatos.Repositorios
 
         public IEnumerable<Envio> FindAll()
         {
-            throw new NotImplementedException();
+            return Contexto.Envios;
         }
 
         public Envio FindById(int id)

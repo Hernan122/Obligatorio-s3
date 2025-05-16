@@ -12,7 +12,6 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
     {
         private IRepositorioEnvio RepoEnvios { get; set; }
 
-        // Inyección de dependencia
         public CUAltaEnvio(IRepositorioEnvio repoEnvios)
         {
             RepoEnvios = repoEnvios;

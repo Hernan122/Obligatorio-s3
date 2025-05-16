@@ -8,6 +8,8 @@ namespace LogicaNegocio.ValueObject.Usuario
     {
         public string Valor { get; set; }
 
+        public PasswordUsuario() { }
+
         public PasswordUsuario(string valor)
         {
             Valor = valor;

@@ -1,6 +1,6 @@
 ﻿namespace Compartido.DTOs.EnvioComunDTO
 {
-    public class AltaEnvioComunDTO
+    public class AltaComunDTO
     {
         public int NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }

@@ -63,8 +63,15 @@ namespace LogicaAccesoDatos.Repositorios
         public Usuario FindByEmailAndPassword(Usuario usuario)
         {
             return Contexto.Usuarios
-                    .Where(c => c.Email.Valor == usuario.Email.Valor && c.Password.Valor == usuario.Password.Valor)
-                    .SingleOrDefault();
+                    .Where(c => c.Email == usuario.Email && c.Password == usuario.Password)
+                    .FirstOrDefault();
+        }
+
+        public Usuario FindByEmail(Usuario usuario)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Email == usuario.Email)
+                    .FirstOrDefault();
         }
 
     }

@@ -4,6 +4,7 @@ using Compartido.DTOs.UsuarioDTO;
 using MVC.Models.Usuario;
 using Microsoft.AspNetCore.Http;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using System.Security.Cryptography.Xml;
 
 namespace MVC.Controllers
 {
@@ -37,11 +38,11 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var rol = HttpContext.Session.GetString("Rol");
-            if (rol != "Administrador")
-            {
-                return RedirectToAction("Login");
-            }
+            //var rol = HttpContext.Session.GetString("Rol");
+            //if (rol != "Administrador")
+            //{
+            //    return RedirectToAction("Login");
+            //}
 
             try
             {
@@ -85,10 +86,16 @@ namespace MVC.Controllers
                     CUAltaUsuario.Ejecutar(usuarioDTO);
                     ViewBag.Mensaje = "Usuario agregado";
                 }
+                else
+                {
+                    throw new ArgumentNullException("Debe rellenar todos los valores");
+                }
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
+                ViewBag.MensajeError = e.Message;
+                //ViewBag.MensajeError += ", " + e.StackTrace;
+                ViewBag.MensajeError += ", " + e.InnerException;
             }
             return View();
         }
@@ -110,7 +117,13 @@ namespace MVC.Controllers
                     Password = usuario.Password
                 };
 
-                LoginUsuarioDTO usuarioLogueado = CULoginUsuario.Ejecutar(usuarioDTO);
+                InformacionUsuarioLogueadoViewModelDTO buscarUsuario = CULoginUsuario.Ejecutar(usuarioDTO);
+
+                InformacionUsuarioLogueadoViewModel usuarioLogueado = new InformacionUsuarioLogueadoViewModel()
+                {
+                    Email = buscarUsuario.Email,
+                    Rol = buscarUsuario.Rol
+                };
 
                 HttpContext.Session.SetString("Rol", usuarioLogueado.Rol);
                 ViewBag.Mensaje = "Sesion iniciada con exito";
@@ -126,7 +139,8 @@ namespace MVC.Controllers
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
+                ViewBag.MensajeError = e.Message;
+                //ViewBag.MensajeError += ", " + e.StackTrace;
                 return View();
             }
         }

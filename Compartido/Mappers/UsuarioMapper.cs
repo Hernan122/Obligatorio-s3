@@ -50,15 +50,15 @@ namespace Compartido.Mappers
         {
             return new Usuario()
             {
-                Email = new EmailUsuario(usuarioDTO.Email),
-                Password = new PasswordUsuario(usuarioDTO.Password),
+                Email = new EmailUsuario() { Valor = usuarioDTO.Email },
+                Password = new PasswordUsuario() { Valor = usuarioDTO.Password },
             };
         }
 
-        public static List<ListadoEnvioDTO> ListadoUsuarioToListadoUsuarioDTO(List<Usuario> usuarios)
+        public static List<ListadoUsuarioDTO> ListadoUsuarioToListadoUsuarioDTO(List<Usuario> usuarios)
         {
-            List<ListadoEnvioDTO> listadoUsuariosDTO = new List<ListadoEnvioDTO>();
-            listadoUsuariosDTO = usuarios.Select(user => new ListadoEnvioDTO()
+            List<ListadoUsuarioDTO> listadoUsuariosDTO = new List<ListadoUsuarioDTO>();
+            listadoUsuariosDTO = usuarios.Select(user => new ListadoUsuarioDTO()
             {
                 Id = user.Id,
                 NombreUsuario = user.Nombre.Valor,

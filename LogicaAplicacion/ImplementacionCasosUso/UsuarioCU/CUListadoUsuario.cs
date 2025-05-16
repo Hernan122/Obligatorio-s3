@@ -15,9 +15,9 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public List<ListadoEnvioDTO> Ejecutar()
+        public List<ListadoUsuarioDTO> Ejecutar()
         {
-            List<ListadoEnvioDTO> usuariosDTO = new List<ListadoEnvioDTO>();
+            List<ListadoUsuarioDTO> usuariosDTO = new List<ListadoUsuarioDTO>();
             List<Usuario> usuarios = RepoUsuarios.FindAll().ToList();
             usuariosDTO = UsuarioMapper.ListadoUsuarioToListadoUsuarioDTO(usuarios);
             return usuariosDTO;

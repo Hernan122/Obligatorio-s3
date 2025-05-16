@@ -40,12 +40,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ29tdW5cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/CrearComun.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ3JlYXJDb211bi5jc2h0bWw=
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/CrearEnvio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ3JlYXJFbnZpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/CrearUrgente.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ3JlYXJVcmdlbnRlLmNzaHRtbA==
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/FormCrearComun.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cRm9ybUNyZWFyQ29tdW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/FormCrearUrgente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cRm9ybUNyZWFyVXJnZW50ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/Index.cshtml]

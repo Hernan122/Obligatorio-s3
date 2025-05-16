@@ -2,7 +2,7 @@
 
 namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 {
-    public class CUVerDetalleEnvio : IVerDetalleEnvio
+    public class CUVerDetallesEnvio : IVerDetallesEnvio
     {
     }
 }

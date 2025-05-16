@@ -1,6 +1,6 @@
 ﻿namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
 {
-    public interface IVerDetalleEnvio
+    public interface IVerDetallesEnvio
     {
     }
 }

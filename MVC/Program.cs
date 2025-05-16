@@ -3,16 +3,16 @@ using LogicaAccesoDatos.Repositorios;
 
 using LogicaAccesoDatos;
 using Microsoft.EntityFrameworkCore;
-using LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU;
-using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+//using LogicaAplicacion.ImplementacionCasosUso.UrgenteCU;
+//using LogicaAplicacion.InterfacesCasosUso.IComunCU;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
 
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 
-//using LogicaAplicacion.ImplementacionCasosUso.EnvioComunCU;
-//using LogicaAplicacion.InterfacesCasosUso.IEnvioUrgenteCU;
+//using LogicaAplicacion.ImplementacionCasosUso.ComunCU;
+//using LogicaAplicacion.InterfacesCasosUso.IUrgenteCU;
 
 namespace MVC
 {
@@ -34,7 +34,7 @@ namespace MVC
             builder.Services.AddScoped<IBajaEnvio, CUBajaEnvio>();
             builder.Services.AddScoped<IEditarEnvio, CUEditarEnvio>();
             builder.Services.AddScoped<IListadoEnvio, CUListadoEnvio>();
-            builder.Services.AddScoped<IVerDetalleEnvio, CUVerDetalleEnvio>();
+            builder.Services.AddScoped<IVerDetallesEnvio, CUVerDetallesEnvio>();
 
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IAltaUsuario, CUAltaUsuario>();

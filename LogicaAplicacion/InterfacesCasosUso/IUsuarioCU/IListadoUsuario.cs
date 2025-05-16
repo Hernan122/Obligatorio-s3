@@ -4,6 +4,6 @@ namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
 {
     public interface IListadoUsuario
     {
-        List<ListadoEnvioDTO> Ejecutar ();
+        List<ListadoUsuarioDTO> Ejecutar ();
     }
 }

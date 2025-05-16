@@ -5,6 +5,7 @@ using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ValueObject.Usuario;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -17,8 +18,12 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public LoginUsuarioDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
+        public InformacionUsuarioLogueadoViewModelDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
         {
+            if (usuarioDTO == null)
+            {
+                throw new UsuarioException("Objeto nulo");
+            }
             Usuario usuario = UsuarioMapper.UsuarioFromLoginUsuarioDTO(usuarioDTO);
             Usuario usuarioEncontrado = RepoUsuarios.FindByEmailAndPassword(usuario);
 
@@ -28,7 +33,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             }
 
             // Devolvés los datos que necesitás (por ejemplo, el rol)
-            return new LoginUsuarioDTO()
+            return new InformacionUsuarioLogueadoViewModelDTO()
             {
                 Email = usuarioEncontrado.Email.Valor,
                 Rol = usuarioEncontrado.Rol.ToString()

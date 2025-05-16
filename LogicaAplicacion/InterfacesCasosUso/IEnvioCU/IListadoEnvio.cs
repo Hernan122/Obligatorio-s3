@@ -1,4 +1,4 @@
-﻿using Compartido.DTOs.UsuarioDTO;
+﻿using Compartido.DTOs.EnvioDTO;
 
 namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
 {

@@ -1,7 +1,7 @@
 ﻿@using MVC.Models.Envio
 @model IEnumerable<ListadoEnvioViewModel>
 
-<h1>Envios</h1>
+<h1>Listado Envios</h1>
 
 @if (ViewBag.Mensaje != null)
 {
@@ -30,7 +30,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in LModel)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>

@@ -2,7 +2,7 @@
 
 namespace Compartido.DTOs.EnvioComunDTO
 {
-    public class ListadoEnvioComunDTO
+    public class VerDetallesComunDTO
     {
         public int NumeroTracking { get; set; }
         public Estado Estado { get; set; }

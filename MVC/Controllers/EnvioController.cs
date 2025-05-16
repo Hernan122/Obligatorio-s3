@@ -9,8 +9,9 @@ using LogicaNegocio.ExcepcionesEntidades;
 using MVC.Models.Envio;
 using Compartido.DTOs.EnvioDTO;
 using Compartido.DTOs.EnvioComunDTO;
-using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+//using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
 using Compartido.DTOs.EnvioUrgenteDTO;
+using MVC.Models.Usuario;
 
 namespace MVC.Controllers
 {
@@ -18,14 +19,14 @@ namespace MVC.Controllers
     {
         private IListadoEnvio CUListadoEnvio { get; set; }
         private IAltaEnvio CUAltaEnvio { get; set; }
-        private IVerDetalleEnvio CUVerDetalleEnvio { get; set; }
+        private IVerDetallesEnvio CUVerDetalleEnvio { get; set; }
         private IBajaEnvio CUBajaEnvio { get; set; }
         private IEditarEnvio CUEditarEnvio { get; set; }
 
         public EnvioController(
             IListadoEnvio cuListadoEnvio,
             IAltaEnvio cuAltaEnvio,
-            IVerDetalleEnvio cuVerDetalleEnvio,
+            IVerDetallesEnvio cuVerDetalleEnvio,
             IBajaEnvio cuBajaEnvio,
             IEditarEnvio cuEditarEnvio
         )
@@ -40,7 +41,33 @@ namespace MVC.Controllers
         // GET: EnvioController
         public ActionResult Index()
         {
-            return View();
+            // Funciona
+            //var rol = HttpContext.Session.GetString("Rol");
+            //if (rol != "Administrador")
+            //{
+            //    return Redirect("/Usuario/Login");
+            //}
+
+            try
+            {
+                var enviosDTO = CUListadoEnvio.Ejecutar();
+                var listadoEnviosViewModel = enviosDTO.Select(u => new ListadoEnvioViewModel()
+                {
+                    Id = u.Id,
+                    NumeroTracking = u.NumeroTracking,
+                    Estado = u.Estado,
+                    FuncionarioId = u.FuncionarioId
+                }).ToList();
+
+                return View(listadoEnviosViewModel);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+                ViewBag.MensajeError += ", " + e.InnerException;
+                ViewBag.MensajeError += ", " + e.StackTrace;
+                return View(new List<ListadoEnvioViewModel>());
+            }
         }
 
         // GET: EnvioController/Details/5
@@ -62,11 +89,11 @@ namespace MVC.Controllers
             {
                 if (tipoEnvio == 0)
                 {
-                    return Redirect("CrearEnvioComun");
+                    return Redirect("CrearComun");
                 }
                 else if (tipoEnvio == 1)
                 {
-                    return Redirect("CrearEnvioUrgente");
+                    return Redirect("CrearUrgente");
                 }
                 else
                 {
@@ -80,61 +107,102 @@ namespace MVC.Controllers
             return View();
         }
 
-       [HttpPost]
-       [ValidateAntiForgeryToken]
-        public ActionResult CrearEnvioComun(AltaEnvioViewModel envio)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearEnvio(AltaEnvioViewModel? envio, int tipoEnvio)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    AltaEnvioComunDTO envioDTO = new AltaEnvioComunDTO()
-                    {
-                        //TipoEnvio = envio.TipoEnvio,
-                        EmailCliente = envio.EmailCliente,
-                        DireccionPostal = envio.DireccionPostal,
-                        PesoPaquete = envio.PesoPaquete
-                    };
-                    CUAltaEnvio.Ejecutar(envioDTO, 0); // Dentro de AltaEnvio se valida el tipo de envio
-                    ViewBag.Mensaje = "Usuario agregado";
-                }
-                ViewBag.Mensaje = "Envio creado con exito";
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                ViewBag.MensajeError = e.Message;
-                //ViewBag.MensajeError += ", " + e.StackTrace;
-            }
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        AltaEnvioComunDTO envioDTO = new AltaEnvioComunDTO()
+            //        {
+            //            //TipoEnvio = envio.TipoEnvio,
+            //            EmailCliente = envio.EmailCliente,
+            //            DireccionPostal = envio.DireccionPostal,
+            //            PesoPaquete = envio.PesoPaquete
+            //        };
+            //        CUAltaEnvio.Ejecutar(envioDTO, 0); // Dentro de AltaEnvio se valida el tipo de envio
+            //        ViewBag.Mensaje = "Usuario agregado";
+            //    }
+            //    ViewBag.Mensaje = "Envio creado con exito";
+            //    return RedirectToAction("Index");
+            //}
+            //catch (Exception e)
+            //{
+            //    ViewBag.MensajeError = e.Message;
+            //    //ViewBag.MensajeError += ", " + e.StackTrace;
+            //}
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult FormCrearComun()
+        {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CrearEnvioUrgente(AltaEnvioViewModel envio)
+        [ValidateAntiForgeryToken]
+        public ActionResult FormCrearComun(AltaEnvioViewModel envio)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    AltaEnvioUrgenteDTO envioDTO = new AltaEnvioUrgenteDTO()
-                    {
-                        //TipoEnvio = envio.TipoEnvio,
-                        EmailCliente = envio.EmailCliente,
-                        DireccionPostal = envio.DireccionPostal,
-                        PesoPaquete = envio.PesoPaquete
-                    };
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        AltaEnvioComunDTO envioDTO = new AltaEnvioComunDTO()
+            //        {
+            //            //TipoEnvio = envio.TipoEnvio,
+            //            EmailCliente = envio.EmailCliente,
+            //            DireccionPostal = envio.DireccionPostal,
+            //            PesoPaquete = envio.PesoPaquete
+            //        };
+            //        CUAltaEnvio.Ejecutar(envioDTO, 0); // Dentro de AltaEnvio se valida el tipo de envio
+            //        ViewBag.Mensaje = "Usuario agregado";
+            //    }
+            //    ViewBag.Mensaje = "Envio creado con exito";
+            //    return RedirectToAction("Index");
+            //}
+            //catch (Exception e)
+            //{
+            //    ViewBag.MensajeError = e.Message;
+            //    //ViewBag.MensajeError += ", " + e.StackTrace;
+            //}
+            return View();
+        }
 
-                    CUAltaEnvio.Ejecutar(envioDTO, 1); // Dentro de AltaEnvio se valida el tipo de envio
-                    ViewBag.Mensaje = "Usuario agregado";
-                }
-                ViewBag.Mensaje = "Envio creado con exito";
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
-            {
-                ViewBag.MensajeError = e.Message;
-                //ViewBag.MensajeError += ", " + e.StackTrace;
-            }
+        [HttpGet]
+        public ActionResult FormCrearUrgente()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FormCrearUrgente(AltaEnvioViewModel envio)
+        {
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        AltaEnvioUrgenteDTO envioDTO = new AltaEnvioUrgenteDTO()
+            //        {
+            //            //TipoEnvio = envio.TipoEnvio,
+            //            EmailCliente = envio.EmailCliente,
+            //            DireccionPostal = envio.DireccionPostal,
+            //            PesoPaquete = envio.PesoPaquete
+            //        };
+
+            //        CUAltaEnvio.Ejecutar(envioDTO, 1); // Dentro de AltaEnvio se valida el tipo de envio
+            //        ViewBag.Mensaje = "Usuario agregado";
+            //    }
+            //    ViewBag.Mensaje = "Envio creado con exito";
+            //    return RedirectToAction("Index");
+            //}
+            //catch (Exception e)
+            //{
+            //    ViewBag.MensajeError = e.Message;
+            //    //ViewBag.MensajeError += ", " + e.StackTrace;
+            //}
             return View();
         }
 

@@ -3,6 +3,7 @@ using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.InterfacesRepositorios;
 using Compartido.DTOs.UsuarioDTO;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -24,7 +25,16 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
                 throw new ArgumentNullException("Datos incorrectos");
             }
             Usuario usuario = UsuarioMapper.UsuarioFromAltaUsuarioDTO(usuarioDTO);
-            RepoUsuarios.Add(usuario);
+            Usuario buscarUsuario = RepoUsuarios.FindByEmail(usuario);
+
+            if (buscarUsuario == null)
+            {
+                RepoUsuarios.Add(usuario);
+            }
+            else
+            {
+                throw new UsuarioException("Ya existe un usuario con ese correo");
+            }
         }
     }
 }
