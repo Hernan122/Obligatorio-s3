@@ -20,7 +20,7 @@ namespace Compartido.Mappers
             {
                 Id = envio.Id,
                 NumeroTracking = envio.NumeroTracking,
-                Estado = envio.Estado.ToString(),
+                Estado = envio.Estado,
                 FuncionarioId = envio.FuncionarioId
             }).ToList();
             return enviosDTO;

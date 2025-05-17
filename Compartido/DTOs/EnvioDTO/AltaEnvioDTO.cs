@@ -1,10 +1,13 @@
-﻿namespace Compartido.DTOs.EnvioDTO
+﻿using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.DTOs.EnvioDTO
 {
-    public class AltaEnvioDTO
+    public abstract class AltaEnvioDTO
     {
-        public string TipoEnvio { get; set; }
-        public string EmailCliente { get; set; }
-        public string DireccionPostal { get; set; }
+        public int NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }
+        public string EmailCliente { get; set; }
+        public int SeguimientoId { get; set; }
+        public int FuncionarioId { get; set; }
     }
 }

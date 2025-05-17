@@ -13,12 +13,7 @@ namespace LogicaNegocio.EntidadesNegocio
         public EmailUsuario Email { get; set; }
         public PasswordUsuario Password { get; set; }
 
-        //public enum Rol
-        //{
-        //    Administrador,
-        //    Funcionario,
-        //    Cliente,
-        //}
+        public Usuario() { }
 
         public Usuario(string nombre, string email, string password, Rol rol)
         {
@@ -28,8 +23,6 @@ namespace LogicaNegocio.EntidadesNegocio
             Rol = rol;
             Validar();
         }
-
-        public Usuario(){}
 
         private void Validar()
         {

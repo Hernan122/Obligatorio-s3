@@ -1,6 +1,4 @@
-﻿using LogicaNegocio.EntidadesNegocio;
-
-namespace Compartido.DTOs.EnvioDTO
+﻿namespace Compartido.DTOs.EnvioDTO
 {
     public class BajaEnvioDTO
     {

@@ -6,9 +6,9 @@ namespace MVC.Models.Envio
 {
     public class ListadoEnvioViewModel
     {
-        public int Id               { get; set; }
-        public int NumeroTracking   { get; set; }
-        public string Estado        { get; set; }
-        public int FuncionarioId    { get; set; }
+        public int Id { get; set; }
+        public int NumeroTracking { get; set; }
+        public Estado Estado { get; set; }
+        public int FuncionarioId { get; set; }
     }
 }

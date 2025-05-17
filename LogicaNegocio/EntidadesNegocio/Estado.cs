@@ -2,7 +2,7 @@
 {
     public enum Estado
     {
-        EnProceso,
-        Finalizado,
+        EN_PROCESO,
+        FINALIZADO,
     }
 }

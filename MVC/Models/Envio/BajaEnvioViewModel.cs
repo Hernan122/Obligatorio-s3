@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using LogicaNegocio.EntidadesNegocio;
-
-namespace MVC.Models.Envio
+﻿namespace MVC.Models.Envio
 {
     public class BajaEnvioViewModel
     {

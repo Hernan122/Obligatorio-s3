@@ -1,5 +1,15 @@
-﻿@* <a href="CrearEnvio?tipoEnvio=0">Crear Envio Comun</a>
-<a href="CrearEnvio?tipoEnvio=1">Crear Envio Urgente</a> *@
+﻿@{
+    ViewData["Title"] = "Crear Envio";
+}
 
-<a class="nav-link text-dark" asp-controller="Envio" asp-action="FormCrearComun">Nuevo Envio Comun</a>
-<a class="nav-link text-dark" asp-controller="Envio" asp-action="FormCrearUrgente">Nuevo Envio Urgente</a>
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<a class="nav-link text-dark" asp-controller="Envio" asp-action="FormCrearEnvio" asp-route-type="Comun">Nuevo Envio Comun</a>
+<a class="nav-link text-dark" asp-controller="Envio" asp-action="FormCrearEnvio" asp-route-type="Urgente">Nuevo Envio Urgente</a>

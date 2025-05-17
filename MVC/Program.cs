@@ -1,18 +1,11 @@
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAccesoDatos.Repositorios;
-
 using LogicaAccesoDatos;
 using Microsoft.EntityFrameworkCore;
-//using LogicaAplicacion.ImplementacionCasosUso.UrgenteCU;
-//using LogicaAplicacion.InterfacesCasosUso.IComunCU;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
-
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
-
-//using LogicaAplicacion.ImplementacionCasosUso.ComunCU;
-//using LogicaAplicacion.InterfacesCasosUso.IUrgenteCU;
 
 namespace MVC
 {

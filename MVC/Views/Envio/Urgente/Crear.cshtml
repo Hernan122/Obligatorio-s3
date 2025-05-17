@@ -1,0 +1,53 @@
+﻿@using LogicaNegocio.EntidadesNegocio;
+@using MVC.Models.Envio.Urgente
+@model AltaUrgenteViewModel;
+
+@{
+    ViewData["Title"] = "Nuevo Envio";
+}
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<h1 class="mb-3">Crear Envio Urgente</h1>
+
+<form asp-action="CrearEnvio?tipo=Urgente">
+
+    <div class="form-floating mb-3">
+        <input asp-for="NumeroTracking" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">NumeroTracking</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="PesoPaquete" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">PesoPaquete</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="EmailCliente" type="Email" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">EmailCliente</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Fecha" type="datetime" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">Fecha</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="DireccionPostal" type="number" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">DireccionPostal</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="EntregaEficiente" type="checkbox" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">EntregaEficiente</label>
+    </div>
+
+    <input type="submit" value="Crear Envio Urgente" class="btn btn-primary w-100" />
+</form>

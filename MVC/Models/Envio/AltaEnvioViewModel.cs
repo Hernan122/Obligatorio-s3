@@ -1,10 +1,14 @@
-﻿namespace MVC.Models.Envio
+﻿using LogicaNegocio.EntidadesNegocio;
+
+namespace MVC.Models.Envio
 {
-    public class AltaEnvioViewModel
+    public abstract class AltaEnvioViewModel
     {
-        public string TipoEnvio { get; set; }
-        public string EmailCliente { get; set; }
-        public string DireccionPostal { get; set; }
+        public int NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }
+        public string EmailCliente { get; set; }
+        public DateTime Fecha { get; set; }
+        public int FuncionarioId { get; set; }
+        
     }
 }

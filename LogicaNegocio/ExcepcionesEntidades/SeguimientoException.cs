@@ -1,6 +1,11 @@
 ﻿namespace LogicaNegocio.ExcepcionesEntidades
 {
-    internal class SeguimientoException
+    public class SeguimientoException : Exception
     {
+        public SeguimientoException() { }
+
+        public SeguimientoException(string message) : base(message) { }
+
+        public SeguimientoException(string message, Exception innerException) : base(message, innerException) { }
     }
 }

@@ -8,7 +8,7 @@ namespace LogicaNegocio.EntidadesNegocio
         public int Id { get; set; }
         public int NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }
-        public Estado Estado { get; set; }
+        public Estado Estado { get; set; } = Estado.EN_PROCESO;
         public Usuario Cliente { get; set; }
 
         [ForeignKey("Cliente")]

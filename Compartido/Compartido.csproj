@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="DTOs\.AgenciaDTO\AltaAgenciaDTO.cs" />
+    <Compile Include="DTOs\.ComunDTO\AltaComunDTO.cs" />
+    <Compile Include="DTOs\.ComunDTO\BajaComunDTO.cs" />
+    <Compile Include="DTOs\.ComunDTO\EditarComunDTO.cs" />
+    <Compile Include="DTOs\.ComunDTO\ListadoComunDTO.cs" />
+    <Compile Include="DTOs\.ComunDTO\VerDetallesComunDTO.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.csproj" />
   </ItemGroup>
 
