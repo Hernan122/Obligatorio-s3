@@ -59,5 +59,13 @@ namespace LogicaAccesoDatos.Repositorios
             Contexto.Envios.Update(nuevoEnvio);
             Contexto.SaveChanges();
         }
+
+        public Envio FindByNumeroTracking(int numeroTracking)
+        {
+            return Contexto.Envios
+                    .Where(c => c.NumeroTracking == numeroTracking)
+                    .SingleOrDefault();
+        }
+
     }
 }

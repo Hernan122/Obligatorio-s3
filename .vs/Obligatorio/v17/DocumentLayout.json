@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{922D4F8D-43A1-4928-A996-56BFF9EF690E}|CodigoFuenteC\\CodigoFuenteC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\codigofuentec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{922D4F8D-43A1-4928-A996-56BFF9EF690E}|CodigoFuenteC\\CodigoFuenteC.csproj|solutionrelative:codigofuentec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\webapi\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\CodigoFuenteC\\Program.cs",
-              "RelativeDocumentMoniker": "CodigoFuenteC\\Program.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\CodigoFuenteC\\Program.cs",
-              "RelativeToolTip": "CodigoFuenteC\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
+              "Title": "EnvioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\EnvioController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\EnvioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\EnvioController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\EnvioController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAnwF8AAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T22:31:31.422Z",
+              "WhenOpened": "2025-05-19T23:43:24.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T23:43:23.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnvioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
+              "RelativeDocumentMoniker": "MVC\\Controllers\\EnvioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
+              "RelativeToolTip": "MVC\\Controllers\\EnvioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T23:43:20.481Z",
               "EditorCaption": ""
             }
           ]
