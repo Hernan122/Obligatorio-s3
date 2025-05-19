@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compartido", "Compartido\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{81B627A0-27FE-43EF-966E-AF4E3ED107E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodigoFuenteC", "CodigoFuenteC\CodigoFuenteC.csproj", "{922D4F8D-43A1-4928-A996-56BFF9EF690E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{81B627A0-27FE-43EF-966E-AF4E3ED107E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81B627A0-27FE-43EF-966E-AF4E3ED107E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81B627A0-27FE-43EF-966E-AF4E3ED107E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{922D4F8D-43A1-4928-A996-56BFF9EF690E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{922D4F8D-43A1-4928-A996-56BFF9EF690E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{922D4F8D-43A1-4928-A996-56BFF9EF690E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{922D4F8D-43A1-4928-A996-56BFF9EF690E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

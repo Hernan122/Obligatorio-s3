@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{922D4F8D-43A1-4928-A996-56BFF9EF690E}|CodigoFuenteC\\CodigoFuenteC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\codigofuentec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{922D4F8D-43A1-4928-A996-56BFF9EF690E}|CodigoFuenteC\\CodigoFuenteC.csproj|solutionrelative:codigofuentec\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\CodigoFuenteC\\Program.cs",
+              "RelativeDocumentMoniker": "CodigoFuenteC\\Program.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\CodigoFuenteC\\Program.cs",
+              "RelativeToolTip": "CodigoFuenteC\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T22:31:31.422Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

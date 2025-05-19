@@ -1,0 +1,15 @@
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\bin\Debug\net8.0\CodigoFuenteC.exe
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\bin\Debug\net8.0\CodigoFuenteC.deps.json
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\bin\Debug\net8.0\CodigoFuenteC.runtimeconfig.json
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\bin\Debug\net8.0\CodigoFuenteC.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\bin\Debug\net8.0\CodigoFuenteC.pdb
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.AssemblyInfoInputs.cache
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.AssemblyInfo.cs
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.sourcelink.json
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\refint\CodigoFuenteC.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.pdb
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\CodigoFuenteC.genruntimeconfig.cache
+C:\Users\Bruno\Documents\Obligatorio-s3\CodigoFuenteC\obj\Debug\net8.0\ref\CodigoFuenteC.dll
