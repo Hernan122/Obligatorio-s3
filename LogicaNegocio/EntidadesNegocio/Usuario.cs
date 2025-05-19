@@ -10,7 +10,7 @@ namespace LogicaNegocio.EntidadesNegocio
         public int Id { get; set; }
         public Rol Rol { get; set; }
         public NombreUsuario Nombre { get; set; }
-        public EmailUsuario Email { get; set; }
+        public string Email { get; set; }
         public PasswordUsuario Password { get; set; }
 
         public Usuario() { }
@@ -18,7 +18,7 @@ namespace LogicaNegocio.EntidadesNegocio
         public Usuario(string nombre, string email, string password, Rol rol)
         {
             Nombre = new NombreUsuario(nombre);
-            Email = new EmailUsuario(email);
+            Email = email;
             Password = new PasswordUsuario(password);
             Rol = rol;
             Validar();

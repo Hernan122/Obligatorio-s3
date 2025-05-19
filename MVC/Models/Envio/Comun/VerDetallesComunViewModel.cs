@@ -1,7 +1,10 @@
-﻿namespace MVC.Models.Envio.Comun
+﻿using System.ComponentModel;
+
+namespace MVC.Models.Envio.Comun
 {
     public class VerDetallesComunViewModel : VerDetallesEnvioViewModel
     {
-        public int AgenciaId { get; set; }
+        [DisplayName("Nombre de la Agencia")]
+        public string NombreAgencia { get; set; }
     }
 }

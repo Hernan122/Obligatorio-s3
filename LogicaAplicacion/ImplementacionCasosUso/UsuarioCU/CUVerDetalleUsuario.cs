@@ -26,7 +26,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             {
                 Id = usuario.Id,
                 NombreUsuario = usuario.Nombre.Valor,
-                Email = usuario.Email.Valor,
+                Email = usuario.Email,
                 Password = usuario.Password.Valor,
                 Rol = usuario.Rol
             };

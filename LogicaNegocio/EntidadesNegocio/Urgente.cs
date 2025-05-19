@@ -16,9 +16,8 @@ namespace LogicaNegocio.EntidadesNegocio
             int pesoPaquete,
             Estado estado,
             int clienteId,
-            int funcionarioId,
-            int seguimientoId
-        ) : base(numeroTracking, pesoPaquete, estado, clienteId, funcionarioId, seguimientoId)
+            int funcionarioId
+        ) : base(numeroTracking, pesoPaquete, estado, clienteId, funcionarioId)
         {
             DireccionPostal = direccionPostal;
             EntregaEficiente = entregaEficiente;

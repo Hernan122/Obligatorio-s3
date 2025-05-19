@@ -1,8 +1,6 @@
-﻿using LogicaNegocio.EntidadesNegocio;
-
-namespace Compartido.DTOs.EnvioDTO.EnvioComunDTO
+﻿namespace Compartido.DTOs.EnvioDTO.ComunDTO
 {
-    public class EditarUrgenteDTO : AltaEnvioDTO
+    public class EditarComunDTO : EditarEnvioDTO
     {
         public int AgenciaId { get; set; }
     }

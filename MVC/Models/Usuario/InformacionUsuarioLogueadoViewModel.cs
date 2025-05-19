@@ -2,7 +2,7 @@
 {
     public class InformacionUsuarioLogueadoViewModel
     {
-        public string Email { get; set; }
+        public int Id { get; set; }
         public string Rol { get; set; }
     }
 }

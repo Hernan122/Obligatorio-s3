@@ -5,6 +5,8 @@ using MVC.Models.Usuario;
 using Microsoft.AspNetCore.Http;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using System.Security.Cryptography.Xml;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace MVC.Controllers
 {
@@ -36,13 +38,16 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string mensaje, string mensajeError)
         {
             //var rol = HttpContext.Session.GetString("Rol");
             //if (rol != "Administrador")
             //{
             //    return RedirectToAction("Login");
             //}
+
+            ViewBag.Mensaje = mensaje;
+            ViewBag.MensajeError = mensajeError;
 
             try
             {
@@ -63,8 +68,9 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult AltaUsuario()
+        public ActionResult AltaUsuario(string mensaje)
         {
+            ViewBag.Mensaje = mensaje;
             return View();
         }
 
@@ -75,6 +81,11 @@ namespace MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (usuario.Rol == Rol.Administrador)
+                    {
+                        throw new Exception("Administrador no puede agregar a otro administrador");
+                    }
+
                     AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
                     {
                         NombreUsuario = usuario.Nombre,
@@ -84,7 +95,8 @@ namespace MVC.Controllers
                     };
 
                     CUAltaUsuario.Ejecutar(usuarioDTO);
-                    ViewBag.Mensaje = "Usuario agregado";
+                    //ViewBag.Mensaje = "Usuario agregado";
+                    return RedirectToAction(nameof(AltaUsuario), new { Mensaje = "Usuario agregado" });
                 }
                 else
                 {
@@ -121,10 +133,11 @@ namespace MVC.Controllers
 
                 InformacionUsuarioLogueadoViewModel usuarioLogueado = new InformacionUsuarioLogueadoViewModel()
                 {
-                    Email = buscarUsuario.Email,
+                    Id = buscarUsuario.Id,
                     Rol = buscarUsuario.Rol
                 };
 
+                HttpContext.Session.SetInt32("Id", usuarioLogueado.Id);
                 HttpContext.Session.SetString("Rol", usuarioLogueado.Rol);
                 ViewBag.Mensaje = "Sesion iniciada con exito";
 
@@ -146,7 +159,7 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult VerUsuario(int id)
+        public ActionResult VerDetallesUsuario(int id)
         {
             VerDetallesUsuarioDTO usuarioDTO = CUVerDetalleUsuario.Ejecutar(id);
             VerDetallesUsuarioViewModel usuarioViewModel;
@@ -172,25 +185,28 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult EditarUsuario(int id)
         {
-            VerDetallesUsuarioDTO usuarioDTO = CUVerDetalleUsuario.Ejecutar(id);
-            VerDetallesUsuarioViewModel usuarioViewModel;
+            VerDetallesUsuarioViewModel usuarioViewModel = null;
             try
             {
-                usuarioViewModel = new VerDetallesUsuarioViewModel
+                if (id < 0)
+                {
+                    throw new UsuarioException("Id incorrecto");
+                }
+                VerDetallesUsuarioDTO usuarioDTO = CUVerDetalleUsuario.Ejecutar(id);
+                usuarioViewModel = new VerDetallesUsuarioViewModel()
                 {
                     Id = usuarioDTO.Id,
                     Nombre = usuarioDTO.NombreUsuario,
                     Email = usuarioDTO.Email,
                     Password = usuarioDTO.Password,
-                    Rol = usuarioDTO.Rol
+                    //Rol = usuarioDTO.Rol
                 };
-                return View(usuarioViewModel);
             }
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
             }
-            return View();
+            return View(usuarioViewModel);
         }
 
         [HttpPost]
@@ -206,18 +222,24 @@ namespace MVC.Controllers
                         NombreUsuario = usuario.Nombre,
                         Email = usuario.Email,
                         Password = usuario.Password,
-                        Rol = usuario.Rol
+                        //Rol = usuario.Rol
                     };
                     CUEditarUsuario.Ejecutar(usuarioDTO);
-
                     ViewBag.Mensaje = "Editado con exito";
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Editado con exito" });
+                }
+                else
+                {
+                    throw new ArgumentNullException("Algunos valores no son correctos");
                 }
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
+                string mensaje = e.Message + ", ";
+                //mensaje += e.StackTrace;
+                mensaje += e.InnerException;
+                return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
             }
-            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]

@@ -1,6 +1,6 @@
-﻿namespace Compartido.DTOs.EnvioDTO.EnvioUrgenteDTO
+﻿namespace Compartido.DTOs.EnvioDTO.UrgenteDTO
 {
-    public class EditarUrgenteDTO : AltaEnvioDTO
+    public class EditarUrgenteDTO : EditarEnvioDTO
     {
         public int DireccionPostal { get; set; }
         public bool EntregaEficiente { get; set; }

@@ -9,14 +9,10 @@ namespace Compartido.Mappers
     {
         public static Usuario UsuarioFromAltaUsuarioDTO(AltaUsuarioDTO usuarioDTO)
         {
-            if (usuarioDTO == null)
-            {
-                throw new ArgumentException("Usuario Null");
-            }
             return new Usuario()
             { 
                 Nombre = new NombreUsuario(usuarioDTO.NombreUsuario),
-                Email = new EmailUsuario(usuarioDTO.Email),
+                Email = usuarioDTO.Email,
                 Password = new PasswordUsuario(usuarioDTO.Password),
                 Rol = usuarioDTO.Rol
             };
@@ -32,17 +28,13 @@ namespace Compartido.Mappers
 
         public static Usuario UsuarioFromEditarUsuarioDTO(EditarUsuarioDTO usuarioDTO)
         {
-            if (usuarioDTO == null)
-            {
-                throw new UsuarioException("Usuario null");
-            }
             return new Usuario()
             { 
                 Id = usuarioDTO.Id,
                 Nombre = new NombreUsuario(usuarioDTO.NombreUsuario),
-                Email = new EmailUsuario(usuarioDTO.Email),
+                Email = usuarioDTO.Email,
                 Password = new PasswordUsuario(usuarioDTO.Password),
-                Rol = usuarioDTO.Rol
+                //Rol = usuarioDTO.Rol
             };
         }
 
@@ -50,7 +42,7 @@ namespace Compartido.Mappers
         {
             return new Usuario()
             {
-                Email = new EmailUsuario() { Valor = usuarioDTO.Email },
+                Email = usuarioDTO.Email,
                 Password = new PasswordUsuario() { Valor = usuarioDTO.Password },
             };
         }

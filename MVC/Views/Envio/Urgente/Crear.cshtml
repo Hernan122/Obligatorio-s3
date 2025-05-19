@@ -21,32 +21,27 @@
 
     <div class="form-floating mb-3">
         <input asp-for="NumeroTracking" type="text" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">NumeroTracking</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.NumeroTracking)</label>
     </div>
 
     <div class="form-floating mb-3">
         <input asp-for="PesoPaquete" type="text" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">PesoPaquete</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.PesoPaquete)</label>
     </div>
 
     <div class="form-floating mb-3">
         <input asp-for="EmailCliente" type="Email" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">EmailCliente</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input asp-for="Fecha" type="datetime" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">Fecha</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.EmailCliente)</label>
     </div>
 
     <div class="form-floating mb-3">
         <input asp-for="DireccionPostal" type="number" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">DireccionPostal</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.DireccionPostal)</label>
     </div>
 
-    <div class="form-floating mb-3">
-        <input asp-for="EntregaEficiente" type="checkbox" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">EntregaEficiente</label>
+    <div class="form-check mb-3">
+        <input asp-for="EntregaEficiente" type="checkbox" class="form-check-input" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.EntregaEficiente)</label>
     </div>
 
     <input type="submit" value="Crear Envio Urgente" class="btn btn-primary w-100" />

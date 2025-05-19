@@ -1,6 +1,11 @@
 ﻿namespace LogicaNegocio.ExcepcionesEntidades
 {
-    internal class AgenciaException
+    public class AgenciaException : Exception
     {
+        public AgenciaException() { }
+
+        public AgenciaException(string message) : base(message) { }
+
+        public AgenciaException(string message, Exception innerException) : base(message, innerException) { }
     }
 }

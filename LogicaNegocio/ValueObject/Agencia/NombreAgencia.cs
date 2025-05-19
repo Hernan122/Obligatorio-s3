@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaNegocio.ValueObject.Agencia
 {
@@ -7,15 +8,21 @@ namespace LogicaNegocio.ValueObject.Agencia
     {
         public string Valor { get; init; }
 
+        public NombreAgencia() { }
+
         public NombreAgencia(string valor)
         {
             Valor = valor;
             Validar();
         }
 
-        public void Validar()
+        private void Validar()
         {
-
+            if (string.IsNullOrEmpty(Valor))
+            {
+                throw new AgenciaException("Nombre no valido");
+            }
         }
+
     }
 }

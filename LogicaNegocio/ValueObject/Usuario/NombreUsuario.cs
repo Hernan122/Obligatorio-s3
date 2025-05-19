@@ -7,6 +7,9 @@ namespace LogicaNegocio.ValueObject.Usuario
     public record NombreUsuario
     {
         public string Valor { get; set; }
+
+        public NombreUsuario() { }
+
         public NombreUsuario(string valor)
         {
             Valor = valor;

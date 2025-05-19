@@ -34,6 +34,10 @@
             <option value="">Seleccione Rol</option>
             @foreach (Rol item in Enum.GetValues(typeof(Rol)))
             {
+                if (item == Rol.Administrador)
+                {
+                    continue;
+                }
                 <option value="@item">@item</option>
             }
         </select>

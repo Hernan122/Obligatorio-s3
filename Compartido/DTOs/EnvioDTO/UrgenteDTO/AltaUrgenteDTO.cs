@@ -1,4 +1,4 @@
-﻿namespace Compartido.DTOs.EnvioDTO.EnvioUrgenteDTO
+﻿namespace Compartido.DTOs.EnvioDTO.UrgenteDTO
 {
     public class AltaUrgenteDTO : AltaEnvioDTO
     {

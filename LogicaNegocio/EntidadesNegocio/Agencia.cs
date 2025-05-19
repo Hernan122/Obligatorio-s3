@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.ValueObject.Agencia;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogicaNegocio.EntidadesNegocio
 {
+    [Index(nameof(Nombre), IsUnique = true)]
     public class Agencia : IEquatable<Agencia>
     {
         public int Id { get; set; }
         public int UbPos { get; set; }
         public UbicacionAgencia Ubicacion { get; set; }
-        public NombreAgencia Nombre {  get; set; }
+        public string Nombre { get; set; }
         public Usuario Usuario { get; set; }
 
         [ForeignKey("Usuario")]
@@ -19,7 +21,7 @@ namespace LogicaNegocio.EntidadesNegocio
         {
             UbPos = ubPos;
             Ubicacion = new UbicacionAgencia(ubicacionLatitud, ubicacionLongitud);
-            Nombre = new NombreAgencia(nombre);
+            Nombre = nombre;
             UsuarioId = usuarioId;
             Validar();
         }
@@ -28,7 +30,6 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public void Validar()
         {
-
         }
 
         public bool Equals(Agencia? other)

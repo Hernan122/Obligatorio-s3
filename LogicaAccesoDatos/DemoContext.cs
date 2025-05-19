@@ -7,15 +7,13 @@ namespace LogicaAccesoDatos
     public class DemoContext : DbContext
     {
         public DbSet<Agencia> Agencias { get; set; }
-        public DbSet<Comun> Comunes { get; set; }
+        //public DbSet<Comun> Comunes { get; set; }
         public DbSet<Envio> Envios { get; set; }
-        public DbSet<Seguimiento> Seguimientos { get; set; }
-        public DbSet<Urgente> Urgentes { get; set; }
+        //public DbSet<Seguimiento> Seguimientos { get; set; }
+        //public DbSet<Urgente> Urgentes { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
-        public DemoContext(DbContextOptions options) : base(options)
-        {
-        }
+        public DemoContext(DbContextOptions options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,7 +60,7 @@ namespace LogicaAccesoDatos
             //    .WithOne()
             //    .HasForeignKey<Envio>(e => e.FuncionarioId)
             //    .OnDelete(DeleteBehavior.NoAction); // Evita la eliminación en cascada
-            
+
             //modelBuilder.Entity<Comun>()
             //    .HasOne(e => e.Agencia)
             //    .WithOne()
@@ -74,6 +72,26 @@ namespace LogicaAccesoDatos
             //    .WithOne(s => s.Seguimiento)
             //    .HasForeignKey<Seguimiento>(e => e.FuncionarioId) // Evita la eliminación en cascada
             //    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Envio>().HasOne(c => c.Cliente)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Envio>().HasOne(c => c.Funcionario)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Seguimiento>().HasOne(c => c.Funcionario)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Comun>().HasOne(c => c.Agencia)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Agencia>().HasOne(c => c.Usuario)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
 
             base.OnModelCreating(modelBuilder);
         }

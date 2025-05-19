@@ -6,7 +6,7 @@ namespace LogicaNegocio.ValueObject.Usuario
     [ComplexType]
     public record EmailUsuario
     {
-        public string Valor { get; set; }
+        public string Valor { get; init; }
 
         public EmailUsuario() { }
 

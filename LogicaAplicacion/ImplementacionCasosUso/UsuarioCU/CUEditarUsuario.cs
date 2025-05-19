@@ -19,10 +19,6 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 
         public void Ejecutar(EditarUsuarioDTO usuarioDTO)
         {
-            if (usuarioDTO == null)
-            {
-                throw new UsuarioException("Usuario no existente");
-            }
             Usuario usuario = UsuarioMapper.UsuarioFromEditarUsuarioDTO(usuarioDTO);
             RepoUsuarios.Update(usuario);
         }

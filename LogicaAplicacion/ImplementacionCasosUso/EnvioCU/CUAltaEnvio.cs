@@ -1,5 +1,6 @@
 ﻿using Compartido.DTOs.EnvioDTO;
-using Compartido.DTOs.EnvioComunDTO;
+using Compartido.DTOs.EnvioDTO.ComunDTO;
+using Compartido.DTOs.EnvioDTO.UrgenteDTO;
 using Compartido.Mappers;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.EntidadesNegocio;
@@ -17,16 +18,16 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
             RepoEnvios = repoEnvios;
         }
 
-        public void Ejecutar(AltaEnvioDTO envioDTO, int tipoEnvio)
+        public void Ejecutar(AltaEnvioDTO envioDTO)
         {
             Envio envio = null;
-            if (tipoEnvio == 0)
+            if (envioDTO is AltaComunDTO)
             {
-                envio = ComunMapper.AltaComunFromAltaComunDTO(envioDTO);
+                envio = ComunMapper.AltaComunFromAltaComunDTO((AltaComunDTO)envioDTO);
             }
-            else if (tipoEnvio == 1)
+            else if (envioDTO is AltaUrgenteDTO)
             {
-                envio = UrgenteMapper.AltaUrgenteFromAltaUrgenteDTO(envioDTO);
+                envio = UrgenteMapper.AltaUrgenteFromAltaUrgenteDTO((AltaUrgenteDTO)envioDTO);
             }
             else
             {
@@ -34,6 +35,5 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
             }
              RepoEnvios.Add(envio);
         }
-
     }
 }

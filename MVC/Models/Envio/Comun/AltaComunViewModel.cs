@@ -1,9 +1,10 @@
-﻿namespace MVC.Models.Envio.Comun
+﻿using System.ComponentModel;
+
+namespace MVC.Models.Envio.Comun
 {
     public class AltaComunViewModel : AltaEnvioViewModel
     {
-        public int UbPos { get; set; }
-        public string Ubicacion { get; set; }
+        [DisplayName("Nombre de la Agencia")]
         public string NombreAgencia { get; set; }
     }
 }

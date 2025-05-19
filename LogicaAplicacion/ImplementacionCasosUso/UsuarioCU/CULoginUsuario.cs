@@ -35,7 +35,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             // Devolvés los datos que necesitás (por ejemplo, el rol)
             return new InformacionUsuarioLogueadoViewModelDTO()
             {
-                Email = usuarioEncontrado.Email.Valor,
+                Id = usuarioEncontrado.Id,
                 Rol = usuarioEncontrado.Rol.ToString()
             };
         }

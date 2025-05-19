@@ -1,18 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
-using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
-using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
-using MVC.Models.Envio;
+using Compartido.DTOs.EnvioDTO.ComunDTO;
+using Compartido.DTOs.EnvioDTO.UrgenteDTO;
 using Compartido.DTOs.EnvioDTO;
-using Compartido.DTOs.EnvioComunDTO;
-//using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
-using Compartido.DTOs.EnvioUrgenteDTO;
-using MVC.Models.Usuario;
+using MVC.Models.Envio;
 using MVC.Models.Envio.Comun;
+using MVC.Models.Envio.Urgente;
 
 namespace MVC.Controllers
 {
@@ -20,31 +16,31 @@ namespace MVC.Controllers
     {
         private IListadoEnvio CUListadoEnvio { get; set; }
         private IAltaEnvio CUAltaEnvio { get; set; }
-        private IVerDetallesEnvio CUVerDetalleEnvio { get; set; }
+        private IVerDetallesEnvio CUVerDetallesEnvio { get; set; }
         private IBajaEnvio CUBajaEnvio { get; set; }
         private IEditarEnvio CUEditarEnvio { get; set; }
 
         public EnvioController(
             IListadoEnvio cuListadoEnvio,
             IAltaEnvio cuAltaEnvio,
-            IVerDetallesEnvio cuVerDetalleEnvio,
+            IVerDetallesEnvio cuVerDetallesEnvio,
             IBajaEnvio cuBajaEnvio,
             IEditarEnvio cuEditarEnvio
         )
         {
             CUListadoEnvio = cuListadoEnvio;
             CUAltaEnvio = cuAltaEnvio;
-            CUVerDetalleEnvio = cuVerDetalleEnvio;
+            CUVerDetallesEnvio = cuVerDetallesEnvio;
             CUBajaEnvio = cuBajaEnvio;
             CUEditarEnvio = cuEditarEnvio;
         }
 
-        // GET: EnvioController
+        [HttpGet]
         public ActionResult Index()
         {
             // Funciona
             //var rol = HttpContext.Session.GetString("Rol");
-            //if (rol != "Administrador")
+            //if (rol == "Cliente")
             //{
             //    return Redirect("/Usuario/Login");
             //}
@@ -72,13 +68,57 @@ namespace MVC.Controllers
             }
         }
 
-        // GET: EnvioController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult Detalles(int id)
         {
+            VerDetallesEnvioDTO envioDTO = CUVerDetallesEnvio.Ejecutar(id);
+            VerDetallesEnvioViewModel envioViewModel = null;
+            try
+            {
+                if (envioDTO is Comun)
+                {
+                    VerDetallesComunDTO urgenteDTO = (VerDetallesComunDTO)envioDTO;
+                    envioViewModel = new VerDetallesComunViewModel()
+                    {
+                        Id = envioDTO.Id,
+                        NumeroTracking = envioDTO.NumeroTracking,
+                        PesoPaquete = envioDTO.PesoPaquete,
+                        Estado = envioDTO.Estado,
+                        ClienteId = envioDTO.ClienteId,
+                        FuncionarioId = envioDTO.FuncionarioId,
+                        SeguimientoId = envioDTO.SeguimientoId,
+                    };
+                }
+                else if (envioDTO is Urgente)
+                {
+                    VerDetallesUrgenteDTO urgenteDTO = (VerDetallesUrgenteDTO)envioDTO;
+                    envioViewModel = new VerDetallesUrgenteViewModel()
+                    {
+                        Id = envioDTO.Id,
+                        NumeroTracking = envioDTO.NumeroTracking,
+                        PesoPaquete = envioDTO.PesoPaquete,
+                        Estado = envioDTO.Estado,
+                        ClienteId = envioDTO.ClienteId,
+                        FuncionarioId = envioDTO.FuncionarioId,
+                        SeguimientoId = envioDTO.SeguimientoId,
+                        DireccionPostal = urgenteDTO.DireccionPostal,
+                        EntregaEficiente = urgenteDTO.EntregaEficiente
+                    };
+                }
+                else
+                {
+                    throw new Exception("Objeto nulo");
+                }
+                return View(envioViewModel);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
+            }
             return View();
         }
 
-        // GET: EnvioController/Create
+        [HttpGet]
         public ActionResult CrearEnvio()
         {
             return View();
@@ -109,98 +149,192 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult FormCrearEnvio(string tipoEnvio, int tipo2)
+        public ActionResult FormCrearEnvio(string type, int tipo2)
         {
             try
             {
-                if (tipoEnvio == "Comun")
+                if (type == "Comun")
                 {
-                    CrearEnvioComun();
+                    CrearEnvioComun(new AltaComunViewModel());
+                    return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
                 }
-                else if (tipoEnvio == "Urgente")
+                else if (type == "Urgente")
                 {
-                    return Redirect("~/Views/Envio/Urgente/Crear.cshtml");
+                    CrearEnvioUrgente(new AltaUrgenteViewModel());
+                    return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
                 }
                 else
                 {
-                    return View("No existe ese tipo de envio");
+                    throw new Exception("No existe ese tipo de envio");
                 }
-                ViewBag.Mensaje = "Envio creado con exito";
-                return View();
+                
             }
             catch (Exception e)
             {
-                return View();
+                return RedirectToAction("FormCrearEnvio", new { MensajeError = e.Message });
             }
         }
 
-        public IActionResult CrearEnvioComun()
+        public void CrearEnvioComun(AltaComunViewModel envio)
         {
-            //try
-            //{
-            //    if (ModelState.IsValid)
-            //    {
-            //        AltaEnvioComunDTO envioDTO = new AltaEnvioComunDTO()
-            //        {
-            //            //TipoEnvio = envio.TipoEnvio,
-            //            EmailCliente = envio.EmailCliente,
-            //            DireccionPostal = envio.DireccionPostal,
-            //            PesoPaquete = envio.PesoPaquete
-            //        };
-            //        CUAltaEnvio.Ejecutar(envioDTO, 0); // Dentro de AltaEnvio se valida el tipo de envio
-            //        ViewBag.Mensaje = "Usuario agregado";
-            //    }
-            //    ViewBag.Mensaje = "Envio creado con exito";
-            //    return RedirectToAction("Index");
-            //}
-            //catch (Exception e)
-            //{
-            //    ViewBag.MensajeError = e.Message;
-            //    //ViewBag.MensajeError += ", " + e.StackTrace;
-            //}
+                if (ModelState.IsValid)
+                {
+                    AltaEnvioDTO envioDTO = new AltaComunDTO()
+                    {
+                        NumeroTracking = envio.NumeroTracking,
+                        PesoPaquete = envio.PesoPaquete,
+                        EmailCliente = envio.EmailCliente,
+                        Fecha = DateTime.Today,
+                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
+                        NombreAgencia = envio.NombreAgencia
+                    };
+                    CUAltaEnvio.Ejecutar(envioDTO);
+                }
+                else
+                {
+                    throw new Exception("Valores no validos");
+                }
+        }
+
+        public void CrearEnvioUrgente(AltaUrgenteViewModel envio)
+        {
+            if (ModelState.IsValid)
+            {
+                AltaEnvioDTO envioDTO = new AltaUrgenteDTO()
+                {
+                    NumeroTracking = envio.NumeroTracking,
+                    PesoPaquete = envio.PesoPaquete,
+                    EmailCliente = envio.EmailCliente,
+                    Fecha = DateTime.Today,
+                    FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
+                    DireccionPostal = envio.DireccionPostal,
+                    EntregaEficiente = envio.EntregaEficiente
+                };
+                CUAltaEnvio.Ejecutar(envioDTO);
+            } 
+            else
+            {
+                throw new Exception("Valores no validos");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult EditarEnvio(int id)
+        {
+            VerDetallesEnvioDTO envioDTO = CUVerDetallesEnvio.Ejecutar(id);
+            VerDetallesEnvioViewModel envioViewModel = null;
+            try
+            {
+                if (envioDTO is Comun)
+                {
+                    VerDetallesComunDTO comunDTO = (VerDetallesComunDTO)envioDTO;
+                    envioViewModel = new VerDetallesComunViewModel()
+                    {
+                        Id = envioDTO.Id,
+                        NumeroTracking = envioDTO.NumeroTracking,
+                        PesoPaquete = envioDTO.PesoPaquete,
+                        Estado = envioDTO.Estado,
+                        ClienteId = envioDTO.ClienteId,
+                        FuncionarioId = envioDTO.FuncionarioId,
+                        SeguimientoId = envioDTO.SeguimientoId,
+                    };
+                }
+                else
+                {
+                    VerDetallesUrgenteDTO urgenteDTO = (VerDetallesUrgenteDTO)envioDTO;
+                    envioViewModel = new VerDetallesUrgenteViewModel()
+                    {
+                        Id = envioDTO.Id,
+                        NumeroTracking = envioDTO.NumeroTracking,
+                        PesoPaquete = envioDTO.PesoPaquete,
+                        Estado = envioDTO.Estado,
+                        ClienteId = envioDTO.ClienteId,
+                        FuncionarioId = envioDTO.FuncionarioId,
+                        SeguimientoId = envioDTO.SeguimientoId,
+                        DireccionPostal = urgenteDTO.DireccionPostal,
+                        EntregaEficiente = urgenteDTO.EntregaEficiente
+                    };
+                }
+                return View(envioViewModel);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
+            }
             return View();
         }
 
-        // GET: EnvioController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: EnvioController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditarEnvio(string type)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (type == "Comun")
+                {
+                    EditarEnvioComun(new EditarComunViewModel());
+                }
+                else if (type == "Urgente")
+                {
+                    EditarEnvioUrgente(new EditarUrgenteViewModel());
+                }
+                else
+                {
+                    throw new Exception("No existe ese tipo de envio");
+                }
+                return RedirectToAction("FormCrearEnvio", new { Mensaje = "Envio editado con exito" });
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return RedirectToAction("FormCrearEnvio", new { MensajeError = e.Message });
             }
         }
 
-        // GET: EnvioController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpPost]
+        public void EditarEnvioComun(EditarComunViewModel envio)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                EditarComunDTO envioDTO = new EditarComunDTO()
+                {
+                    Id = envio.Id,
+                    NumeroTracking = envio.NumeroTracking,
+                    PesoPaquete = envio.PesoPaquete,
+                };
+                CUEditarEnvio.Ejecutar(envioDTO);
+            }
         }
 
-        // POST: EnvioController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public void EditarEnvioUrgente(EditarUrgenteViewModel envio)
+        {
+            if (ModelState.IsValid)
+            {
+                EditarComunDTO envioDTO = new EditarComunDTO()
+                {
+                    Id = envio.Id,
+                    NumeroTracking = envio.NumeroTracking,
+                    PesoPaquete = envio.PesoPaquete,
+                };
+                CUEditarEnvio.Ejecutar(envioDTO);
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult BajaEnvio(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                CUBajaEnvio.Ejecutar(id);
+                ViewBag.Mensaje = "Envio Eliminado con Éxito";
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                ViewBag.MensajeError = e.Message;
+                //ViewBag.MensajeError += ", " + e.StackTrace;
             }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

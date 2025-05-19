@@ -15,12 +15,26 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Add(Envio item)
         {
-            throw new NotImplementedException();
+            if (!Contexto.Envios.Contains(item))
+            {
+                Contexto.Envios.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new EnvioException("Envio ya existente");
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Envio envio = FindById(id);
+            if (envio == null)
+            {
+                throw new EnvioException("No se ha encontrado al envio");
+            }
+            Contexto.Envios.Remove(envio);
+            Contexto.SaveChanges();
         }
 
         public IEnumerable<Envio> FindAll()
@@ -30,12 +44,20 @@ namespace LogicaAccesoDatos.Repositorios
 
         public Envio FindById(int id)
         {
-            throw new NotImplementedException();
+            return Contexto.Envios
+                    .Where(c => c.Id == id)
+                    .SingleOrDefault();
         }
 
         public void Update(Envio item)
         {
-            throw new NotImplementedException();
+            Envio nuevoEnvio = FindById(item.Id);
+            if (nuevoEnvio == null)
+            {
+                throw new EnvioException("No se encontro al envio");
+            }
+            Contexto.Envios.Update(nuevoEnvio);
+            Contexto.SaveChanges();
         }
     }
 }

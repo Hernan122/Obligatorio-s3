@@ -2,5 +2,6 @@
 {
     public interface IBajaEnvio
     {
+        void Ejecutar(int id);
     }
 }

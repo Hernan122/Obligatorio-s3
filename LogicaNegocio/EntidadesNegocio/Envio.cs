@@ -19,34 +19,24 @@ namespace LogicaNegocio.EntidadesNegocio
         [ForeignKey("Funcionario")]
         public int FuncionarioId { get; set; }
 
-        public Seguimiento Seguimiento { get; set; }
-
-        [ForeignKey("Seguimiento")]
-        public int SeguimientoId { get; set; }
-
-        //public enum Estado
-        //{
-        //    EnProceso,
-        //    Finalizado,
-        //}
+        public List<Seguimiento> Seguimientos = new List<Seguimiento>();
 
         public Envio() { }
 
-        public Envio (int numerotracking, int pesoPaquete, Estado estado, int clienteId, int funcionarioId, int seguimientoId)
+        public Envio (int numerotracking, int pesoPaquete, Estado estado, int clienteId, int funcionarioId)
         {
             NumeroTracking = numerotracking;
             PesoPaquete = pesoPaquete;
             Estado = estado;
             ClienteId = clienteId;
             FuncionarioId = funcionarioId;
-            SeguimientoId = seguimientoId;
             Validar();
         }
 
-        public Envio(int numeroTracking)
-        {
-            NumeroTracking = numeroTracking;
-        }
+        //public Envio(int numeroTracking)
+        //{
+        //    NumeroTracking = numeroTracking;
+        //}
 
         public virtual void Validar()
         {

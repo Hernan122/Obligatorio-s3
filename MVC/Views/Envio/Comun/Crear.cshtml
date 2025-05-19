@@ -17,41 +17,26 @@
 
 <h1 class="mb-3">Crear Envio Comun</h1>
 
-<form asp-action="CrearEnvio?tipo=Comun">
+<form asp-action="FormCrearEnvio" asp-route-type="Comun">
 
     <div class="form-floating mb-3">
         <input asp-for="NumeroTracking" type="text" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">NumeroTracking</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.NumeroTracking)</label>
     </div>
 
     <div class="form-floating mb-3">
         <input asp-for="PesoPaquete" type="text" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">PesoPaquete</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.PesoPaquete)</label>
     </div>
 
     <div class="form-floating mb-3">
         <input asp-for="EmailCliente" type="Email" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">EmailCliente</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input asp-for="Fecha" type="datetime" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">Fecha</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input asp-for="UbPos" type="number" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">UbPos</label>
-    </div>
-
-    <div class="form-floating mb-3">
-        <input asp-for="Ubicacion" type="text" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">Ubicacion</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.EmailCliente)</label>
     </div>
 
     <div class="form-floating mb-3">
         <input asp-for="NombreAgencia" type="text" class="form-control" id="floatingInputInvalid" placeholder>
-        <label for="floatingInputInvalid">NombreAgencia</label>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.NombreAgencia)</label>
     </div>
 
     <input type="submit" value="Crear Envio Comun" class="btn btn-primary w-100" />

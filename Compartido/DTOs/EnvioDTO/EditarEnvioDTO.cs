@@ -4,6 +4,7 @@ namespace Compartido.DTOs.EnvioDTO
 {
     public abstract class EditarEnvioDTO
     {
+        public int Id { get; set; }
         public int NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }
         public Estado Estado { get; set; }
