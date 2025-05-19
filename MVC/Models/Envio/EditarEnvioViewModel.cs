@@ -12,5 +12,6 @@ namespace MVC.Models.Envio
         public int PesoPaquete { get; set; }
         public DateTime Fecha { get; set; }
         public int FuncionarioId { get; set; }
+        public string Comentario { get; set; }
     }
 }

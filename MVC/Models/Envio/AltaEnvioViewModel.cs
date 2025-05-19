@@ -17,7 +17,7 @@ namespace MVC.Models.Envio
         public DateTime Fecha { get; set; }
         public int FuncionarioId { get; set; }
         // Seguimiento
-        public string Comentario { get; set; }
+        //public string Comentario { get; set; }
         
     }
 }

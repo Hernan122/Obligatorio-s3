@@ -6,16 +6,19 @@ using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 {
     public class CUVerDetallesEnvio : IVerDetallesEnvio
     {
         private IRepositorioEnvio RepoEnvios { get; set; }
+        private IRepositorioAgencia RepoAgencias { get; set; }
 
-        public CUVerDetallesEnvio(IRepositorioEnvio repoEnvios)
+        public CUVerDetallesEnvio(IRepositorioEnvio repoEnvios, IRepositorioAgencia repoAgencias)
         {
             RepoEnvios = repoEnvios;
+            RepoAgencias = repoAgencias;
         }
         public VerDetallesEnvioDTO Ejecutar(int id)
         {
@@ -29,11 +32,17 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 
             if (envio is Comun)
             {
-                envioDTO = EnvioMapper.ComunToComunDTO((Comun)envio);
+                VerDetallesComunDTO comunDTO = EnvioMapper.ComunToComunDTO((Comun)envio);
+                Comun comun = (Comun)envio;
+                Agencia agencia = RepoAgencias.FindById(comun.AgenciaId);
+
+                comunDTO.NombreAgencia = agencia.Nombre;
+                envioDTO = comunDTO;
             }
             else
             {
-                envioDTO = EnvioMapper.UrgenteToUrgenteDTO((Urgente)envio);
+                VerDetallesUrgenteDTO urgenteDTO = EnvioMapper.UrgenteToUrgenteDTO((Urgente)envio);
+                envioDTO = urgenteDTO;
             }
 
             return envioDTO;

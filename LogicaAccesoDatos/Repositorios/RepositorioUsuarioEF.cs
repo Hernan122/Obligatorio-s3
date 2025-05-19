@@ -1,6 +1,7 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
+using LogicaNegocio.ValueObject.Usuario;
 
 namespace LogicaAccesoDatos.Repositorios
 {

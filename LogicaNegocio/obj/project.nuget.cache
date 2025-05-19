@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CyeWpBaY4XM=",
+  "dgSpecHash": "NEFwd8H92+w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
+  "projectFilePath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.10\\microsoft.entityframeworkcore.8.0.10.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.10\\microsoft.entityframeworkcore.abstractions.8.0.10.nupkg.sha512",

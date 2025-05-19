@@ -24,7 +24,7 @@ namespace LogicaNegocio.ValueObject.Usuario
             }
             if (Valor.Length < 8)
             {
-                throw new UsuarioException("Valores deben ser mayores a 8");
+                throw new UsuarioException("Nombre debe ser mayor a 8 caracteres");
             }
         }
     }

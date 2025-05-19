@@ -1,6 +1,6 @@
 ﻿namespace Compartido.DTOs.EnvioDTO.ComunDTO
 {
-    public class AltaAgenciaDTO : AltaEnvioDTO
+    public class AltaComunDTO : AltaEnvioDTO
     {
         public string NombreAgencia { get; set; }
     }

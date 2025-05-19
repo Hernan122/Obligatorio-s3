@@ -7,6 +7,7 @@ using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using System.Security.Cryptography.Xml;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
+using Compartido.ExcepcionesConflictos;
 
 namespace MVC.Controllers
 {
@@ -81,11 +82,6 @@ namespace MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (usuario.Rol == Rol.Administrador)
-                    {
-                        throw new Exception("Administrador no puede agregar a otro administrador");
-                    }
-
                     AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
                     {
                         NombreUsuario = usuario.Nombre,
@@ -95,7 +91,6 @@ namespace MVC.Controllers
                     };
 
                     CUAltaUsuario.Ejecutar(usuarioDTO);
-                    //ViewBag.Mensaje = "Usuario agregado";
                     return RedirectToAction(nameof(AltaUsuario), new { Mensaje = "Usuario agregado" });
                 }
                 else
@@ -245,16 +240,25 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult BajaUsuario(int id)
         {
+            int idActual = (int)HttpContext.Session.GetInt32("Id");
             try
             {
+                if (id == idActual)
+                {
+                    throw new ConflictException("No puedes eliminarte a ti mismo");
+                }
                 CUBajaUsuario.Ejecutar(id);
                 ViewBag.Mensaje = "Eliminado con exito";
+                return RedirectToAction(nameof(Index), new { Mensaje = "Eliminado con exito" });
+            }
+            catch (ConflictException e)
+            {
+                return RedirectToAction(nameof(Index), new { MensajeError = e.Message});
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
+                return RedirectToAction(nameof(Index), new { MensajeError = e.Message });
             }
-            return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Logout()

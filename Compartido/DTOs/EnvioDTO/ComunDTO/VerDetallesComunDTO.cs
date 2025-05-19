@@ -2,6 +2,6 @@
 {
     public class VerDetallesComunDTO : VerDetallesEnvioDTO
     {
-        public int AgenciaId { get; set; }
+        public string NombreAgencia { get; set; }
     }
 }

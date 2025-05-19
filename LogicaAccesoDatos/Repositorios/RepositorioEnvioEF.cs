@@ -39,7 +39,7 @@ namespace LogicaAccesoDatos.Repositorios
 
         public IEnumerable<Envio> FindAll()
         {
-            return Contexto.Envios;
+            return Contexto.Envios.Where(c => c.Estado == Estado.EN_PROCESO);
         }
 
         public Envio FindById(int id)

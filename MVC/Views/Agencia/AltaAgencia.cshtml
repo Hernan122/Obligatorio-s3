@@ -1,0 +1,42 @@
+﻿@using MVC.Models.Agencia
+@model AltaAgenciaViewModel;
+
+@{
+    ViewData["Title"] = "Nuevo Envio";
+}
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<h1 class="mb-3">Nueva Agencia</h1>
+
+<form asp-action="AltaAgencia">
+
+    <div class="form-floating mb-3">
+        <input asp-for="UbPos" type="number" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.UbPos)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="CoordenadasLatitud" type="number" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.CoordenadasLatitud)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="CoordenadasLongitud" type="number" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.CoordenadasLongitud)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Nombre" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.Nombre)</label>
+    </div>
+
+    <input type="submit" value="Crear Agencia" class="btn btn-primary w-100" />
+</form>

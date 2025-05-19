@@ -28,9 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ImplementacionCasosUso\AgenciaCU\" />
     <Folder Include="ImplementacionCasosUso\SeguimientoCU\" />
-    <Folder Include="InterfacesCasosUso\IAgenciaCU\" />
     <Folder Include="InterfacesCasosUso\ISeguimientoCU\" />
   </ItemGroup>
 

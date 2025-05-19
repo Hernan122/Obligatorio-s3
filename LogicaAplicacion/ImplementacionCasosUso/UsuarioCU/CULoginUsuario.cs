@@ -32,12 +32,12 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
                 throw new Exception("Usuario inexistente o credenciales incorrectas");
             }
 
-            // Devolvés los datos que necesitás (por ejemplo, el rol)
             return new InformacionUsuarioLogueadoViewModelDTO()
             {
                 Id = usuarioEncontrado.Id,
                 Rol = usuarioEncontrado.Rol.ToString()
             };
         }
+
     }
 }

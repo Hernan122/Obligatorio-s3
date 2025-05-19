@@ -16,11 +16,6 @@ namespace Compartido.Mappers
             };
         }
 
-        public static void ComunFromBajaComunDTO(BajaEnvioDTO comunDTO)
-        {
-
-        }
-
         public static Comun ComunFromEditarComunDTO(EditarEnvioDTO envioDTO)
         {
             Comun comun = new Comun()
@@ -35,9 +30,17 @@ namespace Compartido.Mappers
             return comun;
         }
 
-        public static void ComunFromVerDetalleComunDTO(VerDetallesComunDTO comunDTO)
+        public static VerDetallesComunDTO ComunToVerDetallesComunDTO(Comun comun)
         {
-
+            return new VerDetallesComunDTO()
+            {
+                Id = comun.Id,
+                NumeroTracking = comun.NumeroTracking,
+                PesoPaquete = comun.PesoPaquete,
+                Estado = comun.Estado,
+                ClienteId = comun.ClienteId,
+                FuncionarioId = comun.FuncionarioId,
+            };
         }
     }
 }

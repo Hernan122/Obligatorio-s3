@@ -18,16 +18,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <!-- Home Link -->
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li> *@
+                        @if (Context.Session.GetString("Rol") == null || Context.Session.GetString("Rol") == "Cliente")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                        }
 
-                        <!-- Registrar Usuario Link -->
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="AltaUsuario">Alta Usuario</a>
-                        </li>
-                        
                         <!-- Iniciar Sesión Link (visible si el usuario no ha iniciado sesión) -->
                         @if (Context.Session.GetString("Rol") == null)
                         {
@@ -37,34 +34,38 @@
                         }
 
                         <!-- Link de Listado de Usuarios solo visible para Administradores -->
-                        @* @if (Context.Session.GetString("Rol") != "Cliente")
+                        @if (Context.Session.GetString("Rol") != "Cliente" && Context.Session.GetString("Rol") != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Usuario" asp-action="ListadoUsuarios">Listado de Usuarios</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="AltaUsuario">Alta Usuario</a>
                             </li>
-                        }  *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Usuario" asp-action="Index">Listado de Usuarios</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Usuario" asp-action="Index">Listado de Usuarios</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Envio" asp-action="Index">Listado Envios</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Envio" asp-action="Index">Listado Envios</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Envio" asp-action="CrearEnvio">Nuevo Envio</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Envio" asp-action="CrearEnvio">Nuevo Envio</a>
+                            </li>
 
-                        <!-- Cerrar Sesión (visible si el usuario ha iniciado sesión) -->
-                       @*  @if (Context.Session.GetString("Rol") != "Cliente")
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Agencia" asp-action="Index">Listado Agencias</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Agencia" asp-action="AltaAgencia">Nueva Agencia</a>
+                            </li>
+                        }
+
+                        @if (Context.Session.GetString("Rol") != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="@Url.Action("Logout", "Usuario")">Cerrar Sesión</a>
+                                <a class="nav-link text-dark" asp-controller="Usuario" asp-action="Logout">Cerrar Sesion</a>
                             </li>
-                        } *@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="@Url.Action("Logout", "Usuario")">Cerrar Sesión</a>
-                        </li>
+                        }
 
                     </ul>
                 </div>

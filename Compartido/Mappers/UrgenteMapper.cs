@@ -1,4 +1,5 @@
-﻿using Compartido.DTOs.EnvioDTO.UrgenteDTO;
+﻿using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.EnvioDTO.UrgenteDTO;
 using LogicaNegocio.EntidadesNegocio;
 
 namespace Compartido.Mappers
@@ -44,6 +45,13 @@ namespace Compartido.Mappers
         public static void UrgenteFromVerUrgenteDTO()
         {
 
+        }
+
+        public static VerDetallesUrgenteDTO UrgenteToVerDetallesUrgenteDTO(Urgente urgente)
+        {
+            return new VerDetallesUrgenteDTO()
+            {
+            };
         }
 
     }

@@ -6,6 +6,7 @@ using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+using LogicaAplicacion.ImplementacionCasosUso.AgenciaCU;
 
 namespace MVC
 {
@@ -20,7 +21,8 @@ namespace MVC
 
             // Inversión de control
             builder.Services.AddScoped<IRepositorioAgencia, RepositorioAgenciaEF>();
-            builder.Services.AddScoped<IRepositorioSeguimiento, RepositorioSeguimientoEF>();
+            builder.Services.AddScoped<IAltaAgencia, CUAltaAgencia>();
+            builder.Services.AddScoped<IListadoAgencia, CUListadoAgencia>();
 
             builder.Services.AddScoped<IRepositorioEnvio, RepositorioEnvioEF>();
             builder.Services.AddScoped<IAltaEnvio, CUAltaEnvio>();
@@ -28,6 +30,8 @@ namespace MVC
             builder.Services.AddScoped<IEditarEnvio, CUEditarEnvio>();
             builder.Services.AddScoped<IListadoEnvio, CUListadoEnvio>();
             builder.Services.AddScoped<IVerDetallesEnvio, CUVerDetallesEnvio>();
+            builder.Services.AddScoped<IBuscarEnvio, CUBuscarEnvio>();
+            builder.Services.AddScoped<ICambiarEstadoEnvio, CUCambiarEstadoEnvio>();
 
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IAltaUsuario, CUAltaUsuario>();

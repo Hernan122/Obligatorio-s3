@@ -10,6 +10,6 @@
         // Seguimiento
         public DateTime Fecha { get; set; }
         // Seguimiento
-        public string Comentario { get; set; }
+        //public string Comentario { get; set; }
     }
 }

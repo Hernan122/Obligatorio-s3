@@ -1,5 +1,43 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using LogicaNegocio.EntidadesNegocio;
+@using MVC.Models.Envio.Comun
+@model EditarComunViewModel;
+
 @{
+    ViewData["Title"] = "Nuevo Envio";
 }
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<h1 class="mb-3">Crear Envio Comun</h1>
+
+<form asp-action="EditarEnvioComun">
+
+    <div class="form-floating mb-3">
+        <input asp-for="NumeroTracking" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.NumeroTracking)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="PesoPaquete" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.PesoPaquete)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="NombreAgencia" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.NombreAgencia)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Comentario" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.Comentario)</label>
+    </div>
+
+    <input type="submit" value="Crear Envio Comun" class="btn btn-primary w-100" />
+</form>

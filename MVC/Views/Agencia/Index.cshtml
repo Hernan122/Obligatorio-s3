@@ -1,0 +1,39 @@
+﻿@using MVC.Models.Agencia
+@model IEnumerable<ListadoAgenciaViewModel>
+
+<h1>Listado Agencias</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioId)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
