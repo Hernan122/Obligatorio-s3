@@ -1,41 +1,89 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\",
+  "WorkspaceRootPath": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\envio\\comun\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\comun\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\enviocu\\cualtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\enviocu\\cualtaenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\envio\\comun\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\comun\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{786F8650-91C2-4DA4-B961-945FE9C7AE5D}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\compartido\\dtos\\enviodto\\altaenviodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\dtos\\enviodto\\altaenviodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\envio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\compartido\\dtos\\enviodto\\listadoenviodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\dtos\\enviodto\\listadoenviodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\envio\\urgente\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\urgente\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\compartido\\dtos\\enviodto\\bajaenviodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\dtos\\enviodto\\bajaenviodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\models\\envio\\verdetallesenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\envio\\verdetallesenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\verdetallesenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\envio\\altaenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\altaenvioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\usuario\\altausuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\altausuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\usuario\\editarusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\editarusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\usuario\\eliminarusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\eliminarusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\usuario\\listadousuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\listadousuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\usuario\\loginusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\loginusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\usuario\\verdetallesusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\usuario\\verdetallesusuarioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\views\\envio\\comun\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\comun\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\views\\envio\\comun\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\comun\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\views\\envio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\views\\envio\\urgente\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\urgente\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\views\\envio\\urgente\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\views\\envio\\urgente\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\views\\envio\\urgente\\crear.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\herna\\source\\repos\\obligatorio-s3\\mvc\\models\\envio\\urgente\\altaurgenteviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\pictures\\obligatorio-s3\\mvc\\models\\envio\\urgente\\altaurgenteviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\models\\envio\\urgente\\altaurgenteviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -46,23 +94,173 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d84ee353-0bef-5a41-a649-8f89aca5d84d}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CUAltaEnvio.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\EnvioCU\\CUAltaEnvio.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:35:49.937Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "WebApi\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "WebApi\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T12:16:53.136Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AltaEnvioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\Compartido\\DTOs\\EnvioDTO\\AltaEnvioDTO.cs",
+              "RelativeDocumentMoniker": "Compartido\\DTOs\\EnvioDTO\\AltaEnvioDTO.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\Compartido\\DTOs\\EnvioDTO\\AltaEnvioDTO.cs",
+              "RelativeToolTip": "Compartido\\DTOs\\EnvioDTO\\AltaEnvioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T12:10:51.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ListadoEnvioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\Compartido\\DTOs\\EnvioDTO\\ListadoEnvioDTO.cs",
+              "RelativeDocumentMoniker": "Compartido\\DTOs\\EnvioDTO\\ListadoEnvioDTO.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\Compartido\\DTOs\\EnvioDTO\\ListadoEnvioDTO.cs",
+              "RelativeToolTip": "Compartido\\DTOs\\EnvioDTO\\ListadoEnvioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T12:09:21.387Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BajaEnvioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\Compartido\\DTOs\\EnvioDTO\\BajaEnvioDTO.cs",
+              "RelativeDocumentMoniker": "Compartido\\DTOs\\EnvioDTO\\BajaEnvioDTO.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\Compartido\\DTOs\\EnvioDTO\\BajaEnvioDTO.cs",
+              "RelativeToolTip": "Compartido\\DTOs\\EnvioDTO\\BajaEnvioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T12:08:54.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AltaEnvioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Envio\\AltaEnvioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:57:33.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VerDetallesEnvioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T18:14:19.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AltaUsuarioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Usuario\\AltaUsuarioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:43:11.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EditarUsuarioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\EditarUsuarioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\EditarUsuarioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\EditarUsuarioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Usuario\\EditarUsuarioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:41:41.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EliminarUsuarioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\EliminarUsuarioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\EliminarUsuarioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\EliminarUsuarioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Usuario\\EliminarUsuarioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:40:25.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ListadoUsuarioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\ListadoUsuarioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\ListadoUsuarioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\ListadoUsuarioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Usuario\\ListadoUsuarioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:27:00.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginUsuarioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\LoginUsuarioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\LoginUsuarioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\LoginUsuarioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Usuario\\LoginUsuarioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:26:03.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "VerDetallesUsuarioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\VerDetallesUsuarioViewModel.cs",
+              "RelativeDocumentMoniker": "MVC\\Models\\Usuario\\VerDetallesUsuarioViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Usuario\\VerDetallesUsuarioViewModel.cs",
+              "RelativeToolTip": "MVC\\Models\\Usuario\\VerDetallesUsuarioViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T11:22:23.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "EnvioController.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
               "RelativeDocumentMoniker": "MVC\\Controllers\\EnvioController.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
               "RelativeToolTip": "MVC\\Controllers\\EnvioController.cs",
               "ViewState": "AgIAAGwAAACA//////8jwKsAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -70,23 +268,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VerDetallesEnvioViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "RelativeDocumentMoniker": "MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "RelativeToolTip": "MVC\\Models\\Envio\\VerDetallesEnvioViewModel.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBAAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T18:14:19.115Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 16,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Index.cshtml",
               "RelativeDocumentMoniker": "MVC\\Views\\Envio\\Index.cshtml",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Index.cshtml",
               "RelativeToolTip": "MVC\\Views\\Envio\\Index.cshtml",
               "ViewState": "AgIAACEAAAAAAAAAAAAAADAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -94,11 +280,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 17,
               "Title": "Detalles.cshtml",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Detalles.cshtml",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Detalles.cshtml",
               "RelativeDocumentMoniker": "MVC\\Views\\Envio\\Urgente\\Detalles.cshtml",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Detalles.cshtml",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Detalles.cshtml",
               "RelativeToolTip": "MVC\\Views\\Envio\\Urgente\\Detalles.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -106,24 +292,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 13,
               "Title": "Detalles.cshtml",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Detalles.cshtml",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Detalles.cshtml",
               "RelativeDocumentMoniker": "MVC\\Views\\Envio\\Comun\\Detalles.cshtml",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Detalles.cshtml",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Detalles.cshtml",
               "RelativeToolTip": "MVC\\Views\\Envio\\Comun\\Detalles.cshtml",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABMAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-17T18:12:19.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T18:12:19.516Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
               "Title": "Crear.cshtml",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Crear.cshtml",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Crear.cshtml",
               "RelativeDocumentMoniker": "MVC\\Views\\Envio\\Comun\\Crear.cshtml",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Crear.cshtml",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Comun\\Crear.cshtml",
               "RelativeToolTip": "MVC\\Views\\Envio\\Comun\\Crear.cshtml",
               "ViewState": "AgIAACwAAAAAAAAAAAD4vzkAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -131,11 +316,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 18,
               "Title": "DemoContext.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
               "RelativeDocumentMoniker": "LogicaAccesoDatos\\DemoContext.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
               "RelativeToolTip": "LogicaAccesoDatos\\DemoContext.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAcwEsAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -143,11 +328,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 20,
               "Title": "AltaUrgenteViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Models\\Envio\\Urgente\\AltaUrgenteViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Envio\\Urgente\\AltaUrgenteViewModel.cs",
               "RelativeDocumentMoniker": "MVC\\Models\\Envio\\Urgente\\AltaUrgenteViewModel.cs",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Models\\Envio\\Urgente\\AltaUrgenteViewModel.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Models\\Envio\\Urgente\\AltaUrgenteViewModel.cs",
               "RelativeToolTip": "MVC\\Models\\Envio\\Urgente\\AltaUrgenteViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -155,11 +340,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 19,
               "Title": "Crear.cshtml",
-              "DocumentMoniker": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Crear.cshtml",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Crear.cshtml",
               "RelativeDocumentMoniker": "MVC\\Views\\Envio\\Urgente\\Crear.cshtml",
-              "ToolTip": "C:\\Users\\herna\\source\\repos\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Crear.cshtml",
+              "ToolTip": "C:\\Users\\Bruno\\Pictures\\Obligatorio-s3\\MVC\\Views\\Envio\\Urgente\\Crear.cshtml",
               "RelativeToolTip": "MVC\\Views\\Envio\\Urgente\\Crear.cshtml",
               "ViewState": "AgIAAAoAAAAAAAAAAAAlwBMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",

@@ -6,5 +6,6 @@ namespace LogicaNegocio.InterfacesRepositorios
     {
         Usuario FindByEmailAndPassword(Usuario usuario);
         Usuario FindByEmail(Usuario usuario);
+        Usuario FindByEmail(string email);
     }
 }

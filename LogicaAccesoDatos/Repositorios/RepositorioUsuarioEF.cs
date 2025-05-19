@@ -74,5 +74,12 @@ namespace LogicaAccesoDatos.Repositorios
                     .FirstOrDefault();
         }
 
+        public Usuario FindByEmail(string email)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Email == email)
+                    .FirstOrDefault();
+        }
+
     }
 }

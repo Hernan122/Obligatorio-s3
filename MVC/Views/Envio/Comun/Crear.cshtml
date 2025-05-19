@@ -17,7 +17,7 @@
 
 <h1 class="mb-3">Crear Envio Comun</h1>
 
-<form asp-action="FormCrearEnvio" asp-route-type="Comun">
+<form asp-action="CrearEnvioComun">
 
     <div class="form-floating mb-3">
         <input asp-for="NumeroTracking" type="text" class="form-control" id="floatingInputInvalid" placeholder>
@@ -37,6 +37,11 @@
     <div class="form-floating mb-3">
         <input asp-for="NombreAgencia" type="text" class="form-control" id="floatingInputInvalid" placeholder>
         <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.NombreAgencia)</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Comentario" type="text" class="form-control" id="floatingInputInvalid" placeholder>
+        <label for="floatingInputInvalid">@Html.DisplayNameFor(model => model.Comentario)</label>
     </div>
 
     <input type="submit" value="Crear Envio Comun" class="btn btn-primary w-100" />

@@ -1,6 +1,7 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LogicaAccesoDatos.Repositorios
 {
@@ -14,29 +15,58 @@ namespace LogicaAccesoDatos.Repositorios
             Contexto = contexto;
         }
 
-        public void Add(Usuario item)
+        public void Add(Agencia item)
         {
-            throw new NotImplementedException();
+            if (!Contexto.Agencias.Contains(item))
+            {
+                Contexto.Agencias.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new AgenciaException("Agencia ya existente");
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Agencia agencia = FindById(id);
+            if (agencia == null)
+            {
+                throw new UsuarioException("No se ha encontrado el usuario");
+            }
+            Contexto.Agencias.Remove(agencia);
+            Contexto.SaveChanges();
         }
 
-        public IEnumerable<Usuario> FindAll()
+        public IEnumerable<Agencia> FindAll()
         {
-            throw new NotImplementedException();
+            return Contexto.Agencias;
         }
 
-        public Usuario FindById(int id)
+        public Agencia FindById(int id)
         {
-            throw new NotImplementedException();
+            return Contexto.Agencias
+                    .Where(c => c.Id == id)
+                    .SingleOrDefault();
         }
 
-        public void Update(Usuario item)
+        public void Update(Agencia item)
         {
-            throw new NotImplementedException();
+            Agencia encontrarAgencia = FindById(item.Id);
+            if (encontrarAgencia == null)
+            {
+                throw new AgenciaException("No se encontro agencia a actualizar");
+            }
+            Contexto.Agencias.Update(item);
+            Contexto.SaveChanges();
+        }
+
+        public Agencia FindByName(string nombre)
+        {
+            return Contexto.Agencias
+                    .Where(c => c.Nombre == nombre)
+                    .FirstOrDefault();
         }
     }
 }

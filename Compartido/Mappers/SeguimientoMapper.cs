@@ -1,9 +1,18 @@
-﻿namespace Compartido.Mappers
+﻿using Compartido.DTOs.SeguimientoDTO;
+using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.Mappers
 {
     public class SeguimientoMapper
     {
-        public static void SeguimientoFromAltaSeguimientoDTO()
+        public static Seguimiento SeguimientoFromAltaSeguimientoDTO(AltaSeguimientoDTO seguimientoDTO)
         {
+            return new Seguimiento()
+            {
+                Fecha = seguimientoDTO.Fecha,
+                Comentario = seguimientoDTO.Comentario,
+                FuncionarioId = seguimientoDTO.FuncionarioId
+            };
         }
 
         public static void SeguimientoFromBajaSeguimientoDTO()

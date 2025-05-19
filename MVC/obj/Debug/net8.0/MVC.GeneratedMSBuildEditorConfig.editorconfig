@@ -17,89 +17,89 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MVC
 build_property.RootNamespace = MVC
-build_property.ProjectDir = C:\Users\Bruno\Desktop\Obligatorio-s3\MVC\
+build_property.ProjectDir = C:\Users\Bruno\Pictures\Obligatorio-s3\MVC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Bruno\Desktop\Obligatorio-s3\MVC
+build_property.MSBuildProjectDirectory = C:\Users\Bruno\Pictures\Obligatorio-s3\MVC
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Comun/Crear.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Comun/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ29tdW5cQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Comun/Detalles.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Comun/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ29tdW5cRGV0YWxsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Comun/Editar.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Comun/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ29tdW5cRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/CrearEnvio.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/CrearEnvio.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ3JlYXJFbnZpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Index.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Urgente/Crear.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Urgente/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cVXJnZW50ZVxDcmVhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Urgente/Detalles.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Urgente/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cVXJnZW50ZVxEZXRhbGxlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Envio/Urgente/Editar.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Envio/Urgente/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cVXJnZW50ZVxFZGl0YXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Home/Index.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Shared/Error.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Usuario/AltaUsuario.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Usuario/AltaUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xBbHRhVXN1YXJpby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Usuario/EditarUsuario.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Usuario/EditarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0YXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Usuario/Index.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Usuario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Usuario/Login.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Usuario/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Usuario/VerDetallesUsuario.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Usuario/VerDetallesUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xWZXJEZXRhbGxlc1VzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/_ViewImports.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/_ViewStart.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Bruno/Desktop/Obligatorio-s3/MVC/Views/Shared/_Layout.cshtml]
+[C:/Users/Bruno/Pictures/Obligatorio-s3/MVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-q0a04yuu0e

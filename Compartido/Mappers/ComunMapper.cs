@@ -6,10 +6,14 @@ namespace Compartido.Mappers
 {
     public class ComunMapper
     {
-        public static Envio AltaComunFromAltaComunDTO(AltaEnvioDTO comunDTO)
+        public static Comun ComunFromAltaComunDTO(AltaEnvioDTO comunDTO)
         {
-            Envio envio = null;
-            return envio;
+            return new Comun()
+            {
+                NumeroTracking = comunDTO.NumeroTracking,
+                PesoPaquete = comunDTO.PesoPaquete,
+                FuncionarioId = comunDTO.FuncionarioId,
+            };
         }
 
         public static void ComunFromBajaComunDTO(BajaEnvioDTO comunDTO)

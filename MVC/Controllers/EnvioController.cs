@@ -9,6 +9,7 @@ using Compartido.DTOs.EnvioDTO;
 using MVC.Models.Envio;
 using MVC.Models.Envio.Comun;
 using MVC.Models.Envio.Urgente;
+using Compartido.DTOs.SeguimientoDTO;
 
 namespace MVC.Controllers
 {
@@ -148,38 +149,40 @@ namespace MVC.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult FormCrearEnvio(string type, int tipo2)
+        //[HttpPost]
+        //public ActionResult FormCrearEnvio(string type, AltaComunViewModel obj)
+        //{
+        //    try
+        //    {
+        //        if (type == "Comun")
+        //        {
+        //            CrearEnvioComun(new AltaComunViewModel());
+        //            return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
+        //        }
+        //        else if (type == "Urgente")
+        //        {
+        //            CrearEnvioUrgente(new AltaUrgenteViewModel());
+        //            return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
+        //        }
+        //        else
+        //        {
+        //            throw new Exception("No existe ese tipo de envio");
+        //        }
+                
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return RedirectToAction("FormCrearEnvio", new { MensajeError = e.Message });
+        //    }
+        //}
+
+        public ActionResult CrearEnvioComun(AltaComunViewModel envio)
         {
             try
             {
-                if (type == "Comun")
-                {
-                    CrearEnvioComun(new AltaComunViewModel());
-                    return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
-                }
-                else if (type == "Urgente")
-                {
-                    CrearEnvioUrgente(new AltaUrgenteViewModel());
-                    return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
-                }
-                else
-                {
-                    throw new Exception("No existe ese tipo de envio");
-                }
-                
-            }
-            catch (Exception e)
-            {
-                return RedirectToAction("FormCrearEnvio", new { MensajeError = e.Message });
-            }
-        }
-
-        public void CrearEnvioComun(AltaComunViewModel envio)
-        {
                 if (ModelState.IsValid)
                 {
-                    AltaEnvioDTO envioDTO = new AltaComunDTO()
+                    AltaEnvioDTO envioDTO = new AltaAgenciaDTO()
                     {
                         NumeroTracking = envio.NumeroTracking,
                         PesoPaquete = envio.PesoPaquete,
@@ -188,33 +191,61 @@ namespace MVC.Controllers
                         FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
                         NombreAgencia = envio.NombreAgencia
                     };
-                    CUAltaEnvio.Ejecutar(envioDTO);
+                    AltaSeguimientoDTO seguimientoDTO = new AltaSeguimientoDTO()
+                    {
+                        Fecha = DateTime.Today,
+                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
+                        Comentario = envio.Comentario,
+                    };
+                    CUAltaEnvio.Ejecutar(envioDTO, seguimientoDTO);
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Envio creado con exito" });
                 }
                 else
                 {
                     throw new Exception("Valores no validos");
                 }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+                return View("~/Views/Envio/Comun/Crear.cshtml");
+            }
         }
 
-        public void CrearEnvioUrgente(AltaUrgenteViewModel envio)
+        public ActionResult CrearEnvioUrgente(AltaUrgenteViewModel envio)
         {
-            if (ModelState.IsValid)
+            try
             {
-                AltaEnvioDTO envioDTO = new AltaUrgenteDTO()
+                if (ModelState.IsValid)
                 {
-                    NumeroTracking = envio.NumeroTracking,
-                    PesoPaquete = envio.PesoPaquete,
-                    EmailCliente = envio.EmailCliente,
-                    Fecha = DateTime.Today,
-                    FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-                    DireccionPostal = envio.DireccionPostal,
-                    EntregaEficiente = envio.EntregaEficiente
-                };
-                CUAltaEnvio.Ejecutar(envioDTO);
-            } 
-            else
+                    AltaEnvioDTO envioDTO = new AltaUrgenteDTO()
+                    {
+                        NumeroTracking = envio.NumeroTracking,
+                        PesoPaquete = envio.PesoPaquete,
+                        EmailCliente = envio.EmailCliente,
+                        Fecha = DateTime.Today,
+                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
+                        DireccionPostal = envio.DireccionPostal,
+                        EntregaEficiente = envio.EntregaEficiente
+                    };
+                    AltaSeguimientoDTO seguimientoDTO = new AltaSeguimientoDTO()
+                    {
+                        Fecha = DateTime.Today,
+                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
+                        Comentario = envio.Comentario,
+                    };
+                    CUAltaEnvio.Ejecutar(envioDTO, seguimientoDTO);
+                    return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
+                }
+                else
+                {
+                    throw new Exception("Valores no validos");
+                }
+            }
+            catch (Exception e)
             {
-                throw new Exception("Valores no validos");
+                ViewBag.MensajeError = e.Message;
+                return View("~/Views/Envio/Urgente/Crear.cshtml");
             }
         }
 

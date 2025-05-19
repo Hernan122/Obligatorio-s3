@@ -5,9 +5,16 @@ namespace Compartido.Mappers
 {
     public class UrgenteMapper
     {
-        public static Envio AltaUrgenteFromAltaUrgenteDTO(AltaUrgenteDTO envio)
+        public static Urgente UrgenteFromAltaUrgenteDTO(AltaUrgenteDTO envioDTO)
         {
-            return null;
+            return new Urgente()
+            {
+                NumeroTracking = envioDTO.NumeroTracking,
+                PesoPaquete = envioDTO.PesoPaquete,
+                FuncionarioId = envioDTO.FuncionarioId,
+                DireccionPostal = envioDTO.DireccionPostal,
+                EntregaEficiente = envioDTO.EntregaEficiente
+            };
         }
 
         public static void UrgenteFromBajaUrgenteDTO()

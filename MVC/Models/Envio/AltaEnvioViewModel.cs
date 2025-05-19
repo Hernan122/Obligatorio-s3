@@ -12,8 +12,12 @@ namespace MVC.Models.Envio
 
         [DisplayName("Email del Cliente")]
         public string EmailCliente { get; set; }
+
+        // Seguimiento
         public DateTime Fecha { get; set; }
         public int FuncionarioId { get; set; }
+        // Seguimiento
+        public string Comentario { get; set; }
         
     }
 }

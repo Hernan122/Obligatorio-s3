@@ -6,34 +6,64 @@ using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaNegocio.ExcepcionesEntidades;
+using Compartido.DTOs.SeguimientoDTO;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 {
     public class CUAltaEnvio : IAltaEnvio
     {
         private IRepositorioEnvio RepoEnvios { get; set; }
+        private IRepositorioUsuario RepoUsuario { get; set; }
+        private IRepositorioAgencia RepoAgencia { get; set; }
 
         public CUAltaEnvio(IRepositorioEnvio repoEnvios)
         {
             RepoEnvios = repoEnvios;
         }
 
-        public void Ejecutar(AltaEnvioDTO envioDTO)
+        public void Ejecutar(AltaEnvioDTO envioDTO, AltaSeguimientoDTO seguimientoDTO)
         {
-            Envio envio = null;
-            if (envioDTO is AltaComunDTO)
+
+            // Encontrar cliente existente
+            Usuario usuario = RepoUsuario.FindByEmail(envioDTO.EmailCliente);
+            if (usuario == null)
             {
-                envio = ComunMapper.AltaComunFromAltaComunDTO((AltaComunDTO)envioDTO);
+                throw new EnvioException("Cliente inexistente");
             }
-            else if (envioDTO is AltaUrgenteDTO)
+            
+            Envio envio = null;
+
+            if (envioDTO is AltaAgenciaDTO)
             {
-                envio = UrgenteMapper.AltaUrgenteFromAltaUrgenteDTO((AltaUrgenteDTO)envioDTO);
+                Comun comun = (Comun)envio;
+                AltaAgenciaDTO comunDTO = (AltaAgenciaDTO)envioDTO;
+                comun = ComunMapper.ComunFromAltaComunDTO(comunDTO);
+
+                // Encontrar agencia existente
+                Agencia agencia = RepoAgencia.FindByName(comunDTO.NombreAgencia);
+                if (agencia == null)
+                {
+                    throw new EnvioException("Agencia inexistente");
+                }
+
+                comun.AgenciaId = agencia.Id;
+                envio = comun;
             }
             else
             {
-                throw new EnvioException("No existe ese tipo de envio");
+                Urgente urgente = (Urgente)envio;
+                AltaUrgenteDTO urgenteDTO = (AltaUrgenteDTO)envioDTO;
+                urgente = UrgenteMapper.UrgenteFromAltaUrgenteDTO(urgenteDTO);
+                envio = urgente;
             }
-             RepoEnvios.Add(envio);
+
+            Seguimiento seguimiento = SeguimientoMapper.SeguimientoFromAltaSeguimientoDTO(seguimientoDTO);
+
+            envio.ClienteId = usuario.Id;
+            envio.FuncionarioId = envioDTO.FuncionarioId;
+            envio.Seguimientos.Add(seguimiento);
+
+            RepoEnvios.Add(envio);
         }
     }
 }
