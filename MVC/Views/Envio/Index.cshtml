@@ -47,13 +47,11 @@
                     @Html.DisplayFor(modelItem => item.FuncionarioId)
                 </td>
                 <td>
-                    @Html.ActionLink("Ver", "Detalles", new { id = item.Id }) |
-                    @* @Html.ActionLink("Editar", "EditarEnvio", new { id = item.Id }) | *@
-                    @Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id }) 
+                    <span>@Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id })</span>
+                    |
                     @if (item.Estado == Estado.EN_PROCESO)
                     {
-                        @* @Html.ActionLink("Cambiar a En Camino", "CambiarComentarioEnvio", new { id = item.Id, type = "EnCamino" })
-                        @Html.ActionLink("Cambiar a Listo para Retirar", "CambiarComentarioEnvio", new { id = item.Id, type=""}) *@
+                        <span>@Html.ActionLink("Editar", "Editar")</span>
                     }
                 </td>
             </tr>

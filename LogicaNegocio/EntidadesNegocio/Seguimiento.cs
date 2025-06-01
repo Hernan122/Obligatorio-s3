@@ -20,7 +20,7 @@ namespace LogicaNegocio.EntidadesNegocio
             Validar();
         }
 
-        public Seguimiento() { }
+        private Seguimiento() { }
 
         public bool Equals(Seguimiento? other)
         {

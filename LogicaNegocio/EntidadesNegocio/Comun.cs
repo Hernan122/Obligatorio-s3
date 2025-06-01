@@ -10,16 +10,13 @@ namespace LogicaNegocio.EntidadesNegocio
         [ForeignKey("Agencia")]
         public int AgenciaId { get; set; }
 
-        public Comun() { }
-
         public Comun(
             int agenciaId, 
             int numeroTracking, 
             int pesoPaquete, 
-            Estado estado, 
             int clienteId, 
             int funcionarioId
-        ) : base(numeroTracking, pesoPaquete, estado, clienteId, funcionarioId) {
+        ) : base(numeroTracking, pesoPaquete, clienteId, funcionarioId) {
             AgenciaId = agenciaId;
         }
 

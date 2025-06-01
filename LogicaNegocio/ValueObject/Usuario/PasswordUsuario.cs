@@ -20,19 +20,19 @@ namespace LogicaNegocio.ValueObject.Usuario
         {
             if (string.IsNullOrEmpty(Valor))
             {
-                throw new UsuarioException("Password obligatorio");
+                throw new UsuarioException("Contraseña obligatorio");
             }
             if (Valor.Length < 8)
             {
-                throw new UsuarioException("Valores deben ser mayores a 8");
+                throw new UsuarioException("Contraseña debe ser mayor a 8");
             }
             if (!Valor.Any(char.IsDigit))
             {
-                throw new UsuarioException("Password debe contener al menos un número");
+                throw new UsuarioException("Contraseña debe contener al menos un número");
             }
             if (!Valor.Any(char.IsUpper))
             {
-                throw new UsuarioException("Password debe contener al menos una letra mayúscula");
+                throw new UsuarioException("Contraseña debe contener al menos una letra mayúscula");
             }
         }
 

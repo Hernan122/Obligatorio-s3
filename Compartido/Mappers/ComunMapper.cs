@@ -1,33 +1,34 @@
 ﻿using Compartido.DTOs.EnvioDTO;
 using Compartido.DTOs.EnvioDTO.ComunDTO;
 using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ValueObject.Agencia;
 
 namespace Compartido.Mappers
 {
     public class ComunMapper
     {
-        public static Comun ComunFromAltaComunDTO(AltaEnvioDTO comunDTO)
+        public static Comun ComunFromAltaComunDTO(AltaEnvioDTO comunDTO, int clienteId, int agenciaId)
         {
-            return new Comun()
-            {
-                NumeroTracking = comunDTO.NumeroTracking,
-                PesoPaquete = comunDTO.PesoPaquete,
-                FuncionarioId = comunDTO.FuncionarioId,
-            };
+            return new Comun
+            (
+                agenciaId,
+                comunDTO.NumeroTracking,
+                comunDTO.PesoPaquete,
+                clienteId,
+                comunDTO.FuncionarioId
+            );
         }
 
         public static Comun ComunFromEditarComunDTO(EditarEnvioDTO envioDTO)
         {
-            Comun comun = new Comun()
-            {
-                Id = envioDTO.Id,
-                NumeroTracking = envioDTO.NumeroTracking,
-                PesoPaquete = envioDTO.PesoPaquete,
-                Estado = envioDTO.Estado,
-                ClienteId = envioDTO.ClienteId,
-                FuncionarioId = envioDTO.FuncionarioId,
-            };
-            return comun;
+            return new Comun
+            (
+                envioDTO.Id,
+                envioDTO.NumeroTracking,
+                envioDTO.PesoPaquete,
+                envioDTO.ClienteId,
+                envioDTO.FuncionarioId
+            );
         }
 
         public static VerDetallesComunDTO ComunToVerDetallesComunDTO(Comun comun)

@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\webapi\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\culoginusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\culoginusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|solutionrelative:webapi\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\compartido\\mappers\\usuariomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D834E58-BF2E-4ED6-BEF2-77372FBE8103}|Compartido\\Compartido.csproj|solutionrelative:compartido\\mappers\\usuariomapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81B627A0-27FE-43EF-966E-AF4E3ED107E4}|MVC\\MVC.csproj|solutionrelative:mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaplicacion\\implementacioncasosuso\\usuariocu\\cueditarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B542398F-88F9-485D-ADB1-359F8CB93283}|LogicaAplicacion\\LogicaAplicacion.csproj|solutionrelative:logicaaplicacion\\implementacioncasosuso\\usuariocu\\cueditarusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\democontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EnvioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\EnvioController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\EnvioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\EnvioController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\EnvioController.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAnwF8AAAAqAAAAAAAAAA==",
+              "Title": "CULoginUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CULoginUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CULoginUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CULoginUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CULoginUsuario.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA5wBoAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T23:43:24.158Z",
+              "WhenOpened": "2025-05-29T21:45:02.542Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "WebApi\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\WebApi\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "WebApi\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "DemoContext.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
+              "RelativeDocumentMoniker": "LogicaAccesoDatos\\DemoContext.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAccesoDatos\\DemoContext.cs",
+              "RelativeToolTip": "LogicaAccesoDatos\\DemoContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T23:43:23.188Z",
+              "WhenOpened": "2025-05-29T21:25:03.712Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EnvioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
-              "RelativeDocumentMoniker": "MVC\\Controllers\\EnvioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
-              "RelativeToolTip": "MVC\\Controllers\\EnvioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "CUEditarUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "RelativeDocumentMoniker": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "RelativeToolTip": "LogicaAplicacion\\ImplementacionCasosUso\\UsuarioCU\\CUEditarUsuario.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA2wB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T23:43:20.481Z",
+              "WhenOpened": "2025-05-29T21:13:26.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\UsuarioMapper.cs",
+              "RelativeDocumentMoniker": "Compartido\\Mappers\\UsuarioMapper.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Mappers\\UsuarioMapper.cs",
+              "RelativeToolTip": "Compartido\\Mappers\\UsuarioMapper.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAADgvyYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T21:12:11.068Z",
               "EditorCaption": ""
             }
           ]

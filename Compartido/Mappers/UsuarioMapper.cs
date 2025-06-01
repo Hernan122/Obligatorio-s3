@@ -9,33 +9,24 @@ namespace Compartido.Mappers
     {
         public static Usuario UsuarioFromAltaUsuarioDTO(AltaUsuarioDTO usuarioDTO)
         {
-            return new Usuario()
-            { 
-                Nombre = new NombreUsuario(usuarioDTO.NombreUsuario),
-                Email = usuarioDTO.Email,
-                Password = new PasswordUsuario(usuarioDTO.Password),
-                Rol = usuarioDTO.Rol
-            };
+            return new Usuario
+            (
+                usuarioDTO.NombreUsuario,
+                usuarioDTO.Email,
+                usuarioDTO.Password,
+                usuarioDTO.Rol
+            );
         }
 
-        public static Usuario UsuarioFromBajaUsuarioDTO(BajaUsuarioDTO usuarioDTO)
+        public static Usuario UsuarioFromEditarUsuarioDTO(EditarUsuarioDTO usuarioDTO, Rol rol)
         {
-            return new Usuario()
-            {
-                Id = usuarioDTO.Id
-            };
-        }
-
-        public static Usuario UsuarioFromEditarUsuarioDTO(EditarUsuarioDTO usuarioDTO)
-        {
-            return new Usuario()
-            { 
-                Id = usuarioDTO.Id,
-                Nombre = new NombreUsuario(usuarioDTO.NombreUsuario),
-                Email = usuarioDTO.Email,
-                Password = new PasswordUsuario(usuarioDTO.Password),
-                //Rol = usuarioDTO.Rol
-            };
+            return new Usuario
+            (
+                usuarioDTO.NombreUsuario,
+                usuarioDTO.Email,
+                usuarioDTO.Password,
+                rol
+            );
         }
 
         public static Usuario UsuarioFromLoginUsuarioDTO(LoginUsuarioDTO usuarioDTO)

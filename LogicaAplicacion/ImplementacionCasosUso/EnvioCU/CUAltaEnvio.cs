@@ -38,7 +38,6 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
             if (envioDTO is AltaComunDTO)
             {
                 AltaComunDTO comunDTO = (AltaComunDTO)envioDTO;
-                Comun comun = ComunMapper.ComunFromAltaComunDTO(comunDTO);
 
                 // Encontrar agencia existente
                 Agencia agencia = RepoAgencia.FindByName(comunDTO.NombreAgencia);
@@ -46,34 +45,22 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
                 {
                     throw new EnvioException("Agencia inexistente");
                 }
+                
+                Comun comun = ComunMapper.ComunFromAltaComunDTO(comunDTO, usuario.Id, agencia.Id);
 
-                comun.AgenciaId = agencia.Id;
                 envio = comun;
-                envio.ClienteId = usuario.Id;
-                envio.FuncionarioId = envioDTO.FuncionarioId;
             }
             else if (envioDTO is AltaUrgenteDTO)
             {
                 AltaUrgenteDTO urgenteDTO = (AltaUrgenteDTO)envioDTO;
-                Urgente urgente = UrgenteMapper.UrgenteFromAltaUrgenteDTO(urgenteDTO);
+                Urgente urgente = UrgenteMapper.UrgenteFromAltaUrgenteDTO(urgenteDTO, usuario.Id);
 
                 envio = urgente;
-                envio.ClienteId = usuario.Id;
-                envio.FuncionarioId = envioDTO.FuncionarioId;
             }
 
             Seguimiento seguimiento = SeguimientoMapper.SeguimientoFromAltaSeguimientoDTO(seguimientoDTO);
             envio.Seguimientos.Add(seguimiento);
-
-            if (envio is Comun)
-            {
-                RepoEnvios.Add((Comun)envio);
-            }
-            else
-            {
-                RepoEnvios.Add((Urgente)envio);
-            }
-
+            RepoEnvios.Add(envio);
         }
     }
 }

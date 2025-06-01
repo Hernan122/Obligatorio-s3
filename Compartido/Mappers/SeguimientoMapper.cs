@@ -7,32 +7,12 @@ namespace Compartido.Mappers
     {
         public static Seguimiento SeguimientoFromAltaSeguimientoDTO(AltaSeguimientoDTO seguimientoDTO)
         {
-            return new Seguimiento()
-            {
-                Fecha = seguimientoDTO.Fecha,
-                Comentario = seguimientoDTO.Comentario,
-                FuncionarioId = seguimientoDTO.FuncionarioId
-            };
-        }
-
-        public static void SeguimientoFromBajaSeguimientoDTO()
-        {
-
-        }
-
-        public static void SeguimientoFromEditarSeguimientoDTO()
-        {
-
-        }
-
-        public static void SeguimientoFromVerDetalleSeguimientoDTO()
-        {
-
-        }
-
-        public static void SeguimientoFromVerSeguimientoDTO()
-        {
-
+            return new Seguimiento
+            (
+                seguimientoDTO.Fecha,
+                seguimientoDTO.Comentario,
+                seguimientoDTO.FuncionarioId
+            );
         }
     }
 }

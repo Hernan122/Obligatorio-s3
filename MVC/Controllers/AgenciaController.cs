@@ -1,16 +1,12 @@
 ﻿using Compartido.DTOs.AgenciaDTO;
-using Compartido.DTOs.UsuarioDTO;
-using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
-using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
-using LogicaNegocio.EntidadesNegocio;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MVC.Filters;
 using MVC.Models.Agencia;
-using MVC.Models.Envio;
 
 namespace MVC.Controllers
 {
+    [Login]
     public class AgenciaController : Controller
     {
 
@@ -30,12 +26,6 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var rol = HttpContext.Session.GetString("Rol");
-            if (rol == "Cliente")
-            {
-                return Redirect("/Usuario/Login");
-            }
-
             var listadoAgenciaViewModel = new List<ListadoAgenciaViewModel>();
             try
             {
@@ -57,7 +47,6 @@ namespace MVC.Controllers
             }
         }
 
-        // GET: AgenciaController/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -102,13 +91,11 @@ namespace MVC.Controllers
             return View();
         }
 
-        // GET: AgenciaController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: AgenciaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -123,13 +110,11 @@ namespace MVC.Controllers
             }
         }
 
-        // GET: AgenciaController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: AgenciaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

@@ -25,7 +25,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
                 throw new ArgumentNullException("Datos incorrectos");
             }
             Usuario usuario = UsuarioMapper.UsuarioFromAltaUsuarioDTO(usuarioDTO);
-            Usuario buscarUsuario = RepoUsuarios.FindByEmail(usuario);
+            Usuario buscarUsuario = RepoUsuarios.FindByEmail(usuario.Email);
 
             if (buscarUsuario == null)
             {

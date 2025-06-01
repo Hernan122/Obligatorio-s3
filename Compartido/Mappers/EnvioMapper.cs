@@ -9,13 +9,11 @@ namespace Compartido.Mappers
     {
         public static Comun ComunFromEditarComunDTO(EditarComunDTO envioDTO)
         {
-            Comun envio = new Comun()
-            {
-                Id = envioDTO.Id,
-                NumeroTracking = envioDTO.NumeroTracking,
-
-            };
-            return envio;
+            return new Comun
+            (
+                envioDTO.Id,
+                envioDTO.NumeroTracking
+            );
         }
 
         public static VerDetallesComunDTO ComunToComunDTO(Comun envio)

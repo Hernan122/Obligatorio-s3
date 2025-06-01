@@ -13,8 +13,6 @@ namespace LogicaNegocio.EntidadesNegocio
         public string Email { get; set; }
         public PasswordUsuario Password { get; set; }
 
-        public Usuario() { }
-
         public Usuario(string nombre, string email, string password, Rol rol)
         {
             Nombre = new NombreUsuario(nombre);

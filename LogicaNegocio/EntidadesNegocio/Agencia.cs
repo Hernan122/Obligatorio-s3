@@ -26,10 +26,12 @@ namespace LogicaNegocio.EntidadesNegocio
             Validar();
         }
 
-        public Agencia() {}
-
         public void Validar()
         {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new AgenciaException("Nombre invalido");
+            }
         }
 
         public bool Equals(Agencia? other)

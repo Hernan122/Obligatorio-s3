@@ -19,13 +19,14 @@ namespace Compartido.Mappers
 
         public static Agencia AgenciaFromAltaAgenciaDTO(AltaAgenciaDTO agenciaDTO)
         {
-            return new Agencia()
-            {
-                UbPos = agenciaDTO.UbPos,
-                Ubicacion = new UbicacionAgencia(agenciaDTO.CoordenadasLatitud, agenciaDTO.CoordenadasLongitud),
-                Nombre = agenciaDTO.Nombre,
-                UsuarioId = agenciaDTO.UsuarioId
-            };
+            return new Agencia
+            (
+                agenciaDTO.UbPos,
+                agenciaDTO.CoordenadasLatitud, 
+                agenciaDTO.CoordenadasLongitud,
+                agenciaDTO.Nombre,
+                agenciaDTO.UsuarioId
+            );
         }
     }
 }

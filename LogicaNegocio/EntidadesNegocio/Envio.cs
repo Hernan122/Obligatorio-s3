@@ -21,26 +21,27 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public List<Seguimiento> Seguimientos = new List<Seguimiento>();
 
-        public Envio() { }
+        protected Envio() { }
 
-        public Envio (int numerotracking, int pesoPaquete, Estado estado, int clienteId, int funcionarioId)
+        public Envio (int numerotracking, int pesoPaquete, int clienteId, int funcionarioId)
         {
             NumeroTracking = numerotracking;
             PesoPaquete = pesoPaquete;
-            Estado = estado;
             ClienteId = clienteId;
             FuncionarioId = funcionarioId;
             Validar();
         }
 
-        //public Envio(int numeroTracking)
-        //{
-        //    NumeroTracking = numeroTracking;
-        //}
-
         public virtual void Validar()
         {
-
+            if (NumeroTracking <= 0)
+            {
+                throw new EnvioException("Numero de Tracking invalido");
+            }
+            if (PesoPaquete <= 0)
+            {
+                throw new EnvioException("Peso invalido");
+            }
         }
 
         public bool Equals(Envio? other)

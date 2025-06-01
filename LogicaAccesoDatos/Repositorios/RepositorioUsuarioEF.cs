@@ -68,13 +68,6 @@ namespace LogicaAccesoDatos.Repositorios
                     .FirstOrDefault();
         }
 
-        public Usuario FindByEmail(Usuario usuario)
-        {
-            return Contexto.Usuarios
-                    .Where(c => c.Email == usuario.Email)
-                    .FirstOrDefault();
-        }
-
         public Usuario FindByEmail(string email)
         {
             return Contexto.Usuarios
