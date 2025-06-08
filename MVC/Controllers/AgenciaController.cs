@@ -9,7 +9,6 @@ namespace MVC.Controllers
     [Login]
     public class AgenciaController : Controller
     {
-
         private IListadoAgencia CUListadoAgencia { get; set; }
         private IAltaAgencia CUAltaAgencia { get; set; }
 
@@ -61,6 +60,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult AltaAgencia(AltaAgenciaViewModel agencia)
         {
+            string mensaje;
             try
             {
                 if (ModelState.IsValid)
@@ -75,18 +75,25 @@ namespace MVC.Controllers
                     };
 
                     CUAltaAgencia.Ejecutar(agenciaDTO);
+                    ViewBag.Mensaje = "Agencia creada con exito";
                     return RedirectToAction(nameof(AltaAgencia), new { Mensaje = "Agencia creada" });
                 }
                 else
                 {
-                    throw new ArgumentNullException("Debe rellenar todos los valores");
+                    throw new ArgumentNullException();
                 }
+            }
+            catch (ArgumentNullException e)
+            {
+                mensaje = "Debe rellenar todos los valores";
+                ViewBag.MensajeError = mensaje;
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message;
-                //ViewBag.MensajeError += ", " + e.StackTrace;
-                ViewBag.MensajeError += ", " + e.InnerException;
+                mensaje = e.Message;
+                //mensaje += e.StackTrace;
+                //mensaje += e.InnerException;
+                ViewBag.MensajeError = mensaje;
             }
             return View();
         }

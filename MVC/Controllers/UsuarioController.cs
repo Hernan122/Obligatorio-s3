@@ -1,13 +1,12 @@
-﻿using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Compartido.DTOs.UsuarioDTO;
 using MVC.Models.Usuario;
-using Microsoft.AspNetCore.Http;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
-using System.Security.Cryptography.Xml;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
-using Compartido.ExcepcionesConflictos;
+using Compartido.DTOs.AuditoriaDTO;
+using MVC.Filters;
+using MVC.Models.Envio;
 
 namespace MVC.Controllers
 {
@@ -38,18 +37,12 @@ namespace MVC.Controllers
             CULoginUsuario = cuLoginUsuario;
         }
 
+        [Login]
         [HttpGet]
         public ActionResult Index(string mensaje, string mensajeError)
         {
-            //var rol = HttpContext.Session.GetString("Rol");
-            //if (rol != "Administrador")
-            //{
-            //    return RedirectToAction("Login");
-            //}
-
             ViewBag.Mensaje = mensaje;
             ViewBag.MensajeError = mensajeError;
-
             try
             {
                 var usuariosDTO = CUListadoUsuario.Ejecutar();
@@ -59,15 +52,20 @@ namespace MVC.Controllers
                     NombreUsuario = u.NombreUsuario,
                 }).ToList();
 
+                if (listadoUsuarioViewModel.Count() == 0)
+                {
+                    ViewBag.MensajeError = "No hay usuarios";
+                }
+
                 return View(listadoUsuarioViewModel);
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + ", " + e.StackTrace;
                 return View(new List<ListadoUsuarioViewModel>());
             }
         }
 
+        [Login]
         [HttpGet]
         public ActionResult AltaUsuario(string mensaje)
         {
@@ -75,6 +73,7 @@ namespace MVC.Controllers
             return View();
         }
 
+        [Login]
         [HttpPost]
         public ActionResult AltaUsuario(AltaUsuarioViewModel usuario) 
         {
@@ -87,22 +86,32 @@ namespace MVC.Controllers
                         NombreUsuario = usuario.Nombre,
                         Email = usuario.Email,
                         Password = usuario.Password,
-                        Rol = usuario.Rol,
+                        Rol = usuario.Rol
+                    };
+                    AuditoriaDTO auditoriaDTO = new AuditoriaDTO()
+                    {
+                        AccionRealizada = Accion.Agregado.ToString(),
+                        Fecha = DateTime.Now,
+                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id")
                     };
 
-                    CUAltaUsuario.Ejecutar(usuarioDTO);
+                    CUAltaUsuario.Ejecutar(usuarioDTO, auditoriaDTO);
                     return RedirectToAction(nameof(AltaUsuario), new { Mensaje = "Usuario agregado" });
                 }
                 else
                 {
-                    throw new ArgumentNullException("Debe rellenar todos los valores");
+                    throw new ArgumentNullException();
                 }
+            }
+            catch (ArgumentNullException e)
+            {
+                ViewBag.MensajeError = "Debe rellenar todos los valores";
             }
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message;
                 //ViewBag.MensajeError += ", " + e.StackTrace;
-                ViewBag.MensajeError += ", " + e.InnerException;
+                //ViewBag.MensajeError += e.InnerException;
             }
             return View();
         }
@@ -153,6 +162,7 @@ namespace MVC.Controllers
             }
         }
 
+        [Login]
         [HttpGet]
         public ActionResult VerDetallesUsuario(int id)
         {
@@ -177,10 +187,12 @@ namespace MVC.Controllers
             return View();
         }
 
+        [Login]
         [HttpGet]
         public ActionResult EditarUsuario(int id)
         {
             VerDetallesUsuarioViewModel usuarioViewModel = null;
+            string mensaje = "";
             try
             {
                 if (id < 0)
@@ -194,12 +206,14 @@ namespace MVC.Controllers
                     Nombre = usuarioDTO.NombreUsuario,
                     Email = usuarioDTO.Email,
                     Password = usuarioDTO.Password,
-                    //Rol = usuarioDTO.Rol
                 };
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
+                mensaje = e.Message;
+                mensaje += e.StackTrace;
+                mensaje += e.InnerException;
+                ViewBag.MensajeError = mensaje;
             }
             return View(usuarioViewModel);
         }
@@ -207,6 +221,7 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult EditarUsuario(EditarUsuarioViewModel usuario)
         {
+            string mensaje;
             try
             {
                 if (ModelState.IsValid)
@@ -217,50 +232,67 @@ namespace MVC.Controllers
                         NombreUsuario = usuario.Nombre,
                         Email = usuario.Email,
                         Password = usuario.Password,
-                        //Rol = usuario.Rol
                     };
-                    CUEditarUsuario.Ejecutar(usuarioDTO);
-                    ViewBag.Mensaje = "Editado con exito";
+                    AuditoriaDTO auditoriaDTO = new AuditoriaDTO
+                    {
+                        AccionRealizada = Accion.Editado.ToString(),
+                        Fecha = DateTime.Now,
+                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id")
+                    };
+
+                    CUEditarUsuario.Ejecutar(usuarioDTO, auditoriaDTO);
                     return RedirectToAction(nameof(Index), new { Mensaje = "Editado con exito" });
                 }
                 else
                 {
-                    throw new ArgumentNullException("Algunos valores no son correctos");
+                    throw new ArgumentNullException();
                 }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Algunos valores no son correctos";
             }
             catch (Exception e)
             {
-                string mensaje = e.Message + ", ";
-                //mensaje += e.StackTrace;
+                mensaje = e.Message;
+                mensaje += e.StackTrace;
                 mensaje += e.InnerException;
-                return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
             }
+            return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
         }
 
         [HttpGet]
         public ActionResult BajaUsuario(int id)
         {
-            int idActual = (int)HttpContext.Session.GetInt32("Id");
+            string mensaje;
             try
             {
-                if (id == idActual)
+                if (id == (int)HttpContext.Session.GetInt32("Id"))
                 {
-                    throw new ConflictException("No puedes eliminarte a ti mismo");
+                    throw new UsuarioException("No puedes eliminarte a ti mismo");
                 }
-                CUBajaUsuario.Ejecutar(id);
-                ViewBag.Mensaje = "Eliminado con exito";
-                return RedirectToAction(nameof(Index), new { Mensaje = "Eliminado con exito" });
-            }
-            catch (ConflictException e)
-            {
-                return RedirectToAction(nameof(Index), new { MensajeError = e.Message});
+
+                AuditoriaDTO auditoriaDTO = new AuditoriaDTO()
+                {
+                    AccionRealizada = Accion.Eliminado.ToString(),
+                    Fecha = DateTime.Now,
+                    FuncionarioId = (int)HttpContext.Session.GetInt32("Id")
+                };
+
+                CUBajaUsuario.Ejecutar(id, auditoriaDTO);
+
+                mensaje = "Eliminado con exito";
+                return RedirectToAction(nameof(Index), new { Mensaje = mensaje });
             }
             catch (Exception e)
             {
-                return RedirectToAction(nameof(Index), new { MensajeError = e.Message });
+                mensaje = e.InnerException.ToString();
+                //mensaje += e.Message;
+                return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
             }
         }
 
+        [HttpGet]
         public ActionResult Logout()
         {
             HttpContext.Session.Clear();

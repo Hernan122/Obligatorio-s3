@@ -1496,6 +1496,19 @@
           }
         }
       },
+      "Compartido/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "LogicaNegocio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Compartido.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Compartido.dll": {}
+        }
+      },
       "LogicaNegocio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -4044,6 +4057,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Compartido/1.0.0": {
+      "type": "project",
+      "path": "../Compartido/Compartido.csproj",
+      "msbuildProject": "../Compartido/Compartido.csproj"
+    },
     "LogicaNegocio/1.0.0": {
       "type": "project",
       "path": "../LogicaNegocio/LogicaNegocio.csproj",
@@ -4052,6 +4070,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Compartido >= 1.0.0",
       "LogicaNegocio >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.10",
@@ -4090,6 +4109,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Compartido.csproj": {
+              "projectPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Compartido.csproj"
+            },
             "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {
               "projectPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj"
             }

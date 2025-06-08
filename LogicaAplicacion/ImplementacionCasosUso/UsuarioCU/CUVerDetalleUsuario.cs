@@ -3,6 +3,7 @@ using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using Compartido.Mappers;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -22,14 +23,9 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             {
                 throw new UsuarioException("Usuario no existente");
             }
-            return new VerDetallesUsuarioDTO
-            {
-                Id = usuario.Id,
-                NombreUsuario = usuario.Nombre.Valor,
-                Email = usuario.Email,
-                Password = usuario.Password.Valor,
-                Rol = usuario.Rol
-            };
+
+            VerDetallesUsuarioDTO usuarioDTO = UsuarioMapper.VerDetallesUsuarioDTOFromUsuario(usuario);
+            return usuarioDTO;
         }
     }
 }

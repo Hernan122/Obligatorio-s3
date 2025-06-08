@@ -14,29 +14,17 @@ namespace WebApi.Controllers
     {
         private IListadoEnvio CUListadoEnvio { get; set; }
         private IAltaEnvio CUAltaEnvio { get; set; }
-        private IVerDetallesEnvio CUVerDetallesEnvio { get; set; }
         private IBajaEnvio CUBajaEnvio { get; set; }
-        private IEditarEnvio CUEditarEnvio { get; set; }
-        private IBuscarEnvio CUBuscarEnvio { get; set; }
         private ICambiarEstadoEnvio CUCambiarEstadoEnvio { get; set; }
-        private IObtenerEnvioPorTracking CUObtenerEnvioPorNumeroTracking { get; set; }
         public EnvioController(
             IListadoEnvio cuListadoEnvio,
             IAltaEnvio cuAltaEnvio,
-            IVerDetallesEnvio cuVerDetallesEnvio,
-            IBajaEnvio cuBajaEnvio,
-            IEditarEnvio cuEditarEnvio,
-            IBuscarEnvio cuBuscarEnvio,
-            IObtenerEnvioPorTracking cuObtenerEnvioPorNumeroTracking
+            IBajaEnvio cuBajaEnvio
         )
         {
             CUListadoEnvio = cuListadoEnvio;
             CUAltaEnvio = cuAltaEnvio;
-            CUVerDetallesEnvio = cuVerDetallesEnvio;
             CUBajaEnvio = cuBajaEnvio;
-            CUEditarEnvio = cuEditarEnvio;
-            CUBuscarEnvio = cuBuscarEnvio;
-            CUObtenerEnvioPorNumeroTracking = cuObtenerEnvioPorNumeroTracking;
         }
 
         // GET: api/<EnvioController>
@@ -84,7 +72,7 @@ namespace WebApi.Controllers
                 {
                     return BadRequest("El id recibido no es correcto");
                 }
-                return Ok(CUBuscarEnvio.Ejecutar(id));
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -98,7 +86,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                return Ok(CUObtenerEnvioPorNumeroTracking.Ejecutar(numeroTracking));
+                return Ok();
             }
             catch (Exception ex)
             {

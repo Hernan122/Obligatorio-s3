@@ -17,36 +17,28 @@ namespace MVC.Controllers
     {
         private IListadoEnvio CUListadoEnvio { get; set; }
         private IAltaEnvio CUAltaEnvio { get; set; }
-        private IVerDetallesEnvio CUVerDetallesEnvio { get; set; }
         private IBajaEnvio CUBajaEnvio { get; set; }
-        private IEditarEnvio CUEditarEnvio { get; set; }
-        private IBuscarEnvio CUBuscarEnvio { get; set; }
         private ICambiarEstadoEnvio CUCambiarEstadoEnvio { get; set; }
         public EnvioController(
             IListadoEnvio cuListadoEnvio,
             IAltaEnvio cuAltaEnvio,
-            IVerDetallesEnvio cuVerDetallesEnvio,
-            IBajaEnvio cuBajaEnvio,
-            IEditarEnvio cuEditarEnvio,
-            IBuscarEnvio cuBuscarEnvio
+            IBajaEnvio cuBajaEnvio
         )
         {
             CUListadoEnvio = cuListadoEnvio;
             CUAltaEnvio = cuAltaEnvio;
-            CUVerDetallesEnvio = cuVerDetallesEnvio;
             CUBajaEnvio = cuBajaEnvio;
-            CUEditarEnvio = cuEditarEnvio;
-            CUBuscarEnvio = cuBuscarEnvio;
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string mensaje, string mensajeError)
         {
-            var listadoEnviosViewModel = new List<ListadoEnvioViewModel>();
+            ViewBag.Mensaje = mensaje;
+            ViewBag.MensajeError = mensajeError;
             try
             {
                 var enviosDTO = CUListadoEnvio.Ejecutar();
-                listadoEnviosViewModel = enviosDTO.Select(u => new ListadoEnvioViewModel()
+                var listadoEnviosViewModel = enviosDTO.Select(u => new ListadoEnvioViewModel()
                 {
                     Id = u.Id,
                     NumeroTracking = u.NumeroTracking,
@@ -58,28 +50,30 @@ namespace MVC.Controllers
                 {
                     ViewBag.MensajeError = "No hay envios";
                 }
+
                 return View(listadoEnviosViewModel);
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message;
-                ViewBag.MensajeError += ", " + e.InnerException;
-                ViewBag.MensajeError += ", " + e.StackTrace;
-                return View(listadoEnviosViewModel);
+                mensaje = e.Message;
+                //mensaje += e.InnerException;
+                //mensaje += e.StackTrace;
+                ViewBag.MensajeError = mensaje;
+                return View(new List<ListadoEnvioViewModel>());
             }
 
             /* 
                 HttpClient cliente = new HttpClient();
                 Tast<HttpResponseMessage> tarea = cliente.GetAsync("https://localhost:5031/api/Envio");
                 tarea.Wait();
-                HttpResponseMessage respuesta = tarea.Result;
+                HttpResponseMessage respuesta = tarea.Result; // Codigo de estado de la respuesta (200)
 
                 HttpContento contenido = respuesta.Content;
                 Task<string> body = contenido.ReadAsStringAsync();
                 body.Wait();
                 string datos = body.Result;
 
-                if (respuesta.IsSuccessStatusCode) {
+                if (respuesta.IsSuccessStatusCode) { // si respuesta es 200
                     listadoEnviosViewModel = JsonConvert.DeserealizeObject<List<DatoEnvioViewModel>>(datos);
                 } else {
                     ViewBag.Mensaje = datos;
@@ -112,48 +106,57 @@ namespace MVC.Controllers
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message;
-                return View("CrearEnvio");
+                return View(nameof(CrearEnvio));
             }
         }
 
+        [HttpPost]
         public ActionResult CrearEnvioComun(AltaComunViewModel envio)
         {
+            string mensaje = "";
             try
             {
                 if (ModelState.IsValid)
                 {
-                    AltaEnvioDTO envioDTO = new AltaComunDTO()
+                    AltaEnvioDTO envioDTO = new AltaComunDTO
                     {
                         NumeroTracking = envio.NumeroTracking,
                         PesoPaquete = envio.PesoPaquete,
                         EmailCliente = envio.EmailCliente,
-                        Fecha = DateTime.Today,
                         FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
+                        Fecha = DateTime.Today,
                         NombreAgencia = envio.NombreAgencia
                     };
-                    AltaSeguimientoDTO seguimientoDTO = new AltaSeguimientoDTO()
+                    AltaSeguimientoDTO seguimientoDTO = new()
                     {
                         Fecha = DateTime.Today,
                         FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
                     };
                     CUAltaEnvio.Ejecutar(envioDTO, seguimientoDTO);
-                    return RedirectToAction(nameof(Index), new { Mensaje = "Envio creado con exito" });
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Envio Comun creado con exito" });
                 }
                 else
                 {
-                    throw new Exception("Valores no validos");
+                    throw new ArgumentNullException();
                 }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Debe rellenar todos los valores";
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message;
-                ViewBag.MensajeError += e.InnerException;
-                return View("~/Views/Envio/Comun/Crear.cshtml");
+                mensaje = e.Message;
+                mensaje += e.InnerException;
             }
+            ViewBag.MensajeError = mensaje;
+            return View($"~/Views/Envio/Comun/Crear.cshtml");
         }
 
+        [HttpPost]
         public ActionResult CrearEnvioUrgente(AltaUrgenteViewModel envio)
         {
+            string mensaje;
             try
             {
                 if (ModelState.IsValid)
@@ -168,30 +171,35 @@ namespace MVC.Controllers
                         DireccionPostal = envio.DireccionPostal,
                         EntregaEficiente = envio.EntregaEficiente
                     };
-                    AltaSeguimientoDTO seguimientoDTO = new AltaSeguimientoDTO()
+                    AltaSeguimientoDTO seguimientoDTO = new ()
                     {
                         Fecha = DateTime.Today,
                         FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-                        //Comentario = envio.Comentario,
                     };
                     CUAltaEnvio.Ejecutar(envioDTO, seguimientoDTO);
-                    return RedirectToAction("CrearEnvio", new { Mensaje = "Envio creado con exito" });
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Envio Urgente creado con exito" });
                 }
                 else
                 {
-                    throw new Exception("Valores no validos");
+                    throw new ArgumentNullException();
                 }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Debe rellenar todos los valores";
             }
             catch (Exception e)
             {
-                ViewBag.MensajeError = e.Message;
-                return View("~/Views/Envio/Urgente/Crear.cshtml");
+                mensaje = e.Message;
             }
+            ViewBag.MensajeError = mensaje;
+            return View($"~/Views/Envio/Urgente/Crear.cshtml");
         }
 
         [HttpGet]
         public ActionResult BajaEnvio(int id)
         {
+            string mensaje;
             try
             {
                 CUBajaEnvio.Ejecutar(id);
@@ -199,27 +207,11 @@ namespace MVC.Controllers
             }
             catch (Exception e)
             {
-                //ViewBag.MensajeError = e.Message;
-                //ViewBag.MensajeError += ", " + e.StackTrace;
-                //ViewBag.MensajeError += ", " + e.InnerException;
-                return RedirectToAction(nameof(Index), new { MensajeError = e.Message });
+                mensaje = e.Message;
+                //mensaje += e.StackTrace;
+                //mensaje += e.InnerException;
             }
-        }
-
-        [HttpPost]
-        public ActionResult CambiarComentarioEnvio(int id, string type)
-        {
-            AltaSeguimientoDTO seguimientoDTO = new AltaSeguimientoDTO()
-            {
-                Fecha = DateTime.Today,
-                FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-            };
-            CUCambiarEstadoEnvio.Ejecutar(id, type, seguimientoDTO);
-            if (type == "EnCamino")
-            {
-
-            }
-            return View();
+            return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
         }
     }
 }

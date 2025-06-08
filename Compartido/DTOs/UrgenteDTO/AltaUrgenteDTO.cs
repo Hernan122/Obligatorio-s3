@@ -1,6 +1,4 @@
-﻿using LogicaNegocio.EntidadesNegocio;
-
-namespace Compartido.DTOs.EnvioUrgenteDTO
+﻿namespace Compartido.DTOs.EnvioUrgenteDTO
 {
     public class AltaUrgenteDTO
     {

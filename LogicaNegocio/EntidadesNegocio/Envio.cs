@@ -6,7 +6,7 @@ namespace LogicaNegocio.EntidadesNegocio
     public abstract class Envio : IEquatable<Envio>
     {
         public int Id { get; set; }
-        public int NumeroTracking { get; set; }
+        public string NumeroTracking { get; set; }
         public int PesoPaquete { get; set; }
         public Estado Estado { get; set; } = Estado.EN_PROCESO;
         public Usuario Cliente { get; set; }
@@ -19,11 +19,11 @@ namespace LogicaNegocio.EntidadesNegocio
         [ForeignKey("Funcionario")]
         public int FuncionarioId { get; set; }
 
-        public List<Seguimiento> Seguimientos = new List<Seguimiento>();
+        public IEnumerable<Seguimiento> Seguimientos = new List<Seguimiento>();
 
         protected Envio() { }
 
-        public Envio (int numerotracking, int pesoPaquete, int clienteId, int funcionarioId)
+        public Envio (string numerotracking, int pesoPaquete, int clienteId, int funcionarioId)
         {
             NumeroTracking = numerotracking;
             PesoPaquete = pesoPaquete;
@@ -34,9 +34,17 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public virtual void Validar()
         {
-            if (NumeroTracking <= 0)
+            if (NumeroTracking.Length > 8)
             {
-                throw new EnvioException("Numero de Tracking invalido");
+                throw new EnvioException("Numero de Tracking: Limite permitido de 8 numeros");
+            }
+            if (!int.TryParse(NumeroTracking, out int n))
+            {
+                throw new EnvioException("Numero de Tracking: debe contener solo numeros");
+            }
+            if (int.Parse(NumeroTracking) < 0)
+            {
+                throw new EnvioException("Numero de Tracking: no puede ser negativo");
             }
             if (PesoPaquete <= 0)
             {

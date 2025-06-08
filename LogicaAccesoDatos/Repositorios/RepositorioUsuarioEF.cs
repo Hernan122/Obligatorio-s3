@@ -1,7 +1,8 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
-using LogicaNegocio.ValueObject.Usuario;
+using Compartido.ExcepcionesConflictos;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogicaAccesoDatos.Repositorios
 {
@@ -16,14 +17,15 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Add(Usuario usuario)
         {
-            if (!Contexto.Usuarios.Contains(usuario))
+            Usuario usuarioTemp = FindByEmail(usuario.Email);
+            if (usuarioTemp == null)
             {
                 Contexto.Usuarios.Add(usuario);
                 Contexto.SaveChanges();
             }
             else
             {
-                throw new UsuarioException("Usuario ya existente");
+                throw new ConflictException("Correo ya existente");
             }
         }
 
@@ -40,7 +42,9 @@ namespace LogicaAccesoDatos.Repositorios
 
         public IEnumerable<Usuario> FindAll()
         {
-            return Contexto.Usuarios;
+            return Contexto.Usuarios
+                .Where(u => u.Auditorias.All(a => a.AccionRealizada != Accion.Eliminado) && u.Rol != Rol.Administrador)
+                .ToList();
         }
 
         public Usuario FindById(int id)
@@ -52,28 +56,43 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Update(Usuario usuario)
         {
-            Usuario newUsuario = FindById(usuario.Id);
-            if (newUsuario == null)
+            Usuario findUserByRepeatedEmail = FindByRepeatedEmail(usuario.Email, usuario.Id);
+            if (findUserByRepeatedEmail == null)
             {
-                throw new UsuarioException("No se encontro al usuario a actualizar");
+                Usuario usuarioEditado = FindById(usuario.Id);
+                usuarioEditado.Nombre = usuario.Nombre;
+                usuarioEditado.Email = usuario.Email;
+                usuarioEditado.Password = usuario.Password;
+                usuarioEditado.Auditorias = usuario.Auditorias;
+
+                Contexto.Usuarios.Update(usuarioEditado);
+                Contexto.SaveChanges();
             }
-            Contexto.Usuarios.Update(usuario);
-            Contexto.SaveChanges();
+            else
+            {
+                throw new ConflictException("Ya existe otro usuario con ese correo");
+            }
         }
 
-        public Usuario FindByEmailAndPassword(Usuario usuario)
+        public Usuario FindByEmailAndPassword(string email, string password)
         {
             return Contexto.Usuarios
-                    .Where(c => c.Email == usuario.Email && c.Password == usuario.Password)
-                    .FirstOrDefault();
+                    .Where(c => c.Email == email && c.Password.Valor == password)
+                    .SingleOrDefault();
         }
 
         public Usuario FindByEmail(string email)
         {
             return Contexto.Usuarios
                     .Where(c => c.Email == email)
-                    .FirstOrDefault();
+                    .SingleOrDefault();
         }
 
+        public Usuario FindByRepeatedEmail(string email, int id)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Email == email && c.Id != id)
+                    .SingleOrDefault();
+        }
     }
 }

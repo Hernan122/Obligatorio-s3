@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace LogicaNegocio.ValueObject.Agencia
+namespace LogicaNegocio.ValueObject
 {
-    [ComplexType]
+    [Owned]
     public record UbicacionAgencia
     {
-        public int CoordenadasLatitud { get; init; }
-        public int CoordenadasLongitud { get; init; }
+        public int CoordenadasLatitud { get; private set; }
+        public int CoordenadasLongitud { get; private set; }
 
         public UbicacionAgencia() { }
 
@@ -14,13 +14,6 @@ namespace LogicaNegocio.ValueObject.Agencia
         {
             CoordenadasLatitud = coordenadasLatitud;
             CoordenadasLongitud = coordenadasLongitud;
-            Validar();
         }
-
-        private void Validar()
-        {
-
-        }
-
     }
 }

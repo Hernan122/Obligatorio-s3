@@ -1,6 +1,4 @@
-﻿using LogicaNegocio.EntidadesNegocio;
-
-namespace Compartido.DTOs.UsuarioDTO
+﻿namespace Compartido.DTOs.UsuarioDTO
 {
     public class InformacionUsuarioLogueadoViewModelDTO
     {

@@ -1,5 +1,4 @@
-﻿using Compartido.DTOs.EnvioDTO;
-using Compartido.DTOs.SeguimientoDTO;
+﻿using Compartido.DTOs.SeguimientoDTO;
 using Compartido.Mappers;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.EntidadesNegocio;
@@ -27,10 +26,10 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
             seguimientoDTO.Comentario = type;
 
             Seguimiento seguimiento = SeguimientoMapper.SeguimientoFromAltaSeguimientoDTO(seguimientoDTO);
-            envio.Seguimientos.Add(seguimiento);
-
+            List<Seguimiento> seguimientos = envio.Seguimientos.ToList();
+            seguimientos.Add(seguimiento);
+            envio.Seguimientos = seguimientos;
             RepoEnvios.Update(envio);
         }
-
     }
 }

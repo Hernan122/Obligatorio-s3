@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.EntityFrameworkCore;
 
-namespace LogicaNegocio.ValueObject.Usuario
+namespace LogicaNegocio.ValueObject
 {
-    [ComplexType]
+    [Owned]
     public record PasswordUsuario
     {
-        public string Valor { get; set; }
+        public string Valor { get; private set; }
 
         public PasswordUsuario() { }
 
@@ -20,7 +21,7 @@ namespace LogicaNegocio.ValueObject.Usuario
         {
             if (string.IsNullOrEmpty(Valor))
             {
-                throw new UsuarioException("Contraseña obligatorio");
+                throw new UsuarioException("Contraseña obligatoria");
             }
             if (Valor.Length < 8)
             {
@@ -35,6 +36,5 @@ namespace LogicaNegocio.ValueObject.Usuario
                 throw new UsuarioException("Contraseña debe contener al menos una letra mayúscula");
             }
         }
-
     }
 }

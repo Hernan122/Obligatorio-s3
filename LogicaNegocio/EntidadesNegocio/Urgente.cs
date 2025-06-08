@@ -7,10 +7,11 @@ namespace LogicaNegocio.EntidadesNegocio
         public int DireccionPostal { get; set; }
         public bool EntregaEficiente { get; set; }
 
+        private Urgente() { }
         public Urgente(
             int direccionPostal,
             bool entregaEficiente,
-            int numeroTracking,
+            string numeroTracking,
             int pesoPaquete,
             int clienteId,
             int funcionarioId

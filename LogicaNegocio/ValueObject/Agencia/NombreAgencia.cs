@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using LogicaNegocio.ExcepcionesEntidades;
+﻿using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.EntityFrameworkCore;
 
-namespace LogicaNegocio.ValueObject.Agencia
+namespace LogicaNegocio.ValueObject
 {
-    [ComplexType]
+    [Owned]
     public record NombreAgencia
     {
-        public string Valor { get; init; }
+        public string Valor { get; private set; }
 
         public NombreAgencia() { }
 

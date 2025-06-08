@@ -10,9 +10,11 @@ namespace LogicaNegocio.EntidadesNegocio
         [ForeignKey("Agencia")]
         public int AgenciaId { get; set; }
 
+        private Comun() { }
+
         public Comun(
             int agenciaId, 
-            int numeroTracking, 
+            string numeroTracking, 
             int pesoPaquete, 
             int clienteId, 
             int funcionarioId
@@ -23,6 +25,10 @@ namespace LogicaNegocio.EntidadesNegocio
         public override void Validar()
         {
             base.Validar();
+            if (AgenciaId < 0)
+            {
+                throw new EnvioException("Debe ingresar una Agencia valida");
+            }
         }
 
         public bool Equals(Comun other)

@@ -15,14 +15,15 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Add(Envio item)
         {
-            if (!Contexto.Envios.Contains(item))
+            Envio envioTemp = FindByNumeroTracking(item.NumeroTracking, item.Id);
+            if (envioTemp == null)
             {
                 Contexto.Envios.Add(item);
                 Contexto.SaveChanges();
             }
             else
             {
-                throw new EnvioException("Envio ya existente");
+                throw new EnvioException("Ya existe un Envio con ese Numero de Tracking");
             }
         }
 
@@ -57,19 +58,22 @@ namespace LogicaAccesoDatos.Repositorios
         public void Update(Envio item)
         {
             Envio nuevoEnvio = FindById(item.Id);
-            if (nuevoEnvio == null)
+            if (nuevoEnvio != null)
             {
-                throw new EnvioException("No se encontro al envio");
+                Contexto.Envios.Update(nuevoEnvio);
+                Contexto.SaveChanges();
             }
-            Contexto.Envios.Update(nuevoEnvio);
-            Contexto.SaveChanges();
+            else
+            {
+                throw new EnvioException("Ya existe un Envio con ese Numero de Tracking");
+            }
         }
 
-        public Envio FindByNumeroTracking(int numeroTracking)
+        public Envio FindByNumeroTracking(string numeroTracking, int id)
         {
             return Contexto.Envios
-                    .Where(c => c.NumeroTracking == numeroTracking)
-                    .SingleOrDefault();
+                    .Where(c => c.NumeroTracking == numeroTracking && c.Id != id)
+                    .FirstOrDefault();
         }
 
     }

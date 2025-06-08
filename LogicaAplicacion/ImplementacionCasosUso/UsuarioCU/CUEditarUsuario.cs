@@ -4,6 +4,7 @@ using LogicaNegocio.ExcepcionesEntidades;
 using Compartido.Mappers;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using Compartido.DTOs.AuditoriaDTO;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -16,16 +17,18 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public void Ejecutar(EditarUsuarioDTO usuarioDTO)
+        public void Ejecutar(EditarUsuarioDTO usuarioDTO, AuditoriaDTO auditoriaDTO)
         {
-            Usuario rolUsuario = RepoUsuarios.FindById(usuarioDTO.Id);
-            if (rolUsuario == null)
-            {
-                throw new UsuarioException("Usuario no encontrado");
-            }
-            Usuario usuario = UsuarioMapper.UsuarioFromEditarUsuarioDTO(usuarioDTO, rolUsuario.Rol);
+            Rol rolUsuario = RepoUsuarios.FindById(usuarioDTO.Id).Rol;
+            Usuario usuario = UsuarioMapper.UsuarioFromEditarUsuarioDTO(usuarioDTO, rolUsuario);
+            usuario.Id = usuarioDTO.Id;
+            //RepoUsuarios.Update(usuario);
+
+            Auditoria auditoria = AuditoriaMapper.AuditoriaFromAuditoriaDTO(auditoriaDTO);
+            List<Auditoria> auditorias = usuario.Auditorias.ToList();
+            auditorias.Add(auditoria);
+            usuario.Auditorias = auditorias;
             RepoUsuarios.Update(usuario);
         }
-
     }
 }

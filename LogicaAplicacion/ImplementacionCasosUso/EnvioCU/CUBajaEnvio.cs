@@ -1,7 +1,5 @@
 ﻿using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.InterfacesRepositorios;
-using LogicaNegocio.EntidadesNegocio;
-using LogicaNegocio.ExcepcionesEntidades;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 {

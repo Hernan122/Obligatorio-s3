@@ -49,7 +49,7 @@
                 <td>
                     <span>@Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id })</span>
                     |
-                    @if (item.Estado == Estado.EN_PROCESO)
+                    @if (item.Estado == Estado.EN_PROCESO.ToString())
                     {
                         <span>@Html.ActionLink("Editar", "Editar")</span>
                     }

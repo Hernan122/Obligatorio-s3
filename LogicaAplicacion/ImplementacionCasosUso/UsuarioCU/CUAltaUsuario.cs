@@ -4,6 +4,7 @@ using LogicaNegocio.InterfacesRepositorios;
 using Compartido.DTOs.UsuarioDTO;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaNegocio.ExcepcionesEntidades;
+using Compartido.DTOs.AuditoriaDTO;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -12,29 +13,21 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 
         private IRepositorioUsuario RepoUsuarios { get; set; }
 
-        // Inyección de dependencia
         public CUAltaUsuario(IRepositorioUsuario repoUsuarios) 
         {
             RepoUsuarios = repoUsuarios;
         }
 
-        public void Ejecutar(AltaUsuarioDTO usuarioDTO)
+        public void Ejecutar(AltaUsuarioDTO usuarioDTO, AuditoriaDTO auditoriaDTO)
         {
-            if (usuarioDTO == null)
-            {
-                throw new ArgumentNullException("Datos incorrectos");
-            }
             Usuario usuario = UsuarioMapper.UsuarioFromAltaUsuarioDTO(usuarioDTO);
-            Usuario buscarUsuario = RepoUsuarios.FindByEmail(usuario.Email);
 
-            if (buscarUsuario == null)
-            {
-                RepoUsuarios.Add(usuario);
-            }
-            else
-            {
-                throw new UsuarioException("Ya existe un usuario con ese correo");
-            }
+            // Agregamos auditoria
+            Auditoria auditoria = AuditoriaMapper.AuditoriaFromAuditoriaDTO(auditoriaDTO);
+            List<Auditoria> auditorias = usuario.Auditorias.ToList();
+            auditorias.Add(auditoria);
+            usuario.Auditorias = auditorias;
+            RepoUsuarios.Add(usuario);
         }
     }
 }

@@ -25,10 +25,7 @@ namespace WebApi
             builder.Services.AddScoped<IRepositorioEnvio, RepositorioEnvioEF>();
             builder.Services.AddScoped<IAltaEnvio, CUAltaEnvio>();
             builder.Services.AddScoped<IBajaEnvio, CUBajaEnvio>();
-            builder.Services.AddScoped<IEditarEnvio, CUEditarEnvio>();
             builder.Services.AddScoped<IListadoEnvio, CUListadoEnvio>();
-            builder.Services.AddScoped<IVerDetallesEnvio, CUVerDetallesEnvio>();
-            builder.Services.AddScoped<IBuscarEnvio, CUBuscarEnvio>();
             builder.Services.AddScoped<ICambiarEstadoEnvio, CUCambiarEstadoEnvio>();
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IAltaUsuario, CUAltaUsuario>();
@@ -37,9 +34,6 @@ namespace WebApi
             builder.Services.AddScoped<IListadoUsuario, CUListadoUsuario>();
             builder.Services.AddScoped<ILoginUsuario, CULoginUsuario>();
             builder.Services.AddScoped<IVerDetalleUsuario, CUVerDetalleUsuario>();
-
-            builder.Services.AddScoped<IObtenerEnvioPorTracking, CUObtenerEnvioPorTracking>();
-
 
             string cadenaConexion = builder.Configuration.GetConnectionString("cadenaConexion");
             builder.Services.AddDbContext<DemoContext>(option => option.UseSqlServer(cadenaConexion));

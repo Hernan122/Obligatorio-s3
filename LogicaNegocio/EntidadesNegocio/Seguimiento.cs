@@ -7,33 +7,23 @@ namespace LogicaNegocio.EntidadesNegocio
     {
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
-        public string Comentario { get; set; } = "Ingresado en agencia de origen";
+        public string Comentario { get; set; }
         public Usuario Funcionario { get; set; }
 
         [ForeignKey("Funcionario")]
         public int FuncionarioId { get; set; }
 
-        public Seguimiento(DateTime fecha, string comentario, int funcionarioId) { 
+        public Seguimiento(DateTime fecha, string comentario, int funcionarioId) {
             Fecha = fecha;
             Comentario = comentario;
             FuncionarioId = funcionarioId;
-            Validar();
         }
 
         private Seguimiento() { }
 
         public bool Equals(Seguimiento? other)
         {
-            return Id == other.Id;
+            return Id == other.Id || Comentario == other.Comentario;
         }
-
-        public void Validar()
-        {
-            if (Funcionario.Rol == Rol.Cliente)
-            {
-                throw new SeguimientoException("Cliente no puede agregar envios");
-            }
-        }
-
     }
 }

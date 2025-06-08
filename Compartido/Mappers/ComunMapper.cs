@@ -1,7 +1,7 @@
 ﻿using Compartido.DTOs.EnvioDTO;
 using Compartido.DTOs.EnvioDTO.ComunDTO;
 using LogicaNegocio.EntidadesNegocio;
-using LogicaNegocio.ValueObject.Agencia;
+using LogicaNegocio.ValueObject;
 
 namespace Compartido.Mappers
 {
@@ -29,19 +29,6 @@ namespace Compartido.Mappers
                 envioDTO.ClienteId,
                 envioDTO.FuncionarioId
             );
-        }
-
-        public static VerDetallesComunDTO ComunToVerDetallesComunDTO(Comun comun)
-        {
-            return new VerDetallesComunDTO()
-            {
-                Id = comun.Id,
-                NumeroTracking = comun.NumeroTracking,
-                PesoPaquete = comun.PesoPaquete,
-                Estado = comun.Estado,
-                ClienteId = comun.ClienteId,
-                FuncionarioId = comun.FuncionarioId,
-            };
         }
     }
 }

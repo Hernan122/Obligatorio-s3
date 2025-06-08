@@ -1,8 +1,6 @@
 ﻿using Compartido.DTOs.UsuarioDTO;
 using Compartido.Mappers;
-using LogicaAccesoDatos.Repositorios;
 using LogicaNegocio.EntidadesNegocio;
-using LogicaNegocio.ValueObject.Usuario;
 using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaNegocio.ExcepcionesEntidades;
@@ -20,24 +18,17 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 
         public InformacionUsuarioLogueadoViewModelDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
         {
-            if (usuarioDTO == null)
-            {
-                throw new UsuarioException("Objeto nulo");
-            }
-            Usuario usuario = UsuarioMapper.UsuarioFromLoginUsuarioDTO(usuarioDTO);
-            Usuario usuarioEncontrado = RepoUsuarios.FindByEmailAndPassword(usuario);
-
-            if (usuarioEncontrado == null)
+            Usuario usuario = RepoUsuarios.FindByEmailAndPassword(usuarioDTO.Email, usuarioDTO.Password);
+            if (usuario == null)
             {
                 throw new Exception("Usuario inexistente o credenciales incorrectas");
             }
 
             return new InformacionUsuarioLogueadoViewModelDTO()
             {
-                Id = usuarioEncontrado.Id,
-                Rol = usuarioEncontrado.Rol.ToString()
+                Id = usuario.Id,
+                Rol = usuario.Rol.ToString()
             };
         }
-
     }
 }

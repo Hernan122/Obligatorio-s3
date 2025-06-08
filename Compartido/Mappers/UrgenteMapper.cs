@@ -18,42 +18,5 @@ namespace Compartido.Mappers
                 envioDTO.FuncionarioId
             );
         }
-
-        public static void UrgenteFromBajaUrgenteDTO()
-        {
-
-        }
-
-        public static Urgente UrgenteFromEditarUrgenteDTO(EditarUrgenteDTO envioDTO)
-        {
-            Urgente comun = new Urgente()
-            {
-                Id = envioDTO.Id,
-                NumeroTracking = envioDTO.NumeroTracking,
-                PesoPaquete = envioDTO.PesoPaquete,
-                Estado = envioDTO.Estado,
-                ClienteId = envioDTO.ClienteId,
-                FuncionarioId = envioDTO.FuncionarioId,
-            };
-            return comun;
-        }
-
-        public static void UrgenteFromVerDetalleUrgenteDTO()
-        {
-
-        }
-
-        public static void UrgenteFromVerUrgenteDTO()
-        {
-
-        }
-
-        public static VerDetallesUrgenteDTO UrgenteToVerDetallesUrgenteDTO(Urgente urgente)
-        {
-            return new VerDetallesUrgenteDTO()
-            {
-            };
-        }
-
     }
 }

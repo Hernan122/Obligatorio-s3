@@ -1,7 +1,6 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LogicaAccesoDatos.Repositorios
 {
@@ -17,7 +16,8 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Add(Agencia item)
         {
-            if (!Contexto.Agencias.Contains(item))
+            Agencia agenciaTemp = FindById(item.Id);
+            if (agenciaTemp == null)
             {
                 Contexto.Agencias.Add(item);
                 Contexto.SaveChanges();
@@ -66,7 +66,7 @@ namespace LogicaAccesoDatos.Repositorios
         {
             return Contexto.Agencias
                     .Where(c => c.Nombre == nombre)
-                    .FirstOrDefault();
+                    .SingleOrDefault();
         }
     }
 }

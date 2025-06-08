@@ -1,38 +1,57 @@
 ﻿using LogicaNegocio.ExcepcionesEntidades;
-using LogicaNegocio.ValueObject.Usuario;
+using LogicaNegocio.ValueObject;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogicaNegocio.EntidadesNegocio
 {
     [Index(nameof(Email), IsUnique = true)]
-    public class Usuario : IEquatable<Usuario>
+    public class Usuario
     {
         public int Id { get; set; }
         public Rol Rol { get; set; }
-        public NombreUsuario Nombre { get; set; }
+        public string Nombre { get; set; }
         public string Email { get; set; }
         public PasswordUsuario Password { get; set; }
+        public IEnumerable<Auditoria> Auditorias { get; set; } = new List<Auditoria>();
 
-        public Usuario(string nombre, string email, string password, Rol rol)
+        private Usuario() { }
+
+        public Usuario(string nombre, string email, string password, string rol)
         {
-            Nombre = new NombreUsuario(nombre);
+            Nombre = nombre;
             Email = email;
             Password = new PasswordUsuario(password);
-            Rol = rol;
+            Rol = AsignarRol(rol);
             Validar();
+        }
+
+        private Rol AsignarRol(string rol)
+        {
+            foreach (Rol item in Enum.GetValues(typeof(Rol)))
+            {
+                if (item.ToString() == rol)
+                {
+                    return item;
+                }
+            }
+            throw new UsuarioException("No existe ese rol");
         }
 
         private void Validar()
         {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new UsuarioException("Nombre vacio no es aceptable");
+            }
             if (Rol == null)
             {
-                throw new UsuarioException("El rol no puede estar vacío.");
+                throw new UsuarioException("Usuario debe tener al menos un rol");
             }
         }
         
-        public bool Equals(Usuario? other)
-        {
-            return Nombre == other.Nombre;
-        }
+        //public bool Equals(Usuario? other)
+        //{
+        //    return Email == other.Email;
+        //}
     }
 }

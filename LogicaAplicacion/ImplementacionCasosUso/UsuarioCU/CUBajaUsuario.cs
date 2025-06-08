@@ -1,8 +1,8 @@
-﻿using Compartido.Mappers;
-using LogicaNegocio.EntidadesNegocio;
-using LogicaNegocio.InterfacesRepositorios;
-using Compartido.DTOs.UsuarioDTO;
+﻿using LogicaNegocio.InterfacesRepositorios;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.EntidadesNegocio;
+using Compartido.DTOs.AuditoriaDTO;
+using Compartido.Mappers;
 
 namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
 {
@@ -15,9 +15,16 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public void Ejecutar(int id)
+        public void Ejecutar(int id, AuditoriaDTO auditoriaDTO)
         {
-            RepoUsuarios.Delete(id);
+            Usuario usuario = RepoUsuarios.FindById(id);
+
+            // Agregamos auditoria
+            Auditoria auditoria = AuditoriaMapper.AuditoriaFromAuditoriaDTO(auditoriaDTO);
+            List<Auditoria> auditorias = usuario.Auditorias.ToList();
+            auditorias.Add(auditoria);
+            usuario.Auditorias = auditorias;
+            RepoUsuarios.Update(usuario);
         }
     }
 }

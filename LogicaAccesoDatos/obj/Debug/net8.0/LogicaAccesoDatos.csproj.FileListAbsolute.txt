@@ -124,3 +124,5 @@ C:\Users\Bruno\Documents\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\refin
 C:\Users\Bruno\Documents\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.pdb
 C:\Users\Bruno\Documents\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.genruntimeconfig.cache
 C:\Users\Bruno\Documents\Obligatorio-s3\LogicaAccesoDatos\obj\Debug\net8.0\ref\LogicaAccesoDatos.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\LogicaAccesoDatos\bin\Debug\net8.0\Compartido.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\LogicaAccesoDatos\bin\Debug\net8.0\Compartido.pdb

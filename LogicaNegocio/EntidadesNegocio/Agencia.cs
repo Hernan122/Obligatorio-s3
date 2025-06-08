@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using LogicaNegocio.ExcepcionesEntidades;
-using LogicaNegocio.ValueObject.Agencia;
+using LogicaNegocio.ValueObject;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogicaNegocio.EntidadesNegocio
@@ -16,6 +16,8 @@ namespace LogicaNegocio.EntidadesNegocio
 
         [ForeignKey("Usuario")]
         public int UsuarioId { get; set; }
+
+        private Agencia() { }
 
         public Agencia (int ubPos, int ubicacionLatitud, int ubicacionLongitud, string nombre, int usuarioId)
         {
@@ -36,7 +38,7 @@ namespace LogicaNegocio.EntidadesNegocio
 
         public bool Equals(Agencia? other)
         {
-            return Id == other.Id;
+            return Id == other.Id || Nombre == other.Nombre;
         }
     }
 }

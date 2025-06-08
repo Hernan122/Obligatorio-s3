@@ -101,6 +101,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Compartido.csproj": {
+                "projectPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\Compartido\\Compartido.csproj"
+              },
               "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj": {
                 "projectPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\LogicaNegocio\\LogicaNegocio.csproj"
               }

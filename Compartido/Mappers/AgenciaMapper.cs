@@ -1,6 +1,6 @@
 ﻿using Compartido.DTOs.AgenciaDTO;
 using LogicaNegocio.EntidadesNegocio;
-using LogicaNegocio.ValueObject.Agencia;
+using LogicaNegocio.ValueObject;
 
 namespace Compartido.Mappers
 {

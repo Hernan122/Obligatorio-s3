@@ -7,45 +7,6 @@ namespace Compartido.Mappers
 {
     public class EnvioMapper
     {
-        public static Comun ComunFromEditarComunDTO(EditarComunDTO envioDTO)
-        {
-            return new Comun
-            (
-                envioDTO.Id,
-                envioDTO.NumeroTracking
-            );
-        }
-
-        public static VerDetallesComunDTO ComunToComunDTO(Comun envio)
-        {
-            VerDetallesComunDTO envioComun = new VerDetallesComunDTO()
-            {
-                Id = envio.Id,
-                NumeroTracking = envio.NumeroTracking,
-                PesoPaquete = envio.PesoPaquete,
-                Estado = envio.Estado,
-                ClienteId = envio.ClienteId,
-                FuncionarioId = envio.FuncionarioId,
-            };
-            return envioComun;
-        }
-
-        public static VerDetallesUrgenteDTO UrgenteToUrgenteDTO(Urgente envio)
-        {
-            VerDetallesUrgenteDTO envioComun = new VerDetallesUrgenteDTO()
-            {
-                Id = envio.Id,
-                NumeroTracking = envio.NumeroTracking,
-                PesoPaquete = envio.PesoPaquete,
-                Estado = envio.Estado,
-                ClienteId = envio.ClienteId,
-                FuncionarioId = envio.FuncionarioId,
-                DireccionPostal = envio.DireccionPostal,
-                EntregaEficiente = envio.EntregaEficiente
-            };
-            return envioComun;
-        }
-
         public static List<ListadoEnvioDTO> ListadoEnvioFromListadoEnvioDTO(List<Envio> comunDTO)
         {
             List<ListadoEnvioDTO> enviosDTO = new List<ListadoEnvioDTO>();
@@ -59,7 +20,7 @@ namespace Compartido.Mappers
             {
                 Id = envio.Id,
                 NumeroTracking = envio.NumeroTracking,
-                Estado = envio.Estado,
+                Estado = envio.Estado.ToString(),
                 FuncionarioId = envio.FuncionarioId
             }).ToList();
             return enviosDTO;
