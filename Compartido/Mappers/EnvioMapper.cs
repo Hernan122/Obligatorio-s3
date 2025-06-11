@@ -1,6 +1,4 @@
 ﻿using Compartido.DTOs.EnvioDTO;
-using Compartido.DTOs.EnvioDTO.ComunDTO;
-using Compartido.DTOs.EnvioDTO.UrgenteDTO;
 using LogicaNegocio.EntidadesNegocio;
 
 namespace Compartido.Mappers
@@ -18,12 +16,27 @@ namespace Compartido.Mappers
             List<ListadoEnvioDTO> enviosDTO = new List<ListadoEnvioDTO>();
             enviosDTO = envios.Select(envio => new ListadoEnvioDTO()
             {
+                Tipo = envio is Comun ? "Comun" : "Urgente",
                 Id = envio.Id,
                 NumeroTracking = envio.NumeroTracking,
                 Estado = envio.Estado.ToString(),
+                Comentario = envio.Seguimientos.ToList()[envio.Seguimientos.Count()-1].Comentario,
                 FuncionarioId = envio.FuncionarioId
             }).ToList();
             return enviosDTO;
+        }
+
+        public static VerDetallesEnvioDTO EnvioToVerDetallesEnvioDTO(Envio envio)
+        {
+            return new VerDetallesEnvioDTO()
+            {
+                Tipo = envio is Comun ? "Comun" : "Urgente",
+                Id = envio.Id,
+                NumeroTracking = envio.NumeroTracking,
+                Estado = envio.Estado.ToString(),
+                Comentario = envio.Seguimientos.ToList()[envio.Seguimientos.Count() - 1].Comentario,
+                FuncionarioId = envio.FuncionarioId
+            };
         }
 
     }

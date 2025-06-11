@@ -1,6 +1,7 @@
 ﻿using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
 using LogicaNegocio.InterfacesRepositorios;
+using Microsoft.EntityFrameworkCore;
 
 namespace LogicaAccesoDatos.Repositorios
 {
@@ -74,6 +75,19 @@ namespace LogicaAccesoDatos.Repositorios
             return Contexto.Envios
                     .Where(c => c.NumeroTracking == numeroTracking && c.Id != id)
                     .FirstOrDefault();
+        }
+
+        public IEnumerable<Envio> FindAllEnviosConSeguimiento()
+        {
+            return Contexto.Envios
+                .Include(c => c.Seguimientos);
+        }
+
+        public Envio FindByNumeroTrackingSinId(string numeroTracking)
+        {
+            return Contexto.Envios
+                .Where(c => c.NumeroTracking == numeroTracking)
+                .SingleOrDefault();
         }
 
     }

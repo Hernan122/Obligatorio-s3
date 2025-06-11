@@ -4,11 +4,13 @@
     "Projects": [
       {
         "Path": "MVC\\MVC.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "http"
       },
       {
         "Path": "WebApi\\WebApi.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "http"
       }
     ]
   }

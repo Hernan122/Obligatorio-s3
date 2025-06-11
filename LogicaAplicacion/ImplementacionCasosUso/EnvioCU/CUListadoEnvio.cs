@@ -18,7 +18,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
         public List<ListadoEnvioDTO> Ejecutar()
         {
             List<ListadoEnvioDTO> enviosDTO = new List<ListadoEnvioDTO>();
-            List<Envio> envios = RepoEnvios.FindAll().ToList();
+            List<Envio> envios = RepoEnvios.FindAllEnviosConSeguimiento().ToList();
             enviosDTO = EnvioMapper.ListadoEnvioToListadoEnvioDTO(envios);
             return enviosDTO;
         }

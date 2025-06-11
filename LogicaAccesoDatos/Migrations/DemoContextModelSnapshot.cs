@@ -119,6 +119,36 @@ namespace LogicaAccesoDatos.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EnvioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnvioId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Seguimiento");
+                });
+
             modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -230,6 +260,21 @@ namespace LogicaAccesoDatos.Migrations
                     b.Navigation("Funcionario");
                 });
 
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Envio", null)
+                        .WithMany("Seguimientos")
+                        .HasForeignKey("EnvioId");
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+                });
+
             modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
                 {
                     b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
@@ -262,6 +307,11 @@ namespace LogicaAccesoDatos.Migrations
                         .IsRequired();
 
                     b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Navigation("Seguimientos");
                 });
 
             modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>

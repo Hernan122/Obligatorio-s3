@@ -1,16 +1,6 @@
 [
   {
     "ContainingType": "WebApi.Controllers.EnvioController",
-    "Method": "Get",
-    "RelativePath": "api/Envio",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebApi.Controllers.EnvioController",
     "Method": "Post",
     "RelativePath": "api/Envio",
     "HttpMethod": "POST",
@@ -30,23 +20,6 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.EnvioController",
-    "Method": "Get",
-    "RelativePath": "api/Envio/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [],
-    "EndpointName": "FindById"
   },
   {
     "ContainingType": "WebApi.Controllers.EnvioController",
@@ -99,15 +72,41 @@
   },
   {
     "ContainingType": "WebApi.Controllers.EnvioController",
+    "Method": "Get",
+    "RelativePath": "api/Envio/FindAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.EnvioController",
+    "Method": "Get",
+    "RelativePath": "api/Envio/FindById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.EnvioController",
     "Method": "FindByNumeroTracking",
-    "RelativePath": "api/Envio/BuscarPorNumeroTracking/{numeroTracking}",
+    "RelativePath": "api/Envio/FindByNumeroTracking/{numeroTracking}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "numeroTracking",
-        "Type": "System.Int32",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

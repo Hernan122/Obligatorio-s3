@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Envio": {
+    "/api/Envio/FindAll": {
       "get": {
         "tags": [
           "Envio"
@@ -15,7 +15,54 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/Envio/FindById/{id}": {
+      "get": {
+        "tags": [
+          "Envio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Envio/FindByNumeroTracking/{numeroTracking}": {
+      "get": {
+        "tags": [
+          "Envio"
+        ],
+        "parameters": [
+          {
+            "name": "numeroTracking",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Envio": {
       "post": {
         "tags": [
           "Envio"
@@ -47,28 +94,6 @@
       }
     },
     "/api/Envio/{id}": {
-      "get": {
-        "tags": [
-          "Envio"
-        ],
-        "operationId": "FindById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
       "put": {
         "tags": [
           "Envio"
@@ -116,29 +141,6 @@
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Envio/BuscarPorNumeroTracking/{numeroTracking}": {
-      "get": {
-        "tags": [
-          "Envio"
-        ],
-        "parameters": [
-          {
-            "name": "numeroTracking",
             "in": "path",
             "required": true,
             "schema": {

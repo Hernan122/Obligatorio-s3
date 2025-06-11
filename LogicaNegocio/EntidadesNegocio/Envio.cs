@@ -19,7 +19,7 @@ namespace LogicaNegocio.EntidadesNegocio
         [ForeignKey("Funcionario")]
         public int FuncionarioId { get; set; }
 
-        public IEnumerable<Seguimiento> Seguimientos = new List<Seguimiento>();
+        public IEnumerable<Seguimiento> Seguimientos { get; set; } = new List<Seguimiento>();
 
         protected Envio() { }
 

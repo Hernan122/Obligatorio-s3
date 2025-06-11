@@ -40,9 +40,11 @@ namespace MVC.Controllers
                 var enviosDTO = CUListadoEnvio.Ejecutar();
                 var listadoEnviosViewModel = enviosDTO.Select(u => new ListadoEnvioViewModel()
                 {
+                    Tipo = u.Tipo,
                     Id = u.Id,
                     NumeroTracking = u.NumeroTracking,
                     Estado = u.Estado,
+                    Comentario = u.Comentario,
                     FuncionarioId = u.FuncionarioId
                 }).ToList();
 

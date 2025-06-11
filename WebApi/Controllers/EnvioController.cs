@@ -4,8 +4,6 @@ using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.ExcepcionesEntidades;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -16,25 +14,24 @@ namespace WebApi.Controllers
         private IAltaEnvio CUAltaEnvio { get; set; }
         private IBajaEnvio CUBajaEnvio { get; set; }
         private ICambiarEstadoEnvio CUCambiarEstadoEnvio { get; set; }
+        private IBuscarEnvioPorId CUBuscarEnvioPorId { get; set; }
+        private IBuscarEnvioPorNumeroTracking CUBuscarEnvioPorNumeroTracking { get; set; }
         public EnvioController(
             IListadoEnvio cuListadoEnvio,
             IAltaEnvio cuAltaEnvio,
-            IBajaEnvio cuBajaEnvio
+            IBajaEnvio cuBajaEnvio,
+            IBuscarEnvioPorId cuBuscarEnvioPorId,
+            IBuscarEnvioPorNumeroTracking cuBuscarEnvioPorNumeroTracking
         )
         {
             CUListadoEnvio = cuListadoEnvio;
             CUAltaEnvio = cuAltaEnvio;
             CUBajaEnvio = cuBajaEnvio;
+            CUBuscarEnvioPorId = cuBuscarEnvioPorId;
+            CUBuscarEnvioPorNumeroTracking = cuBuscarEnvioPorNumeroTracking;
         }
 
-        // GET: api/<EnvioController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        [HttpGet]
+        [HttpGet("FindAll")]
         public IActionResult Get()
         {
             try
@@ -55,15 +52,8 @@ namespace WebApi.Controllers
             }
         }
 
-        //// GET api/<EnvioController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // GET api/<CarreraController>/5
-        [HttpGet("{id}", Name = "FindById")]
+        [HttpGet("FindById/{id}", Name = "FindById")]
+        //[HttpGet("FindById/{id}")]
         public IActionResult Get(int id)
         {
             try
@@ -72,7 +62,8 @@ namespace WebApi.Controllers
                 {
                     return BadRequest("El id recibido no es correcto");
                 }
-                return Ok();
+                VerDetallesEnvioDTO dto = CUBuscarEnvioPorId.Ejecutar(id);
+                return Ok(dto);
             }
             catch (Exception ex)
             {
@@ -80,13 +71,13 @@ namespace WebApi.Controllers
             }
         }
 
-        // GET api/<CarreraController>/5
-        [HttpGet("BuscarPorNumeroTracking/{numeroTracking}")]
-        public IActionResult FindByNumeroTracking(int numeroTracking)
+        [HttpGet("FindByNumeroTracking/{numeroTracking}")]
+        public IActionResult FindByNumeroTracking(string numeroTracking)
         {
             try
             {
-                return Ok();
+                VerDetallesEnvioDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
+                return Ok(dto);
             }
             catch (Exception ex)
             {
@@ -94,19 +85,16 @@ namespace WebApi.Controllers
             }
         }
 
-        // POST api/<EnvioController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<EnvioController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<EnvioController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

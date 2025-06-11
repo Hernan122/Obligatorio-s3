@@ -22,11 +22,15 @@ namespace WebApi
             builder.Services.AddScoped<IRepositorioAgencia, RepositorioAgenciaEF>();
             builder.Services.AddScoped<IAltaAgencia, CUAltaAgencia>();
             builder.Services.AddScoped<IListadoAgencia, CUListadoAgencia>();
+
             builder.Services.AddScoped<IRepositorioEnvio, RepositorioEnvioEF>();
             builder.Services.AddScoped<IAltaEnvio, CUAltaEnvio>();
             builder.Services.AddScoped<IBajaEnvio, CUBajaEnvio>();
             builder.Services.AddScoped<IListadoEnvio, CUListadoEnvio>();
             builder.Services.AddScoped<ICambiarEstadoEnvio, CUCambiarEstadoEnvio>();
+            builder.Services.AddScoped<IBuscarEnvioPorId, CUBuscarEnvioPorId>();
+            builder.Services.AddScoped<IBuscarEnvioPorNumeroTracking, CUBuscarEnvioPorNumeroTracking>();
+
             builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioEF>();
             builder.Services.AddScoped<IAltaUsuario, CUAltaUsuario>();
             builder.Services.AddScoped<IBajaUsuario, CUBajaUsuario>();

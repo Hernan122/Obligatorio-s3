@@ -12,14 +12,14 @@ namespace LogicaNegocio.EntidadesNegocio
 
         [ForeignKey("Funcionario")]
         public int FuncionarioId { get; set; }
+        
+        private Seguimiento() { }
 
         public Seguimiento(DateTime fecha, string comentario, int funcionarioId) {
             Fecha = fecha;
             Comentario = comentario;
             FuncionarioId = funcionarioId;
         }
-
-        private Seguimiento() { }
 
         public bool Equals(Seguimiento? other)
         {

@@ -38,6 +38,5 @@ namespace LogicaNegocio.EntidadesNegocio
         {
             return true;
         }
-        
     }
 }
