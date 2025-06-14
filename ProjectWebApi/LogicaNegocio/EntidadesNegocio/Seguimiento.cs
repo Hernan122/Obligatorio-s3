@@ -25,5 +25,10 @@ namespace LogicaNegocio.EntidadesNegocio
         {
             return Id == other.Id || Comentario == other.Comentario;
         }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Fecha: {Fecha}, Comentario: {Comentario}, FuncionarioId: {FuncionarioId}";
+        }
     }
 }

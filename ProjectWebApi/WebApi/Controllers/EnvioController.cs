@@ -31,6 +31,8 @@ namespace WebApi.Controllers
             CUBuscarEnvioPorNumeroTracking = cuBuscarEnvioPorNumeroTracking;
         }
 
+
+        // GET: api/<EnvioController>
         [HttpGet("FindAll")]
         public IActionResult Get()
         {
@@ -39,44 +41,44 @@ namespace WebApi.Controllers
                 List<ListadoEnvioDTO> datoEnvios = CUListadoEnvio.Ejecutar();
                 if (datoEnvios == null || datoEnvios.Count == 0)
                 {
-                    return NotFound("No existen carreras");
+                    return NotFound("No hay envios");
                 }
                 else
                 {
                     return Ok(datoEnvios);
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return StatusCode(500);
+                return StatusCode(500, e.Message);
             }
         }
 
-        [HttpGet("FindById/{id}", Name = "FindById")]
-        //[HttpGet("FindById/{id}")]
+        //[HttpGet("FindById/{id}", Name = "FindById")]
+        [HttpGet("FindEnvioById/{id}")]
         public IActionResult Get(int id)
         {
             try
             {
-                if (id <= 0)
+                if (id < 0)
                 {
                     return BadRequest("El id recibido no es correcto");
                 }
                 VerDetallesEnvioDTO dto = CUBuscarEnvioPorId.Ejecutar(id);
                 return Ok(dto);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return StatusCode(500, "Error interno");
+                return StatusCode(404, e.Message);
             }
         }
 
-        [HttpGet("FindByNumeroTracking/{numeroTracking}")]
+        [HttpGet("BuscarEnvioPorNumeroTracking/{numeroTracking}")]
         public IActionResult FindByNumeroTracking(string numeroTracking)
         {
             try
             {
-                VerDetallesEnvioDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
+                VerDetallesEnvioYSeguimientosDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
                 return Ok(dto);
             }
             catch (Exception ex)
@@ -85,19 +87,33 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("ListadoEnviosDetallados")]
+        public IActionResult ListadoEnviosDetallados([FromBody] int id)
         {
+            try
+            {
+                CULi
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
+
     }
 }

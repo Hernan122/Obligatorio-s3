@@ -1,9 +1,8 @@
-﻿@using LogicaNegocio.EntidadesNegocio;
-@using MVC.Models.Usuario;
+﻿@using MVC.Models.Usuario;
 @model AltaUsuarioViewModel;
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Nuevo Usuario";
 }
 
 @if (ViewBag.Mensaje != null)
@@ -32,9 +31,9 @@
     <div class="form-floating mb-3">
         <select asp-for="Rol" class="form-select" id="floatingSelect" aria-label="Floating label select example">
             <option value="">Seleccione Rol</option>
-            @foreach (Rol item in Enum.GetValues(typeof(Rol)))
+            @foreach (RolUsuario item in Enum.GetValues(typeof(RolUsuario)))
             {
-                if (item == Rol.Administrador)
+                if (item == RolUsuario.Administrador)
                 {
                     continue;
                 }

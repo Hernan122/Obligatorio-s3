@@ -1,5 +1,4 @@
-﻿@using LogicaNegocio.EntidadesNegocio
-@using MVC.Models.Envio
+﻿@using MVC.Models.Envio
 @model IEnumerable<ListadoEnvioViewModel>
 
 <h1>Listado Envios</h1>
@@ -69,14 +68,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FuncionarioId)
                 </td>
-                <td>
+                @* <td>
                     <span>@Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id })</span>
                     |
                     @if (item.Estado == Estado.EN_PROCESO.ToString())
                     {
                         <span>@Html.ActionLink("Editar", "Editar")</span>
                     }
-                </td>
+                </td> *@
             </tr>
         }
     </tbody>

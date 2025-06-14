@@ -38,6 +38,7 @@ namespace WebApi
             builder.Services.AddScoped<IListadoUsuario, CUListadoUsuario>();
             builder.Services.AddScoped<ILoginUsuario, CULoginUsuario>();
             builder.Services.AddScoped<IVerDetalleUsuario, CUVerDetalleUsuario>();
+            builder.Services.AddScoped<ICambiarPassword, CUCambiarPassword>();
 
             string cadenaConexion = builder.Configuration.GetConnectionString("cadenaConexion");
             builder.Services.AddDbContext<DemoContext>(option => option.UseSqlServer(cadenaConexion));

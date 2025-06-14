@@ -1,96 +1,54 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
-using LogicaNegocio.ExcepcionesEntidades;
-using Compartido.DTOs.EnvioDTO.ComunDTO;
-using Compartido.DTOs.EnvioDTO.UrgenteDTO;
-using Compartido.DTOs.EnvioDTO;
+﻿using System.Runtime.Intrinsics.Arm;
+using Microsoft.AspNetCore.Mvc;
+using MVC.Filters;
+using MVC.Models;
 using MVC.Models.Envio;
 using MVC.Models.Envio.Comun;
 using MVC.Models.Envio.Urgente;
-using Compartido.DTOs.SeguimientoDTO;
-using MVC.Filters;
+using MVC.Models.Usuario;
+using Newtonsoft.Json;
 
 namespace MVC.Controllers
 {
-    [Login]
-    public class EnvioController : Controller
+    
+    public class EnvioController : ControllerB
     {
-        private IListadoEnvio CUListadoEnvio { get; set; }
-        private IAltaEnvio CUAltaEnvio { get; set; }
-        private IBajaEnvio CUBajaEnvio { get; set; }
-        private ICambiarEstadoEnvio CUCambiarEstadoEnvio { get; set; }
-        public EnvioController(
-            IListadoEnvio cuListadoEnvio,
-            IAltaEnvio cuAltaEnvio,
-            IBajaEnvio cuBajaEnvio
-        )
-        {
-            CUListadoEnvio = cuListadoEnvio;
-            CUAltaEnvio = cuAltaEnvio;
-            CUBajaEnvio = cuBajaEnvio;
-        }
-
+        [Login]
         [HttpGet]
-        public ActionResult Index(string mensaje, string mensajeError)
+        public IActionResult Index()
         {
-            ViewBag.Mensaje = mensaje;
-            ViewBag.MensajeError = mensajeError;
+            IEnumerable<ListadoEnvioViewModel> listadoEnviosViewModel = new List<ListadoEnvioViewModel>();
             try
             {
-                var enviosDTO = CUListadoEnvio.Ejecutar();
-                var listadoEnviosViewModel = enviosDTO.Select(u => new ListadoEnvioViewModel()
-                {
-                    Tipo = u.Tipo,
-                    Id = u.Id,
-                    NumeroTracking = u.NumeroTracking,
-                    Estado = u.Estado,
-                    Comentario = u.Comentario,
-                    FuncionarioId = u.FuncionarioId
-                }).ToList();
+                string url = "https://localhost:7189/api/Envio/FindAll";
+                ResHttpViewModel datos = WebApi_Process(url, null);
 
-                if (listadoEnviosViewModel.Count() == 0)
+                if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    ViewBag.MensajeError = "No hay envios";
+                    listadoEnviosViewModel = JsonConvert.DeserializeObject<List<ListadoEnvioViewModel>>(datos.Datos);
                 }
-
-                return View(listadoEnviosViewModel);
+                else
+                {
+                    ViewBag.Mensaje = datos;
+                }
             }
             catch (Exception e)
             {
-                mensaje = e.Message;
-                //mensaje += e.InnerException;
-                //mensaje += e.StackTrace;
-                ViewBag.MensajeError = mensaje;
-                return View(new List<ListadoEnvioViewModel>());
+                ViewBag.MensajeError = e.Message;
             }
-
-            /* 
-                HttpClient cliente = new HttpClient();
-                Tast<HttpResponseMessage> tarea = cliente.GetAsync("https://localhost:5031/api/Envio");
-                tarea.Wait();
-                HttpResponseMessage respuesta = tarea.Result; // Codigo de estado de la respuesta (200)
-
-                HttpContento contenido = respuesta.Content;
-                Task<string> body = contenido.ReadAsStringAsync();
-                body.Wait();
-                string datos = body.Result;
-
-                if (respuesta.IsSuccessStatusCode) { // si respuesta es 200
-                    listadoEnviosViewModel = JsonConvert.DeserealizeObject<List<DatoEnvioViewModel>>(datos);
-                } else {
-                    ViewBag.Mensaje = datos;
-                }
-             */
+            return View(listadoEnviosViewModel);
         }
 
+        [Login]
         [HttpGet]
-        public ActionResult CrearEnvio()
+        public IActionResult CrearEnvio()
         {
             return View();
         }
 
+        [Login]
         [HttpGet]
-        public ActionResult FormCrearEnvio(string type)
+        public IActionResult FormCrearEnvio(string type)
         {
             string param = type;
             try
@@ -102,7 +60,7 @@ namespace MVC.Controllers
                 }
                 else
                 {
-                    throw new EnvioException($"No existe ese tipo de envio: {type}");
+                    throw new Exception($"No existe ese tipo de envio: {type}");
                 }
             }
             catch (Exception e)
@@ -113,28 +71,13 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CrearEnvioComun(AltaComunViewModel envio)
+        public IActionResult CrearEnvioComun(AltaComunViewModel envio)
         {
             string mensaje = "";
             try
             {
                 if (ModelState.IsValid)
                 {
-                    AltaEnvioDTO envioDTO = new AltaComunDTO
-                    {
-                        NumeroTracking = envio.NumeroTracking,
-                        PesoPaquete = envio.PesoPaquete,
-                        EmailCliente = envio.EmailCliente,
-                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-                        Fecha = DateTime.Today,
-                        NombreAgencia = envio.NombreAgencia
-                    };
-                    AltaSeguimientoDTO seguimientoDTO = new()
-                    {
-                        Fecha = DateTime.Today,
-                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-                    };
-                    CUAltaEnvio.Ejecutar(envioDTO, seguimientoDTO);
                     return RedirectToAction(nameof(Index), new { Mensaje = "Envio Comun creado con exito" });
                 }
                 else
@@ -156,29 +99,13 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CrearEnvioUrgente(AltaUrgenteViewModel envio)
+        public IActionResult CrearEnvioUrgente(AltaUrgenteViewModel envio)
         {
             string mensaje;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    AltaEnvioDTO envioDTO = new AltaUrgenteDTO()
-                    {
-                        NumeroTracking = envio.NumeroTracking,
-                        PesoPaquete = envio.PesoPaquete,
-                        EmailCliente = envio.EmailCliente,
-                        Fecha = DateTime.Today,
-                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-                        DireccionPostal = envio.DireccionPostal,
-                        EntregaEficiente = envio.EntregaEficiente
-                    };
-                    AltaSeguimientoDTO seguimientoDTO = new ()
-                    {
-                        Fecha = DateTime.Today,
-                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id"),
-                    };
-                    CUAltaEnvio.Ejecutar(envioDTO, seguimientoDTO);
                     return RedirectToAction(nameof(Index), new { Mensaje = "Envio Urgente creado con exito" });
                 }
                 else
@@ -198,22 +125,86 @@ namespace MVC.Controllers
             return View($"~/Views/Envio/Urgente/Crear.cshtml");
         }
 
+        [Login]
         [HttpGet]
-        public ActionResult BajaEnvio(int id)
+        public IActionResult BajaEnvio(int id)
         {
             string mensaje;
             try
             {
-                CUBajaEnvio.Ejecutar(id);
                 return RedirectToAction(nameof(Index), new { Mensaje = "Eliminado con exito" });
             }
             catch (Exception e)
             {
                 mensaje = e.Message;
-                //mensaje += e.StackTrace;
-                //mensaje += e.InnerException;
             }
             return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
         }
+        
+        [HttpGet]
+        public IActionResult BuscarEnvioPorNumeroTracking(VerDetallesEnvioYSeguimientosViewModel envio)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult BuscarEnvioPorNumeroTracking(string numeroTracking)
+        {
+            VerDetallesEnvioYSeguimientosViewModel envio = null;
+            try
+            {
+                if (string.IsNullOrEmpty(numeroTracking))
+                {
+                    throw new ArgumentNullException();
+                }
+                string url = $"https://localhost:7189/api/Envio/BuscarEnvioPorNumeroTracking/{numeroTracking}";
+                ResHttpViewModel datos = WebApi_Process(url, null);
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    envio = JsonConvert.DeserializeObject<VerDetallesEnvioYSeguimientosViewModel>(datos.Datos);
+                    ViewBag.Mensaje = "Envio Encontrado";
+                } 
+                else
+                {
+                    ViewBag.MensajeError = "Envio no Encontrado";
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Ingrese un Numero de Tracking";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(envio);
+        }
+
+        [HttpGet]
+        public IActionResult ListadoEnviosDetallados()
+        {
+            IEnumerable<VerDetallesEnvioYSeguimientosViewModel> listado = new List<VerDetallesEnvioYSeguimientosViewModel>();
+            try
+            {
+                string url = "";
+                ResHttpViewModel datos = WebApi_Process(url, (int)HttpContext.Session.GetInt32("Id"), "POST");
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<VerDetallesEnvioYSeguimientosViewModel>>(datos.Datos)
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View();
+        }
+
     }
 }

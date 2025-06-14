@@ -1,7 +1,9 @@
-﻿using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+﻿using Compartido.DTOs.AuditoriaDTO;
+using Compartido.DTOs.UsuarioDTO;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApi.Controllers
 {
@@ -15,6 +17,7 @@ namespace WebApi.Controllers
         private IBajaUsuario CUBajaUsuario { get; set; }
         private IEditarUsuario CUEditarUsuario { get; set; }
         private ILoginUsuario CULoginUsuario { get; set; }
+        private ICambiarPassword CUCambiarPassword { get; set; }
 
         public UsuarioController(
             IListadoUsuario cuListadoUsuario,
@@ -22,7 +25,8 @@ namespace WebApi.Controllers
             IVerDetalleUsuario cuVerDetalleUsuario,
             IBajaUsuario cuBajaUsuario,
             IEditarUsuario cuEditarUsuario,
-            ILoginUsuario cuLoginUsuario
+            ILoginUsuario cuLoginUsuario,
+            ICambiarPassword cuCambiarPassword
         )
         {
             CUListadoUsuario = cuListadoUsuario;
@@ -31,38 +35,135 @@ namespace WebApi.Controllers
             CUBajaUsuario = cuBajaUsuario;
             CUEditarUsuario = cuEditarUsuario;
             CULoginUsuario = cuLoginUsuario;
+            CUCambiarPassword = cuCambiarPassword;
         }
 
-        // GET: api/<UsuarioController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // GET api/<UsuarioController>/5
+        [HttpGet("FindAll")]
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                List<ListadoUsuarioDTO> listado = CUListadoUsuario.Ejecutar();
+                return Ok(listado);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         // GET api/<UsuarioController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                VerDetallesUsuarioDTO dto = CUVerDetalleUsuario.Ejecutar(id);
+                return Ok(dto);
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         // POST api/<UsuarioController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("IniciarSesion")]
+        public IActionResult Post([FromBody] LoginUsuarioDTO usuario)
         {
+            try
+            {
+                LoginUsuarioDTO dto = new()
+                {
+                    Email = usuario.Email,
+                    Password = usuario.Password
+                };
+                InformacionUsuarioLogueadoViewModelDTO user = CULoginUsuario.Ejecutar(dto);
+
+                return Ok(user);
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        // POST api/<UsuarioController>
+        [HttpPost("CrearUsuario")]
+        public IActionResult Post(int funcionarioId, [FromBody] AltaUsuarioDTO usuario)
+        {
+            try
+            {
+                AuditoriaDTO auditoriaDTO = new()
+                {
+                    AccionRealizada = Accion.Agregado.ToString(),
+                    Fecha = DateTime.Now,
+                    FuncionarioId = funcionarioId
+                };
+                CUAltaUsuario.Ejecutar(usuario, auditoriaDTO);
+                return Ok();
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         // PUT api/<UsuarioController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("CambiarPassword/{id}")]
+        public IActionResult Put(int id, [FromBody] string password)
         {
+            try
+            {
+                CUCambiarPassword.Ejecutar(id, password);
+                return Ok("Actualizado correctamente");
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest("Error al cambiar contraseña: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Error Interno: " + e.Message);
+            }
         }
 
         // DELETE api/<UsuarioController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public IActionResult Delete(int usuarioId, int funcionarioId)
         {
+            try
+            {
+                AuditoriaDTO auditoriaDTO = new()
+                {
+                    AccionRealizada = Accion.Eliminado.ToString(),
+                    Fecha = DateTime.Now,
+                    FuncionarioId = funcionarioId
+                };
+                CUBajaUsuario.Ejecutar(usuarioId, auditoriaDTO);
+                return Ok("Eliminado exitosamente");
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }

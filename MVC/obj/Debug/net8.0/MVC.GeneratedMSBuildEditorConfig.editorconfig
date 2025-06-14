@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNpYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/BuscarEnvioPorNumeroTracking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQnVzY2FyRW52aW9Qb3JOdW1lcm9UcmFja2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/Comun/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQ29tdW5cQ3JlYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/ListadoEnviosDetallados.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cTGlzdGFkb0Vudmlvc0RldGFsbGFkb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/Urgente/Crear.cshtml]
@@ -74,6 +82,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Usuario/AltaUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xBbHRhVXN1YXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Usuario/CambiarPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDYW1iaWFyUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Usuario/EditarUsuario.cshtml]

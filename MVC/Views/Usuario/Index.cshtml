@@ -1,6 +1,10 @@
 ﻿@using MVC.Models.Usuario
 @model IEnumerable<ListadoUsuarioViewModel>
 
+@{
+    ViewData["Title"] = "Listado Usuarios";
+}
+
 <h1>Listado Usuarios</h1>
 
 @if (ViewBag.Mensaje != null)
@@ -16,10 +20,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                @Html.DisplayNameFor(c => c.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreUsuario)
+                @Html.DisplayNameFor(c => c.Nombre)
             </th>
             <th></th>
         </tr>
@@ -29,13 +33,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(c => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NombreUsuario)
+                @Html.DisplayFor(c => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Editar", "EditarUsuario", new { id = item.Id }) |
+                @* @Html.ActionLink("Editar", "EditarUsuario", new { id = item.Id }) | *@
                 @Html.ActionLink("Ver Detalles", "VerDetallesUsuario", new { id = item.Id }) |
                 @Html.ActionLink("Borrar", "BajaUsuario", new { id = item.Id })
             </td>

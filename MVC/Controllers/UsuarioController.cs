@@ -1,101 +1,49 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Compartido.DTOs.UsuarioDTO;
 using MVC.Models.Usuario;
-using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
-using LogicaNegocio.EntidadesNegocio;
-using LogicaNegocio.ExcepcionesEntidades;
-using Compartido.DTOs.AuditoriaDTO;
+using Newtonsoft.Json;
+using MVC.Models;
 using MVC.Filters;
-using MVC.Models.Envio;
+using System.Security.Policy;
 
 namespace MVC.Controllers
 {
-
-    public class UsuarioController : Controller
+    public class UsuarioController : ControllerB
     {
-        private IListadoUsuario CUListadoUsuario { get; set; }
-        private IAltaUsuario CUAltaUsuario { get; set; }
-        private IVerDetalleUsuario CUVerDetalleUsuario { get; set; }
-        private IBajaUsuario CUBajaUsuario { get; set; }
-        private IEditarUsuario CUEditarUsuario { get; set; }
-        private ILoginUsuario CULoginUsuario { get; set; }
-
-        public UsuarioController(
-            IListadoUsuario cuListadoUsuario,
-            IAltaUsuario cuAltaUsuario,
-            IVerDetalleUsuario cuVerDetalleUsuario,
-            IBajaUsuario cuBajaUsuario,
-            IEditarUsuario cuEditarUsuario,
-            ILoginUsuario cuLoginUsuario
-        )
-        {
-            CUListadoUsuario = cuListadoUsuario;
-            CUAltaUsuario = cuAltaUsuario;
-            CUVerDetalleUsuario = cuVerDetalleUsuario;
-            CUBajaUsuario = cuBajaUsuario;
-            CUEditarUsuario = cuEditarUsuario;
-            CULoginUsuario = cuLoginUsuario;
-        }
-
         [Login]
+        [Administrador]
         [HttpGet]
-        public ActionResult Index(string mensaje, string mensajeError)
+        public IActionResult Index()
         {
-            ViewBag.Mensaje = mensaje;
-            ViewBag.MensajeError = mensajeError;
             try
             {
-                var usuariosDTO = CUListadoUsuario.Ejecutar();
-                var listadoUsuarioViewModel = usuariosDTO.Select(u => new ListadoUsuarioViewModel()
-                {
-                    Id = u.Id,
-                    NombreUsuario = u.NombreUsuario,
-                }).ToList();
+                string url = "https://localhost:7189/api/Usuario/FindAll";
+                ResHttpViewModel datos = WebApi_Process(url, null);
 
-                if (listadoUsuarioViewModel.Count() == 0)
-                {
-                    ViewBag.MensajeError = "No hay usuarios";
-                }
-
-                return View(listadoUsuarioViewModel);
+                List<ListadoUsuarioViewModel> listado = JsonConvert.DeserializeObject<List<ListadoUsuarioViewModel>>(datos.Datos);
+                return View(listado);
             }
             catch (Exception e)
             {
-                return View(new List<ListadoUsuarioViewModel>());
+                ViewBag.MensajeError = e.Message;
             }
+            return View(new List<ListadoUsuarioViewModel>());
         }
 
         [Login]
         [HttpGet]
-        public ActionResult AltaUsuario(string mensaje)
+        public IActionResult AltaUsuario(string mensaje)
         {
             ViewBag.Mensaje = mensaje;
             return View();
         }
 
-        [Login]
         [HttpPost]
-        public ActionResult AltaUsuario(AltaUsuarioViewModel usuario) 
+        public IActionResult AltaUsuario(AltaUsuarioViewModel usuario) 
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    AltaUsuarioDTO usuarioDTO = new AltaUsuarioDTO()
-                    {
-                        NombreUsuario = usuario.Nombre,
-                        Email = usuario.Email,
-                        Password = usuario.Password,
-                        Rol = usuario.Rol
-                    };
-                    AuditoriaDTO auditoriaDTO = new AuditoriaDTO()
-                    {
-                        AccionRealizada = Accion.Agregado.ToString(),
-                        Fecha = DateTime.Now,
-                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id")
-                    };
-
-                    CUAltaUsuario.Ejecutar(usuarioDTO, auditoriaDTO);
                     return RedirectToAction(nameof(AltaUsuario), new { Mensaje = "Usuario agregado" });
                 }
                 else
@@ -110,74 +58,103 @@ namespace MVC.Controllers
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message;
-                //ViewBag.MensajeError += ", " + e.StackTrace;
-                //ViewBag.MensajeError += e.InnerException;
             }
             return View();
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public IActionResult Login()
         {
             return View();
         }
 
+        //[HttpPost]
+        //public ActionResult Login(LoginUsuarioViewModel usuario)
+        //{
+        //    try
+        //    {
+        //        ViewBag.Mensaje = "Sesion iniciada con exito";
+
+        //        if (HttpContext.Session.GetString("rol") == "Administrador")
+        //        {
+        //            return RedirectToAction(nameof(Index), "Usuario");
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ViewBag.MensajeError = e.Message;
+        //        //ViewBag.MensajeError += ", " + e.StackTrace;
+        //        return View();
+        //    }
+        //}
+
         [HttpPost]
-        public ActionResult Login(LoginUsuarioViewModel usuario)
+        public IActionResult Login(LoginUsuarioViewModel usuario)
         {
             try
             {
-                LoginUsuarioDTO usuarioDTO = new LoginUsuarioDTO()
+                if (usuario.Email == null || usuario.Password == null)
                 {
-                    Email = usuario.Email,
-                    Password = usuario.Password
-                };
+                    throw new ArgumentNullException();
+                }
+                string url = "https://localhost:7189/api/Usuario/IniciarSesion";
+                ResHttpViewModel datos = WebApi_Process(url, usuario, "POST");
 
-                InformacionUsuarioLogueadoViewModelDTO buscarUsuario = CULoginUsuario.Ejecutar(usuarioDTO);
-
-                InformacionUsuarioLogueadoViewModel usuarioLogueado = new InformacionUsuarioLogueadoViewModel()
+                if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    Id = buscarUsuario.Id,
-                    Rol = buscarUsuario.Rol
-                };
+                    InformacionUsuarioLogueadoViewModel user = JsonConvert.DeserializeObject<InformacionUsuarioLogueadoViewModel>(datos.Datos);
+                    HttpContext.Session.SetInt32("Id", user.Id);
+                    HttpContext.Session.SetString("Rol", user.Rol);
+                    HttpContext.Session.SetString("ActualPassword", usuario.Password);
 
-                HttpContext.Session.SetInt32("Id", usuarioLogueado.Id);
-                HttpContext.Session.SetString("Rol", usuarioLogueado.Rol);
-                ViewBag.Mensaje = "Sesion iniciada con exito";
-
-                if (HttpContext.Session.GetString("rol") == "Administrador")
-                {
-                    return RedirectToAction(nameof(Index), "Usuario");
+                    if (user.Rol != RolUsuario.Cliente.ToString())
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        return Redirect("Home/Index");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    ViewBag.MensajeError = datos.Datos;
                 }
+            }
+            catch (ArgumentNullException e)
+            {
+                ViewBag.MensajeError = "Debe rellenar todos los campos";
             }
             catch (Exception e)
             {
                 ViewBag.MensajeError = e.Message;
-                //ViewBag.MensajeError += ", " + e.StackTrace;
-                return View();
             }
+            return View();
         }
 
-        [Login]
         [HttpGet]
-        public ActionResult VerDetallesUsuario(int id)
+        public IActionResult VerDetallesUsuario(int id)
         {
-            VerDetallesUsuarioDTO usuarioDTO = CUVerDetalleUsuario.Ejecutar(id);
-            VerDetallesUsuarioViewModel usuarioViewModel;
+            VerDetallesUsuarioViewModel usuarioViewModel = null;
             try
             {
-                usuarioViewModel = new VerDetallesUsuarioViewModel
+                string url = "https://localhost:7189/api/Usuario/"+id;
+                ResHttpViewModel datos = WebApi_Process(url, null);
+
+                if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    Id = usuarioDTO.Id,
-                    Nombre = usuarioDTO.NombreUsuario,
-                    Email = usuarioDTO.Email,
-                    Password = usuarioDTO.Password,
-                    Rol = usuarioDTO.Rol
-                };
+                    usuarioViewModel = JsonConvert.DeserializeObject<VerDetallesUsuarioViewModel>(datos.Datos);
+                    ViewBag.Mensaje = datos.Respuesta;
+                }
+                else
+                {
+                    ViewBag.MensajeError = "Error al obtener datos";    
+                }
+
                 return View(usuarioViewModel);
             }
             catch (Exception e)
@@ -189,24 +166,12 @@ namespace MVC.Controllers
 
         [Login]
         [HttpGet]
-        public ActionResult EditarUsuario(int id)
+        public IActionResult EditarUsuario(int id)
         {
             VerDetallesUsuarioViewModel usuarioViewModel = null;
             string mensaje = "";
             try
             {
-                if (id < 0)
-                {
-                    throw new UsuarioException("Id incorrecto");
-                }
-                VerDetallesUsuarioDTO usuarioDTO = CUVerDetalleUsuario.Ejecutar(id);
-                usuarioViewModel = new VerDetallesUsuarioViewModel()
-                {
-                    Id = usuarioDTO.Id,
-                    Nombre = usuarioDTO.NombreUsuario,
-                    Email = usuarioDTO.Email,
-                    Password = usuarioDTO.Password,
-                };
             }
             catch (Exception e)
             {
@@ -219,28 +184,13 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditarUsuario(EditarUsuarioViewModel usuario)
+        public IActionResult EditarUsuario(EditarUsuarioViewModel usuario)
         {
             string mensaje;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    EditarUsuarioDTO usuarioDTO = new EditarUsuarioDTO
-                    {
-                        Id = usuario.Id,
-                        NombreUsuario = usuario.Nombre,
-                        Email = usuario.Email,
-                        Password = usuario.Password,
-                    };
-                    AuditoriaDTO auditoriaDTO = new AuditoriaDTO
-                    {
-                        AccionRealizada = Accion.Editado.ToString(),
-                        Fecha = DateTime.Now,
-                        FuncionarioId = (int)HttpContext.Session.GetInt32("Id")
-                    };
-
-                    CUEditarUsuario.Ejecutar(usuarioDTO, auditoriaDTO);
                     return RedirectToAction(nameof(Index), new { Mensaje = "Editado con exito" });
                 }
                 else
@@ -262,41 +212,81 @@ namespace MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult BajaUsuario(int id)
+        public IActionResult BajaUsuario(int id)
         {
-            string mensaje;
             try
             {
-                if (id == (int)HttpContext.Session.GetInt32("Id"))
+                string url = $"https://localhost:7189/api/Usuario?usuarioId={id}&funcionarioId={(int)HttpContext.Session.GetInt32("Id")}";
+                ResHttpViewModel datos = WebApi_Process(url, null, "DELETE");
+                
+                if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    throw new UsuarioException("No puedes eliminarte a ti mismo");
+                    return RedirectToAction(nameof(Index), 
+                        new { Mensaje = "Eliminado con exito" });
                 }
-
-                AuditoriaDTO auditoriaDTO = new AuditoriaDTO()
+                else
                 {
-                    AccionRealizada = Accion.Eliminado.ToString(),
-                    Fecha = DateTime.Now,
-                    FuncionarioId = (int)HttpContext.Session.GetInt32("Id")
-                };
-
-                CUBajaUsuario.Ejecutar(id, auditoriaDTO);
-
-                mensaje = "Eliminado con exito";
-                return RedirectToAction(nameof(Index), new { Mensaje = mensaje });
+                    return RedirectToAction(nameof(Index),
+                        new { MensajeError = "No se pudo eliminar" });
+                }
             }
             catch (Exception e)
             {
-                mensaje = e.InnerException.ToString();
-                //mensaje += e.Message;
-                return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
+                return RedirectToAction(nameof(Index), 
+                    new { MensajeError = e.InnerException.ToString() });
             }
         }
 
         [HttpGet]
-        public ActionResult Logout()
+        public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction(nameof(Login));
+        }
+
+        [Login]
+        [HttpGet]
+        public IActionResult CambiarPassword()
+        {
+            ViewBag.Info = "Contraseña Actual: " + HttpContext.Session.GetString("ActualPassword");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CambiarPassword(string actualPassword, string newPassword)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(actualPassword) || string.IsNullOrEmpty(newPassword))
+                {
+                    throw new ArgumentNullException();
+                }
+
+                if (actualPassword != HttpContext.Session.GetString("ActualPassword"))
+                {
+                    throw new Exception("Contraseña actual no coincide");
+                }
+                string url = "https://localhost:7189/api/Usuario/CambiarPassword/"+(int)HttpContext.Session.GetInt32("Id");
+                ResHttpViewModel datos = WebApi_Process(url, newPassword, "PUT");
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    ViewBag.Mensaje = datos.Datos;
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Debe rellenar todos los campos";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View();
         }
     }
 }

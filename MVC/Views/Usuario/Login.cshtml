@@ -2,8 +2,11 @@
 @model LoginUsuarioViewModel;
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Login";
 }
+
+<h1 class="mb-3">Iniciar Sesion</h1>
+
 @if (ViewBag.Mensaje != null)
 {
     <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
@@ -13,7 +16,6 @@
     <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
 }
 
-<h1 class="mb-3">Iniciar Sesion</h1>
 <form asp-action="Login">
     <div class="form-floating mb-3">
         <input asp-for="Email" type="text" class="form-control" id="floatingInputInvalid" placeholder>

@@ -1,55 +1,6 @@
 [
   {
     "ContainingType": "WebApi.Controllers.EnvioController",
-    "Method": "Post",
-    "RelativePath": "api/Envio",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "value",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.EnvioController",
-    "Method": "Put",
-    "RelativePath": "api/Envio/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "value",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.EnvioController",
     "Method": "Delete",
     "RelativePath": "api/Envio/{id}",
     "HttpMethod": "DELETE",
@@ -69,6 +20,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "WebApi.Controllers.EnvioController",
+    "Method": "FindByNumeroTracking",
+    "RelativePath": "api/Envio/BuscarEnvioPorNumeroTracking/{numeroTracking}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numeroTracking",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "WebApi.Controllers.EnvioController",
@@ -83,7 +50,7 @@
   {
     "ContainingType": "WebApi.Controllers.EnvioController",
     "Method": "Get",
-    "RelativePath": "api/Envio/FindById/{id}",
+    "RelativePath": "api/Envio/FindEnvioById/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -97,62 +64,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApi.Controllers.EnvioController",
-    "Method": "FindByNumeroTracking",
-    "RelativePath": "api/Envio/FindByNumeroTracking/{numeroTracking}",
-    "HttpMethod": "GET",
+    "ContainingType": "WebApi.Controllers.UsuarioController",
+    "Method": "Delete",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "numeroTracking",
-        "Type": "System.String",
-        "IsRequired": true
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "funcionarioId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebApi.Controllers.UsuarioController",
-    "Method": "Get",
-    "RelativePath": "api/Usuario",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "WebApi.Controllers.UsuarioController",
-    "Method": "Post",
-    "RelativePath": "api/Usuario",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "value",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
   },
   {
     "ContainingType": "WebApi.Controllers.UsuarioController",
@@ -168,22 +98,12 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "WebApi.Controllers.UsuarioController",
     "Method": "Put",
-    "RelativePath": "api/Usuario/{id}",
+    "RelativePath": "api/Usuario/CambiarPassword/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -194,60 +114,58 @@
         "IsRequired": true
       },
       {
-        "Name": "value",
+        "Name": "password",
         "Type": "System.String",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "WebApi.Controllers.UsuarioController",
-    "Method": "Delete",
-    "RelativePath": "api/Usuario/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "Post",
+    "RelativePath": "api/Usuario/CrearUsuario",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "funcionarioId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "usuario",
+        "Type": "Compartido.DTOs.UsuarioDTO.AltaUsuarioDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
-    "ContainingType": "WebApi.Controllers.WeatherForecastController",
+    "ContainingType": "WebApi.Controllers.UsuarioController",
     "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "RelativePath": "api/Usuario/FindAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApi.Controllers.UsuarioController",
+    "Method": "Post",
+    "RelativePath": "api/Usuario/IniciarSesion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebApi.WeatherForecast, WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "usuario",
+        "Type": "Compartido.DTOs.UsuarioDTO.LoginUsuarioDTO",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
   }
 ]

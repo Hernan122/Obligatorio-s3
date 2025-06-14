@@ -9,7 +9,7 @@ namespace MVC.Filters
         {
             var user = context.HttpContext.Session.GetString("Rol");
 
-            if (user == "Cliente" || user == null)
+            if (user == null)
             {
                 context.Result = new RedirectToActionResult("Login", "Usuario", null);
             }

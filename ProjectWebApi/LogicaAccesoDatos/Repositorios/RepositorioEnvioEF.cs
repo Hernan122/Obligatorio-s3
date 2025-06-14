@@ -49,7 +49,7 @@ namespace LogicaAccesoDatos.Repositorios
             return Contexto.Envios.Where(c => c.Estado == Estado.EN_PROCESO);
         }
 
-        public Envio FindById(int id)
+        public Envio? FindById(int id)
         {
             return Contexto.Envios
                     .Where(c => c.Id == id)
@@ -70,7 +70,7 @@ namespace LogicaAccesoDatos.Repositorios
             }
         }
 
-        public Envio FindByNumeroTracking(string numeroTracking, int id)
+        public Envio? FindByNumeroTracking(string numeroTracking, int id)
         {
             return Contexto.Envios
                     .Where(c => c.NumeroTracking == numeroTracking && c.Id != id)
@@ -83,11 +83,27 @@ namespace LogicaAccesoDatos.Repositorios
                 .Include(c => c.Seguimientos);
         }
 
-        public Envio FindByNumeroTrackingSinId(string numeroTracking)
+        public Envio? FindByNumeroTrackingSinId(string numeroTracking)
         {
             return Contexto.Envios
                 .Where(c => c.NumeroTracking == numeroTracking)
+                .Include(c => c.Seguimientos)
                 .SingleOrDefault();
+        }
+
+        public Envio? FindEnvioAndSeguimientoById(int id)
+        {
+            return Contexto.Envios
+                   .Where(c => c.Id == id)
+                   .Include(c => c.Seguimientos)
+                   .SingleOrDefault();
+        }
+
+        public List<Envio> ListadoEnviosDetalladosPorClienteId(int clienteId)
+        {
+            return Contexto.Envios
+                .Where(c => c.Cliente.Id == clienteId
+                && c.Seguimientos.OrderBy(c => c.Fecha).Any()).ToList();
         }
 
     }

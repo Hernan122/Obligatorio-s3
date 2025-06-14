@@ -28,6 +28,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="CambiarPassword">Cambiar Contraseña</a>
+                            </li>
                         }
 
                         <!-- Iniciar Sesión Link (visible si el usuario no ha iniciado sesión) -->
@@ -36,14 +39,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="Login">Iniciar Sesión</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Envio" asp-action="BuscarEnvioPorNumeroTracking">Filtrar Envio</a>
+                            </li>
                         }
 
                         <!-- Link de Listado de Usuarios solo visible para Administradores -->
                         @if (Context.Session.GetString("Rol") != "Cliente" && Context.Session.GetString("Rol") != null)
                         {
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Usuario" asp-action="AltaUsuario">Alta Usuario</a>
-                            </li>
+                            </li> *@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Usuario" asp-action="Index">Listado de Usuarios</a>
                             </li>
@@ -52,17 +58,17 @@
                                 <a class="nav-link" asp-controller="Envio" asp-action="Index">Listado Envios</a>
                             </li>
 
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link" asp-controller="Envio" asp-action="CrearEnvio">Nuevo Envio</a>
-                            </li>
+                            </li> *@
 
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link" asp-controller="Agencia" asp-action="Index">Listado Agencias</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Agencia" asp-action="AltaAgencia">Nueva Agencia</a>
-                            </li>
+                            </li> *@
                         }
 
                         @if (Context.Session.GetString("Rol") != null)

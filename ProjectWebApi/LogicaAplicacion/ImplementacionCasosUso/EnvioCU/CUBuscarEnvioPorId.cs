@@ -18,7 +18,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 
         public VerDetallesEnvioDTO Ejecutar(int id)
         {
-            Envio envio = RepoEnvios.FindById(id);
+            Envio envio = RepoEnvios.FindEnvioAndSeguimientoById(id);
             if (envio == null)
             {
                 throw new EnvioException("No se encontro el envio");

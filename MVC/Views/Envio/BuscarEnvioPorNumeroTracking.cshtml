@@ -1,0 +1,80 @@
+﻿@using MVC.Models.Envio;
+@model VerDetallesEnvioYSeguimientosViewModel
+
+@{
+    ViewData["Title"] = "Filtrar Envio";
+}
+
+<h1>Filtrar Envio</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<form asp-action="BuscarEnvioPorNumeroTracking">
+    <div class="input-group mb-3">
+        <input name="numeroTracking" type="text" class="form-control" placeholder="Numero Tracking" aria-label="Numero Tracking">
+        <button class="btn btn-outline-secondary" type="submit" >Buscar</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(c => c.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.NumeroTracking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.FuncionarioId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <span>@Html.DisplayFor(c => c.Tipo)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.NumeroTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(c => c.FuncionarioId)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(c => c.Seguimientos)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(c => c.Seguimientos)
+            </td>
+        </tr>
+    </tbody>
+</table>

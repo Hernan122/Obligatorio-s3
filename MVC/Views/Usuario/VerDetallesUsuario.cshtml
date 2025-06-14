@@ -8,11 +8,26 @@
 <h1>Detalles del Usuario</h1>
 
 <div>
-    <p><strong>ID:</strong> @Model.Id</p>
-    <p><strong>Nombre:</strong> @Model.Nombre</p>
-    <p><strong>Email:</strong> @Model.Email</p>
-    <p><strong>Password:</strong> @Model.Password</p>
-    <p><strong>Rol:</strong> @Model.Rol</p>
+    <p>
+        <strong>@Html.DisplayNameFor(c => c.Id):</strong>
+        <span>@Html.DisplayFor(c => c.Id)</span>
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(c => c.Email):</strong>
+        <span>@Html.DisplayFor(c => c.Email)</span>
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(c => c.Nombre):</strong>
+        <span>@Html.DisplayFor(c => c.Nombre)</span>
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(c => c.Password):</strong>
+        <span>@Html.DisplayFor(c => c.Password)</span>
+    </p>
+    <p>
+        <strong>@Html.DisplayNameFor(c => c.Rol):</strong>
+        <span>@Html.DisplayFor(c => c.Rol)</span>
+    </p>
 </div>
 
 <a asp-action="Index" class="btn btn-primary">Volver al Listado</a>

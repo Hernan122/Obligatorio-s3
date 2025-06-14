@@ -1,40 +1,18 @@
-﻿using Compartido.DTOs.AgenciaDTO;
-using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Filters;
 using MVC.Models.Agencia;
 
 namespace MVC.Controllers
 {
     [Login]
-    public class AgenciaController : Controller
+    public class AgenciaController : ControllerB
     {
-        private IListadoAgencia CUListadoAgencia { get; set; }
-        private IAltaAgencia CUAltaAgencia { get; set; }
-
-        public AgenciaController
-        (
-            IListadoAgencia cuListadoAgencia,
-            IAltaAgencia cuAltaAgencia
-        )
-        {
-            CUListadoAgencia = cuListadoAgencia;
-            CUAltaAgencia = cuAltaAgencia;
-        }
-
         [HttpGet]
         public ActionResult Index()
         {
             var listadoAgenciaViewModel = new List<ListadoAgenciaViewModel>();
             try
             {
-                var agenciaDTO = CUListadoAgencia.Ejecutar();
-                listadoAgenciaViewModel = agenciaDTO.Select(c => new ListadoAgenciaViewModel()
-                {
-                    Nombre = c.Nombre,
-                    UsuarioId = c.UsuarioId
-                }).ToList();
-
                 return View(listadoAgenciaViewModel);
             }
             catch (Exception e)
@@ -65,16 +43,6 @@ namespace MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    AltaAgenciaDTO agenciaDTO = new AltaAgenciaDTO()
-                    {
-                        UbPos = agencia.UbPos,
-                        CoordenadasLatitud = agencia.CoordenadasLatitud,
-                        CoordenadasLongitud = agencia.CoordenadasLongitud,
-                        Nombre = agencia.Nombre,
-                        UsuarioId = (int)HttpContext.Session.GetInt32("Id"),
-                    };
-
-                    CUAltaAgencia.Ejecutar(agenciaDTO);
                     ViewBag.Mensaje = "Agencia creada con exito";
                     return RedirectToAction(nameof(AltaAgencia), new { Mensaje = "Agencia creada" });
                 }

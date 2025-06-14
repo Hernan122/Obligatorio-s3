@@ -29,22 +29,14 @@ namespace Compartido.Mappers
             );
         }
 
-        //public static Usuario UsuarioFromLoginUsuarioDTO(LoginUsuarioDTO usuarioDTO)
-        //{
-        //    return new Usuario()
-        //    {
-        //        Email = usuarioDTO.Email,
-        //        Password = new PasswordUsuario() { Valor = usuarioDTO.Password },
-        //    };
-        //}
-
         public static List<ListadoUsuarioDTO> ListadoUsuarioToListadoUsuarioDTO(List<Usuario> usuarios)
         {
             List<ListadoUsuarioDTO> listadoUsuariosDTO = new List<ListadoUsuarioDTO>();
             listadoUsuariosDTO = usuarios.Select(user => new ListadoUsuarioDTO()
             {
                 Id = user.Id,
-                NombreUsuario = user.Nombre,
+                Nombre = user.Nombre,
+                Password = user.Password.Valor
             }).ToList();
             return listadoUsuariosDTO;
         }

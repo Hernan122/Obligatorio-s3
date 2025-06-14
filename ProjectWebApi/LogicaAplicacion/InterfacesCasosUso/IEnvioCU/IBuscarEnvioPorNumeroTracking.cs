@@ -4,6 +4,6 @@ namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
 {
     public interface IBuscarEnvioPorNumeroTracking
     {
-        public VerDetallesEnvioDTO Ejecutar(string numeroTracking);
+        public VerDetallesEnvioYSeguimientosDTO Ejecutar(string numeroTracking);
     }
 }
