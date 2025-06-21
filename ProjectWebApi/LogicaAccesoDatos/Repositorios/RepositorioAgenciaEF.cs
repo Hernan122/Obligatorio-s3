@@ -16,7 +16,7 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Add(Agencia item)
         {
-            Agencia agenciaTemp = FindById(item.Id);
+            Agencia? agenciaTemp = FindByName(item.Nombre);
             if (agenciaTemp == null)
             {
                 Contexto.Agencias.Add(item);
@@ -30,11 +30,7 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Delete(int id)
         {
-            Agencia agencia = FindById(id);
-            if (agencia == null)
-            {
-                throw new UsuarioException("No se ha encontrado el usuario");
-            }
+            Agencia? agencia = FindById(id) ?? throw new UsuarioException("No se ha encontrado el usuario");
             Contexto.Agencias.Remove(agencia);
             Contexto.SaveChanges();
         }
@@ -44,7 +40,7 @@ namespace LogicaAccesoDatos.Repositorios
             return Contexto.Agencias;
         }
 
-        public Agencia FindById(int id)
+        public Agencia? FindById(int id)
         {
             return Contexto.Agencias
                     .Where(c => c.Id == id)
@@ -53,16 +49,12 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Update(Agencia item)
         {
-            Agencia encontrarAgencia = FindById(item.Id);
-            if (encontrarAgencia == null)
-            {
-                throw new AgenciaException("No se encontro agencia a actualizar");
-            }
+            Agencia encontrarAgencia = FindById(item.Id) ?? throw new AgenciaException("No se encontro agencia a actualizar");
             Contexto.Agencias.Update(item);
             Contexto.SaveChanges();
         }
 
-        public Agencia FindByName(string nombre)
+        public Agencia? FindByName(string nombre)
         {
             return Contexto.Agencias
                     .Where(c => c.Nombre == nombre)

@@ -62,19 +62,106 @@
         }
       }
     },
-    "/api/Envio/{id}": {
-      "delete": {
+    "/api/Envio/ListadoEnviosDetallados/{clienteId}": {
+      "get": {
         "tags": [
           "Envio"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "clienteId",
             "in": "path",
             "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Envio/ListadoSeguimientos/{envioId}": {
+      "get": {
+        "tags": [
+          "Envio"
+        ],
+        "parameters": [
+          {
+            "name": "envioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Envio/BuscarEnvioPorFechas/{estado}": {
+      "post": {
+        "tags": [
+          "Envio"
+        ],
+        "parameters": [
+          {
+            "name": "estado",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuscarEnvioPorFechasDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuscarEnvioPorFechasDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BuscarEnvioPorFechasDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Envio/BuscarEnvioPorComentario/{comentario}": {
+      "get": {
+        "tags": [
+          "Envio"
+        ],
+        "parameters": [
+          {
+            "name": "comentario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -285,6 +372,20 @@
           "rol": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BuscarEnvioPorFechasDTO": {
+        "type": "object",
+        "properties": {
+          "fechaInicio": {
+            "type": "string",
+            "format": "date"
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date"
           }
         },
         "additionalProperties": false

@@ -4,8 +4,8 @@ namespace LogicaNegocio.InterfacesRepositorios
 {
     public interface IRepositorioUsuario : IRepositorio <Usuario>
     {
-        Usuario FindByEmailAndPassword(string email, string password);
-        Usuario FindByEmail(string email);
-        Usuario FindByRepeatedEmail(string email, int id);
+        public Usuario? FindByEmailAndPassword(string email, string password);
+        public Usuario? FindByEmail(string email);
+        public Usuario? FindByRepeatedEmail(string email, int id);
     }
 }

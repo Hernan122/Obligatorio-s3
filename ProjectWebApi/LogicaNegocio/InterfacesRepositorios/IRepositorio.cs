@@ -5,7 +5,7 @@
         void Add(I item);
         IEnumerable<I> FindAll();
 
-        I FindById (int id);
+        I? FindById (int id);
 
         void Delete (int id);
 

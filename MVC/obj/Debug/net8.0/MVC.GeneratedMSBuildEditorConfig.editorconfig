@@ -36,6 +36,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNpYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/BuscarEnvioPorComentario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQnVzY2FyRW52aW9Qb3JDb21lbnRhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/BuscarEnvioPorFechas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQnVzY2FyRW52aW9Qb3JGZWNoYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/BuscarEnvioPorNumeroTracking.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cQnVzY2FyRW52aW9Qb3JOdW1lcm9UcmFja2luZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/ListadoEnviosDetallados.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cTGlzdGFkb0Vudmlvc0RldGFsbGFkb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/ListadoSeguimientos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW52aW9cTGlzdGFkb1NlZ3VpbWllbnRvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Bruno/Documents/Obligatorio-s3/MVC/Views/Envio/Urgente/Crear.cshtml]

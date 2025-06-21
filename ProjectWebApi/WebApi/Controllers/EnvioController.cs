@@ -1,5 +1,7 @@
 ﻿using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
 using Compartido.ExcepcionesConflictos;
+using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.ExcepcionesEntidades;
 using Microsoft.AspNetCore.Mvc;
@@ -15,13 +17,30 @@ namespace WebApi.Controllers
         private IBajaEnvio CUBajaEnvio { get; set; }
         private ICambiarEstadoEnvio CUCambiarEstadoEnvio { get; set; }
         private IBuscarEnvioPorId CUBuscarEnvioPorId { get; set; }
+
+        // RF1
         private IBuscarEnvioPorNumeroTracking CUBuscarEnvioPorNumeroTracking { get; set; }
+
+        // RF4
+        private IListadoEnviosDetallados CUListadoEnviosDetallados { get; set; }
+        private IListadoSeguimientos CUListadoSeguimientos { get; set; }
+
+        // RF5
+        private IBuscarEnvioPorFechas CUBuscarEnvioPorFechas { get; set; }
+
+        // RF6
+        private IBuscarEnvioPorComentario CUBuscarEnvioPorComentario { get; set; }
+
         public EnvioController(
             IListadoEnvio cuListadoEnvio,
             IAltaEnvio cuAltaEnvio,
             IBajaEnvio cuBajaEnvio,
             IBuscarEnvioPorId cuBuscarEnvioPorId,
-            IBuscarEnvioPorNumeroTracking cuBuscarEnvioPorNumeroTracking
+            IBuscarEnvioPorNumeroTracking cuBuscarEnvioPorNumeroTracking,
+            IListadoEnviosDetallados cuListadoEnviosDetallados,
+            IListadoSeguimientos cuListadoSeguimientos,
+            IBuscarEnvioPorFechas cuBuscarEnvioPorFechas,
+            IBuscarEnvioPorComentario cuBuscarEnvioPorComentario
         )
         {
             CUListadoEnvio = cuListadoEnvio;
@@ -29,8 +48,11 @@ namespace WebApi.Controllers
             CUBajaEnvio = cuBajaEnvio;
             CUBuscarEnvioPorId = cuBuscarEnvioPorId;
             CUBuscarEnvioPorNumeroTracking = cuBuscarEnvioPorNumeroTracking;
+            CUListadoEnviosDetallados = cuListadoEnviosDetallados;
+            CUListadoSeguimientos = cuListadoSeguimientos;
+            CUBuscarEnvioPorFechas = cuBuscarEnvioPorFechas;
+            CUBuscarEnvioPorComentario = cuBuscarEnvioPorComentario;
         }
-
 
         // GET: api/<EnvioController>
         [HttpGet("FindAll")]
@@ -38,7 +60,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                List<ListadoEnvioDTO> datoEnvios = CUListadoEnvio.Ejecutar();
+                List<ListadoEnviosDTO> datoEnvios = CUListadoEnvio.Ejecutar();
                 if (datoEnvios == null || datoEnvios.Count == 0)
                 {
                     return NotFound("No hay envios");
@@ -78,7 +100,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                VerDetallesEnvioYSeguimientosDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
+                ListadoEnviosDetalladosDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
                 return Ok(dto);
             }
             catch (Exception ex)
@@ -87,16 +109,71 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost("ListadoEnviosDetallados")]
-        public IActionResult ListadoEnviosDetallados([FromBody] int id)
+        [HttpGet("ListadoEnviosDetallados/{clienteId}")]
+        public IActionResult ListadoEnviosDetallados(int clienteId)
         {
             try
             {
-                CULi
+                IEnumerable<ListadoEnviosDetalladosDTO> listado = CUListadoEnviosDetallados.Ejecutar(clienteId);
+                return Ok(listado);
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("ListadoSeguimientos/{envioId}")]
+        public IActionResult ListadoSeguimientos(int envioId)
+        {
+            try
+            {
+                IEnumerable<ListadoSeguimientosDTO> listado = CUListadoSeguimientos.Ejecutar(envioId);
+                return Ok(listado);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpPost("BuscarEnvioPorFechas/{estado}")]
+        public IActionResult BuscarEnvioPorFechas(int estado, [FromBody] BuscarEnvioPorFechasDTO envio)
+        {
+            try
+            {
+                IEnumerable<ListadoEnviosInfoRelevanteDTO> listado = CUBuscarEnvioPorFechas.Ejecutar(estado, envio);
+                return Ok(listado);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("BuscarEnvioPorComentario/{comentario}")]
+        public IActionResult BuscarEnvioPorComentario(string comentario)
+        {
+            try
+            {
+                IEnumerable<ListadoEnviosDTO> listado = CUBuscarEnvioPorComentario.Ejecutar(comentario);
+                return Ok(listado);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
 using LogicaNegocio.EntidadesNegocio;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -7,16 +8,16 @@ namespace Compartido.Mappers
 {
     public class EnvioMapper
     {
-        public static List<ListadoEnvioDTO> ListadoEnvioFromListadoEnvioDTO(List<Envio> comunDTO)
+        public static List<ListadoEnviosDTO> ListadoEnvioFromListadoEnvioDTO(List<Envio> comunDTO)
         {
-            List<ListadoEnvioDTO> enviosDTO = new List<ListadoEnvioDTO>();
+            List<ListadoEnviosDTO> enviosDTO = new List<ListadoEnviosDTO>();
             return enviosDTO;
         }
 
-        public static List<ListadoEnvioDTO> ListadoEnvioToListadoEnvioDTO(List<Envio> envios)
+        public static List<ListadoEnviosDTO> ListadoEnvioToListadoEnvioDTO(List<Envio> envios)
         {
-            List<ListadoEnvioDTO> enviosDTO = new List<ListadoEnvioDTO>();
-            enviosDTO = envios.Select(envio => new ListadoEnvioDTO()
+            List<ListadoEnviosDTO> enviosDTO = new List<ListadoEnviosDTO>();
+            enviosDTO = envios.Select(envio => new ListadoEnviosDTO()
             {
                 Tipo = envio is Comun ? "Comun" : "Urgente",
                 Id = envio.Id,
@@ -46,39 +47,58 @@ namespace Compartido.Mappers
             };
         }
 
-        public static VerDetallesEnvioYSeguimientosDTO EnvioToVerDetallesEnvioYSeguimientosDTO(Envio envio)
+        public static ListadoEnviosDetalladosDTO EnvioToVerDetallesEnvioYSeguimientosDTO(Envio envio)
         {
-            List<string> seguimientos = new List<string>();
-            foreach (Seguimiento item in envio.Seguimientos.ToList())
-            {
-                seguimientos.Add("{" + item + "}");
-            }
-
-            return new VerDetallesEnvioYSeguimientosDTO()
+            return new ListadoEnviosDetalladosDTO()
             {
                 Tipo = envio is Comun ? "Comun" : "Urgente",
                 Id = envio.Id,
                 NumeroTracking = envio.NumeroTracking,
                 Estado = envio.Estado.ToString(),
-                Seguimientos = string.Join("\n ", seguimientos),
                 FuncionarioId = envio.FuncionarioId,
                 ClienteId = envio.ClienteId
             };
         }
 
-        public static List<VerDetallesEnvioYSeguimientosDTO> ListadoEnviosFromListadoEnviosDetalladosDTO(List<Envio> listado)
+        public static List<ListadoEnviosDetalladosDTO> ListadoEnviosFromListadoEnviosDetalladosDTO(List<Envio> listado)
         {
-            List<VerDetallesEnvioYSeguimientosDTO> listadoDTO = new List<VerDetallesEnvioYSeguimientosDTO>();
-            listadoDTO = listado.Select(envio => new VerDetallesEnvioYSeguimientosDTO()
+            List<ListadoEnviosDetalladosDTO> listadoDTO = new List<ListadoEnviosDetalladosDTO>();
+            listadoDTO = listado.Select(envio => new ListadoEnviosDetalladosDTO()
             {
                 Tipo = envio is Comun ? "Comun" : "Urgente",
                 Id = envio.Id,
                 NumeroTracking = envio.NumeroTracking,
                 Estado = envio.Estado.ToString(),
-                Seguimientos = string.Join("\n ", envio.Seguimientos),
                 FuncionarioId = envio.FuncionarioId
             }).ToList();
             return listadoDTO;
+        }
+
+        public static List<ListadoSeguimientosDTO> EnvioToListadoSeguimientosDTO(Envio envio)
+        {
+            List<ListadoSeguimientosDTO> listadoDTO = new List<ListadoSeguimientosDTO>();
+            listadoDTO = envio.Seguimientos.Select(seguimiento => new ListadoSeguimientosDTO()
+            {
+                Id = seguimiento.Id,
+                Fecha = seguimiento.Fecha,
+                Comentario = seguimiento.Comentario,
+                FuncionarioId = seguimiento.FuncionarioId
+            }).ToList();
+            return listadoDTO;
+        }
+
+        public static List<ListadoEnviosInfoRelevanteDTO> ListadoEnviosToListadoEnviosInfoRelevanteDTO(IEnumerable<Envio> listado)
+        {
+            List<ListadoEnviosInfoRelevanteDTO> listadonuevo = null;
+
+            listadonuevo = listado.Select(c => new ListadoEnviosInfoRelevanteDTO()
+            {
+                Tipo = c is Comun ? "Comun" : "Urgente",
+                NumeroTracking = c.NumeroTracking,
+                Estado = c.Estado.ToString()
+            }).ToList();
+
+            return listadonuevo;
         }
 
     }

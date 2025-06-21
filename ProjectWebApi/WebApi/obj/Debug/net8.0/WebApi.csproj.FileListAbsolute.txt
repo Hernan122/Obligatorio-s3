@@ -295,12 +295,6 @@ C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\sc
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets\msbuild.WebApi.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets\msbuild.WebApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets\msbuild.build.WebApi.props
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebApi.props
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebApi.props
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.csproj.Up2Date
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.dll
@@ -308,3 +302,8 @@ C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\re
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.pdb
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\ref\WebApi.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.build.json.cache

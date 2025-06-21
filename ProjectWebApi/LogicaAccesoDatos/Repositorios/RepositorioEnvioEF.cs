@@ -99,11 +99,58 @@ namespace LogicaAccesoDatos.Repositorios
                    .SingleOrDefault();
         }
 
-        public List<Envio> ListadoEnviosDetalladosPorClienteId(int clienteId)
+        public IEnumerable<Envio> ListadoEnviosDetallados(int clienteId)
         {
             return Contexto.Envios
                 .Where(c => c.Cliente.Id == clienteId
-                && c.Seguimientos.OrderBy(c => c.Fecha).Any()).ToList();
+                    && c.Seguimientos.OrderBy(c => c.Fecha).Any());
+        }
+
+        public Envio? ListadoSeguimientos(int envioId)
+        {
+            return Contexto.Envios
+                .Where(c => c.Id == envioId)
+                .Include(c => c.Seguimientos).FirstOrDefault();
+        }
+
+        public IEnumerable<Envio> BuscarEnviosPorFechas(DateOnly fechaInicio, DateOnly fechaFin, int estado=-1)
+        {
+            bool encontrado = false;
+            var estadoTemp = Estado.EN_PROCESO;
+            foreach (Estado item in Enum.GetValues(typeof(Estado)))
+            {
+                if ((int)item == estado)
+                {
+                    estadoTemp = item;
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            if (encontrado)
+            {
+                return Contexto.Envios
+                    .Where(c => c.Seguimientos
+                        .Any(c => DateOnly.FromDateTime(c.Fecha) >= fechaInicio && DateOnly.FromDateTime(c.Fecha) <= fechaFin)
+                        && c.Estado == estadoTemp
+                    )
+                    .OrderBy(c => c.NumeroTracking);
+            }
+            else
+            {
+                return Contexto.Envios
+                    .Where(c => c.Seguimientos
+                        .Any(c => DateOnly.FromDateTime(c.Fecha) >= fechaInicio && DateOnly.FromDateTime(c.Fecha) <= fechaFin)
+                    )
+                    .OrderBy(c => c.NumeroTracking);
+            }
+        }
+
+        public IEnumerable<Envio> BuscarEnviosPorComentario(string comentario)
+        {
+            return Contexto.Envios
+                .Where(c => c.Seguimientos.Any(c => c.Comentario.Equals(comentario)))
+                .OrderBy(c => c.Seguimientos.OrderBy(c => c.Fecha));
         }
 
     }

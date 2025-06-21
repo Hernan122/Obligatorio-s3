@@ -1,0 +1,53 @@
+﻿@using MVC.Models.Envio
+@model IEnumerable<ListadoSeguimientosViewModel>
+
+<h1>Listado Seguimientos</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<table class="table table-striped table-sm">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(c => c.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(c => c.FuncionarioId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(c => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.Comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.FuncionarioId)
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>

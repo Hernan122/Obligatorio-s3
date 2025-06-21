@@ -1,5 +1,5 @@
 ﻿@using MVC.Models.Envio
-@model IEnumerable<VerDetallesEnvioYSeguimientosViewModel>
+@model IEnumerable<ListadoEnviosDetalladosViewModel>
 
 <h1>Listado Envios</h1>
 
@@ -11,6 +11,9 @@
 {
     <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
 }
+
+@if (Model != null)
+{
 
 <table class="table">
     <thead>
@@ -33,46 +36,43 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @{
-                        var clase = "";
-                    }
-                    @if (item.Tipo == "Comun")
-                    {
-                        clase = "bg-success p-1 text-white rounded-1";
-                    } 
-                    else
-                    {
-                        clase = "bg-danger p-1 text-white rounded-1";
-                    }
-                    <span class="@clase">@Html.DisplayFor(c => item.Tipo)</span>
-                </td>
-                <td>
-                    @Html.DisplayFor(c => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(c => item.NumeroTracking)
-                </td>
-                <td>
-                    @Html.DisplayFor(c => item.Estado)
-                </td>
-                <td>
-                    @Html.DisplayFor(c => item.FuncionarioId)
-                </td>
-                @* <td>
-                    <span>@Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id })</span>
-                    |
-                    @if (item.Estado == Estado.EN_PROCESO.ToString())
-                    {
-                        <span>@Html.ActionLink("Editar", "Editar")</span>
-                    }
-                </td> *@
-            </tr>
-            <h3>@Html.DisplayNameFor(c => c.Seguimientos)</h3>
-            <p>@Html.DisplayFor(c => item.Seguimientos)</p>
-        }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var clase = "";
+                }
+                @if (item.Tipo == "Comun")
+                {
+                    clase = "bg-success p-1 text-white rounded-1";
+                }
+                else
+                {
+                    clase = "bg-danger p-1 text-white rounded-1";
+                }
+                <span class="@clase">@Html.DisplayFor(c => item.Tipo)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.NumeroTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(c => item.FuncionarioId)
+            </td>
+            <td>
+                <span>@Html.ActionLink("Ver Detalles Seguimientos", "ListadoSeguimientos", new { envioId = item.Id })</span>
+            </td>
+        </tr>
+    }
+
     </tbody>
 </table>
+
+}

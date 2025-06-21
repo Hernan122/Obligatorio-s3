@@ -5,28 +5,8 @@ namespace MVC.Controllers
 {
     public class ControllerB : Controller
     {
-        //public ResHttpViewModel WebApi_GetProcess(string url)
-        //{
-        //    HttpClient cliente = new HttpClient(); // Peticion HTTP al servidor
-        //    Task<HttpResponseMessage> tarea = cliente.GetAsync(url);
-        //    tarea.Wait(); // Espera a que tarea termine su proceso (async await)
-        //    HttpResponseMessage respuesta = tarea.Result; // Codigo de estado de la respuesta
 
-        //    HttpContent contenido = respuesta.Content;
-        //    Task<string> body = contenido.ReadAsStringAsync();
-        //    body.Wait();
-        //    string datos = body.Result;
-
-        //    ResHttpViewModel res = new()
-        //    {
-        //        Respuesta = respuesta,
-        //        Datos = datos
-        //    };
-
-        //    return res;
-        //}
-
-        public ResHttpViewModel WebApi_Process(string url, object obj, string httpVerb="GET")
+        public ResHttpViewModel WebApi_Process(string url, object obj=null, string httpVerb="GET")
         {
             HttpClient cliente = new HttpClient();
             Task<HttpResponseMessage> tarea;
@@ -65,6 +45,7 @@ namespace MVC.Controllers
             };
 
             return res;
+
         }
     }
 }

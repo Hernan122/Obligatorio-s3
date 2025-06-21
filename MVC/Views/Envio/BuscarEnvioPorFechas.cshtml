@@ -1,0 +1,90 @@
+﻿@using MVC.Models.Envio
+@model IEnumerable<ListadoEnvioInfoRelevanteViewModel>
+
+@{
+    ViewData["Title"] = "Filtrar Envio";
+}
+
+<h1>Filtrar Envio por Fechas</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<form asp-action="BuscarEnvioPorFechas">
+    <div class="form-floating mb-3">
+        <input name="fechaInicio" type="date" class="form-control" id="fechaInicio" placeholder>
+        <label for="fechaInicio">Fecha de Inicio</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input name="fechaFin" type="date" class="form-control" id="fechaFin" placeholder>
+        <label for="fechaFin">Fecha de Fin</label>
+    </div>
+    <div class="form-floating mb-3">
+        <select name="estadoEnvio" class="form-select" id="EstadoEnvio" aria-label="Floating label select example">
+            <option value="-1" selected>Todos los estados</option>
+            @foreach (EstadoEnvio item in Enum.GetValues(typeof(EstadoEnvio)))
+            {
+                int estadonum = (int)item;
+                <option value="@estadonum">@item</option>
+            }
+        </select>
+        <label for="EstadoEnvio">Estado</label>
+    </div>
+    <input type="submit" value="Buscar" class="btn btn-primary w-100" />
+</form>
+
+@if (Model.Any())
+{
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroTracking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var clase = "";
+                }
+                @if (item.Tipo == "Comun")
+                {
+                    clase = "bg-success p-1 text-white rounded-1";
+                }
+                else
+                {
+                    clase = "bg-danger p-1 text-white rounded-1";
+                }
+                <span class="@clase">@Html.DisplayFor(modelItem => item.Tipo)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+
+}

@@ -47,7 +47,7 @@ namespace LogicaAccesoDatos.Repositorios
                 .ToList();
         }
 
-        public Usuario FindById(int id)
+        public Usuario? FindById(int id)
         {
             return Contexto.Usuarios
                     .Where(c => c.Id == id)
@@ -74,21 +74,21 @@ namespace LogicaAccesoDatos.Repositorios
             }
         }
 
-        public Usuario FindByEmailAndPassword(string email, string password)
+        public Usuario? FindByEmailAndPassword(string email, string password)
         {
             return Contexto.Usuarios
                     .Where(c => c.Email == email && c.Password.Valor == password)
                     .SingleOrDefault();
         }
 
-        public Usuario FindByEmail(string email)
+        public Usuario? FindByEmail(string email)
         {
             return Contexto.Usuarios
                     .Where(c => c.Email == email)
                     .SingleOrDefault();
         }
 
-        public Usuario FindByRepeatedEmail(string email, int id)
+        public Usuario? FindByRepeatedEmail(string email, int id)
         {
             return Contexto.Usuarios
                     .Where(c => c.Email == email && c.Id != id)

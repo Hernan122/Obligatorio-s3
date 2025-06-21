@@ -1,12 +1,11 @@
-﻿using System.Runtime.Intrinsics.Arm;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Filters;
 using MVC.Models;
 using MVC.Models.Envio;
 using MVC.Models.Envio.Comun;
 using MVC.Models.Envio.Urgente;
-using MVC.Models.Usuario;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MVC.Controllers
 {
@@ -14,18 +13,19 @@ namespace MVC.Controllers
     public class EnvioController : ControllerB
     {
         [Login]
+        [Administrador]
         [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<ListadoEnvioViewModel> listadoEnviosViewModel = new List<ListadoEnvioViewModel>();
+            IEnumerable<ListadoEnviosViewModel> listadoEnviosViewModel = new List<ListadoEnviosViewModel>();
             try
             {
                 string url = "https://localhost:7189/api/Envio/FindAll";
-                ResHttpViewModel datos = WebApi_Process(url, null);
+                ResHttpViewModel datos = WebApi_Process(url);
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    listadoEnviosViewModel = JsonConvert.DeserializeObject<List<ListadoEnvioViewModel>>(datos.Datos);
+                    listadoEnviosViewModel = JsonConvert.DeserializeObject<List<ListadoEnviosViewModel>>(datos.Datos);
                 }
                 else
                 {
@@ -142,29 +142,48 @@ namespace MVC.Controllers
         }
         
         [HttpGet]
-        public IActionResult BuscarEnvioPorNumeroTracking(VerDetallesEnvioYSeguimientosViewModel envio)
+        public IActionResult BuscarEnvioPorNumeroTracking(ListadoEnviosDetalladosViewModel envio)
         {
             return View();
         }
 
+        // -------------------- Obligatorio 2 --------------------
+        // RF1
         [HttpPost]
         public IActionResult BuscarEnvioPorNumeroTracking(string numeroTracking)
         {
-            VerDetallesEnvioYSeguimientosViewModel envio = null;
+            ListadoEnviosViewModel envio = null;
             try
             {
                 if (string.IsNullOrEmpty(numeroTracking))
                 {
                     throw new ArgumentNullException();
                 }
+
+                // Envio
                 string url = $"https://localhost:7189/api/Envio/BuscarEnvioPorNumeroTracking/{numeroTracking}";
-                ResHttpViewModel datos = WebApi_Process(url, null);
+                ResHttpViewModel datos = WebApi_Process(url);
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    envio = JsonConvert.DeserializeObject<VerDetallesEnvioYSeguimientosViewModel>(datos.Datos);
+                    envio = JsonConvert.DeserializeObject<ListadoEnviosViewModel>(datos.Datos);
                     ViewBag.Mensaje = "Envio Encontrado";
-                } 
+
+                    string url2 = $"https://localhost:7189/api/Envio/ListadoSeguimientos/" + envio.Id;
+                    ResHttpViewModel datos2 = WebApi_Process(url2);
+
+                    if (datos2.Respuesta.IsSuccessStatusCode)
+                    {
+                        IEnumerable<ListadoSeguimientosViewModel> seguimientos = null;
+                        seguimientos = JsonConvert.DeserializeObject<List<ListadoSeguimientosViewModel>>(datos2.Datos);
+
+                        if (seguimientos.Count() != 0)
+                        {
+                            ViewBag.Seguimientos = seguimientos;
+                        }
+                    }
+                    
+                }
                 else
                 {
                     ViewBag.MensajeError = "Envio no Encontrado";
@@ -181,18 +200,26 @@ namespace MVC.Controllers
             return View(envio);
         }
 
+        // RF4
+        [Login]
+        [Cliente]
         [HttpGet]
         public IActionResult ListadoEnviosDetallados()
         {
-            IEnumerable<VerDetallesEnvioYSeguimientosViewModel> listado = new List<VerDetallesEnvioYSeguimientosViewModel>();
+            IEnumerable<ListadoEnviosDetalladosViewModel> listado = new List<ListadoEnviosDetalladosViewModel>();
             try
             {
-                string url = "";
-                ResHttpViewModel datos = WebApi_Process(url, (int)HttpContext.Session.GetInt32("Id"), "POST");
+                string url = "https://localhost:7189/api/Envio/ListadoEnviosDetallados/" + (int)HttpContext.Session.GetInt32("Id");
+                ResHttpViewModel datos = WebApi_Process(url);
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
-                    listado = JsonConvert.DeserializeObject<List<VerDetallesEnvioYSeguimientosViewModel>>(datos.Datos)
+                    listado = JsonConvert.DeserializeObject<List<ListadoEnviosDetalladosViewModel>>(datos.Datos);
+                    if (listado.Count() == 0)
+                    {
+                        ViewBag.MensajeError = "Cliente no tiene envios";
+                        listado = new List<ListadoEnviosDetalladosViewModel>();
+                    }
                 }
                 else
                 {
@@ -203,7 +230,124 @@ namespace MVC.Controllers
             {
                 ViewBag.MensajeError = e.Message;
             }
-            return View();
+            return View(listado);
+        }
+
+        // RF4
+        [Login]
+        [Cliente]
+        [HttpGet]
+        public IActionResult ListadoSeguimientos(int envioId)
+        {
+            IEnumerable<ListadoSeguimientosViewModel> listado = new List<ListadoSeguimientosViewModel>();
+            try
+            {
+                string url = "https://localhost:7189/api/Envio/ListadoSeguimientos/" + envioId;
+                ResHttpViewModel datos = WebApi_Process(url);
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoSeguimientosViewModel>>(datos.Datos);
+                    if (listado.Count() == 0)
+                    {
+                        listado = new List<ListadoSeguimientosViewModel>();
+                    }
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
+        }
+
+        // RF5
+        [Login]
+        [Cliente]
+        [HttpGet]
+        public IActionResult BuscarEnvioPorFechas(IEnumerable<ListadoEnvioInfoRelevanteViewModel> pListado)
+        {
+            return View(pListado);
+        }
+
+        // RF5
+        [HttpPost]
+        public IActionResult BuscarEnvioPorFechas(DateTime fechaInicio, DateTime fechaFin, int estadoEnvio)
+        {
+            IEnumerable<ListadoEnvioInfoRelevanteViewModel> listado = new List<ListadoEnvioInfoRelevanteViewModel>();
+            try
+            {
+                BuscarEnvioPorFechasViewModel envio = new BuscarEnvioPorFechasViewModel
+                {
+                    FechaInicio = fechaInicio,
+                    FechaFin = fechaFin,
+                    Estado = estadoEnvio
+                };
+                string url = "https://localhost:7189/api/Envio/BuscarEnvioPorFechas";
+                ResHttpViewModel datos = WebApi_Process(url, envio, "POST");
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoEnvioInfoRelevanteViewModel>>(datos.Datos);
+                    if (listado.Count() == 0)
+                    {
+                        listado = new List<ListadoEnvioInfoRelevanteViewModel>();
+                        ViewBag.MensajeError = "No hay Envios";
+                    }
+                } else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
+        }
+
+        // RF6
+        [Login]
+        [Cliente]
+        [HttpGet]
+        public IActionResult BuscarEnvioPorComentario(IEnumerable<ListadoEnviosViewModel> pListado)
+        {
+            return View(pListado);
+        }
+
+        // RF6
+        [HttpPost]
+        public IActionResult BuscarEnvioPorComentario(string comentario)
+        {
+            IEnumerable<ListadoEnviosViewModel> listado = new List<ListadoEnviosViewModel>();
+            try
+            {
+                string url = "https://localhost:7189/api/Envio/BuscarEnvioPorComentario/" + comentario;
+                ResHttpViewModel datos = WebApi_Process(url);
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoEnviosViewModel>>(datos.Datos);
+                    if (listado.Count() == 0)
+                    {
+                        listado = new List<ListadoEnviosViewModel>();
+                        ViewBag.MensajeError = "No hay Envios";
+                    }
+                } 
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
         }
 
     }

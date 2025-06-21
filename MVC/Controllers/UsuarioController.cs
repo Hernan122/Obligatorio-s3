@@ -30,6 +30,7 @@ namespace MVC.Controllers
         }
 
         [Login]
+        [Administrador]
         [HttpGet]
         public IActionResult AltaUsuario(string mensaje)
         {
@@ -62,36 +63,14 @@ namespace MVC.Controllers
             return View();
         }
 
+        // RF2
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Login(LoginUsuarioViewModel usuario)
-        //{
-        //    try
-        //    {
-        //        ViewBag.Mensaje = "Sesion iniciada con exito";
-
-        //        if (HttpContext.Session.GetString("rol") == "Administrador")
-        //        {
-        //            return RedirectToAction(nameof(Index), "Usuario");
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        ViewBag.MensajeError = e.Message;
-        //        //ViewBag.MensajeError += ", " + e.StackTrace;
-        //        return View();
-        //    }
-        //}
-
+        // RF2
         [HttpPost]
         public IActionResult Login(LoginUsuarioViewModel usuario)
         {
@@ -237,6 +216,7 @@ namespace MVC.Controllers
             }
         }
 
+        // RF2
         [HttpGet]
         public IActionResult Logout()
         {
@@ -244,14 +224,15 @@ namespace MVC.Controllers
             return RedirectToAction(nameof(Login));
         }
 
+        // RF3
         [Login]
         [HttpGet]
         public IActionResult CambiarPassword()
         {
-            ViewBag.Info = "Contraseña Actual: " + HttpContext.Session.GetString("ActualPassword");
             return View();
         }
 
+        // RF3
         [HttpPost]
         public IActionResult CambiarPassword(string actualPassword, string newPassword)
         {

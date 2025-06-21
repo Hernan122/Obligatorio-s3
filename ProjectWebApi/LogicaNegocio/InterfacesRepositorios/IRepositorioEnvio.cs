@@ -9,6 +9,9 @@ namespace LogicaNegocio.InterfacesRepositorios
         public IEnumerable<Envio> EnviosEnProceso();
         public IEnumerable<Envio> FindAllEnviosConSeguimiento();
         public Envio? FindEnvioAndSeguimientoById(int id);
-        public List<Envio> ListadoEnviosDetalladosPorClienteId(int clienteId);
+        public IEnumerable<Envio> ListadoEnviosDetallados(int clienteId);
+        public Envio? ListadoSeguimientos(int envioId);
+        public IEnumerable<Envio> BuscarEnviosPorFechas(DateOnly fechaInicio, DateOnly fechaFin, int estado=-1);
+        public IEnumerable<Envio> BuscarEnviosPorComentario(string comentario);
     }
 }

@@ -1,0 +1,93 @@
+﻿@using MVC.Models.Envio
+@model IEnumerable<ListadoEnviosViewModel>
+
+@{
+    ViewData["Title"] = "Filtrar Envio";
+}
+
+<h1>Filtrar Envio por Comentario</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    <h5 class="alert alert-success">@ViewBag.Mensaje</h5>
+}
+@if (ViewBag.MensajeError != null)
+{
+    <h5 class="alert alert-danger">@ViewBag.MensajeError</h5>
+}
+
+<form asp-action="BuscarEnvioPorComentario" class="mb-3">
+    <div class="form-floating mb-3">
+        <input name="Comentario" type="text" class="form-control" id="Comentario" placeholder>
+        <label for="Comentario">Comentario</label>
+    </div>
+    <input type="submit" value="Buscar" class="btn btn-primary w-100" />
+</form>
+
+@if (Model.Any())
+{
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroTracking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncionarioId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var clase = "";
+                }
+                @if (item.Tipo == "Comun")
+                {
+                    clase = "bg-success p-1 text-white rounded-1";
+                }
+                else
+                {
+                    clase = "bg-danger p-1 text-white rounded-1";
+                }
+                <span class="@clase">@Html.DisplayFor(modelItem => item.Tipo)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioId)
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+
+}

@@ -16,12 +16,12 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
             RepoEnvios = repoEnvios;
         }
 
-        public List<VerDetallesEnvioYSeguimientosDTO> Ejecutar(int clienteId)
+        public List<ListadoEnviosDetalladosDTO> Ejecutar(int clienteId)
         {
-            List<Envio> envio = RepoEnvios.ListadoEnviosDetalladosPorClienteId(clienteId).ToList();
-
-            List<VerDetallesEnvioYSeguimientosDTO> listadoDTO = EnvioMapper.ListadoEnviosFromListadoEnviosDetalladosDTO(envio);
+            List<Envio> envio = RepoEnvios.ListadoEnviosDetallados(clienteId).ToList();
+            List<ListadoEnviosDetalladosDTO> listadoDTO = EnvioMapper.ListadoEnviosFromListadoEnviosDetalladosDTO(envio);
             return listadoDTO;
         }
+
     }
 }

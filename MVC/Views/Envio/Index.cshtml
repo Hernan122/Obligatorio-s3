@@ -1,5 +1,5 @@
 ﻿@using MVC.Models.Envio
-@model IEnumerable<ListadoEnvioViewModel>
+@model IEnumerable<ListadoEnviosViewModel>
 
 <h1>Listado Envios</h1>
 
@@ -36,47 +36,49 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @{
-                        var clase = "";
-                    }
-                    @if (item.Tipo == "Comun")
-                    {
-                        clase = "bg-success p-1 text-white rounded-1";
-                    } 
-                    else
-                    {
-                        clase = "bg-danger p-1 text-white rounded-1";
-                    }
-                    <span class="@clase">@Html.DisplayFor(modelItem => item.Tipo)</span>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumeroTracking)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comentario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FuncionarioId)
-                </td>
-                @* <td>
-                    <span>@Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id })</span>
-                    |
-                    @if (item.Estado == Estado.EN_PROCESO.ToString())
-                    {
-                        <span>@Html.ActionLink("Editar", "Editar")</span>
-                    }
-                </td> *@
-            </tr>
-        }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{
+                    var clase = "";
+                }
+                @if (item.Tipo == "Comun")
+                {
+                    clase = "bg-success p-1 text-white rounded-1";
+                } 
+                else
+                {
+                    clase = "bg-danger p-1 text-white rounded-1";
+                }
+                <span class="@clase">@Html.DisplayFor(modelItem => item.Tipo)</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroTracking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuncionarioId)
+            </td>
+            @* <td>
+                <span>@Html.ActionLink("Borrar", "BajaEnvio", new { id = item.Id })</span>
+                |
+                @if (item.Estado == Estado.EN_PROCESO.ToString())
+                {
+                    <span>@Html.ActionLink("Editar", "Editar")</span>
+                }
+            </td> *@
+        </tr>
+    }
+
     </tbody>
 </table>
