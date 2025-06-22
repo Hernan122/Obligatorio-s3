@@ -18,8 +18,8 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 
         public List<ListadoEnviosInfoRelevanteDTO> Ejecutar(int estado, BuscarEnvioPorFechasDTO envio)
         {
-            List<Envio> listado = RepoEnvios.BuscarEnviosPorFechas(envio.FechaInicio, envio.FechaFin, estado).ToList();
-            if (listado.Count == 0)
+            IEnumerable<Envio> listado = RepoEnvios.BuscarEnviosPorFechas(envio.FechaInicio, envio.FechaFin, estado);
+            if (!listado.Any())
             {
                 throw new EnvioException("No hay envios con esos parametros");
             }

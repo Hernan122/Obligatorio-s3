@@ -5,5 +5,6 @@
         public string Tipo { get; set; }
         public string NumeroTracking { get; set; }
         public string Estado { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }

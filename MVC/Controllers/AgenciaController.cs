@@ -10,7 +10,7 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var listadoAgenciaViewModel = new List<ListadoAgenciaViewModel>();
+            List<ListadoAgenciaViewModel> listadoAgenciaViewModel = [];
             try
             {
                 return View(listadoAgenciaViewModel);
@@ -51,7 +51,7 @@ namespace MVC.Controllers
                     throw new ArgumentNullException();
                 }
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException)
             {
                 mensaje = "Debe rellenar todos los valores";
                 ViewBag.MensajeError = mensaje;

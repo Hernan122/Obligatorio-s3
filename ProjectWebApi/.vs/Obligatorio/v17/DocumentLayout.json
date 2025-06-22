@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\projectwebapi\\logicaaccesodatos\\repositorios\\repositorioenvioef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D826B26C-D5CC-4E8F-BCED-B5AE1BCDC1C3}|LogicaAccesoDatos\\LogicaAccesoDatos.csproj|solutionrelative:logicaaccesodatos\\repositorios\\repositorioenvioef.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\projectwebapi\\webapi\\manejadorjwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|solutionrelative:webapi\\manejadorjwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\projectwebapi\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{757132C5-1060-4823-8598-44636D784D50}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RepositorioEnvioEF.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "RelativeDocumentMoniker": "LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "RelativeToolTip": "LogicaAccesoDatos\\Repositorios\\RepositorioEnvioEF.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Title": "ManejadorJWT.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\WebApi\\ManejadorJWT.cs",
+              "RelativeDocumentMoniker": "WebApi\\ManejadorJWT.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\WebApi\\ManejadorJWT.cs",
+              "RelativeToolTip": "WebApi\\ManejadorJWT.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T02:37:42.712Z",
+              "WhenOpened": "2025-06-22T02:21:52.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\ProjectWebApi\\WebApi\\Program.cs",
+              "RelativeToolTip": "WebApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T02:11:07.521Z",
               "EditorCaption": ""
             }
           ]

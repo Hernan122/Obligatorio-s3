@@ -1,71 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\views\\envio\\buscarenvioporcomentario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:views\\envio\\buscarenvioporcomentario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\views\\envio\\buscarenvioporfechas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:views\\envio\\buscarenvioporfechas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BuscarEnvioPorFechas.cshtml",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Envio\\BuscarEnvioPorFechas.cshtml",
-              "RelativeDocumentMoniker": "Views\\Envio\\BuscarEnvioPorFechas.cshtml",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Envio\\BuscarEnvioPorFechas.cshtml",
-              "RelativeToolTip": "Views\\Envio\\BuscarEnvioPorFechas.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAADwvyYAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T23:29:15.829Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BuscarEnvioPorComentario.cshtml",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Envio\\BuscarEnvioPorComentario.cshtml",
-              "RelativeDocumentMoniker": "Views\\Envio\\BuscarEnvioPorComentario.cshtml",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Envio\\BuscarEnvioPorComentario.cshtml",
-              "RelativeToolTip": "Views\\Envio\\BuscarEnvioPorComentario.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwvxIAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-20T22:51:31.275Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EnvioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
-              "RelativeDocumentMoniker": "Controllers\\EnvioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
-              "RelativeToolTip": "Controllers\\EnvioController.cs",
-              "ViewState": "AgIAABcBAAAAAAAAAADwvycBAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T22:44:37.645Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

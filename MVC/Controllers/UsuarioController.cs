@@ -3,7 +3,6 @@ using MVC.Models.Usuario;
 using Newtonsoft.Json;
 using MVC.Models;
 using MVC.Filters;
-using System.Security.Policy;
 
 namespace MVC.Controllers
 {
@@ -17,9 +16,9 @@ namespace MVC.Controllers
             try
             {
                 string url = "https://localhost:7189/api/Usuario/FindAll";
-                ResHttpViewModel datos = WebApi_Process(url, null);
+                ResHttpViewModel datos = WebApi_Process(url);
 
-                List<ListadoUsuarioViewModel> listado = JsonConvert.DeserializeObject<List<ListadoUsuarioViewModel>>(datos.Datos);
+                List<ListadoUsuarioViewModel> listado = JsonConvert.DeserializeObject<List<ListadoUsuarioViewModel>>(datos.Datos) ?? [];
                 return View(listado);
             }
             catch (Exception e)
@@ -52,7 +51,7 @@ namespace MVC.Controllers
                     throw new ArgumentNullException();
                 }
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException)
             {
                 ViewBag.MensajeError = "Debe rellenar todos los valores";
             }
@@ -76,32 +75,37 @@ namespace MVC.Controllers
         {
             try
             {
-                if (usuario.Email == null || usuario.Password == null)
+                if (ModelState.IsValid)
                 {
-                    throw new ArgumentNullException();
-                }
-                string url = "https://localhost:7189/api/Usuario/IniciarSesion";
-                ResHttpViewModel datos = WebApi_Process(url, usuario, "POST");
+                    string url = "https://localhost:7189/api/Usuario/IniciarSesion";
+                    ResHttpViewModel datos = WebApi_Process(url, usuario, "POST");
 
-                if (datos.Respuesta.IsSuccessStatusCode)
-                {
-                    InformacionUsuarioLogueadoViewModel user = JsonConvert.DeserializeObject<InformacionUsuarioLogueadoViewModel>(datos.Datos);
-                    HttpContext.Session.SetInt32("Id", user.Id);
-                    HttpContext.Session.SetString("Rol", user.Rol);
-                    HttpContext.Session.SetString("ActualPassword", usuario.Password);
-
-                    if (user.Rol != RolUsuario.Cliente.ToString())
+                    if (datos.Respuesta.IsSuccessStatusCode)
                     {
-                        return RedirectToAction(nameof(Index));
+                        InformacionUsuarioLogueadoViewModel user = JsonConvert.DeserializeObject<InformacionUsuarioLogueadoViewModel>(datos.Datos);
+
+                        HttpContext.Session.SetInt32("Id", user.Id);
+                        HttpContext.Session.SetString("Rol", user.Rol);
+                        HttpContext.Session.SetString("Email", usuario.Email);
+                        HttpContext.Session.SetString("ActualPassword", usuario.Password);
+
+                        if (user.Rol != RolUsuario.Cliente.ToString())
+                        {
+                            return RedirectToAction(nameof(Index));
+                        }
+                        else
+                        {
+                            return Redirect("Home/Index");
+                        }
                     }
                     else
                     {
-                        return Redirect("Home/Index");
+                        ViewBag.MensajeError = datos.Datos;
                     }
                 }
                 else
                 {
-                    ViewBag.MensajeError = datos.Datos;
+                    throw new ArgumentNullException();
                 }
             }
             catch (ArgumentNullException e)
@@ -118,11 +122,11 @@ namespace MVC.Controllers
         [HttpGet]
         public IActionResult VerDetallesUsuario(int id)
         {
-            VerDetallesUsuarioViewModel usuarioViewModel = null;
+            VerDetallesUsuarioViewModel? usuarioViewModel = null;
             try
             {
                 string url = "https://localhost:7189/api/Usuario/"+id;
-                ResHttpViewModel datos = WebApi_Process(url, null);
+                ResHttpViewModel datos = WebApi_Process(url);
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
@@ -147,7 +151,7 @@ namespace MVC.Controllers
         [HttpGet]
         public IActionResult EditarUsuario(int id)
         {
-            VerDetallesUsuarioViewModel usuarioViewModel = null;
+            VerDetallesUsuarioViewModel? usuarioViewModel = null;
             string mensaje = "";
             try
             {
@@ -242,17 +246,17 @@ namespace MVC.Controllers
                 {
                     throw new ArgumentNullException();
                 }
-
                 if (actualPassword != HttpContext.Session.GetString("ActualPassword"))
                 {
                     throw new Exception("Contraseña actual no coincide");
                 }
-                string url = "https://localhost:7189/api/Usuario/CambiarPassword/"+(int)HttpContext.Session.GetInt32("Id");
+                string url = "https://localhost:7189/api/Usuario/CambiarPassword/" + (int)HttpContext.Session.GetInt32("Id");
                 ResHttpViewModel datos = WebApi_Process(url, newPassword, "PUT");
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     ViewBag.Mensaje = datos.Datos;
+                    HttpContext.Session.SetString("ActualPassword", newPassword);
                 }
                 else
                 {

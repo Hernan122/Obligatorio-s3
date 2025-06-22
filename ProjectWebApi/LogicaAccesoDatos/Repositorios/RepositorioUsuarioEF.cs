@@ -76,9 +76,25 @@ namespace LogicaAccesoDatos.Repositorios
 
         public Usuario? FindByEmailAndPassword(string email, string password)
         {
-            return Contexto.Usuarios
+            Usuario? usuario = Contexto.Usuarios
                     .Where(c => c.Email == email && c.Password.Valor == password)
                     .SingleOrDefault();
+
+            if (usuario != null)
+            {
+                if (IsUserPermitted(usuario.Id) != null)
+                {
+                    throw new UsuarioException("Usuario no permitido");
+                }
+            }
+
+            return usuario;
+        }
+
+        private Usuario? IsUserPermitted(int id)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Id == id && c.Auditorias.Any(c => c.AccionRealizada == Accion.Eliminado)).FirstOrDefault();
         }
 
         public Usuario? FindByEmail(string email)

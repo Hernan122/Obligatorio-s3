@@ -1,6 +1,6 @@
 ﻿namespace Compartido.DTOs.UsuarioDTO
 {
-    public class InformacionUsuarioLogueadoViewModelDTO
+    public class InformacionUsuarioLogueadoDTO
     {
         public int Id { get; set; }
         public string Rol { get; set; }

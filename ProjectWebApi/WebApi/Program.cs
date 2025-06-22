@@ -1,12 +1,15 @@
-using LogicaNegocio.InterfacesRepositorios;
-using LogicaAccesoDatos.Repositorios;
 using LogicaAccesoDatos;
-using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
-using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
-using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
-using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+using LogicaAccesoDatos.Repositorios;
 using LogicaAplicacion.ImplementacionCasosUso.AgenciaCU;
+using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
+using LogicaAplicacion.ImplementacionCasosUso.UsuarioCU;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.InterfacesRepositorios;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace WebApi
 {
@@ -16,8 +19,27 @@ namespace WebApi
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
+            // ---------------------------------- JWT ----------------------------------
+            var claveSecreta = "ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=";
+            builder.Services.AddAuthentication(aut => {
+                aut.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                aut.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(aut => {
+                aut.RequireHttpsMetadata = false;
+                aut.SaveToken = true;
+                aut.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(claveSecreta)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            // ---------------------------------- JWT ----------------------------------
+
+            // Add services to the container.
             builder.Services.AddControllers();
             builder.Services.AddScoped<IRepositorioAgencia, RepositorioAgenciaEF>();
             builder.Services.AddScoped<IAltaAgencia, CUAltaAgencia>();
@@ -48,8 +70,12 @@ namespace WebApi
             builder.Services.AddScoped<IBajaUsuario, CUBajaUsuario>();
             builder.Services.AddScoped<IEditarUsuario, CUEditarUsuario>();
             builder.Services.AddScoped<IListadoUsuario, CUListadoUsuario>();
-            builder.Services.AddScoped<ILoginUsuario, CULoginUsuario>();
             builder.Services.AddScoped<IVerDetalleUsuario, CUVerDetalleUsuario>();
+
+            // RF2
+            builder.Services.AddScoped<ILoginUsuario, CULoginUsuario>();
+
+            // RF3
             builder.Services.AddScoped<ICambiarPassword, CUCambiarPassword>();
 
             string cadenaConexion = builder.Configuration.GetConnectionString("cadenaConexion");

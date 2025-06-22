@@ -18,12 +18,7 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 
         public ListadoEnviosDetalladosDTO Ejecutar(string numeroTracking)
         {
-            Envio envio = RepoEnvios.FindByNumeroTrackingSinId(numeroTracking);
-            if (envio == null)
-            {
-                throw new EnvioException("No se encontro el envio");
-            }
-
+            Envio envio = RepoEnvios.FindByNumeroTrackingSinId(numeroTracking) ?? throw new EnvioException("No se encontro el envio");
             ListadoEnviosDetalladosDTO dto = EnvioMapper.EnvioToVerDetallesEnvioYSeguimientosDTO(envio);
             return dto;
         }

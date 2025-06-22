@@ -2,8 +2,8 @@
 {
     public class ListadoEnviosDTO
     {
-        public string Tipo { get; set; }
         public int Id { get; set; }
+        public string Tipo { get; set; }
         public string NumeroTracking { get; set; }
         public string Estado { get; set; }
         public string Comentario { get; set; }

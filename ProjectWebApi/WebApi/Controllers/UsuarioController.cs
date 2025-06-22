@@ -83,7 +83,7 @@ namespace WebApi.Controllers
                     Email = usuario.Email,
                     Password = usuario.Password
                 };
-                InformacionUsuarioLogueadoViewModelDTO user = CULoginUsuario.Ejecutar(dto);
+                InformacionUsuarioLogueadoDTO user = CULoginUsuario.Ejecutar(dto);
 
                 return Ok(user);
             }

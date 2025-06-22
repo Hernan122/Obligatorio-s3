@@ -1,7 +1,7 @@
 ﻿@using MVC.Models.Envio
 @model IEnumerable<ListadoEnviosDetalladosViewModel>
 
-<h1>Listado Envios</h1>
+<h1>Listado envios</h1>
 
 @if (ViewBag.Mensaje != null)
 {
@@ -15,7 +15,7 @@
 @if (Model != null)
 {
 
-<table class="table">
+<table class="table align-middle">
     <thead>
         <tr>
             <th>
@@ -35,6 +35,7 @@
             </th>
         </tr>
     </thead>
+
     <tbody>
 
     @foreach (var item in Model)
@@ -67,7 +68,7 @@
                 @Html.DisplayFor(c => item.FuncionarioId)
             </td>
             <td>
-                <span>@Html.ActionLink("Ver Detalles Seguimientos", "ListadoSeguimientos", new { envioId = item.Id })</span>
+                @Html.ActionLink("Ver Detalles Seguimientos", "ListadoSeguimientos", new { envioId = item.Id })
             </td>
         </tr>
     }

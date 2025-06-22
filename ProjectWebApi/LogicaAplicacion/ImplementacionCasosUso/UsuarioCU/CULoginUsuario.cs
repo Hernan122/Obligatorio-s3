@@ -16,15 +16,12 @@ namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
             RepoUsuarios = repoUsuarios;
         }
 
-        public InformacionUsuarioLogueadoViewModelDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
+        public InformacionUsuarioLogueadoDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
         {
-            Usuario usuario = RepoUsuarios.FindByEmailAndPassword(usuarioDTO.Email, usuarioDTO.Password);
-            if (usuario == null)
-            {
-                throw new Exception("Usuario inexistente o credenciales incorrectas");
-            }
+            Usuario usuario = RepoUsuarios.FindByEmailAndPassword(usuarioDTO.Email, usuarioDTO.Password) 
+                ?? throw new Exception("Usuario inexistente o credenciales incorrectas");
 
-            return new InformacionUsuarioLogueadoViewModelDTO()
+            return new InformacionUsuarioLogueadoDTO()
             {
                 Id = usuario.Id,
                 Rol = usuario.Rol.ToString()

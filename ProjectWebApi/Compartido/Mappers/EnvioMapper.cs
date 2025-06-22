@@ -1,22 +1,15 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Compartido.DTOs.EnvioDTO;
+﻿using Compartido.DTOs.EnvioDTO;
 using Compartido.DTOs.SeguimientoDTO;
 using LogicaNegocio.EntidadesNegocio;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Compartido.Mappers
 {
     public class EnvioMapper
     {
-        public static List<ListadoEnviosDTO> ListadoEnvioFromListadoEnvioDTO(List<Envio> comunDTO)
-        {
-            List<ListadoEnviosDTO> enviosDTO = new List<ListadoEnviosDTO>();
-            return enviosDTO;
-        }
 
-        public static List<ListadoEnviosDTO> ListadoEnvioToListadoEnvioDTO(List<Envio> envios)
+        public static List<ListadoEnviosDTO> ListadoEnvioToListadoEnvioDTO(IEnumerable<Envio> envios)
         {
-            List<ListadoEnviosDTO> enviosDTO = new List<ListadoEnviosDTO>();
+            List<ListadoEnviosDTO> enviosDTO = [];
             enviosDTO = envios.Select(envio => new ListadoEnviosDTO()
             {
                 Tipo = envio is Comun ? "Comun" : "Urgente",
@@ -31,7 +24,7 @@ namespace Compartido.Mappers
 
         public static VerDetallesEnvioDTO EnvioToVerDetallesEnvioDTO(Envio envio)
         {
-            List<string> seguimientos = new List<string>();
+            List<string> seguimientos = [];
             foreach (Seguimiento item in envio.Seguimientos.ToList())
             {
                 seguimientos.Add($"{item.Comentario}");
@@ -60,9 +53,9 @@ namespace Compartido.Mappers
             };
         }
 
-        public static List<ListadoEnviosDetalladosDTO> ListadoEnviosFromListadoEnviosDetalladosDTO(List<Envio> listado)
+        public static List<ListadoEnviosDetalladosDTO> ListadoEnviosFromListadoEnviosDetalladosDTO(IEnumerable<Envio> listado)
         {
-            List<ListadoEnviosDetalladosDTO> listadoDTO = new List<ListadoEnviosDetalladosDTO>();
+            List<ListadoEnviosDetalladosDTO> listadoDTO = [];
             listadoDTO = listado.Select(envio => new ListadoEnviosDetalladosDTO()
             {
                 Tipo = envio is Comun ? "Comun" : "Urgente",
@@ -76,7 +69,7 @@ namespace Compartido.Mappers
 
         public static List<ListadoSeguimientosDTO> EnvioToListadoSeguimientosDTO(Envio envio)
         {
-            List<ListadoSeguimientosDTO> listadoDTO = new List<ListadoSeguimientosDTO>();
+            List<ListadoSeguimientosDTO> listadoDTO = [];
             listadoDTO = envio.Seguimientos.Select(seguimiento => new ListadoSeguimientosDTO()
             {
                 Id = seguimiento.Id,
@@ -89,15 +82,14 @@ namespace Compartido.Mappers
 
         public static List<ListadoEnviosInfoRelevanteDTO> ListadoEnviosToListadoEnviosInfoRelevanteDTO(IEnumerable<Envio> listado)
         {
-            List<ListadoEnviosInfoRelevanteDTO> listadonuevo = null;
-
+            List<ListadoEnviosInfoRelevanteDTO> listadonuevo = [];
             listadonuevo = listado.Select(c => new ListadoEnviosInfoRelevanteDTO()
             {
                 Tipo = c is Comun ? "Comun" : "Urgente",
                 NumeroTracking = c.NumeroTracking,
-                Estado = c.Estado.ToString()
+                Estado = c.Estado.ToString(),
+                Fecha = c.Seguimientos.First().Fecha
             }).ToList();
-
             return listadonuevo;
         }
 

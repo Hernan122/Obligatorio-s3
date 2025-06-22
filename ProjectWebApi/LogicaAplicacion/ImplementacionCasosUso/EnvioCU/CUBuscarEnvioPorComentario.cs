@@ -18,12 +18,11 @@ namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
 
         public List<ListadoEnviosDTO> Ejecutar(string comentario)
         {
-            List<Envio> listado = RepoEnvios.BuscarEnviosPorComentario(comentario).ToList();
-            if (listado.Count == 0)
+            IEnumerable<Envio> listado = RepoEnvios.BuscarEnviosPorComentario(comentario);
+            if (!listado.Any())
             {
-                throw new EnvioException("No hay envios con esos parametros");
+                throw new EnvioException("No hay envios con ese comentario");
             }
-
             List<ListadoEnviosDTO> listadodto = EnvioMapper.ListadoEnvioToListadoEnvioDTO(listado);
             return listadodto;
         }
