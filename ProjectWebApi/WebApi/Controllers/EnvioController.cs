@@ -1,9 +1,8 @@
 ﻿using Compartido.DTOs.EnvioDTO;
 using Compartido.DTOs.SeguimientoDTO;
-using Compartido.ExcepcionesConflictos;
-using LogicaAplicacion.ImplementacionCasosUso.EnvioCU;
 using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
 using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers
@@ -55,6 +54,7 @@ namespace WebApi.Controllers
         }
 
         // GET: api/<EnvioController>
+        [Authorize]
         [HttpGet("FindAll")]
         public IActionResult Get()
         {
@@ -109,6 +109,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("ListadoEnviosDetallados/{clienteId}")]
         public IActionResult ListadoEnviosDetallados(int clienteId)
         {
@@ -123,6 +124,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("ListadoSeguimientos/{envioId}")]
         public IActionResult ListadoSeguimientos(int envioId)
         {
@@ -141,6 +143,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("BuscarEnvioPorFechas/{estado}")]
         public IActionResult BuscarEnvioPorFechas(int estado, [FromBody] BuscarEnvioPorFechasDTO envio)
         {
@@ -159,6 +162,7 @@ namespace WebApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("BuscarEnvioPorComentario/{comentario}")]
         public IActionResult BuscarEnvioPorComentario(string comentario)
         {
@@ -176,21 +180,6 @@ namespace WebApi.Controllers
                 return StatusCode(500, e.Message);
             }
         }
-
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
 
     }
 }

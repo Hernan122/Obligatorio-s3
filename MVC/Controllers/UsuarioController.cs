@@ -1,13 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVC.Filters;
+using MVC.Models;
 using MVC.Models.Usuario;
 using Newtonsoft.Json;
-using MVC.Models;
-using MVC.Filters;
+using System.Net.Http.Headers;
 
 namespace MVC.Controllers
 {
     public class UsuarioController : ControllerB
     {
+
+        public UsuarioController(IConfiguration configuration)
+        {
+            urlBase = configuration.GetValue<string>("urlBase")+"/Usuario";
+        }
+
         [Login]
         [Administrador]
         [HttpGet]
@@ -15,8 +22,7 @@ namespace MVC.Controllers
         {
             try
             {
-                string url = "https://localhost:7189/api/Usuario/FindAll";
-                ResHttpViewModel datos = WebApi_Process(url);
+                ResHttpViewModel datos = WebApi_Process(urlBase+"/FindAll");
 
                 List<ListadoUsuarioViewModel> listado = JsonConvert.DeserializeObject<List<ListadoUsuarioViewModel>>(datos.Datos) ?? [];
                 return View(listado);
@@ -77,19 +83,34 @@ namespace MVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    string url = "https://localhost:7189/api/Usuario/IniciarSesion";
-                    ResHttpViewModel datos = WebApi_Process(url, usuario, "POST");
+                    //ResHttpViewModel datos = WebApi_Process(urlBase+"/IniciarSesion", usuario, "POST");
 
-                    if (datos.Respuesta.IsSuccessStatusCode)
+                    HttpClient cliente = new HttpClient();
+                    Task<HttpResponseMessage> tarea = cliente.PostAsJsonAsync(urlBase+"/IniciarSesion", usuario);
+                    HttpResponseMessage respuesta = tarea.Result;
+
+                    HttpContent contenido = respuesta.Content;
+                    Task<string> body = contenido.ReadAsStringAsync();
+                    body.Wait();
+                    string datos = body.Result;
+
+                    if (respuesta.IsSuccessStatusCode)
                     {
-                        InformacionUsuarioLogueadoViewModel user = JsonConvert.DeserializeObject<InformacionUsuarioLogueadoViewModel>(datos.Datos);
+                        InformacionUsuarioLogueadoViewModel user = JsonConvert.DeserializeObject<InformacionUsuarioLogueadoViewModel>(datos)
+                            ?? throw new Exception("Error desconocido");
+
+                        HttpContext.Session.SetString("Token", user.Token);
+
+                        cliente.DefaultRequestHeaders.Authorization = new
+                        AuthenticationHeaderValue("Bearer", user.Token);
 
                         HttpContext.Session.SetInt32("Id", user.Id);
                         HttpContext.Session.SetString("Rol", user.Rol);
+
                         HttpContext.Session.SetString("Email", usuario.Email);
                         HttpContext.Session.SetString("ActualPassword", usuario.Password);
 
-                        if (user.Rol != RolUsuario.Cliente.ToString())
+                        if (HttpContext.Session.GetString("Rol") != RolUsuario.Cliente.ToString())
                         {
                             return RedirectToAction(nameof(Index));
                         }
@@ -100,7 +121,7 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        ViewBag.MensajeError = datos.Datos;
+                        ViewBag.MensajeError = datos;
                     }
                 }
                 else
@@ -125,9 +146,7 @@ namespace MVC.Controllers
             VerDetallesUsuarioViewModel? usuarioViewModel = null;
             try
             {
-                string url = "https://localhost:7189/api/Usuario/"+id;
-                ResHttpViewModel datos = WebApi_Process(url);
-
+                ResHttpViewModel datos = WebApi_Process(urlBase+$"/{id}");
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     usuarioViewModel = JsonConvert.DeserializeObject<VerDetallesUsuarioViewModel>(datos.Datos);
@@ -137,7 +156,6 @@ namespace MVC.Controllers
                 {
                     ViewBag.MensajeError = "Error al obtener datos";    
                 }
-
                 return View(usuarioViewModel);
             }
             catch (Exception e)
@@ -199,9 +217,7 @@ namespace MVC.Controllers
         {
             try
             {
-                string url = $"https://localhost:7189/api/Usuario?usuarioId={id}&funcionarioId={(int)HttpContext.Session.GetInt32("Id")}";
-                ResHttpViewModel datos = WebApi_Process(url, null, "DELETE");
-                
+                ResHttpViewModel datos = WebApi_Process(urlBase+"?usuarioId="+id+"&funcionarioId="+(int)HttpContext.Session.GetInt32("Id"), null, "DELETE");
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     return RedirectToAction(nameof(Index), 
@@ -243,16 +259,12 @@ namespace MVC.Controllers
             try
             {
                 if (string.IsNullOrEmpty(actualPassword) || string.IsNullOrEmpty(newPassword))
-                {
                     throw new ArgumentNullException();
-                }
-                if (actualPassword != HttpContext.Session.GetString("ActualPassword"))
-                {
-                    throw new Exception("Contraseña actual no coincide");
-                }
-                string url = "https://localhost:7189/api/Usuario/CambiarPassword/" + (int)HttpContext.Session.GetInt32("Id");
-                ResHttpViewModel datos = WebApi_Process(url, newPassword, "PUT");
 
+                if (actualPassword != HttpContext.Session.GetString("ActualPassword"))
+                    throw new Exception("Contraseña actual no coincide");
+                
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/CambiarPassword/"+(int)HttpContext.Session.GetInt32("Id"), newPassword, "PUT");
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     ViewBag.Mensaje = datos.Datos;

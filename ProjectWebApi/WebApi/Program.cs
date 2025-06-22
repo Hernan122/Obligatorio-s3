@@ -9,7 +9,6 @@ using LogicaNegocio.InterfacesRepositorios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace WebApi
 {
@@ -18,26 +17,6 @@ namespace WebApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-
-            // ---------------------------------- JWT ----------------------------------
-            var claveSecreta = "ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=";
-            builder.Services.AddAuthentication(aut => {
-                aut.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                aut.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(aut => {
-                aut.RequireHttpsMetadata = false;
-                aut.SaveToken = true;
-                aut.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(claveSecreta)),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-            // ---------------------------------- JWT ----------------------------------
 
             // Add services to the container.
             builder.Services.AddControllers();
@@ -79,12 +58,30 @@ namespace WebApi
             builder.Services.AddScoped<ICambiarPassword, CUCambiarPassword>();
 
             string cadenaConexion = builder.Configuration.GetConnectionString("cadenaConexion");
-            builder.Services.AddDbContext<DemoContext>(option => option.UseSqlServer(cadenaConexion));
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddDbContext<DemoContext>
+                (option => option.UseSqlServer(cadenaConexion));
             builder.Services.AddEndpointsApiExplorer();
-            //builder.Services.AddSwaggerGen(opt => opt.IncludeXmlComments("WebAPI.xml"));
             builder.Services.AddSwaggerGen();
 
+            // ---------------------------------- JWT ----------------------------------
+            var claveSecreta = "ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=";
+            builder.Services.AddAuthentication(aut => 
+            {
+                aut.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                aut.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(aut => {
+                aut.RequireHttpsMetadata = false;
+                aut.SaveToken = true;
+                aut.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(claveSecreta)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            // ---------------------------------- JWT ----------------------------------
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -98,10 +95,10 @@ namespace WebApi
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();
         }
+
     }
 }

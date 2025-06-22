@@ -295,7 +295,6 @@ C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\sc
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.csproj.Up2Date
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.dll
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\refint\WebApi.dll
@@ -308,3 +307,4 @@ C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\rj
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

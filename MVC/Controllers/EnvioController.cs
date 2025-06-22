@@ -8,9 +8,14 @@ using Newtonsoft.Json;
 
 namespace MVC.Controllers
 {
-    
     public class EnvioController : ControllerB
     {
+
+        public EnvioController(IConfiguration configuration)
+        {
+            urlBase = configuration.GetValue<string>("urlBase")+"/Envio";
+        }
+
         [Login]
         [Administrador]
         [HttpGet]
@@ -19,8 +24,7 @@ namespace MVC.Controllers
             IEnumerable<ListadoEnviosViewModel> listadoEnviosViewModel = [];
             try
             {
-                string url = "https://localhost:7189/api/Envio/FindAll";
-                ResHttpViewModel datos = WebApi_Process(url);
+                ResHttpViewModel datos = WebApi_Process(urlBase+"/FindAll");
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
@@ -156,13 +160,10 @@ namespace MVC.Controllers
             try
             {
                 if (string.IsNullOrEmpty(numeroTracking))
-                {
                     throw new ArgumentNullException();
-                }
 
                 // Envio
-                string url = $"https://localhost:7189/api/Envio/BuscarEnvioPorNumeroTracking/{numeroTracking}";
-                ResHttpViewModel datos = WebApi_Process(url);
+                ResHttpViewModel datos = WebApi_Process(urlBase+"/BuscarEnvioPorNumeroTracking/"+numeroTracking);
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
@@ -171,8 +172,7 @@ namespace MVC.Controllers
 
                     ViewBag.Mensaje = "Envio Encontrado";
 
-                    string url2 = $"https://localhost:7189/api/Envio/ListadoSeguimientos/" + envio.Id;
-                    ResHttpViewModel datos2 = WebApi_Process(url2);
+                    ResHttpViewModel datos2 = WebApi_Process(urlBase+"/ListadoSeguimientos/"+envio.Id);
 
                     if (datos2.Respuesta.IsSuccessStatusCode)
                     {
@@ -208,9 +208,7 @@ namespace MVC.Controllers
             IEnumerable<ListadoEnviosDetalladosViewModel> listado = [];
             try
             {
-                string url = "https://localhost:7189/api/Envio/ListadoEnviosDetallados/" + (int)HttpContext.Session.GetInt32("Id");
-                ResHttpViewModel datos = WebApi_Process(url);
-
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/ListadoEnviosDetallados/"+(int)HttpContext.Session.GetInt32("Id"));
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     listado = JsonConvert.DeserializeObject<List<ListadoEnviosDetalladosViewModel>>(datos.Datos) ?? [];
@@ -240,9 +238,7 @@ namespace MVC.Controllers
             IEnumerable<ListadoSeguimientosViewModel> listado = [];
             try
             {
-                string url = "https://localhost:7189/api/Envio/ListadoSeguimientos/" + envioId;
-                ResHttpViewModel datos = WebApi_Process(url);
-
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/ListadoSeguimientos/"+envioId);
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     listado = JsonConvert.DeserializeObject<List<ListadoSeguimientosViewModel>>(datos.Datos) ?? [];
@@ -276,16 +272,18 @@ namespace MVC.Controllers
             try
             {
                 DateOnly fechaVacia = new DateOnly();
-                if (fechaInicio == fechaVacia) throw new ArgumentNullException();
-                if (fechaFin == fechaVacia) throw new ArgumentNullException();
+                if (fechaInicio == fechaVacia) 
+                    throw new ArgumentNullException();
+
+                if (fechaFin == fechaVacia) 
+                    throw new ArgumentNullException();
 
                 BuscarEnvioPorFechasViewModel envio = new()
                 {
                     FechaInicio = fechaInicio,
                     FechaFin = fechaFin,
                 };
-                string url = "https://localhost:7189/api/Envio/BuscarEnvioPorFechas/" + estadoEnvio;
-                ResHttpViewModel datos = WebApi_Process(url, envio, "POST");
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/BuscarEnvioPorFechas/"+estadoEnvio, envio, "POST");
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
@@ -327,11 +325,9 @@ namespace MVC.Controllers
             try
             {
                 if (string.IsNullOrEmpty(comentario))
-                {
                     throw new ArgumentNullException();
-                }
-                string url = "https://localhost:7189/api/Envio/BuscarEnvioPorComentario/" + comentario;
-                ResHttpViewModel datos = WebApi_Process(url);
+
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/BuscarEnvioPorComentario/"+comentario);
 
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {

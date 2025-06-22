@@ -3,7 +3,9 @@ using Compartido.DTOs.UsuarioDTO;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.JWT;
 
 namespace WebApi.Controllers
 {
@@ -84,7 +86,7 @@ namespace WebApi.Controllers
                     Password = usuario.Password
                 };
                 InformacionUsuarioLogueadoDTO user = CULoginUsuario.Ejecutar(dto);
-
+                user.Token = ManejadorToken.CrearToken(user);
                 return Ok(user);
             }
             catch (UsuarioException e)
@@ -123,6 +125,7 @@ namespace WebApi.Controllers
         }
 
         // PUT api/<UsuarioController>/5
+        [Authorize]
         [HttpPut("CambiarPassword/{id}")]
         public IActionResult Put(int id, [FromBody] string password)
         {
