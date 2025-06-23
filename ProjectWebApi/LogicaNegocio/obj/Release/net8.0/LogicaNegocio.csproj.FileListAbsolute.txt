@@ -11,3 +11,16 @@ C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\refint\LogicaNegocio.dll
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.pdb
 C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\ref\LogicaNegocio.dll
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\bin\Release\net8.0\LogicaNegocio.deps.json
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\bin\Release\net8.0\LogicaNegocio.dll
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\bin\Release\net8.0\LogicaNegocio.pdb
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.csproj.AssemblyReference.cache
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.AssemblyInfoInputs.cache
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.AssemblyInfo.cs
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.sourcelink.json
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.dll
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\refint\LogicaNegocio.dll
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\LogicaNegocio.pdb
+C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Release\net8.0\ref\LogicaNegocio.dll

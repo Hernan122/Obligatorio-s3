@@ -103,9 +103,13 @@ namespace WebApi.Controllers
                 ListadoEnviosDetalladosDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
                 return Ok(dto);
             }
-            catch (Exception ex)
+            catch (EnvioException e)
             {
-                return StatusCode(500, "Error interno");
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
             }
         }
 
