@@ -463,3 +463,5 @@ C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.pdb
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.genruntimeconfig.cache
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\ref\WebApi.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\obj\Debug\net8.0\WebApi.sourcelink.json
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\bin\Debug\net8.0\WebApi.xml

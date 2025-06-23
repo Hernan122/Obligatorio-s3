@@ -61,7 +61,7 @@ namespace WebApi
             builder.Services.AddDbContext<DemoContext>
                 (option => option.UseSqlServer(cadenaConexion));
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(opt => opt.IncludeXmlComments("WebApi.xml"));
 
             // ---------------------------------- JWT ----------------------------------
             var claveSecreta = "ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=";
@@ -99,6 +99,5 @@ namespace WebApi
 
             app.Run();
         }
-
     }
 }

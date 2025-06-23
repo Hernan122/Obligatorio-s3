@@ -40,6 +40,10 @@ namespace WebApi.Controllers
             CUCambiarPassword = cuCambiarPassword;
         }
 
+        /// <summary>
+        /// Permite listar todos los usuarios
+        /// </summary>
+        /// <returns></returns>
         // GET api/<UsuarioController>/5
         [HttpGet("FindAll")]
         public IActionResult Get()
@@ -55,6 +59,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Permite buscar usuarios por ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET api/<UsuarioController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -74,6 +83,11 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Permite iniciar sesion
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         // POST api/<UsuarioController>
         [HttpPost("IniciarSesion")]
         public IActionResult Post([FromBody] LoginUsuarioDTO usuario)
@@ -99,6 +113,12 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Permite crear usuario
+        /// </summary>
+        /// <param name="funcionarioId"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         // POST api/<UsuarioController>
         [HttpPost("CrearUsuario")]
         public IActionResult Post(int funcionarioId, [FromBody] AltaUsuarioDTO usuario)
@@ -124,6 +144,12 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Permite cambiar la contraseña de un usuario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         // PUT api/<UsuarioController>/5
         [Authorize]
         [HttpPut("CambiarPassword/{id}")]
@@ -144,6 +170,12 @@ namespace WebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Permite borrar un usuario
+        /// </summary>
+        /// <param name="usuarioId"></param>
+        /// <param name="funcionarioId"></param>
+        /// <returns></returns>
         // DELETE api/<UsuarioController>/5
         [HttpDelete]
         public IActionResult Delete(int usuarioId, int funcionarioId)

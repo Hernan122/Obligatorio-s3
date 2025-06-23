@@ -11,8 +11,6 @@ namespace MVC
 
             // Inversión de control
 
-            // Configuraci?n de la cadena de conexi?n a la base de datos
-
             // Agregar soporte para la sesi?n
             builder.Services.AddDistributedMemoryCache(); // Usamos memoria distribuida para la sesi?n
             builder.Services.AddSession(options =>

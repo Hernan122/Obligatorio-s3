@@ -112,3 +112,4 @@ C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\De
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Debug\net8.0\refint\LogicaNegocio.dll
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.pdb
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Debug\net8.0\ref\LogicaNegocio.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\obj\Debug\net8.0\LogicaNegocio.sourcelink.json

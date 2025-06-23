@@ -141,3 +141,4 @@ C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\Compartido\obj\Debug
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\Compartido\obj\Debug\net8.0\refint\Compartido.dll
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\Compartido\obj\Debug\net8.0\Compartido.pdb
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\Compartido\obj\Debug\net8.0\ref\Compartido.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\obj\Debug\net8.0\Compartido.sourcelink.json

@@ -166,3 +166,4 @@ C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\obj
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\obj\Debug\net8.0\refint\LogicaAplicacion.dll
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\obj\Debug\net8.0\LogicaAplicacion.pdb
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\obj\Debug\net8.0\ref\LogicaAplicacion.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\obj\Debug\net8.0\LogicaAplicacion.sourcelink.json

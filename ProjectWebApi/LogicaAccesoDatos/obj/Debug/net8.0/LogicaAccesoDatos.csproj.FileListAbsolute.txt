@@ -165,3 +165,4 @@ C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\ob
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.pdb
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.genruntimeconfig.cache
 C:\Users\alumnoFI\source\repos\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\obj\Debug\net8.0\ref\LogicaAccesoDatos.dll
+C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\obj\Debug\net8.0\LogicaAccesoDatos.sourcelink.json

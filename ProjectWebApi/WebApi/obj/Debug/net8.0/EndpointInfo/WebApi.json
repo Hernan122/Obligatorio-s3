@@ -10,6 +10,7 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite listar todos los envios",
         "responses": {
           "200": {
             "description": "OK"
@@ -22,10 +23,12 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite buscar un envio por su Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "integer",
@@ -45,10 +48,12 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite buscar un envio por su numero de tracking",
         "parameters": [
           {
             "name": "numeroTracking",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -67,10 +72,12 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite buscar los envios de un cliente mediante el Id de este ultimo. Esto devolvera una lista de envios con toda su información",
         "parameters": [
           {
             "name": "clienteId",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "integer",
@@ -90,10 +97,12 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite buscar los seguimientos de un envio",
         "parameters": [
           {
             "name": "envioId",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "integer",
@@ -113,10 +122,12 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite buscar un envio por fechas y estado. Este ultimo es opcional",
         "parameters": [
           {
             "name": "estado",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "integer",
@@ -125,6 +136,7 @@
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -155,10 +167,12 @@
         "tags": [
           "Envio"
         ],
+        "summary": "Permite buscar un envio por comentario del mismo",
         "parameters": [
           {
             "name": "comentario",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -177,6 +191,7 @@
         "tags": [
           "Usuario"
         ],
+        "summary": "Permite listar todos los usuarios",
         "responses": {
           "200": {
             "description": "OK"
@@ -189,10 +204,12 @@
         "tags": [
           "Usuario"
         ],
+        "summary": "Permite buscar usuarios por ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "integer",
@@ -212,7 +229,9 @@
         "tags": [
           "Usuario"
         ],
+        "summary": "Permite iniciar sesion",
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -243,10 +262,12 @@
         "tags": [
           "Usuario"
         ],
+        "summary": "Permite crear usuario",
         "parameters": [
           {
             "name": "funcionarioId",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -254,6 +275,7 @@
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -284,10 +306,12 @@
         "tags": [
           "Usuario"
         ],
+        "summary": "Permite cambiar la contraseña de un usuario",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "integer",
@@ -296,6 +320,7 @@
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -326,10 +351,12 @@
         "tags": [
           "Usuario"
         ],
+        "summary": "Permite borrar un usuario",
         "parameters": [
           {
             "name": "usuarioId",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -338,6 +365,7 @@
           {
             "name": "funcionarioId",
             "in": "query",
+            "description": "",
             "schema": {
               "type": "integer",
               "format": "int32"
