@@ -1,0 +1,15 @@
+SET IDENTITY_INSERT [dbo].[Usuarios] ON
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (1, 0, N'admin', N'admin@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (2, 2, N'usuarioprueba', N'usuarioprueba@gmail.com', N'12341234ABC')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (3, 1, N'usuarioprueba', N'usuarioprueba23@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (4, 1, N'usuarioprueba', N'usuariopruebaewr@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (5, 2, N'usuarioprueba', N'usuarioprueba2312@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (6, 1, N'usuarioprueba', N'usuarioprueba4123213@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (7, 2, N'1', N'usuarioprueba41232213@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (8, 2, N'jose12323', N'usuarioprueba42133@gmail.com23', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (9, 2, N'usuarioprueba@gmail.com', N'usuarioprueba2@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (10, 2, N'usuario1', N'usuarioprueba4232@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (12, 1, N'usuarioprueba@gmail.com', N'usuarioprueba423221@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (13, 2, N'usuarioprueba@gmail.com', N'usuarioprueba42322121@gmail.com', N'12341234A')
+INSERT INTO [dbo].[Usuarios] ([Id], [Rol], [Nombre], [Email], [Password_Valor]) VALUES (14, 2, N'test1', N'test1@gmail.com', N'12341234A')
+SET IDENTITY_INSERT [dbo].[Usuarios] OFF
