@@ -200,7 +200,6 @@ namespace MVC.Controllers
 
         // RF4
         [Login]
-        [Cliente]
         [HttpGet]
         public IActionResult ListadoEnviosDetallados()
         {
@@ -233,7 +232,6 @@ namespace MVC.Controllers
 
         // RF4
         [Login]
-        [Cliente]
         [HttpGet]
         public IActionResult ListadoSeguimientos(int envioId)
         {

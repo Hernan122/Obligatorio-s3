@@ -1,0 +1,1332 @@
+﻿***********************************
+Archivo: AgenciaController.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Controllers\AgenciaController.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using MVC.Filters;
+using MVC.Models.Agencia;
+
+namespace MVC.Controllers
+{
+    [Login]
+    public class AgenciaController : ControllerB
+    {
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            List<ListadoAgenciaViewModel> listadoAgenciaViewModel = [];
+            try
+            {
+                return View(listadoAgenciaViewModel);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+                ViewBag.MensajeError += ", " + e.InnerException;
+                ViewBag.MensajeError += ", " + e.StackTrace;
+                return View(listadoAgenciaViewModel);
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        public ActionResult AltaAgencia(string mensaje)
+        {
+            ViewBag.Mensaje = mensaje;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AltaAgencia(AltaAgenciaViewModel agencia)
+        {
+            string mensaje;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ViewBag.Mensaje = "Agencia creada con exito";
+                    return RedirectToAction(nameof(AltaAgencia), new { Mensaje = "Agencia creada" });
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Debe rellenar todos los valores";
+                ViewBag.MensajeError = mensaje;
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+                //mensaje += e.StackTrace;
+                //mensaje += e.InnerException;
+                ViewBag.MensajeError = mensaje;
+            }
+            return View();
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}
+
+***********************************
+Archivo: ControllerB.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Controllers\ControllerB.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using MVC.Models;
+using NuGet.Common;
+using System.Net.Http.Headers;
+
+namespace MVC.Controllers
+{
+    public class ControllerB : Controller
+    {
+
+        public string? urlBase;
+
+        public ResHttpViewModel WebApi_Process(string url, object? obj=null, string httpVerb="GET")
+        {
+            HttpClient cliente = new HttpClient();
+            Task<HttpResponseMessage> tarea;
+
+            if (httpVerb == "GET")
+            {
+                tarea = cliente.GetAsync(url);
+            }
+            else if (httpVerb == "POST")
+            {
+                tarea = cliente.PostAsJsonAsync(url, obj);
+            }
+            else if (httpVerb == "PUT")
+            {
+                tarea = cliente.PutAsJsonAsync(url, obj);
+            }
+            else if (httpVerb == "DELETE")
+            {
+                tarea = cliente.DeleteAsync(url);
+            }
+            else
+            {
+                throw new Exception("Debe seleccionar un verbo HTTP indicado");
+            }
+            HttpResponseMessage respuesta = tarea.Result;
+
+            HttpContent contenido = respuesta.Content;
+            Task<string> body = contenido.ReadAsStringAsync();
+            body.Wait();
+            string datos = body.Result;
+
+            ResHttpViewModel res = new()
+            {
+                Respuesta = respuesta,
+                Datos = datos
+            };
+
+            return res;
+        }
+
+        public ResHttpViewModel WebApi_Process_WithAuthentication(string url, object? obj = null, string httpVerb = "GET")
+        {
+            HttpClient cliente = new HttpClient();
+
+                cliente.DefaultRequestHeaders.Authorization = 
+                    new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+            Task<HttpResponseMessage> tarea;
+
+            if (httpVerb == "GET")
+            {
+                tarea = cliente.GetAsync(url);
+            }
+            else if (httpVerb == "POST")
+            {
+                tarea = cliente.PostAsJsonAsync(url, obj);
+            }
+            else if (httpVerb == "PUT")
+            {
+                tarea = cliente.PutAsJsonAsync(url, obj);
+            }
+            else if (httpVerb == "DELETE")
+            {
+                tarea = cliente.DeleteAsync(url);
+            }
+            else
+            {
+                throw new Exception("Debe seleccionar un verbo HTTP indicado");
+            }
+            HttpResponseMessage respuesta = tarea.Result;
+
+            HttpContent contenido = respuesta.Content;
+            Task<string> body = contenido.ReadAsStringAsync();
+            body.Wait();
+            string datos = body.Result;
+
+            ResHttpViewModel res = new()
+            {
+                Respuesta = respuesta,
+                Datos = datos
+            };
+
+            return res;
+        }
+    }
+}
+***********************************
+Archivo: EnvioController.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Controllers\EnvioController.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using MVC.Filters;
+using MVC.Models;
+using MVC.Models.Envio;
+using MVC.Models.Envio.Comun;
+using MVC.Models.Envio.Urgente;
+using Newtonsoft.Json;
+
+namespace MVC.Controllers
+{
+    public class EnvioController : ControllerB
+    {
+
+        public EnvioController(IConfiguration configuration)
+        {
+            urlBase = configuration.GetValue<string>("urlBase")+"/Envio";
+        }
+
+        [Login]
+        [Administrador]
+        [HttpGet]
+        public IActionResult Index()
+        {
+            IEnumerable<ListadoEnviosViewModel> listadoEnviosViewModel = [];
+            try
+            {
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/FindAll");
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listadoEnviosViewModel = JsonConvert.DeserializeObject<List<ListadoEnviosViewModel>>(datos.Datos) ?? [];
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listadoEnviosViewModel);
+        }
+
+        [Login]
+        [HttpGet]
+        public IActionResult CrearEnvio()
+        {
+            return View();
+        }
+
+        [Login]
+        [Administrador]
+        [HttpGet]
+        public IActionResult FormCrearEnvio(string type)
+        {
+            string param = type;
+            try
+            {
+                if (type == "Comun" || type == "Urgente")
+                {
+                    string url = $"~/Views/Envio/{param}/Crear.cshtml";
+                    return View(url);
+                }
+                else
+                {
+                    throw new Exception($"No existe ese tipo de envio: {type}");
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+                return View(nameof(CrearEnvio));
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CrearEnvioComun(AltaComunViewModel envio)
+        {
+            string mensaje = "";
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Envio Comun creado con exito" });
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Debe rellenar todos los valores";
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+                mensaje += e.InnerException;
+            }
+            ViewBag.MensajeError = mensaje;
+            return View($"~/Views/Envio/Comun/Crear.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult CrearEnvioUrgente(AltaUrgenteViewModel envio)
+        {
+            string mensaje;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Envio Urgente creado con exito" });
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Debe rellenar todos los valores";
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+            }
+            ViewBag.MensajeError = mensaje;
+            return View($"~/Views/Envio/Urgente/Crear.cshtml");
+        }
+
+        [Login]
+        [HttpGet]
+        public IActionResult BajaEnvio(int id)
+        {
+            string mensaje;
+            try
+            {
+                return RedirectToAction(nameof(Index), new { Mensaje = "Eliminado con exito" });
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+            }
+            return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
+        }
+
+        // -------------------- Obligatorio 2 --------------------
+        // RF1
+        [HttpGet]
+        public IActionResult BuscarEnvioPorNumeroTracking(ListadoEnviosDetalladosViewModel envio)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult BuscarEnvioPorNumeroTracking(string numeroTracking)
+        {
+            ListadoEnviosViewModel? envio = null;
+            try
+            {
+                if (string.IsNullOrEmpty(numeroTracking))
+                    throw new ArgumentNullException();
+
+                // Envio
+                ResHttpViewModel datos = WebApi_Process(urlBase+"/BuscarEnvioPorNumeroTracking/"+numeroTracking);
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    envio = JsonConvert.DeserializeObject<ListadoEnviosViewModel>(datos.Datos)
+                        ?? throw new Exception("Error desconocido");
+
+                    ViewBag.Mensaje = "Envio Encontrado";
+
+                    ResHttpViewModel datos2 = WebApi_Process(urlBase+"/ListadoSeguimientos/"+envio.Id);
+
+                    if (datos2.Respuesta.IsSuccessStatusCode)
+                    {
+                        IEnumerable<ListadoSeguimientosViewModel> seguimientos = JsonConvert.DeserializeObject<List<ListadoSeguimientosViewModel>>(datos2.Datos) ?? [];
+                        if (seguimientos.Any())
+                        {
+                            ViewBag.Seguimientos = seguimientos;
+                        }
+                    }
+                }
+                else
+                {
+                    ViewBag.MensajeError = "Envio no Encontrado";
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Ingrese un Numero de Tracking";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(envio);
+        }
+
+        // RF4
+        [Login]
+        [HttpGet]
+        public IActionResult ListadoEnviosDetallados()
+        {
+            IEnumerable<ListadoEnviosDetalladosViewModel> listado = [];
+            try
+            {
+                HttpContext.Session.GetInt32("Id");
+
+                int usuarioId = (int)HttpContext.Session.GetInt32("Id");
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/ListadoEnviosDetallados/"+usuarioId);
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoEnviosDetalladosViewModel>>(datos.Datos) ?? [];
+                    if (!listado.Any())
+                    {
+                        ViewBag.MensajeError = "Cliente no tiene envios";
+                    }
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
+        }
+
+        // RF4
+        [Login]
+        [HttpGet]
+        public IActionResult ListadoSeguimientos(int envioId)
+        {
+            IEnumerable<ListadoSeguimientosViewModel> listado = [];
+            try
+            {
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/ListadoSeguimientos/"+envioId);
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoSeguimientosViewModel>>(datos.Datos) ?? [];
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
+        }
+
+        // RF5
+        [Login]
+        [Cliente]
+        [HttpGet]
+        public IActionResult BuscarEnvioPorFechas(IEnumerable<ListadoEnvioInfoRelevanteViewModel> pListado)
+        {
+            return View(pListado);
+        }
+
+        // RF5
+        [HttpPost]
+        public IActionResult BuscarEnvioPorFechas(DateOnly fechaInicio, DateOnly fechaFin, int estadoEnvio)
+        {
+            IEnumerable<ListadoEnvioInfoRelevanteViewModel> listado = [];
+            try
+            {
+                DateOnly fechaVacia = new DateOnly();
+                if (fechaInicio == fechaVacia) 
+                    throw new ArgumentNullException();
+
+                if (fechaFin == fechaVacia) 
+                    throw new ArgumentNullException();
+
+                BuscarEnvioPorFechasViewModel envio = new()
+                {
+                    FechaInicio = fechaInicio,
+                    FechaFin = fechaFin,
+                };
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/BuscarEnvioPorFechas/"+estadoEnvio, envio, "POST");
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoEnvioInfoRelevanteViewModel>>(datos.Datos) ?? [];
+                    if (!listado.Any())
+                    {
+                        ViewBag.MensajeError = "No hay Envios";
+                    }
+                } else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Ingrese fechas validas";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
+        }
+
+        // RF6
+        [Login]
+        [Cliente]
+        [HttpGet]
+        public IActionResult BuscarEnvioPorComentario(IEnumerable<ListadoEnviosViewModel> pListado)
+        {
+            return View(pListado);
+        }
+
+        // RF6
+        [HttpPost]
+        public IActionResult BuscarEnvioPorComentario(string comentario)
+        {
+            IEnumerable<ListadoEnviosViewModel> listado = [];
+            try
+            {
+                if (string.IsNullOrEmpty(comentario))
+                    throw new ArgumentNullException();
+
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/BuscarEnvioPorComentario/"+comentario);
+
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    listado = JsonConvert.DeserializeObject<List<ListadoEnviosViewModel>>(datos.Datos) ?? [];
+                    if (!listado.Any())
+                    {
+                        ViewBag.MensajeError = "No hay Envios";
+                    }
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Ingrese un comentario";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(listado);
+        }
+    }
+}
+***********************************
+Archivo: HomeController.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Controllers\HomeController.cs
+***********************************
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using MVC.Models;
+
+namespace MVC.Controllers;
+
+public class HomeController : Controller
+{
+    private readonly ILogger<HomeController> _logger;
+
+    public HomeController(ILogger<HomeController> logger)
+    {
+        _logger = logger;
+    }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+}
+
+***********************************
+Archivo: UsuarioController.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Controllers\UsuarioController.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using MVC.Filters;
+using MVC.Models;
+using MVC.Models.Usuario;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+
+namespace MVC.Controllers
+{
+    public class UsuarioController : ControllerB
+    {
+
+        public UsuarioController(IConfiguration configuration)
+        {
+            urlBase = configuration.GetValue<string>("urlBase")+"/Usuario";
+        }
+
+        [Login]
+        [Administrador]
+        [HttpGet]
+        public IActionResult Index()
+        {
+            try
+            {
+                ResHttpViewModel datos = WebApi_Process(urlBase+"/FindAll");
+
+                List<ListadoUsuarioViewModel> listado = JsonConvert.DeserializeObject<List<ListadoUsuarioViewModel>>(datos.Datos) ?? [];
+                return View(listado);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View(new List<ListadoUsuarioViewModel>());
+        }
+
+        [Login]
+        [Administrador]
+        [HttpGet]
+        public IActionResult AltaUsuario(string mensaje)
+        {
+            ViewBag.Mensaje = mensaje;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AltaUsuario(AltaUsuarioViewModel usuario) 
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction(nameof(AltaUsuario), new { Mensaje = "Usuario agregado" });
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Debe rellenar todos los valores";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View();
+        }
+
+        // RF2
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // RF2
+        [HttpPost]
+        public IActionResult Login(LoginUsuarioViewModel usuario)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //ResHttpViewModel datos = WebApi_Process(urlBase+"/IniciarSesion", usuario, "POST");
+
+                    HttpClient cliente = new HttpClient();
+                    Task<HttpResponseMessage> tarea = cliente.PostAsJsonAsync(urlBase+"/IniciarSesion", usuario);
+                    HttpResponseMessage respuesta = tarea.Result;
+
+                    HttpContent contenido = respuesta.Content;
+                    Task<string> body = contenido.ReadAsStringAsync();
+                    body.Wait();
+                    string datos = body.Result;
+
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        InformacionUsuarioLogueadoViewModel user = JsonConvert.DeserializeObject<InformacionUsuarioLogueadoViewModel>(datos)
+                            ?? throw new Exception("Error desconocido");
+
+                        HttpContext.Session.SetString("Token", user.Token);
+
+                        cliente.DefaultRequestHeaders.Authorization = new
+                        AuthenticationHeaderValue("Bearer", user.Token);
+
+                        HttpContext.Session.SetInt32("Id", user.Id);
+                        HttpContext.Session.SetString("Rol", user.Rol);
+
+                        HttpContext.Session.SetString("Email", usuario.Email);
+                        HttpContext.Session.SetString("ActualPassword", usuario.Password);
+
+                        if (HttpContext.Session.GetString("Rol") != RolUsuario.Cliente.ToString())
+                        {
+                            return RedirectToAction(nameof(Index));
+                        }
+                        else
+                        {
+                            return Redirect("Home/Index");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.MensajeError = datos;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                ViewBag.MensajeError = "Debe rellenar todos los campos";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult VerDetallesUsuario(int id)
+        {
+            VerDetallesUsuarioViewModel? usuarioViewModel = null;
+            try
+            {
+                ResHttpViewModel datos = WebApi_Process(urlBase+$"/{id}");
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    usuarioViewModel = JsonConvert.DeserializeObject<VerDetallesUsuarioViewModel>(datos.Datos);
+                    ViewBag.Mensaje = datos.Respuesta;
+                }
+                else
+                {
+                    ViewBag.MensajeError = "Error al obtener datos";    
+                }
+                return View(usuarioViewModel);
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message + " | " + e.StackTrace;
+            }
+            return View();
+        }
+
+        [Login]
+        [HttpGet]
+        public IActionResult EditarUsuario(int id)
+        {
+            VerDetallesUsuarioViewModel? usuarioViewModel = null;
+            string mensaje = "";
+            try
+            {
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+                mensaje += e.StackTrace;
+                mensaje += e.InnerException;
+                ViewBag.MensajeError = mensaje;
+            }
+            return View(usuarioViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult EditarUsuario(EditarUsuarioViewModel usuario)
+        {
+            string mensaje;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction(nameof(Index), new { Mensaje = "Editado con exito" });
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                mensaje = "Algunos valores no son correctos";
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+                mensaje += e.StackTrace;
+                mensaje += e.InnerException;
+            }
+            return RedirectToAction(nameof(Index), new { MensajeError = mensaje });
+        }
+
+        [HttpGet]
+        public IActionResult BajaUsuario(int id)
+        {
+            try
+            {
+                ResHttpViewModel datos = WebApi_Process(urlBase+"?usuarioId="+id+"&funcionarioId="+(int)HttpContext.Session.GetInt32("Id"), null, "DELETE");
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index), 
+                        new { Mensaje = "Eliminado con exito" });
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index),
+                        new { MensajeError = "No se pudo eliminar" });
+                }
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction(nameof(Index), 
+                    new { MensajeError = e.InnerException.ToString() });
+            }
+        }
+
+        // RF2
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Login));
+        }
+
+        // RF3
+        [Login]
+        [HttpGet]
+        public IActionResult CambiarPassword()
+        {
+            return View();
+        }
+
+        // RF3
+        [HttpPost]
+        public IActionResult CambiarPassword(string actualPassword, string newPassword)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(actualPassword) || string.IsNullOrEmpty(newPassword))
+                    throw new ArgumentNullException();
+
+                if (actualPassword != HttpContext.Session.GetString("ActualPassword"))
+                    throw new Exception("Contraseña actual no coincide");
+
+                int usuarioId = (int)HttpContext.Session.GetInt32("Id");
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/CambiarPassword/"+(int)HttpContext.Session.GetInt32("Id"), newPassword, "PUT");
+                if (datos.Respuesta.IsSuccessStatusCode)
+                {
+                    ViewBag.Mensaje = datos.Datos;
+                    HttpContext.Session.SetString("ActualPassword", newPassword);
+                }
+                else
+                {
+                    ViewBag.MensajeError = datos.Datos;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                ViewBag.MensajeError = "Debe rellenar todos los campos";
+            }
+            catch (Exception e)
+            {
+                ViewBag.MensajeError = e.Message;
+            }
+            return View();
+        }
+    }
+}
+***********************************
+Archivo: Administrador.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Filters\Administrador.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace MVC.Filters
+{
+    public class Administrador : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            var user = context.HttpContext.Session.GetString("Rol");
+
+            if (user != "Administrador")
+            {
+                context.Result = new RedirectToActionResult("Login", "Usuario", null);
+            }
+        }
+    }
+}
+***********************************
+Archivo: Cliente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Filters\Cliente.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace MVC.Filters
+{
+    public class Cliente : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            var user = context.HttpContext.Session.GetString("Rol");
+
+            if (user != "Cliente")
+            {
+                context.Result = new RedirectToActionResult("Login", "Usuario", null);
+            }
+        }
+    }
+}
+***********************************
+Archivo: LoginAttribute.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Filters\LoginAttribute.cs
+***********************************
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace MVC.Filters
+{
+    public class LoginAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            var user = context.HttpContext.Session.GetString("Rol");
+
+            if (user == null)
+            {
+                context.Result = new RedirectToActionResult("Login", "Usuario", null);
+            }
+        }
+    }
+}
+***********************************
+Archivo: ErrorViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\ErrorViewModel.cs
+***********************************
+namespace MVC.Models
+{
+    public class ErrorViewModel
+    {
+        public string? RequestId { get; set; }
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
+}
+***********************************
+Archivo: ResHttpViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\ResHttpViewModel.cs
+***********************************
+namespace MVC.Models
+{
+    public class ResHttpViewModel
+    {
+        public HttpResponseMessage Respuesta {  get; set; }
+        public string Datos {  get; set; }
+    }
+}
+***********************************
+Archivo: AltaAgenciaViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Agencia\AltaAgenciaViewModel.cs
+***********************************
+namespace MVC.Models.Agencia
+{
+    public class AltaAgenciaViewModel
+    {
+        public int UbPos { get; set; }
+        public int CoordenadasLatitud { get; set; }
+        public int CoordenadasLongitud { get; init; }
+        public string Nombre { get; set; }
+        public int UsuarioId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoAgenciaViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Agencia\ListadoAgenciaViewModel.cs
+***********************************
+namespace MVC.Models.Agencia
+{
+    public class ListadoAgenciaViewModel
+    {
+        public string Nombre { get; set; }
+        public int UsuarioId { get; set; }
+    }
+}
+***********************************
+Archivo: AltaEnvioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\AltaEnvioViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio
+{
+    public abstract class AltaEnvioViewModel
+    {
+        [DisplayName("Numero Tracking")]
+        public string NumeroTracking { get; set; }
+
+        [DisplayName("Peso del Paquete")]
+        public int PesoPaquete { get; set; }
+
+        [DisplayName("Email del Cliente")]
+        public string EmailCliente { get; set; }
+    }
+}
+***********************************
+Archivo: BuscarEnvioPorFechasViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\BuscarEnvioPorFechasViewModel.cs
+***********************************
+namespace MVC.Models.Envio
+{
+    public class BuscarEnvioPorFechasViewModel
+    {
+        public DateOnly FechaInicio { get; set; }
+        public DateOnly FechaFin { get; set; }
+    }
+}
+***********************************
+Archivo: EditarEnvioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\EditarEnvioViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio
+{
+    public abstract class EditarEnvioViewModel
+    {
+        [DisplayName("ID")]
+        public int Id { get; set; }
+        [DisplayName("Numero Tracking")]
+        public int NumeroTracking { get; set; }
+        [DisplayName("Peso del Paquete")]
+        public int PesoPaquete { get; set; }
+        public DateTime Fecha { get; set; }
+        public int FuncionarioId { get; set; }
+        public string ? Comentario { get; set; }
+    }
+}
+***********************************
+Archivo: EstadoEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\EstadoEnvio.cs
+***********************************
+namespace MVC.Models.Envio
+{
+    public enum EstadoEnvio
+    {
+        EN_PROCESO,
+        FINALIZADO
+    }
+}
+***********************************
+Archivo: ListadoEnvioInfoRelevanteViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\ListadoEnvioInfoRelevanteViewModel.cs
+***********************************
+namespace MVC.Models.Envio
+{
+    public class ListadoEnvioInfoRelevanteViewModel
+    {
+        public string Tipo { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public DateTime Fecha { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoEnviosDetalladosViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\ListadoEnviosDetalladosViewModel.cs
+***********************************
+namespace MVC.Models.Envio
+{
+    public class ListadoEnviosDetalladosViewModel
+    {
+        public string Tipo { get; set; }
+        public int Id { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public int FuncionarioId { get; set; }
+        public int ClienteId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoEnviosViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\ListadoEnviosViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio
+{
+    public class ListadoEnviosViewModel
+    {
+        public string Tipo { get; set; }
+        [DisplayName("EnvioId")]
+        public int Id { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public string Comentario { get; set; }
+        [DisplayName("FuncionarioId")]
+        public int FuncionarioId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoSeguimientosViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\ListadoSeguimientosViewModel.cs
+***********************************
+namespace MVC.Models.Envio
+{
+    public class ListadoSeguimientosViewModel
+    {
+        public int Id { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Comentario { get; set; }
+        public int FuncionarioId { get; set; }
+    }
+}
+***********************************
+Archivo: AltaUsuarioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\AltaUsuarioViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class AltaUsuarioViewModel
+    {
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Rol { get; set; }
+    }
+}
+***********************************
+Archivo: CambiarPasswordViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\CambiarPasswordViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class CambiarPasswordViewModel
+    {
+        public string Password { get; set; }
+    }
+}
+***********************************
+Archivo: EditarUsuarioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\EditarUsuarioViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class EditarUsuarioViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
+***********************************
+Archivo: EliminarUsuarioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\EliminarUsuarioViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class EliminarUsuarioViewModel
+    {
+        public int IdUsuario { get; set; }
+        public int IdEncargado { get; set; }
+    }
+}
+***********************************
+Archivo: InformacionUsuarioLogueadoViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\InformacionUsuarioLogueadoViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class InformacionUsuarioLogueadoViewModel
+    {
+        public string Token { get; set; }
+        public int Id { get; set; }
+        public string Rol { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoUsuarioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\ListadoUsuarioViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class ListadoUsuarioViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public int IdEncargado { get; set; }
+    }
+}
+***********************************
+Archivo: LoginUsuarioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\LoginUsuarioViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class LoginUsuarioViewModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
+***********************************
+Archivo: RolUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\RolUsuario.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public enum RolUsuario
+    {
+        Administrador,
+        Funcionario,
+        Cliente
+    }
+}
+***********************************
+Archivo: VerDetallesUsuarioViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Usuario\VerDetallesUsuarioViewModel.cs
+***********************************
+namespace MVC.Models.Usuario
+{
+    public class VerDetallesUsuarioViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Rol { get; set; }
+    }
+}
+
+***********************************
+Archivo: AltaComunViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\Comun\AltaComunViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio.Comun
+{
+    public class AltaComunViewModel : AltaEnvioViewModel
+    {
+        [DisplayName("Nombre de la Agencia")]
+        public string NombreAgencia { get; set; }
+    }
+}
+***********************************
+Archivo: EditarComunViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\Comun\EditarComunViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio.Comun
+{
+    public class EditarComunViewModel : EditarEnvioViewModel
+    {
+        [DisplayName("Nombre de la Agencia")]
+        public string NombreAgencia { get; set; }
+    }
+}
+***********************************
+Archivo: AltaUrgenteViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\Urgente\AltaUrgenteViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio.Urgente
+{
+    public class AltaUrgenteViewModel : AltaEnvioViewModel
+    {
+        [DisplayName("Direccion Postal")]
+        public int DireccionPostal { get; set; }
+
+        [DisplayName("Entrega Eficiente")]
+        public bool EntregaEficiente { get; set; }
+    }
+}
+***********************************
+Archivo: EditarUrgenteViewModel.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\MVC\Models\Envio\Urgente\EditarUrgenteViewModel.cs
+***********************************
+using System.ComponentModel;
+
+namespace MVC.Models.Envio.Urgente
+{
+    public class EditarUrgenteViewModel : EditarEnvioViewModel
+    {
+        [DisplayName("Direccion Postal")]
+        public int DireccionPostal { get; set; }
+
+        [DisplayName("Entrega Eficiente")]
+        public bool EntregaEficiente { get; set; }
+    }
+}

@@ -30,7 +30,8 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Delete(int id)
         {
-            Agencia? agencia = FindById(id) ?? throw new UsuarioException("No se ha encontrado el usuario");
+            Agencia? agencia = FindById(id) 
+                ?? throw new AgenciaException("No se ha encontrado la agencia");
             Contexto.Agencias.Remove(agencia);
             Contexto.SaveChanges();
         }
@@ -49,7 +50,8 @@ namespace LogicaAccesoDatos.Repositorios
 
         public void Update(Agencia item)
         {
-            Agencia encontrarAgencia = FindById(item.Id) ?? throw new AgenciaException("No se encontro agencia a actualizar");
+            Agencia encontrarAgencia = FindById(item.Id) 
+                ?? throw new AgenciaException("No se encontro agencia a actualizar");
             Contexto.Agencias.Update(item);
             Contexto.SaveChanges();
         }

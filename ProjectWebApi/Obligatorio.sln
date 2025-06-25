@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compartido", "Compartido\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{757132C5-1060-4823-8598-44636D784D50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodigoFuente", "CodigoFuente\CodigoFuente.csproj", "{1A465CB6-86CD-4224-96C6-4E7310CF08CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{757132C5-1060-4823-8598-44636D784D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{757132C5-1060-4823-8598-44636D784D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{757132C5-1060-4823-8598-44636D784D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A465CB6-86CD-4224-96C6-4E7310CF08CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A465CB6-86CD-4224-96C6-4E7310CF08CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A465CB6-86CD-4224-96C6-4E7310CF08CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A465CB6-86CD-4224-96C6-4E7310CF08CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

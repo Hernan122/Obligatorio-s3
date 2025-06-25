@@ -1,5 +1,6 @@
 ﻿using Compartido.DTOs.AuditoriaDTO;
 using Compartido.DTOs.UsuarioDTO;
+using Compartido.ExcepcionesConflictos;
 using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
 using LogicaNegocio.EntidadesNegocio;
 using LogicaNegocio.ExcepcionesEntidades;
@@ -137,6 +138,10 @@ namespace WebApi.Controllers
             catch (UsuarioException e)
             {
                 return BadRequest(e.Message);
+            }
+            catch (ConflictException e)
+            {
+                return Conflict(e.Message);
             }
             catch (Exception e)
             {

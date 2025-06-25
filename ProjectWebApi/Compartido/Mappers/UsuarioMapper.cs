@@ -46,7 +46,7 @@ namespace Compartido.Mappers
             return new VerDetallesUsuarioDTO
             {
                 Id = usuario.Id,
-                NombreUsuario = usuario.Nombre,
+                Nombre = usuario.Nombre,
                 Email = usuario.Email,
                 Password = usuario.Password.Valor,
                 Rol = usuario.Rol.ToString()

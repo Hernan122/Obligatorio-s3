@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\mvc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:mvc.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:controllers\\enviocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|c:\\users\\bruno\\documents\\obligatorio-s3\\mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1EC072F4-C76B-6B7E-C2E7-7D69BB09ACD2}|MVC.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-24T22:46:05.623Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-24T22:26:55.237Z",
+              "DocumentIndex": 0,
+              "Title": "MVC",
+              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\MVC.csproj",
+              "RelativeDocumentMoniker": "MVC.csproj",
+              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\MVC.csproj",
+              "RelativeToolTip": "MVC.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-25T13:23:32.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T22:21:22.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "EnvioController.cs",
               "DocumentMoniker": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
               "RelativeDocumentMoniker": "Controllers\\EnvioController.cs",
               "ToolTip": "C:\\Users\\Bruno\\Documents\\Obligatorio-s3\\MVC\\Controllers\\EnvioController.cs",
               "RelativeToolTip": "Controllers\\EnvioController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T22:21:09.088Z",
+              "WhenOpened": "2025-06-25T12:33:14.411Z",
               "EditorCaption": ""
             }
           ]

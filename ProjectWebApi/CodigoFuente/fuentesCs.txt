@@ -1,0 +1,5570 @@
+﻿***********************************
+Archivo: DemoContext.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\DemoContext.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaAccesoDatos
+{
+    public class DemoContext : DbContext
+    {
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Agencia> Agencias { get; set; }
+        public DbSet<Envio> Envios { get; set; }
+        public DbSet<Comun> Comunes { get; set; }
+        public DbSet<Urgente> Urgentes { get; set; }
+
+        public DemoContext(DbContextOptions options) : base(options) {}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Envio>().HasOne(c => c.Cliente)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Envio>().HasOne(c => c.Funcionario)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+}
+***********************************
+Archivo: ConflictException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\ExcepcionesConflictos\ConflictException.cs
+***********************************
+namespace Compartido.ExcepcionesConflictos
+{
+    public class ConflictException : Exception
+    {
+        public ConflictException() { }
+
+        public ConflictException(string message) : base(message) {}
+
+        public ConflictException(string? message, Exception? innerException) : base(message, innerException) {}
+    }
+}
+***********************************
+Archivo: AgenciaMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\AgenciaMapper.cs
+***********************************
+using Compartido.DTOs.AgenciaDTO;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ValueObject;
+
+namespace Compartido.Mappers
+{
+    public class AgenciaMapper
+    {
+        public static List<ListadoAgenciaDTO> ListadoAgenciaToListadoAgenciaDTO(List<Agencia> agencias)
+        {
+            List<ListadoAgenciaDTO> listado = new List<ListadoAgenciaDTO>();
+            listado = agencias.Select(c => new ListadoAgenciaDTO()
+            {
+                Nombre = c.Nombre,
+                UsuarioId = c.UsuarioId
+            }).ToList();
+            return listado;
+        }
+
+        public static Agencia AgenciaFromAltaAgenciaDTO(AltaAgenciaDTO agenciaDTO)
+        {
+            return new Agencia
+            (
+                agenciaDTO.UbPos,
+                agenciaDTO.CoordenadasLatitud, 
+                agenciaDTO.CoordenadasLongitud,
+                agenciaDTO.Nombre,
+                agenciaDTO.UsuarioId
+            );
+        }
+    }
+}
+***********************************
+Archivo: AuditoriaMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\AuditoriaMapper.cs
+***********************************
+using Compartido.DTOs.AuditoriaDTO;
+using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.Mappers
+{
+    public class AuditoriaMapper
+    {
+        public static Auditoria AuditoriaFromAuditoriaDTO(AuditoriaDTO auditoriaDTO)
+        {
+            return new Auditoria
+            (
+                auditoriaDTO.AccionRealizada.ToString(),
+                auditoriaDTO.Fecha,
+                auditoriaDTO.FuncionarioId
+            );
+        }
+    }
+}
+***********************************
+Archivo: ComunMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\ComunMapper.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.EnvioDTO.ComunDTO;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ValueObject;
+
+namespace Compartido.Mappers
+{
+    public class ComunMapper
+    {
+        public static Comun ComunFromAltaComunDTO(AltaEnvioDTO comunDTO, int clienteId, int agenciaId)
+        {
+            return new Comun
+            (
+                agenciaId,
+                comunDTO.NumeroTracking,
+                comunDTO.PesoPaquete,
+                clienteId,
+                comunDTO.FuncionarioId
+            );
+        }
+
+        public static Comun ComunFromEditarComunDTO(EditarEnvioDTO envioDTO)
+        {
+            return new Comun
+            (
+                envioDTO.Id,
+                envioDTO.NumeroTracking,
+                envioDTO.PesoPaquete,
+                envioDTO.ClienteId,
+                envioDTO.FuncionarioId
+            );
+        }
+    }
+}
+
+***********************************
+Archivo: EnvioMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\EnvioMapper.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
+using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.Mappers
+{
+    public class EnvioMapper
+    {
+
+        public static List<ListadoEnviosDTO> ListadoEnvioToListadoEnvioDTO(IEnumerable<Envio> envios)
+        {
+            List<ListadoEnviosDTO> enviosDTO = [];
+            enviosDTO = envios.Select(envio => new ListadoEnviosDTO()
+            {
+                Tipo = envio is Comun ? "Comun" : "Urgente",
+                Id = envio.Id,
+                NumeroTracking = envio.NumeroTracking,
+                Estado = envio.Estado.ToString(),
+                Comentario = envio.Seguimientos.ToList()[envio.Seguimientos.Count()-1].Comentario,
+                FuncionarioId = envio.FuncionarioId
+            }).ToList();
+            return enviosDTO;
+        }
+
+        public static VerDetallesEnvioDTO EnvioToVerDetallesEnvioDTO(Envio envio)
+        {
+            List<string> seguimientos = [];
+            foreach (Seguimiento item in envio.Seguimientos.ToList())
+            {
+                seguimientos.Add($"{item.Comentario}");
+            }
+            return new VerDetallesEnvioDTO()
+            {
+                Tipo = envio is Comun ? "Comun" : "Urgente",
+                Id = envio.Id,
+                NumeroTracking = envio.NumeroTracking,
+                Estado = envio.Estado.ToString(),
+                Comentario = string.Join(", ", seguimientos),
+                FuncionarioId = envio.FuncionarioId
+            };
+        }
+
+        public static ListadoEnviosDetalladosDTO EnvioToVerDetallesEnvioYSeguimientosDTO(Envio envio)
+        {
+            return new ListadoEnviosDetalladosDTO()
+            {
+                Tipo = envio is Comun ? "Comun" : "Urgente",
+                Id = envio.Id,
+                NumeroTracking = envio.NumeroTracking,
+                Estado = envio.Estado.ToString(),
+                FuncionarioId = envio.FuncionarioId,
+                ClienteId = envio.ClienteId
+            };
+        }
+
+        public static List<ListadoEnviosDetalladosDTO> ListadoEnviosFromListadoEnviosDetalladosDTO(IEnumerable<Envio> listado)
+        {
+            List<ListadoEnviosDetalladosDTO> listadoDTO = [];
+            listadoDTO = listado.Select(envio => new ListadoEnviosDetalladosDTO()
+            {
+                Tipo = envio is Comun ? "Comun" : "Urgente",
+                Id = envio.Id,
+                NumeroTracking = envio.NumeroTracking,
+                Estado = envio.Estado.ToString(),
+                FuncionarioId = envio.FuncionarioId
+            }).ToList();
+            return listadoDTO;
+        }
+
+        public static List<ListadoSeguimientosDTO> EnvioToListadoSeguimientosDTO(Envio envio)
+        {
+            List<ListadoSeguimientosDTO> listadoDTO = [];
+            listadoDTO = envio.Seguimientos.Select(seguimiento => new ListadoSeguimientosDTO()
+            {
+                Id = seguimiento.Id,
+                Fecha = seguimiento.Fecha,
+                Comentario = seguimiento.Comentario,
+                FuncionarioId = seguimiento.FuncionarioId
+            }).ToList();
+            return listadoDTO;
+        }
+
+        public static List<ListadoEnviosInfoRelevanteDTO> ListadoEnviosToListadoEnviosInfoRelevanteDTO(IEnumerable<Envio> listado)
+        {
+            List<ListadoEnviosInfoRelevanteDTO> listadonuevo = [];
+            listadonuevo = listado.Select(c => new ListadoEnviosInfoRelevanteDTO()
+            {
+                Tipo = c is Comun ? "Comun" : "Urgente",
+                NumeroTracking = c.NumeroTracking,
+                Estado = c.Estado.ToString(),
+                Fecha = c.Seguimientos.First().Fecha
+            }).ToList();
+            return listadonuevo;
+        }
+
+    }
+}
+***********************************
+Archivo: SeguimientoMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\SeguimientoMapper.cs
+***********************************
+using Compartido.DTOs.SeguimientoDTO;
+using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.Mappers
+{
+    public class SeguimientoMapper
+    {
+        public static Seguimiento SeguimientoFromAltaSeguimientoDTO(AltaSeguimientoDTO seguimientoDTO)
+        {
+            return new Seguimiento
+            (
+                seguimientoDTO.Fecha,
+                seguimientoDTO.Comentario,
+                seguimientoDTO.FuncionarioId
+            );
+        }
+    }
+}
+***********************************
+Archivo: UrgenteMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\UrgenteMapper.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.EnvioDTO.UrgenteDTO;
+using LogicaNegocio.EntidadesNegocio;
+
+namespace Compartido.Mappers
+{
+    public class UrgenteMapper
+    {
+        public static Urgente UrgenteFromAltaUrgenteDTO(AltaUrgenteDTO envioDTO, int clienteId)
+        {
+            return new Urgente
+            (
+                envioDTO.DireccionPostal,
+                envioDTO.EntregaEficiente,
+                envioDTO.NumeroTracking,
+                envioDTO.PesoPaquete,
+                clienteId,
+                envioDTO.FuncionarioId
+            );
+        }
+    }
+}
+
+***********************************
+Archivo: UsuarioMapper.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\Mappers\UsuarioMapper.cs
+***********************************
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ValueObject;
+using Compartido.DTOs.UsuarioDTO;
+
+namespace Compartido.Mappers
+{
+    public class UsuarioMapper
+    {
+        public static Usuario UsuarioFromAltaUsuarioDTO(AltaUsuarioDTO usuarioDTO)
+        {
+            return new Usuario
+            (
+                usuarioDTO.NombreUsuario,
+                usuarioDTO.Email,
+                usuarioDTO.Password,
+                usuarioDTO.Rol
+            );
+        }
+
+        public static Usuario UsuarioFromEditarUsuarioDTO(EditarUsuarioDTO usuarioDTO, Rol rol)
+        {
+            return new Usuario
+            (
+                usuarioDTO.NombreUsuario,
+                usuarioDTO.Email,
+                usuarioDTO.Password,
+                rol.ToString()
+            );
+        }
+
+        public static List<ListadoUsuarioDTO> ListadoUsuarioToListadoUsuarioDTO(List<Usuario> usuarios)
+        {
+            List<ListadoUsuarioDTO> listadoUsuariosDTO = new List<ListadoUsuarioDTO>();
+            listadoUsuariosDTO = usuarios.Select(user => new ListadoUsuarioDTO()
+            {
+                Id = user.Id,
+                Nombre = user.Nombre,
+                Password = user.Password.Valor
+            }).ToList();
+            return listadoUsuariosDTO;
+        }
+
+        public static VerDetallesUsuarioDTO VerDetallesUsuarioDTOFromUsuario(Usuario usuario)
+        {
+            return new VerDetallesUsuarioDTO
+            {
+                Id = usuario.Id,
+                Nombre = usuario.Nombre,
+                Email = usuario.Email,
+                Password = usuario.Password.Valor,
+                Rol = usuario.Rol.ToString()
+            };
+        }
+    }
+}
+***********************************
+Archivo: 20250607203929_init.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250607203929_init.cs
+***********************************
+using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    /// <inheritdoc />
+    public partial class init : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Agencias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UbPos = table.Column<int>(type: "int", nullable: false),
+                    Ubicacion_CoordenadasLatitud = table.Column<int>(type: "int", nullable: false),
+                    Ubicacion_CoordenadasLongitud = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agencias", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Auditoria",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AccionRealizada = table.Column<int>(type: "int", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FuncionarioId = table.Column<int>(type: "int", nullable: false),
+                    UsuarioId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Auditoria", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Envios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NumeroTracking = table.Column<int>(type: "int", nullable: false),
+                    PesoPaquete = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: false),
+                    FuncionarioId = table.Column<int>(type: "int", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    AgenciaId = table.Column<int>(type: "int", nullable: true),
+                    DireccionPostal = table.Column<int>(type: "int", nullable: true),
+                    EntregaEficiente = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Envios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Envios_Agencias_AgenciaId",
+                        column: x => x.AgenciaId,
+                        principalTable: "Agencias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Rol = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Password_Valor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EnvioId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Envios_EnvioId",
+                        column: x => x.EnvioId,
+                        principalTable: "Envios",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Agencias_Nombre",
+                table: "Agencias",
+                column: "Nombre",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Agencias_UsuarioId",
+                table: "Agencias",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Auditoria_UsuarioId",
+                table: "Auditoria",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Envios_AgenciaId",
+                table: "Envios",
+                column: "AgenciaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Envios_ClienteId",
+                table: "Envios",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Envios_FuncionarioId",
+                table: "Envios",
+                column: "FuncionarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Email",
+                table: "Usuarios",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_EnvioId",
+                table: "Usuarios",
+                column: "EnvioId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Agencias_Usuarios_UsuarioId",
+                table: "Agencias",
+                column: "UsuarioId",
+                principalTable: "Usuarios",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Auditoria_Usuarios_UsuarioId",
+                table: "Auditoria",
+                column: "UsuarioId",
+                principalTable: "Usuarios",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Envios_Usuarios_ClienteId",
+                table: "Envios",
+                column: "ClienteId",
+                principalTable: "Usuarios",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Envios_Usuarios_FuncionarioId",
+                table: "Envios",
+                column: "FuncionarioId",
+                principalTable: "Usuarios",
+                principalColumn: "Id");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Agencias_Usuarios_UsuarioId",
+                table: "Agencias");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Envios_Usuarios_ClienteId",
+                table: "Envios");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Envios_Usuarios_FuncionarioId",
+                table: "Envios");
+
+            migrationBuilder.DropTable(
+                name: "Auditoria");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Envios");
+
+            migrationBuilder.DropTable(
+                name: "Agencias");
+        }
+    }
+}
+
+***********************************
+Archivo: 20250607203929_init.Designer.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250607203929_init.Designer.cs
+***********************************
+// <auto-generated />
+using System;
+using LogicaAccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    [DbContext(typeof(DemoContext))]
+    [Migration("20250607203929_init")]
+    partial class init
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UbPos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Agencias");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccionRealizada")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumeroTracking")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PesoPaquete")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Envios");
+
+                    b.HasDiscriminator().HasValue("Envio");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("EnvioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("EnvioId");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("AgenciaId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("AgenciaId");
+
+                    b.HasDiscriminator().HasValue("Comun");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Urgente", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("DireccionPostal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EntregaEficiente")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Urgente");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.UbicacionAgencia", "Ubicacion", b1 =>
+                        {
+                            b1.Property<int>("AgenciaId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLatitud")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLongitud")
+                                .HasColumnType("int");
+
+                            b1.HasKey("AgenciaId");
+
+                            b1.ToTable("Agencias");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AgenciaId");
+                        });
+
+                    b.Navigation("Ubicacion")
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", null)
+                        .WithMany("Auditorias")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Envio", null)
+                        .WithMany()
+                        .HasForeignKey("EnvioId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
+                        {
+                            b1.Property<int>("UsuarioId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Valor")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UsuarioId");
+
+                            b1.ToTable("Usuarios");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UsuarioId");
+                        });
+
+                    b.Navigation("Password")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Navigation("Auditorias");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: 20250607204248_init2.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250607204248_init2.cs
+***********************************
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    /// <inheritdoc />
+    public partial class init2 : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Auditoria_Usuarios_UsuarioId",
+                table: "Auditoria");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Usuarios_Envios_EnvioId",
+                table: "Usuarios");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Usuarios_EnvioId",
+                table: "Usuarios");
+
+            migrationBuilder.DropColumn(
+                name: "EnvioId",
+                table: "Usuarios");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Auditoria_Usuarios_UsuarioId",
+                table: "Auditoria",
+                column: "UsuarioId",
+                principalTable: "Usuarios",
+                principalColumn: "Id");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Auditoria_Usuarios_UsuarioId",
+                table: "Auditoria");
+
+            migrationBuilder.AddColumn<int>(
+                name: "EnvioId",
+                table: "Usuarios",
+                type: "int",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_EnvioId",
+                table: "Usuarios",
+                column: "EnvioId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Auditoria_Usuarios_UsuarioId",
+                table: "Auditoria",
+                column: "UsuarioId",
+                principalTable: "Usuarios",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Usuarios_Envios_EnvioId",
+                table: "Usuarios",
+                column: "EnvioId",
+                principalTable: "Envios",
+                principalColumn: "Id");
+        }
+    }
+}
+
+***********************************
+Archivo: 20250607204248_init2.Designer.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250607204248_init2.Designer.cs
+***********************************
+// <auto-generated />
+using System;
+using LogicaAccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    [DbContext(typeof(DemoContext))]
+    [Migration("20250607204248_init2")]
+    partial class init2
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UbPos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Agencias");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccionRealizada")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumeroTracking")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PesoPaquete")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Envios");
+
+                    b.HasDiscriminator().HasValue("Envio");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("AgenciaId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("AgenciaId");
+
+                    b.HasDiscriminator().HasValue("Comun");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Urgente", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("DireccionPostal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EntregaEficiente")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Urgente");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.UbicacionAgencia", "Ubicacion", b1 =>
+                        {
+                            b1.Property<int>("AgenciaId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLatitud")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLongitud")
+                                .HasColumnType("int");
+
+                            b1.HasKey("AgenciaId");
+
+                            b1.ToTable("Agencias");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AgenciaId");
+                        });
+
+                    b.Navigation("Ubicacion")
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", null)
+                        .WithMany("Auditorias")
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
+                        {
+                            b1.Property<int>("UsuarioId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Valor")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UsuarioId");
+
+                            b1.ToTable("Usuarios");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UsuarioId");
+                        });
+
+                    b.Navigation("Password")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Navigation("Auditorias");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: 20250608202926_NumeroTracking string.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250608202926_NumeroTracking string.cs
+***********************************
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    /// <inheritdoc />
+    public partial class NumeroTrackingstring : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<string>(
+                name: "NumeroTracking",
+                table: "Envios",
+                type: "nvarchar(max)",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "int");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<int>(
+                name: "NumeroTracking",
+                table: "Envios",
+                type: "int",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
+        }
+    }
+}
+
+***********************************
+Archivo: 20250608202926_NumeroTracking string.Designer.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250608202926_NumeroTracking string.Designer.cs
+***********************************
+// <auto-generated />
+using System;
+using LogicaAccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    [DbContext(typeof(DemoContext))]
+    [Migration("20250608202926_NumeroTracking string")]
+    partial class NumeroTrackingstring
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UbPos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Agencias");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccionRealizada")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumeroTracking")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PesoPaquete")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Envios");
+
+                    b.HasDiscriminator().HasValue("Envio");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("AgenciaId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("AgenciaId");
+
+                    b.HasDiscriminator().HasValue("Comun");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Urgente", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("DireccionPostal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EntregaEficiente")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Urgente");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.UbicacionAgencia", "Ubicacion", b1 =>
+                        {
+                            b1.Property<int>("AgenciaId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLatitud")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLongitud")
+                                .HasColumnType("int");
+
+                            b1.HasKey("AgenciaId");
+
+                            b1.ToTable("Agencias");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AgenciaId");
+                        });
+
+                    b.Navigation("Ubicacion")
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", null)
+                        .WithMany("Auditorias")
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
+                        {
+                            b1.Property<int>("UsuarioId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Valor")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UsuarioId");
+
+                            b1.ToTable("Usuarios");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UsuarioId");
+                        });
+
+                    b.Navigation("Password")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Navigation("Auditorias");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: 20250609204049_seguimientos.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250609204049_seguimientos.cs
+***********************************
+using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    /// <inheritdoc />
+    public partial class seguimientos : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Seguimiento",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Comentario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FuncionarioId = table.Column<int>(type: "int", nullable: false),
+                    EnvioId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Seguimiento", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Seguimiento_Envios_EnvioId",
+                        column: x => x.EnvioId,
+                        principalTable: "Envios",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Seguimiento_Usuarios_FuncionarioId",
+                        column: x => x.FuncionarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Seguimiento_EnvioId",
+                table: "Seguimiento",
+                column: "EnvioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Seguimiento_FuncionarioId",
+                table: "Seguimiento",
+                column: "FuncionarioId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Seguimiento");
+        }
+    }
+}
+
+***********************************
+Archivo: 20250609204049_seguimientos.Designer.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250609204049_seguimientos.Designer.cs
+***********************************
+// <auto-generated />
+using System;
+using LogicaAccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    [DbContext(typeof(DemoContext))]
+    [Migration("20250609204049_seguimientos")]
+    partial class seguimientos
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UbPos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Agencias");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccionRealizada")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumeroTracking")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PesoPaquete")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Envios");
+
+                    b.HasDiscriminator().HasValue("Envio");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EnvioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnvioId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Seguimiento");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("AgenciaId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("AgenciaId");
+
+                    b.HasDiscriminator().HasValue("Comun");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Urgente", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("DireccionPostal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EntregaEficiente")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Urgente");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.UbicacionAgencia", "Ubicacion", b1 =>
+                        {
+                            b1.Property<int>("AgenciaId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLatitud")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLongitud")
+                                .HasColumnType("int");
+
+                            b1.HasKey("AgenciaId");
+
+                            b1.ToTable("Agencias");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AgenciaId");
+                        });
+
+                    b.Navigation("Ubicacion")
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", null)
+                        .WithMany("Auditorias")
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Envio", null)
+                        .WithMany("Seguimientos")
+                        .HasForeignKey("EnvioId");
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
+                        {
+                            b1.Property<int>("UsuarioId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Valor")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UsuarioId");
+
+                            b1.ToTable("Usuarios");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UsuarioId");
+                        });
+
+                    b.Navigation("Password")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Navigation("Seguimientos");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Navigation("Auditorias");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: 20250612225134_update.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250612225134_update.cs
+***********************************
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    /// <inheritdoc />
+    public partial class update : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
+        }
+    }
+}
+
+***********************************
+Archivo: 20250612225134_update.Designer.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\20250612225134_update.Designer.cs
+***********************************
+// <auto-generated />
+using System;
+using LogicaAccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    [DbContext(typeof(DemoContext))]
+    [Migration("20250612225134_update")]
+    partial class update
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UbPos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Agencias");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccionRealizada")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumeroTracking")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PesoPaquete")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Envios");
+
+                    b.HasDiscriminator().HasValue("Envio");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EnvioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnvioId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Seguimiento");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("AgenciaId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("AgenciaId");
+
+                    b.HasDiscriminator().HasValue("Comun");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Urgente", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("DireccionPostal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EntregaEficiente")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Urgente");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.UbicacionAgencia", "Ubicacion", b1 =>
+                        {
+                            b1.Property<int>("AgenciaId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLatitud")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLongitud")
+                                .HasColumnType("int");
+
+                            b1.HasKey("AgenciaId");
+
+                            b1.ToTable("Agencias");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AgenciaId");
+                        });
+
+                    b.Navigation("Ubicacion")
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", null)
+                        .WithMany("Auditorias")
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Envio", null)
+                        .WithMany("Seguimientos")
+                        .HasForeignKey("EnvioId");
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
+                        {
+                            b1.Property<int>("UsuarioId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Valor")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UsuarioId");
+
+                            b1.ToTable("Usuarios");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UsuarioId");
+                        });
+
+                    b.Navigation("Password")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Navigation("Seguimientos");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Navigation("Auditorias");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: DemoContextModelSnapshot.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Migrations\DemoContextModelSnapshot.cs
+***********************************
+// <auto-generated />
+using System;
+using LogicaAccesoDatos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace LogicaAccesoDatos.Migrations
+{
+    [DbContext(typeof(DemoContext))]
+    partial class DemoContextModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("UbPos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Agencias");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccionRealizada")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Auditoria");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumeroTracking")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PesoPaquete")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Envios");
+
+                    b.HasDiscriminator().HasValue("Envio");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EnvioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnvioId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("Seguimiento");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("AgenciaId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("AgenciaId");
+
+                    b.HasDiscriminator().HasValue("Comun");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Urgente", b =>
+                {
+                    b.HasBaseType("LogicaNegocio.EntidadesNegocio.Envio");
+
+                    b.Property<int>("DireccionPostal")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("EntregaEficiente")
+                        .HasColumnType("bit");
+
+                    b.HasDiscriminator().HasValue("Urgente");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Agencia", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("LogicaNegocio.ValueObject.UbicacionAgencia", "Ubicacion", b1 =>
+                        {
+                            b1.Property<int>("AgenciaId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLatitud")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("CoordenadasLongitud")
+                                .HasColumnType("int");
+
+                            b1.HasKey("AgenciaId");
+
+                            b1.ToTable("Agencias");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AgenciaId");
+                        });
+
+                    b.Navigation("Ubicacion")
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Auditoria", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", null)
+                        .WithMany("Auditorias")
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Seguimiento", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Envio", null)
+                        .WithMany("Seguimientos")
+                        .HasForeignKey("EnvioId");
+
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Usuario", "Funcionario")
+                        .WithMany()
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.OwnsOne("LogicaNegocio.ValueObject.PasswordUsuario", "Password", b1 =>
+                        {
+                            b1.Property<int>("UsuarioId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Valor")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UsuarioId");
+
+                            b1.ToTable("Usuarios");
+
+                            b1.WithOwner()
+                                .HasForeignKey("UsuarioId");
+                        });
+
+                    b.Navigation("Password")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Comun", b =>
+                {
+                    b.HasOne("LogicaNegocio.EntidadesNegocio.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agencia");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Envio", b =>
+                {
+                    b.Navigation("Seguimientos");
+                });
+
+            modelBuilder.Entity("LogicaNegocio.EntidadesNegocio.Usuario", b =>
+                {
+                    b.Navigation("Auditorias");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+***********************************
+Archivo: RepositorioAgenciaEF.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Repositorios\RepositorioAgenciaEF.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAccesoDatos.Repositorios
+{
+    public class RepositorioAgenciaEF : IRepositorioAgencia
+    {
+
+        private DemoContext Contexto { get; set; }
+
+        public RepositorioAgenciaEF(DemoContext contexto)
+        {
+            Contexto = contexto;
+        }
+
+        public void Add(Agencia item)
+        {
+            Agencia? agenciaTemp = FindByName(item.Nombre);
+            if (agenciaTemp == null)
+            {
+                Contexto.Agencias.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new AgenciaException("Agencia ya existente");
+            }
+        }
+
+        public void Delete(int id)
+        {
+            Agencia? agencia = FindById(id) 
+                ?? throw new AgenciaException("No se ha encontrado la agencia");
+            Contexto.Agencias.Remove(agencia);
+            Contexto.SaveChanges();
+        }
+
+        public IEnumerable<Agencia> FindAll()
+        {
+            return Contexto.Agencias;
+        }
+
+        public Agencia? FindById(int id)
+        {
+            return Contexto.Agencias
+                    .Where(c => c.Id == id)
+                    .SingleOrDefault();
+        }
+
+        public void Update(Agencia item)
+        {
+            Agencia encontrarAgencia = FindById(item.Id) 
+                ?? throw new AgenciaException("No se encontro agencia a actualizar");
+            Contexto.Agencias.Update(item);
+            Contexto.SaveChanges();
+        }
+
+        public Agencia? FindByName(string nombre)
+        {
+            return Contexto.Agencias
+                    .Where(c => c.Nombre == nombre)
+                    .SingleOrDefault();
+        }
+    }
+}
+***********************************
+Archivo: RepositorioEnvioEF.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Repositorios\RepositorioEnvioEF.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaAccesoDatos.Repositorios
+{
+    public class RepositorioEnvioEF : IRepositorioEnvio
+    {
+        private DemoContext Contexto { get; set; }
+
+        public RepositorioEnvioEF(DemoContext contexto)
+        {
+            Contexto = contexto;
+        }
+
+        public void Add(Envio item)
+        {
+            Envio envioTemp = FindByNumeroTracking(item.NumeroTracking, item.Id);
+            if (envioTemp == null)
+            {
+                Contexto.Envios.Add(item);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new EnvioException("Ya existe un Envio con ese Numero de Tracking");
+            }
+        }
+
+        public void Delete(int id)
+        {
+            Envio envio = FindById(id);
+            if (envio == null)
+            {
+                throw new EnvioException("No se ha encontrado al envio");
+            }
+            Contexto.Envios.Remove(envio);
+            Contexto.SaveChanges();
+        }
+
+        public IEnumerable<Envio> FindAll()
+        {
+            return Contexto.Envios;
+        }
+
+        public IEnumerable<Envio> EnviosEnProceso()
+        {
+            return Contexto.Envios.Where(c => c.Estado == Estado.EN_PROCESO);
+        }
+
+        public Envio? FindById(int id)
+        {
+            return Contexto.Envios
+                    .Where(c => c.Id == id)
+                    .SingleOrDefault();
+        }
+
+        public void Update(Envio item)
+        {
+            Envio nuevoEnvio = FindById(item.Id);
+            if (nuevoEnvio != null)
+            {
+                Contexto.Envios.Update(nuevoEnvio);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new EnvioException("Ya existe un Envio con ese Numero de Tracking");
+            }
+        }
+
+        public Envio? FindByNumeroTracking(string numeroTracking, int id)
+        {
+            return Contexto.Envios
+                    .Where(c => c.NumeroTracking == numeroTracking && c.Id != id)
+                    .FirstOrDefault();
+        }
+
+        public IEnumerable<Envio> FindAllEnviosConSeguimiento()
+        {
+            return Contexto.Envios
+                .Include(c => c.Seguimientos);
+        }
+
+        public Envio? FindByNumeroTrackingSinId(string numeroTracking)
+        {
+            return Contexto.Envios
+                .Where(c => c.NumeroTracking == numeroTracking)
+                .Include(c => c.Seguimientos)
+                .SingleOrDefault();
+        }
+
+        public Envio? FindEnvioAndSeguimientoById(int id)
+        {
+            return Contexto.Envios
+                   .Where(c => c.Id == id)
+                   .Include(c => c.Seguimientos)
+                   .SingleOrDefault();
+        }
+
+        public IEnumerable<Envio> ListadoEnviosDetallados(int clienteId)
+        {
+            return Contexto.Envios
+                .Where(c => c.Cliente.Id == clienteId
+                    && c.Seguimientos.OrderBy(c => c.Fecha).Any());
+        }
+
+        public Envio? ListadoSeguimientos(int envioId)
+        {
+            return Contexto.Envios
+                .Where(c => c.Id == envioId)
+                .Include(c => c.Seguimientos).FirstOrDefault();
+        }
+
+        public IEnumerable<Envio> BuscarEnviosPorFechas(DateOnly fechaInicio, DateOnly fechaFin, int estado=-1)
+        {
+            bool encontrado = false;
+            Estado estadoTemp = Estado.EN_PROCESO;
+            if (estado != -1)
+            {
+                foreach (Estado item in Enum.GetValues(typeof(Estado)))
+                {
+                    if ((int)item == estado)
+                    {
+                        estadoTemp = item;
+                        encontrado = true;
+                        break;
+                    }
+                }
+            }
+
+            if (encontrado)
+            {
+                return Contexto.Envios
+                    .Where(c => c.Seguimientos
+                        .Any(c => DateOnly.FromDateTime(c.Fecha) >= fechaInicio && DateOnly.FromDateTime(c.Fecha) <= fechaFin)
+                        && c.Estado == estadoTemp
+                    )
+                    .Include(c => c.Seguimientos)
+                    .OrderBy(c => c.NumeroTracking);
+            }
+            else
+            {
+                return Contexto.Envios
+                    .Where(c => c.Seguimientos
+                        .Any(c => DateOnly.FromDateTime(c.Fecha) >= fechaInicio && DateOnly.FromDateTime(c.Fecha) <= fechaFin)
+                    )
+                    .Include(c => c.Seguimientos)
+                    .OrderBy(c => c.NumeroTracking);
+            }
+        }
+
+        public IEnumerable<Envio> BuscarEnviosPorComentario(string comentario)
+        {
+            return Contexto.Envios
+                .Where(c => c.Seguimientos.Any(c => c.Comentario.Equals(comentario)))
+                .Include(c => c.Seguimientos)
+                .OrderBy(c => c.Seguimientos.Single().Fecha);
+        }
+
+    }
+}
+***********************************
+Archivo: RepositorioUsuarioEF.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAccesoDatos\Repositorios\RepositorioUsuarioEF.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+using Compartido.ExcepcionesConflictos;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaAccesoDatos.Repositorios
+{
+    public class RepositorioUsuarioEF : IRepositorioUsuario
+    {
+        private DemoContext Contexto { get; set; }
+
+        public RepositorioUsuarioEF(DemoContext contexto)
+        {
+            Contexto = contexto;
+        }
+
+        public void Add(Usuario usuario)
+        {
+            Usuario usuarioTemp = FindByEmail(usuario.Email);
+            if (usuarioTemp == null)
+            {
+                Contexto.Usuarios.Add(usuario);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new ConflictException("Correo ya existente");
+            }
+        }
+
+        public void Delete(int id)
+        {
+            Usuario usuario = FindById(id);
+            if (usuario == null)
+            {
+                throw new UsuarioException("No se ha encontrado el usuario");
+            }
+            Contexto.Usuarios.Remove(usuario);
+            Contexto.SaveChanges();
+        }
+
+        public IEnumerable<Usuario> FindAll()
+        {
+            return Contexto.Usuarios
+                .Where(u => u.Auditorias.All(a => a.AccionRealizada != Accion.Eliminado) && u.Rol != Rol.Administrador)
+                .ToList();
+        }
+
+        public Usuario? FindById(int id)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Id == id)
+                    .SingleOrDefault();
+        }
+
+        public void Update(Usuario usuario)
+        {
+            Usuario findUserByRepeatedEmail = FindByRepeatedEmail(usuario.Email, usuario.Id);
+            if (findUserByRepeatedEmail == null)
+            {
+                Usuario usuarioEditado = FindById(usuario.Id);
+                usuarioEditado.Nombre = usuario.Nombre;
+                usuarioEditado.Email = usuario.Email;
+                usuarioEditado.Password = usuario.Password;
+                usuarioEditado.Auditorias = usuario.Auditorias;
+
+                Contexto.Usuarios.Update(usuarioEditado);
+                Contexto.SaveChanges();
+            }
+            else
+            {
+                throw new ConflictException("Ya existe otro usuario con ese correo");
+            }
+        }
+
+        public Usuario? FindByEmailAndPassword(string email, string password)
+        {
+            Usuario? usuario = Contexto.Usuarios
+                    .Where(c => c.Email == email && c.Password.Valor == password)
+                    .SingleOrDefault();
+
+            if (usuario != null)
+            {
+                if (IsUserPermitted(usuario.Id) != null)
+                {
+                    throw new UsuarioException("Usuario no permitido");
+                }
+            }
+
+            return usuario;
+        }
+
+        private Usuario? IsUserPermitted(int id)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Id == id && c.Auditorias.Any(c => c.AccionRealizada == Accion.Eliminado)).FirstOrDefault();
+        }
+
+        public Usuario? FindByEmail(string email)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Email == email)
+                    .SingleOrDefault();
+        }
+
+        public Usuario? FindByRepeatedEmail(string email, int id)
+        {
+            return Contexto.Usuarios
+                    .Where(c => c.Email == email && c.Id != id)
+                    .SingleOrDefault();
+        }
+    }
+}
+***********************************
+Archivo: Accion.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Accion.cs
+***********************************
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public enum Accion
+    {
+        Agregado,
+        Editado,
+        Eliminado
+    }
+}
+***********************************
+Archivo: Agencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Agencia.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.ValueObject;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    [Index(nameof(Nombre), IsUnique = true)]
+    public class Agencia : IEquatable<Agencia>
+    {
+        public int Id { get; set; }
+        public int UbPos { get; set; }
+        public UbicacionAgencia Ubicacion { get; set; }
+        public string Nombre { get; set; }
+        public Usuario Usuario { get; set; }
+
+        [ForeignKey("Usuario")]
+        public int UsuarioId { get; set; }
+
+        private Agencia() { }
+
+        public Agencia (int ubPos, int ubicacionLatitud, int ubicacionLongitud, string nombre, int usuarioId)
+        {
+            UbPos = ubPos;
+            Ubicacion = new UbicacionAgencia(ubicacionLatitud, ubicacionLongitud);
+            Nombre = nombre;
+            UsuarioId = usuarioId;
+            Validar();
+        }
+
+        public void Validar()
+        {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new AgenciaException("Nombre invalido");
+            }
+        }
+
+        public bool Equals(Agencia? other)
+        {
+            return Id == other.Id || Nombre == other.Nombre;
+        }
+    }
+}
+***********************************
+Archivo: Auditoria.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Auditoria.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public class Auditoria
+    {
+        public int Id { get; set; }
+        public Accion AccionRealizada { get; set; }
+        public DateTime Fecha { get; set; }
+        public int FuncionarioId { get; set; }
+
+        private Auditoria() { }
+
+        public Auditoria(string accion, DateTime fecha, int funcionarioId)
+        {
+            AccionRealizada = AsignarAccion(accion);
+            Fecha = fecha;
+            FuncionarioId = funcionarioId;
+        }
+
+        public Accion AsignarAccion(string accion)
+        {
+            foreach (Accion item in Enum.GetValues(typeof(Accion)))
+            {
+                if (accion == item.ToString())
+                {
+                    return item;
+                }
+            }
+            throw new AuditoriaException("Accion no aceptada");
+        }
+    }
+}
+***********************************
+Archivo: Comun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Comun.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public class Comun : Envio, IEquatable<Comun>
+    {
+        public Agencia Agencia { get; set; }
+
+        [ForeignKey("Agencia")]
+        public int AgenciaId { get; set; }
+
+        private Comun() { }
+
+        public Comun(
+            int agenciaId, 
+            string numeroTracking, 
+            int pesoPaquete, 
+            int clienteId, 
+            int funcionarioId
+        ) : base(numeroTracking, pesoPaquete, clienteId, funcionarioId) {
+            AgenciaId = agenciaId;
+        }
+
+        public override void Validar()
+        {
+            base.Validar();
+            if (AgenciaId < 0)
+            {
+                throw new EnvioException("Debe ingresar una Agencia valida");
+            }
+        }
+
+        public bool Equals(Comun other)
+        {
+            return true;
+        }
+    }
+}
+***********************************
+Archivo: Envio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Envio.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public abstract class Envio : IEquatable<Envio>
+    {
+        public int Id { get; set; }
+        public string NumeroTracking { get; set; }
+        public int PesoPaquete { get; set; }
+        public Estado Estado { get; set; } = Estado.EN_PROCESO;
+        public Usuario Cliente { get; set; }
+
+        [ForeignKey("Cliente")]
+        public int ClienteId { get; set; }
+
+        public Usuario Funcionario { get; set; }
+
+        [ForeignKey("Funcionario")]
+        public int FuncionarioId { get; set; }
+
+        public IEnumerable<Seguimiento> Seguimientos { get; set; } = new List<Seguimiento>();
+
+        protected Envio() { }
+
+        public Envio (string numerotracking, int pesoPaquete, int clienteId, int funcionarioId)
+        {
+            NumeroTracking = numerotracking;
+            PesoPaquete = pesoPaquete;
+            ClienteId = clienteId;
+            FuncionarioId = funcionarioId;
+            Validar();
+        }
+
+        public virtual void Validar()
+        {
+            if (NumeroTracking.Length > 8)
+            {
+                throw new EnvioException("Numero de Tracking: Limite permitido de 8 numeros");
+            }
+            if (!int.TryParse(NumeroTracking, out int n))
+            {
+                throw new EnvioException("Numero de Tracking: debe contener solo numeros");
+            }
+            if (int.Parse(NumeroTracking) < 0)
+            {
+                throw new EnvioException("Numero de Tracking: no puede ser negativo");
+            }
+            if (PesoPaquete <= 0)
+            {
+                throw new EnvioException("Peso invalido");
+            }
+        }
+
+        public bool Equals(Envio? other)
+        {
+            return Id == other.Id;
+        }
+    }
+}
+***********************************
+Archivo: Estado.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Estado.cs
+***********************************
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public enum Estado
+    {
+        EN_PROCESO,
+        FINALIZADO,
+    }
+}
+***********************************
+Archivo: Rol.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Rol.cs
+***********************************
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public enum Rol
+    {
+        Administrador,
+        Funcionario,
+        Cliente,
+    }
+}
+***********************************
+Archivo: Seguimiento.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Seguimiento.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public class Seguimiento : IEquatable<Seguimiento>
+    {
+        public int Id { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Comentario { get; set; }
+        public Usuario Funcionario { get; set; }
+
+        [ForeignKey("Funcionario")]
+        public int FuncionarioId { get; set; }
+        
+        private Seguimiento() { }
+
+        public Seguimiento(DateTime fecha, string comentario, int funcionarioId) {
+            Fecha = fecha;
+            Comentario = comentario;
+            FuncionarioId = funcionarioId;
+        }
+
+        public bool Equals(Seguimiento? other)
+        {
+            return Id == other.Id || Comentario == other.Comentario;
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Fecha: {Fecha}, Comentario: {Comentario}, FuncionarioId: {FuncionarioId}";
+        }
+    }
+}
+***********************************
+Archivo: Urgente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Urgente.cs
+***********************************
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    public class Urgente : Envio, IEquatable<Urgente>
+    {
+        public int DireccionPostal { get; set; }
+        public bool EntregaEficiente { get; set; }
+
+        private Urgente() { }
+        public Urgente(
+            int direccionPostal,
+            bool entregaEficiente,
+            string numeroTracking,
+            int pesoPaquete,
+            int clienteId,
+            int funcionarioId
+        ) : base(numeroTracking, pesoPaquete, clienteId, funcionarioId)
+        {
+            DireccionPostal = direccionPostal;
+            EntregaEficiente = entregaEficiente;
+        }
+
+        public override void Validar()
+        {
+            base.Validar();
+            if (DireccionPostal > 0)
+            {
+                throw new UrgenteException("Direccion Postal invalido");
+            }
+            if (DireccionPostal == null)
+            {
+                throw new UrgenteException("Entrega Eficiente null");
+            }
+        }
+
+        public bool Equals(Urgente? other)
+        {
+            return true;
+        }
+    }
+}
+***********************************
+Archivo: Usuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\EntidadesNegocio\Usuario.cs
+***********************************
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.ValueObject;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaNegocio.EntidadesNegocio
+{
+    [Index(nameof(Email), IsUnique = true)]
+    public class Usuario
+    {
+        public int Id { get; set; }
+        public Rol Rol { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public PasswordUsuario Password { get; set; }
+        public IEnumerable<Auditoria> Auditorias { get; set; } = new List<Auditoria>();
+
+        private Usuario() { }
+
+        public Usuario(string nombre, string email, string password, string rol)
+        {
+            Nombre = nombre;
+            Email = email;
+            Password = new PasswordUsuario(password);
+            Rol = AsignarRol(rol);
+            Validar();
+        }
+
+        private Rol AsignarRol(string rol)
+        {
+            foreach (Rol item in Enum.GetValues(typeof(Rol)))
+            {
+                if (item.ToString() == rol)
+                {
+                    return item;
+                }
+            }
+            throw new UsuarioException("No existe ese rol");
+        }
+
+        private void Validar()
+        {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new UsuarioException("Nombre vacio no es aceptable");
+            }
+            if (Rol == null)
+            {
+                throw new UsuarioException("Usuario debe tener al menos un rol");
+            }
+        }
+        
+        //public bool Equals(Usuario? other)
+        //{
+        //    return Email == other.Email;
+        //}
+    }
+}
+***********************************
+Archivo: AgenciaException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ExcepcionesEntidades\AgenciaException.cs
+***********************************
+namespace LogicaNegocio.ExcepcionesEntidades
+{
+    public class AgenciaException : Exception
+    {
+        public AgenciaException() { }
+
+        public AgenciaException(string message) : base(message) { }
+
+        public AgenciaException(string message, Exception innerException) : base(message, innerException) { }
+    }
+}
+
+***********************************
+Archivo: AuditoriaException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ExcepcionesEntidades\AuditoriaException.cs
+***********************************
+namespace LogicaNegocio.ExcepcionesEntidades
+{
+    public class AuditoriaException : Exception
+    {
+        public AuditoriaException() { }
+
+        public AuditoriaException(string message) : base(message) { }
+
+        public AuditoriaException(string message, Exception innerException) : base(message, innerException) { }
+    }
+}
+***********************************
+Archivo: EnvioException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ExcepcionesEntidades\EnvioException.cs
+***********************************
+namespace LogicaNegocio.ExcepcionesEntidades
+{
+    public class EnvioException : Exception
+    {
+        public EnvioException() { }
+
+        public EnvioException(string message) : base(message) { }
+
+        public EnvioException(string message, Exception innerException) : base(message, innerException) { }
+        
+    }
+}
+***********************************
+Archivo: SeguimientoException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ExcepcionesEntidades\SeguimientoException.cs
+***********************************
+namespace LogicaNegocio.ExcepcionesEntidades
+{
+    public class SeguimientoException : Exception
+    {
+        public SeguimientoException() { }
+
+        public SeguimientoException(string message) : base(message) { }
+
+        public SeguimientoException(string message, Exception innerException) : base(message, innerException) { }
+    }
+}
+***********************************
+Archivo: UrgenteException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ExcepcionesEntidades\UrgenteException.cs
+***********************************
+namespace LogicaNegocio.ExcepcionesEntidades
+{
+    public class UrgenteException : Exception
+    {
+        public UrgenteException() { }
+
+        public UrgenteException(string message) : base(message) { }
+
+        public UrgenteException(string message, Exception innerException) : base(message, innerException) { }
+    }
+}
+***********************************
+Archivo: UsuarioException.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ExcepcionesEntidades\UsuarioException.cs
+***********************************
+namespace LogicaNegocio.ExcepcionesEntidades
+{
+    public class UsuarioException: Exception
+    {
+        public UsuarioException() { }
+
+        public UsuarioException(string message) : base(message) { }
+
+        public UsuarioException(string message, Exception innerException) : base(message, innerException) { }
+    }
+}
+***********************************
+Archivo: IRepositorio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorio.cs
+***********************************
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorio <I>
+    {
+        void Add(I item);
+        IEnumerable<I> FindAll();
+
+        I? FindById (int id);
+
+        void Delete (int id);
+
+        void Update (I item);
+    }
+}
+***********************************
+Archivo: IRepositorioAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorioAgencia.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorioAgencia : IRepositorio <Agencia>
+    {
+        public Agencia? FindByName(string nombre);
+    }
+}
+***********************************
+Archivo: IRepositorioEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorioEnvio.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorioEnvio : IRepositorio<Envio>
+    {
+        public Envio? FindByNumeroTracking(string numeroTracking, int id);
+        public Envio? FindByNumeroTrackingSinId(string numeroTracking);
+        public IEnumerable<Envio> EnviosEnProceso();
+        public IEnumerable<Envio> FindAllEnviosConSeguimiento();
+        public Envio? FindEnvioAndSeguimientoById(int id);
+        public IEnumerable<Envio> ListadoEnviosDetallados(int clienteId);
+        public Envio? ListadoSeguimientos(int envioId);
+        public IEnumerable<Envio> BuscarEnviosPorFechas(DateOnly fechaInicio, DateOnly fechaFin, int estado=-1);
+        public IEnumerable<Envio> BuscarEnviosPorComentario(string comentario);
+    }
+}
+***********************************
+Archivo: IRepositorioEnvioComun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorioEnvioComun.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorioEnvioComun : IRepositorio <Comun>
+    {
+    }
+}
+***********************************
+Archivo: IRepositorioEnvioUrgente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorioEnvioUrgente.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorioEnvioUrgente : IRepositorio <Urgente>
+    {
+    }
+}
+***********************************
+Archivo: IRepositorioSeguimiento.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorioSeguimiento.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorioSeguimiento : IRepositorio <Usuario>
+    {
+    }
+}
+***********************************
+Archivo: IRepositorioUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\InterfacesRepositorios\IRepositorioUsuario.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+
+namespace LogicaNegocio.InterfacesRepositorios
+{
+    public interface IRepositorioUsuario : IRepositorio <Usuario>
+    {
+        public Usuario? FindByEmailAndPassword(string email, string password);
+        public Usuario? FindByEmail(string email);
+        public Usuario? FindByRepeatedEmail(string email, int id);
+    }
+}
+***********************************
+Archivo: EnvioController.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\Controllers\EnvioController.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EnvioController : ControllerBase
+    {
+        private IListadoEnvio CUListadoEnvio { get; set; }
+        private IAltaEnvio CUAltaEnvio { get; set; }
+        private IBajaEnvio CUBajaEnvio { get; set; }
+        private ICambiarEstadoEnvio CUCambiarEstadoEnvio { get; set; }
+        private IBuscarEnvioPorId CUBuscarEnvioPorId { get; set; }
+
+        // RF1
+        private IBuscarEnvioPorNumeroTracking CUBuscarEnvioPorNumeroTracking { get; set; }
+
+        // RF4
+        private IListadoEnviosDetallados CUListadoEnviosDetallados { get; set; }
+        private IListadoSeguimientos CUListadoSeguimientos { get; set; }
+
+        // RF5
+        private IBuscarEnvioPorFechas CUBuscarEnvioPorFechas { get; set; }
+
+        // RF6
+        private IBuscarEnvioPorComentario CUBuscarEnvioPorComentario { get; set; }
+
+        public EnvioController(
+            IListadoEnvio cuListadoEnvio,
+            IAltaEnvio cuAltaEnvio,
+            IBajaEnvio cuBajaEnvio,
+            IBuscarEnvioPorId cuBuscarEnvioPorId,
+            IBuscarEnvioPorNumeroTracking cuBuscarEnvioPorNumeroTracking,
+            IListadoEnviosDetallados cuListadoEnviosDetallados,
+            IListadoSeguimientos cuListadoSeguimientos,
+            IBuscarEnvioPorFechas cuBuscarEnvioPorFechas,
+            IBuscarEnvioPorComentario cuBuscarEnvioPorComentario
+        )
+        {
+            CUListadoEnvio = cuListadoEnvio;
+            CUAltaEnvio = cuAltaEnvio;
+            CUBajaEnvio = cuBajaEnvio;
+            CUBuscarEnvioPorId = cuBuscarEnvioPorId;
+            CUBuscarEnvioPorNumeroTracking = cuBuscarEnvioPorNumeroTracking;
+            CUListadoEnviosDetallados = cuListadoEnviosDetallados;
+            CUListadoSeguimientos = cuListadoSeguimientos;
+            CUBuscarEnvioPorFechas = cuBuscarEnvioPorFechas;
+            CUBuscarEnvioPorComentario = cuBuscarEnvioPorComentario;
+        }
+
+        /// <summary>
+        /// Permite listar todos los envios
+        /// </summary>
+        /// <returns></returns>
+        // GET: api/<EnvioController>
+        [Authorize]
+        [HttpGet("FindAll")]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<ListadoEnviosDTO> datoEnvios = CUListadoEnvio.Ejecutar();
+                if (datoEnvios == null || datoEnvios.Count == 0)
+                {
+                    return NotFound("No hay envios");
+                }
+                else
+                {
+                    return Ok(datoEnvios);
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar un envio por su Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("FindEnvioById/{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                if (id < 0)
+                {
+                    return BadRequest("El id recibido no es correcto");
+                }
+                VerDetallesEnvioDTO dto = CUBuscarEnvioPorId.Ejecutar(id);
+                return Ok(dto);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(404, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar un envio por su numero de tracking
+        /// </summary>
+        /// <param name="numeroTracking"></param>
+        /// <returns></returns>
+        [HttpGet("BuscarEnvioPorNumeroTracking/{numeroTracking}")]
+        public IActionResult FindByNumeroTracking(string numeroTracking)
+        {
+            try
+            {
+                ListadoEnviosDetalladosDTO dto = CUBuscarEnvioPorNumeroTracking.Ejecutar(numeroTracking);
+                return Ok(dto);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar los envios de un cliente mediante el Id de este ultimo. Esto devolvera una lista de envios con toda su información
+        /// </summary>
+        /// <param name="clienteId"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet("ListadoEnviosDetallados/{clienteId}")]
+        public IActionResult ListadoEnviosDetallados(int clienteId)
+        {
+            try
+            {
+                IEnumerable<ListadoEnviosDetalladosDTO> listado = CUListadoEnviosDetallados.Ejecutar(clienteId);
+                return Ok(listado);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar los seguimientos de un envio
+        /// </summary>
+        /// <param name="envioId"></param>
+        /// <returns></returns>
+        [HttpGet("ListadoSeguimientos/{envioId}")]
+        public IActionResult ListadoSeguimientos(int envioId)
+        {
+            try
+            {
+                IEnumerable<ListadoSeguimientosDTO> listado = CUListadoSeguimientos.Ejecutar(envioId);
+                return Ok(listado);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar un envio por fechas y estado. Este ultimo es opcional
+        /// </summary>
+        /// <param name="estado"></param>
+        /// <param name="envio"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost("BuscarEnvioPorFechas/{estado}")]
+        public IActionResult BuscarEnvioPorFechas(int estado, [FromBody] BuscarEnvioPorFechasDTO envio)
+        {
+            try
+            {
+                IEnumerable<ListadoEnviosInfoRelevanteDTO> listado = CUBuscarEnvioPorFechas.Ejecutar(estado, envio);
+                return Ok(listado);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar un envio por comentario del mismo
+        /// </summary>
+        /// <param name="comentario"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet("BuscarEnvioPorComentario/{comentario}")]
+        public IActionResult BuscarEnvioPorComentario(string comentario)
+        {
+            try
+            {
+                IEnumerable<ListadoEnviosDTO> listado = CUBuscarEnvioPorComentario.Ejecutar(comentario);
+                return Ok(listado);
+            }
+            catch (EnvioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+    }
+}
+***********************************
+Archivo: UsuarioController.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\Controllers\UsuarioController.cs
+***********************************
+using Compartido.DTOs.AuditoriaDTO;
+using Compartido.DTOs.UsuarioDTO;
+using Compartido.ExcepcionesConflictos;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using WebApi.JWT;
+
+namespace WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsuarioController : ControllerBase
+    {
+        private IListadoUsuario CUListadoUsuario { get; set; }
+        private IAltaUsuario CUAltaUsuario { get; set; }
+        private IVerDetalleUsuario CUVerDetalleUsuario { get; set; }
+        private IBajaUsuario CUBajaUsuario { get; set; }
+        private IEditarUsuario CUEditarUsuario { get; set; }
+        private ILoginUsuario CULoginUsuario { get; set; }
+        private ICambiarPassword CUCambiarPassword { get; set; }
+
+        public UsuarioController(
+            IListadoUsuario cuListadoUsuario,
+            IAltaUsuario cuAltaUsuario,
+            IVerDetalleUsuario cuVerDetalleUsuario,
+            IBajaUsuario cuBajaUsuario,
+            IEditarUsuario cuEditarUsuario,
+            ILoginUsuario cuLoginUsuario,
+            ICambiarPassword cuCambiarPassword
+        )
+        {
+            CUListadoUsuario = cuListadoUsuario;
+            CUAltaUsuario = cuAltaUsuario;
+            CUVerDetalleUsuario = cuVerDetalleUsuario;
+            CUBajaUsuario = cuBajaUsuario;
+            CUEditarUsuario = cuEditarUsuario;
+            CULoginUsuario = cuLoginUsuario;
+            CUCambiarPassword = cuCambiarPassword;
+        }
+
+        /// <summary>
+        /// Permite listar todos los usuarios (no eliminados) a excepción de los administradores.
+        /// </summary>
+        /// <returns></returns>
+        // GET api/<UsuarioController>/5
+        [HttpGet("FindAll")]
+        public IActionResult Get()
+        {
+            try
+            {
+                List<ListadoUsuarioDTO> listado = CUListadoUsuario.Ejecutar();
+                return Ok(listado);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite buscar usuarios por ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET api/<UsuarioController>/5
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                VerDetallesUsuarioDTO dto = CUVerDetalleUsuario.Ejecutar(id);
+                return Ok(dto);
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite iniciar sesion
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        // POST api/<UsuarioController>
+        [HttpPost("IniciarSesion")]
+        public IActionResult Post([FromBody] LoginUsuarioDTO usuario)
+        {
+            try
+            {
+                LoginUsuarioDTO dto = new()
+                {
+                    Email = usuario.Email,
+                    Password = usuario.Password
+                };
+                InformacionUsuarioLogueadoDTO user = CULoginUsuario.Ejecutar(dto);
+                user.Token = ManejadorToken.CrearToken(user);
+                return Ok(user);
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite crear usuario
+        /// </summary>
+        /// <param name="funcionarioId"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        // POST api/<UsuarioController>
+        [HttpPost("CrearUsuario")]
+        public IActionResult Post(int funcionarioId, [FromBody] AltaUsuarioDTO usuario)
+        {
+            try
+            {
+                AuditoriaDTO auditoriaDTO = new()
+                {
+                    AccionRealizada = Accion.Agregado.ToString(),
+                    Fecha = DateTime.Now,
+                    FuncionarioId = funcionarioId
+                };
+                CUAltaUsuario.Ejecutar(usuario, auditoriaDTO);
+                return Ok();
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (ConflictException e)
+            {
+                return Conflict(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite cambiar la contraseña de un usuario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        // PUT api/<UsuarioController>/5
+        [Authorize]
+        [HttpPut("CambiarPassword/{id}")]
+        public IActionResult Put(int id, [FromBody] string password)
+        {
+            try
+            {
+                CUCambiarPassword.Ejecutar(id, password);
+                return Ok("Actualizado correctamente");
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest("Error al cambiar contraseña: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Error Interno: " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Permite borrar un usuario
+        /// </summary>
+        /// <param name="usuarioId"></param>
+        /// <param name="funcionarioId"></param>
+        /// <returns></returns>
+        // DELETE api/<UsuarioController>/5
+        [HttpDelete]
+        public IActionResult Delete(int usuarioId, int funcionarioId)
+        {
+            try
+            {
+                AuditoriaDTO auditoriaDTO = new()
+                {
+                    AccionRealizada = Accion.Eliminado.ToString(),
+                    Fecha = DateTime.Now,
+                    FuncionarioId = funcionarioId
+                };
+                CUBajaUsuario.Ejecutar(usuarioId, auditoriaDTO);
+                return Ok("Eliminado exitosamente");
+            }
+            catch (UsuarioException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+    }
+}
+
+***********************************
+Archivo: ManejadorJWT.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\WebApi\JWT\ManejadorJWT.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace WebApi.JWT
+{
+    public class ManejadorToken
+    {
+        public static string CrearToken(InformacionUsuarioLogueadoDTO usuario)
+        {
+            byte[] clave = Encoding.ASCII.GetBytes("ZWRpw6fDo28gZW0gY29tcHV0YWRvcmE=");
+
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Role, usuario.Rol),
+                }),
+                Expires = DateTime.UtcNow.AddMinutes(30),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(clave),
+                SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+    }
+}
+***********************************
+Archivo: AltaAgenciaDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\AgenciaDTO\AltaAgenciaDTO.cs
+***********************************
+namespace Compartido.DTOs.AgenciaDTO
+{
+    public class AltaAgenciaDTO
+    {
+        public int UbPos { get; set; }
+        public int CoordenadasLatitud { get; set; }
+        public int CoordenadasLongitud { get; set; }
+        public string Nombre { get; set; }
+        public int UsuarioId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoAgenciaDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\AgenciaDTO\ListadoAgenciaDTO.cs
+***********************************
+namespace Compartido.DTOs.AgenciaDTO
+{
+    public class ListadoAgenciaDTO
+    {
+        public string Nombre { get; set; }
+        public int UsuarioId { get; set; }
+    }
+}
+***********************************
+Archivo: AuditoriaDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\AuditoriaDTO\AuditoriaDTO.cs
+***********************************
+namespace Compartido.DTOs.AuditoriaDTO
+{
+    public class AuditoriaDTO
+    {
+        public string AccionRealizada { get; set; }
+        public DateTime Fecha { get; set; }
+        public int FuncionarioId { get; set; }
+    }
+}
+***********************************
+Archivo: AltaEnvioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\AltaEnvioDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public abstract class AltaEnvioDTO
+    {
+        public string NumeroTracking { get; set; }
+        public int PesoPaquete { get; set; }
+        public string EmailCliente { get; set; }
+        public int FuncionarioId { get; set; }
+        public DateTime Fecha { get; set; }
+    }
+}
+***********************************
+Archivo: BuscarEnvioPorFechasDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\BuscarEnvioPorFechasDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public class BuscarEnvioPorFechasDTO
+    {
+        public DateOnly FechaInicio { get; set; }
+        public DateOnly FechaFin { get; set; }
+    }
+}
+***********************************
+Archivo: EditarEnvioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\EditarEnvioDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public abstract class EditarEnvioDTO
+    {
+        public int Id { get; set; }
+        public string NumeroTracking { get; set; }
+        public int PesoPaquete { get; set; }
+        public string Estado { get; set; }
+        public int ClienteId { get; set; }
+        public int FuncionarioId { get; set; }
+        public int SeguimientoId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoEnviosDetalladosDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\ListadoEnviosDetalladosDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public class ListadoEnviosDetalladosDTO
+    {
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public int FuncionarioId { get; set; }
+        public int ClienteId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoEnviosDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\ListadoEnviosDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public class ListadoEnviosDTO
+    {
+        public int Id { get; set; }
+        public string Tipo { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public string Comentario { get; set; }
+        public int FuncionarioId { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoEnviosInfoRelevanteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\ListadoEnviosInfoRelevanteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public class ListadoEnviosInfoRelevanteDTO
+    {
+        public string Tipo { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public DateTime Fecha { get; set; }
+    }
+}
+***********************************
+Archivo: VerDetallesEnvioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\VerDetallesEnvioDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO
+{
+    public class VerDetallesEnvioDTO
+    {
+        public string Tipo { get; set; }
+        public int Id { get; set; }
+        public string NumeroTracking { get; set; }
+        public string Estado { get; set; }
+        public string Comentario { get; set; }
+        public int FuncionarioId { get; set; }
+    }
+}
+***********************************
+Archivo: AltaSeguimientoDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\SeguimientoDTO\AltaSeguimientoDTO.cs
+***********************************
+namespace Compartido.DTOs.SeguimientoDTO
+{
+    public class AltaSeguimientoDTO
+    {
+        public DateTime Fecha { get; set; }
+        public int FuncionarioId { get; set; }
+        public string ? Comentario { get; set; } = "Ingresado en agencia de origen";
+    }
+}
+***********************************
+Archivo: ListadoSeguimientosDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\SeguimientoDTO\ListadoSeguimientosDTO.cs
+***********************************
+namespace Compartido.DTOs.SeguimientoDTO
+{
+    public class ListadoSeguimientosDTO
+    {
+        public int Id { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Comentario { get; set; }
+        public int FuncionarioId { get; set; }
+    }
+}
+***********************************
+Archivo: AltaUrgenteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UrgenteDTO\AltaUrgenteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioUrgenteDTO
+{
+    public class AltaUrgenteDTO
+    {
+        public int NumeroTracking { get; set; }
+        public int PesoPaquete { get; set; }
+        public string Estado { get; set; }
+        public int ClienteId { get; set; }
+        public int FuncionarioId { get; set; }
+        public int SeguimientoId { get; set; }
+        public int AgenciaId { get; set; }
+    }
+}
+***********************************
+Archivo: BajaUrgenteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UrgenteDTO\BajaUrgenteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioUrgenteDTO
+{
+    public class BajaUrgenteDTO
+    {
+        public int Id { get; set; }
+    }
+}
+***********************************
+Archivo: EditarUrgenteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UrgenteDTO\EditarUrgenteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioUrgenteDTO
+{
+    public class EditarUrgenteDTO
+    {
+        public int NumeroTracking { get; set; }
+        public int PesoPaquete { get; set; }
+        public string Estado { get; set; }
+        public int ClienteId { get; set; }
+        public int FuncionarioId { get; set; }
+        public int SeguimientoId { get; set; }
+        public int AgenciaId { get; set; }
+    }
+}
+
+***********************************
+Archivo: ListadoUrgenteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UrgenteDTO\ListadoUrgenteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioUrgenteDTO
+{
+    public class ListadoUrgenteDTO
+    {
+        public int NumeroTracking { get; set; }
+        public string Estado { get; set; }
+    }
+}
+***********************************
+Archivo: AltaUsuarioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UsuarioDTO\AltaUsuarioDTO.cs
+***********************************
+namespace Compartido.DTOs.UsuarioDTO
+{
+    public class AltaUsuarioDTO
+    {
+        public string NombreUsuario { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Rol { get; set; }
+    }
+}
+***********************************
+Archivo: EditarUsuarioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UsuarioDTO\EditarUsuarioDTO.cs
+***********************************
+namespace Compartido.DTOs.UsuarioDTO
+{
+    public class EditarUsuarioDTO
+    {
+        public int Id { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
+***********************************
+Archivo: InformacionUsuarioLogueadoDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UsuarioDTO\InformacionUsuarioLogueadoDTO.cs
+***********************************
+namespace Compartido.DTOs.UsuarioDTO
+{
+    public class InformacionUsuarioLogueadoDTO
+    {
+        public string Token { get; set; }
+        public int Id { get; set; }
+        public string Rol { get; set; }
+    }
+}
+***********************************
+Archivo: ListadoUsuarioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UsuarioDTO\ListadoUsuarioDTO.cs
+***********************************
+namespace Compartido.DTOs.UsuarioDTO
+{
+    public class ListadoUsuarioDTO
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Password { get; set; }
+    }
+}
+***********************************
+Archivo: LoginUsuarioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UsuarioDTO\LoginUsuarioDTO.cs
+***********************************
+namespace Compartido.DTOs.UsuarioDTO
+{
+    public class LoginUsuarioDTO
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
+***********************************
+Archivo: VerDetalleUsuarioDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\UsuarioDTO\VerDetalleUsuarioDTO.cs
+***********************************
+namespace Compartido.DTOs.UsuarioDTO
+{
+    public class VerDetallesUsuarioDTO
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Rol { get; set; }
+    }
+}
+***********************************
+Archivo: CUAltaAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\AgenciaCU\CUAltaAgencia.cs
+***********************************
+using Compartido.DTOs.AgenciaDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.AgenciaCU
+{
+    public class CUAltaAgencia : IAltaAgencia
+    {
+        private IRepositorioAgencia RepoAgencias { get; set; }
+
+        public CUAltaAgencia(IRepositorioAgencia repoAgencia)
+        {
+            RepoAgencias = repoAgencia;
+        }
+
+        public void Ejecutar(AltaAgenciaDTO agenciaDTO)
+        {
+            Agencia agencia = AgenciaMapper.AgenciaFromAltaAgenciaDTO(agenciaDTO);
+            Agencia buscarAgencia = RepoAgencias.FindByName(agencia.Nombre);
+
+            if (buscarAgencia == null)
+            {
+                RepoAgencias.Add(agencia);
+            }
+            else
+            {
+                throw new UsuarioException("Ya existe esa Agencia");
+            }
+        }
+
+    }
+}
+***********************************
+Archivo: CUListadoAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\AgenciaCU\CUListadoAgencia.cs
+***********************************
+using Compartido.DTOs.AgenciaDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.AgenciaCU
+{
+    public class CUListadoAgencia : IListadoAgencia
+    {
+        private IRepositorioAgencia RepoAgencias { get; set; }
+
+        public CUListadoAgencia(IRepositorioAgencia repoAgencia)
+        {
+            RepoAgencias = repoAgencia;
+        }
+
+        public List<ListadoAgenciaDTO> Ejecutar()
+        {
+            List<ListadoAgenciaDTO> agenciasDTO = new List<ListadoAgenciaDTO>();
+            List<Agencia> agencias = RepoAgencias.FindAll().ToList();
+            agenciasDTO = AgenciaMapper.ListadoAgenciaToListadoAgenciaDTO(agencias);
+            return agenciasDTO;
+        }
+    }
+}
+***********************************
+Archivo: CUAltaEnvioComun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioComunCU\CUAltaEnvioComun.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU
+{
+    public class CUAltaEnvioComun : IAltaEnvioComun
+    {
+        public void Ejecutar(AltaEnvioComunDTO comunDTO)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+***********************************
+Archivo: CUBajaEnvioComun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioComunCU\CUBajaEnvioComun.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU
+{
+    public class CUBajaEnvioComun : IBajaEnvioComun
+    {
+        public void Ejecutar(BajaEnvioComunDTO comunDTO)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+***********************************
+Archivo: CUEditarEnvioComun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioComunCU\CUEditarEnvioComun.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU
+{
+    public class CUEditarEnvioComun : IEditarEnvioComun
+    {
+        public void Ejecutar(EditarEnvioComunDTO comunDTO)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+***********************************
+Archivo: CUListadoEnvioComun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioComunCU\CUListadoEnvioComun.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU
+{
+    public class CUListadoEnvioComun : IListadoEnvioComun
+    {
+        public void Ejecutar(ListadoEnvioComunDTO comunDTO)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+***********************************
+Archivo: CUVerDetalleEnvioComun.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioComunCU\CUVerDetalleEnvioComun.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioComunCU;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioUrgenteCU
+{
+    public class CUVerDetalleEnvioComun : IVerDetalleEnvioComun
+    {
+        public void Ejecutar(VerDetalleEnvioComunDTO comunDTO)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+***********************************
+Archivo: CUAltaEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUAltaEnvio.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.EnvioDTO.ComunDTO;
+using Compartido.DTOs.EnvioDTO.UrgenteDTO;
+using Compartido.DTOs.SeguimientoDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUAltaEnvio : IAltaEnvio
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+        private IRepositorioUsuario RepoUsuario { get; set; }
+        private IRepositorioAgencia RepoAgencia { get; set; }
+
+        public CUAltaEnvio(IRepositorioEnvio repoEnvios, IRepositorioUsuario repoUsuario, IRepositorioAgencia repoAgencia)
+        {
+            RepoEnvios = repoEnvios;
+            RepoUsuario = repoUsuario;
+            RepoAgencia = repoAgencia;
+        }
+
+        public void Ejecutar(AltaEnvioDTO envioDTO, AltaSeguimientoDTO seguimientoDTO)
+        {
+
+            // Encontrar cliente existente
+            Usuario usuario = RepoUsuario.FindByEmail(envioDTO.EmailCliente);
+            if (usuario == null)
+            {
+                throw new EnvioException("Cliente inexistente");
+            }
+
+            Envio envio;
+
+            if (envioDTO is AltaComunDTO)
+            {
+                AltaComunDTO comunDTO = (AltaComunDTO)envioDTO;
+
+                // Encontrar agencia existente
+                Agencia agencia = RepoAgencia.FindByName(comunDTO.NombreAgencia);
+                if (agencia == null)
+                {
+                    throw new EnvioException("Agencia inexistente");
+                }
+                
+                envio = ComunMapper.ComunFromAltaComunDTO(comunDTO, usuario.Id, agencia.Id);
+            }
+            else
+            {
+                envio = UrgenteMapper.UrgenteFromAltaUrgenteDTO((AltaUrgenteDTO)envioDTO, usuario.Id);
+            }
+
+            RepoEnvios.Add(envio);
+
+            // Agregamos Seguimiento
+            Seguimiento seguimiento = SeguimientoMapper.SeguimientoFromAltaSeguimientoDTO(seguimientoDTO);
+            List<Seguimiento> seguimientos = envio.Seguimientos.ToList();
+            seguimientos.Add(seguimiento);
+            envio.Seguimientos = seguimientos;
+            RepoEnvios.Update(envio);
+        }
+    }
+}
+***********************************
+Archivo: CUBajaEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUBajaEnvio.cs
+***********************************
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUBajaEnvio : IBajaEnvio
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+
+        public CUBajaEnvio(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+        public void Ejecutar(int id)
+        {
+            RepoEnvios.Delete(id);
+        }
+    }
+}
+***********************************
+Archivo: CUBuscarEnvioPorComentario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUBuscarEnvioPorComentario.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUBuscarEnvioPorComentario : IBuscarEnvioPorComentario
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+        
+        public CUBuscarEnvioPorComentario(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public List<ListadoEnviosDTO> Ejecutar(string comentario)
+        {
+            IEnumerable<Envio> listado = RepoEnvios.BuscarEnviosPorComentario(comentario);
+            if (!listado.Any())
+            {
+                throw new EnvioException("No hay envios con ese comentario");
+            }
+            List<ListadoEnviosDTO> listadodto = EnvioMapper.ListadoEnvioToListadoEnvioDTO(listado);
+            return listadodto;
+        }
+
+    }
+}
+***********************************
+Archivo: CUBuscarEnvioPorFechas.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUBuscarEnvioPorFechas.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUBuscarEnvioPorFechas : IBuscarEnvioPorFechas
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+        
+        public CUBuscarEnvioPorFechas(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public List<ListadoEnviosInfoRelevanteDTO> Ejecutar(int estado, BuscarEnvioPorFechasDTO envio)
+        {
+            IEnumerable<Envio> listado = RepoEnvios.BuscarEnviosPorFechas(envio.FechaInicio, envio.FechaFin, estado);
+            if (!listado.Any())
+            {
+                throw new EnvioException("No hay envios con esos parametros");
+            }
+
+            List<ListadoEnviosInfoRelevanteDTO> listadodtos = EnvioMapper.ListadoEnviosToListadoEnviosInfoRelevanteDTO(listado);
+            return listadodtos;
+        }
+
+    }
+}
+***********************************
+Archivo: CUBuscarEnvioPorId.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUBuscarEnvioPorId.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUBuscarEnvioPorId : IBuscarEnvioPorId
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+        
+        public CUBuscarEnvioPorId(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public VerDetallesEnvioDTO Ejecutar(int id)
+        {
+            Envio envio = RepoEnvios.FindEnvioAndSeguimientoById(id) ?? throw new EnvioException("No se encontro el envio");
+            VerDetallesEnvioDTO dto = EnvioMapper.EnvioToVerDetallesEnvioDTO(envio);
+            return dto;
+        }
+    }
+}
+***********************************
+Archivo: CUBuscarEnvioPorNumeroTracking.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUBuscarEnvioPorNumeroTracking.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUBuscarEnvioPorNumeroTracking : IBuscarEnvioPorNumeroTracking
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+        
+        public CUBuscarEnvioPorNumeroTracking(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public ListadoEnviosDetalladosDTO Ejecutar(string numeroTracking)
+        {
+            Envio envio = RepoEnvios.FindByNumeroTrackingSinId(numeroTracking) 
+                ?? throw new EnvioException("No se encontro el envio");
+            ListadoEnviosDetalladosDTO dto = EnvioMapper.EnvioToVerDetallesEnvioYSeguimientosDTO(envio);
+            return dto;
+        }
+    }
+}
+***********************************
+Archivo: CUCambiarEstadoEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUCambiarEstadoEnvio.cs
+***********************************
+using Compartido.DTOs.SeguimientoDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUCambiarEstadoEnvio : ICambiarEstadoEnvio
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+
+        public CUCambiarEstadoEnvio(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+        public void Ejecutar(int id, string type, AltaSeguimientoDTO seguimientoDTO)
+        {
+            Envio envio = RepoEnvios.FindById(id);
+            if (envio == null)
+            {
+                throw new EnvioException("Envio inexistente");
+            }
+
+            seguimientoDTO.Comentario = type;
+
+            Seguimiento seguimiento = SeguimientoMapper.SeguimientoFromAltaSeguimientoDTO(seguimientoDTO);
+            List<Seguimiento> seguimientos = envio.Seguimientos.ToList();
+            seguimientos.Add(seguimiento);
+            envio.Seguimientos = seguimientos;
+            RepoEnvios.Update(envio);
+        }
+    }
+}
+***********************************
+Archivo: CUListadoEnvios.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUListadoEnvios.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUListadoEnvios : IListadoEnvio
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+
+        public CUListadoEnvios(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public List<ListadoEnviosDTO> Ejecutar()
+        {
+            List<ListadoEnviosDTO> enviosDTO = new List<ListadoEnviosDTO>();
+            List<Envio> envios = RepoEnvios.FindAllEnviosConSeguimiento().ToList();
+            enviosDTO = EnvioMapper.ListadoEnvioToListadoEnvioDTO(envios);
+            return enviosDTO;
+        }
+    }
+}
+***********************************
+Archivo: CUListadoEnviosDetallados.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUListadoEnviosDetallados.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUListadoEnviosDetallados : IListadoEnviosDetallados
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+        
+        public CUListadoEnviosDetallados(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public List<ListadoEnviosDetalladosDTO> Ejecutar(int clienteId)
+        {
+            List<Envio> envio = RepoEnvios.ListadoEnviosDetallados(clienteId).ToList();
+            List<ListadoEnviosDetalladosDTO> listadoDTO = EnvioMapper.ListadoEnviosFromListadoEnviosDetalladosDTO(envio);
+            return listadoDTO;
+        }
+
+    }
+}
+***********************************
+Archivo: CUListadoSeguimientos.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\EnvioCU\CUListadoSeguimientos.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
+using Compartido.Mappers;
+using LogicaAplicacion.InterfacesCasosUso.IEnvioCU;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.EnvioCU
+{
+    public class CUListadoSeguimientos : IListadoSeguimientos
+    {
+        private IRepositorioEnvio RepoEnvios { get; set; }
+
+        public CUListadoSeguimientos(IRepositorioEnvio repoEnvios)
+        {
+            RepoEnvios = repoEnvios;
+        }
+
+        public List<ListadoSeguimientosDTO> Ejecutar(int envioId)
+        {
+            Envio envio = RepoEnvios.ListadoSeguimientos(envioId);
+            if (envio == null)
+            {
+                throw new EnvioException("Envio null");
+            }
+
+            List<ListadoSeguimientosDTO> seguimientos = EnvioMapper.EnvioToListadoSeguimientosDTO(envio);
+            return seguimientos;
+        }
+
+    }
+}
+***********************************
+Archivo: CUAltaUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CUAltaUsuario.cs
+***********************************
+using Compartido.Mappers;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+using Compartido.DTOs.UsuarioDTO;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.ExcepcionesEntidades;
+using Compartido.DTOs.AuditoriaDTO;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CUAltaUsuario : IAltaUsuario
+    {
+
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUAltaUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public void Ejecutar(AltaUsuarioDTO usuarioDTO, AuditoriaDTO auditoriaDTO)
+        {
+            Usuario usuario = UsuarioMapper.UsuarioFromAltaUsuarioDTO(usuarioDTO);
+
+            // Agregamos auditoria
+            Auditoria auditoria = AuditoriaMapper.AuditoriaFromAuditoriaDTO(auditoriaDTO);
+            List<Auditoria> auditorias = usuario.Auditorias.ToList();
+            auditorias.Add(auditoria);
+            usuario.Auditorias = auditorias;
+            RepoUsuarios.Add(usuario);
+        }
+    }
+}
+***********************************
+Archivo: CUBajaUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CUBajaUsuario.cs
+***********************************
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.EntidadesNegocio;
+using Compartido.DTOs.AuditoriaDTO;
+using Compartido.Mappers;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CUBajaUsuario : IBajaUsuario
+    {
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUBajaUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public void Ejecutar(int id, AuditoriaDTO auditoriaDTO)
+        {
+            Usuario usuario = RepoUsuarios.FindById(id);
+
+            // Agregamos auditoria
+            Auditoria auditoria = AuditoriaMapper.AuditoriaFromAuditoriaDTO(auditoriaDTO);
+            List<Auditoria> auditorias = usuario.Auditorias.ToList();
+            auditorias.Add(auditoria);
+            usuario.Auditorias = auditorias;
+            RepoUsuarios.Update(usuario);
+        }
+    }
+}
+***********************************
+Archivo: CUCambiarPassword.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CUCambiarPassword.cs
+***********************************
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.ValueObject;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CUCambiarPassword : ICambiarPassword
+    {
+
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUCambiarPassword(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public void Ejecutar(int id, string password)
+        {
+            Usuario usuario = RepoUsuarios.FindById(id);
+            if (usuario == null)
+            {
+                throw new UsuarioException("No existe usuario");
+            }
+
+            usuario.Password = new PasswordUsuario(password);
+            RepoUsuarios.Update(usuario);
+        }
+    }
+}
+***********************************
+Archivo: CUEditarUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CUEditarUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using Compartido.Mappers;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using Compartido.DTOs.AuditoriaDTO;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CUEditarUsuario : IEditarUsuario
+    {
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUEditarUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public void Ejecutar(EditarUsuarioDTO usuarioDTO, AuditoriaDTO auditoriaDTO)
+        {
+            Rol rolUsuario = RepoUsuarios.FindById(usuarioDTO.Id).Rol;
+            Usuario usuario = UsuarioMapper.UsuarioFromEditarUsuarioDTO(usuarioDTO, rolUsuario);
+            usuario.Id = usuarioDTO.Id;
+            //RepoUsuarios.Update(usuario);
+
+            Auditoria auditoria = AuditoriaMapper.AuditoriaFromAuditoriaDTO(auditoriaDTO);
+            List<Auditoria> auditorias = usuario.Auditorias.ToList();
+            auditorias.Add(auditoria);
+            usuario.Auditorias = auditorias;
+            RepoUsuarios.Update(usuario);
+        }
+    }
+}
+
+***********************************
+Archivo: CUListadoUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CUListadoUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+using Compartido.Mappers;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CUListadoUsuario : IListadoUsuario
+    {
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUListadoUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public List<ListadoUsuarioDTO> Ejecutar()
+        {
+            List<ListadoUsuarioDTO> usuariosDTO = new List<ListadoUsuarioDTO>();
+            List<Usuario> usuarios = RepoUsuarios.FindAll().ToList();
+            usuariosDTO = UsuarioMapper.ListadoUsuarioToListadoUsuarioDTO(usuarios);
+            return usuariosDTO;
+        }
+
+    }
+}
+***********************************
+Archivo: CULoginUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CULoginUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+using Compartido.Mappers;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CULoginUsuario : ILoginUsuario
+    {
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CULoginUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public InformacionUsuarioLogueadoDTO Ejecutar(LoginUsuarioDTO usuarioDTO)
+        {
+            Usuario usuario = RepoUsuarios.FindByEmailAndPassword(usuarioDTO.Email, usuarioDTO.Password) 
+                ?? throw new Exception("Usuario inexistente o credenciales incorrectas");
+
+            return new InformacionUsuarioLogueadoDTO()
+            {
+                Id = usuario.Id,
+                Rol = usuario.Rol.ToString()
+            };
+        }
+    }
+}
+***********************************
+Archivo: CUVerDetalleUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\ImplementacionCasosUso\UsuarioCU\CUVerDetalleUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+using LogicaNegocio.EntidadesNegocio;
+using LogicaNegocio.ExcepcionesEntidades;
+using LogicaNegocio.InterfacesRepositorios;
+using LogicaAplicacion.InterfacesCasosUso.IUsuarioCU;
+using Compartido.Mappers;
+
+namespace LogicaAplicacion.ImplementacionCasosUso.UsuarioCU
+{
+    public class CUVerDetalleUsuario : IVerDetalleUsuario
+    {
+        private IRepositorioUsuario RepoUsuarios { get; set; }
+
+        public CUVerDetalleUsuario(IRepositorioUsuario repoUsuarios) 
+        {
+            RepoUsuarios = repoUsuarios;
+        }
+
+        public VerDetallesUsuarioDTO Ejecutar(int id)
+        {
+            Usuario usuario = RepoUsuarios.FindById(id);
+            if (usuario == null)
+            {
+                throw new UsuarioException("Usuario no existente");
+            }
+
+            VerDetallesUsuarioDTO usuarioDTO = UsuarioMapper.VerDetallesUsuarioDTOFromUsuario(usuario);
+            return usuarioDTO;
+        }
+    }
+}
+***********************************
+Archivo: IAltaEnvioUrgente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\.IEnvioUrgenteCU\IAltaEnvioUrgente.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioUrgente
+{
+    public interface IAltaEnvioUrgente
+    {
+        void Ejecutar(AltaComunDTO comunDTO);
+    }
+}
+***********************************
+Archivo: IBajaEnvioUrgente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\.IEnvioUrgenteCU\IBajaEnvioUrgente.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IAltaEnvioUrgente
+{
+    public interface IBajaEnvioUrgente
+    {
+        void Ejecutar(BajaComunDTO comunDTO);
+    }
+}
+
+***********************************
+Archivo: IEditarEnvioUrgente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\.IEnvioUrgenteCU\IEditarEnvioUrgente.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IAltaEnvioUrgente
+{
+    public interface IEditarEnvioUrgente
+    {
+        void Ejecutar(EditarComunDTO comunDTO);
+    }
+}
+
+***********************************
+Archivo: IListadoEnvioUrgente.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\.IEnvioUrgenteCU\IListadoEnvioUrgente.cs
+***********************************
+using Compartido.DTOs.ComunDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IAltaEnvioUrgente
+{
+    public interface IListadoEnvioUrgente
+    {
+        void Ejecutar(ListadoComunDTO comunDTO);
+    }
+}
+***********************************
+Archivo: IAltaAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IAgenciaCU\IAltaAgencia.cs
+***********************************
+using Compartido.DTOs.AgenciaDTO;
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IAltaAgencia
+    {
+        void Ejecutar(AltaAgenciaDTO agenciaDTO);
+    }
+}
+***********************************
+Archivo: IListadoAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IAgenciaCU\IListadoAgencia.cs
+***********************************
+using Compartido.DTOs.AgenciaDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IListadoAgencia
+    {
+        List<ListadoAgenciaDTO> Ejecutar();
+    }
+}
+***********************************
+Archivo: IAltaEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IAltaEnvio.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IAltaEnvio
+    {
+        void Ejecutar(AltaEnvioDTO envioDTO, AltaSeguimientoDTO seguimientoDTO);
+    }
+}
+***********************************
+Archivo: IBajaEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IBajaEnvio.cs
+***********************************
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IBajaEnvio
+    {
+        void Ejecutar(int id);
+    }
+}
+
+***********************************
+Archivo: IBuscarEnvioPorComentario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IBuscarEnvioPorComentario.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IBuscarEnvioPorComentario
+    {
+        public List<ListadoEnviosDTO> Ejecutar(string comentario);
+    }
+}
+***********************************
+Archivo: IBuscarEnvioPorFechas.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IBuscarEnvioPorFechas.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IBuscarEnvioPorFechas
+    {
+        public List<ListadoEnviosInfoRelevanteDTO> Ejecutar(int estado, BuscarEnvioPorFechasDTO envio);
+    }
+}
+***********************************
+Archivo: IBuscarEnvioPorId.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IBuscarEnvioPorId.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IBuscarEnvioPorId
+    {
+        public VerDetallesEnvioDTO Ejecutar(int id);
+    }
+}
+***********************************
+Archivo: IBuscarEnvioPorNumeroTracking.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IBuscarEnvioPorNumeroTracking.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IBuscarEnvioPorNumeroTracking
+    {
+        public ListadoEnviosDetalladosDTO Ejecutar(string numeroTracking);
+    }
+}
+***********************************
+Archivo: ICambiarEstadoEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\ICambiarEstadoEnvio.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+using Compartido.DTOs.SeguimientoDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface ICambiarEstadoEnvio
+    {
+        void Ejecutar(int id, string type, AltaSeguimientoDTO seguimientoDTO);
+    }
+}
+***********************************
+Archivo: IListadoEnvio.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IListadoEnvio.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IListadoEnvio
+    {
+        List<ListadoEnviosDTO> Ejecutar();
+    }
+}
+
+***********************************
+Archivo: IListadoEnviosDetallados.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IListadoEnviosDetallados.cs
+***********************************
+using Compartido.DTOs.EnvioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IListadoEnviosDetallados
+    {
+        List<ListadoEnviosDetalladosDTO> Ejecutar(int clienteId);
+    }
+}
+
+***********************************
+Archivo: IListadoSeguimientos.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IEnvioCU\IListadoSeguimientos.cs
+***********************************
+using Compartido.DTOs.SeguimientoDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IEnvioCU
+{
+    public interface IListadoSeguimientos
+    {
+        List<ListadoSeguimientosDTO> Ejecutar(int envioId);
+    }
+}
+***********************************
+Archivo: IAltaUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\IAltaUsuario.cs
+***********************************
+using Compartido.DTOs.AuditoriaDTO;
+using Compartido.DTOs.UsuarioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface IAltaUsuario
+    {
+        void Ejecutar (AltaUsuarioDTO p1, AuditoriaDTO p2);
+    }
+}
+***********************************
+Archivo: IBajaUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\IBajaUsuario.cs
+***********************************
+using Compartido.DTOs.AuditoriaDTO;
+using Compartido.DTOs.UsuarioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface IBajaUsuario
+    {
+        void Ejecutar (int id, AuditoriaDTO auditoriaDTO);
+    }
+}
+***********************************
+Archivo: ICambiarPassword.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\ICambiarPassword.cs
+***********************************
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface ICambiarPassword
+    {
+        public void Ejecutar(int id, string password);
+    }
+}
+***********************************
+Archivo: IEditarUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\IEditarUsuario.cs
+***********************************
+using Compartido.DTOs.AuditoriaDTO;
+using Compartido.DTOs.UsuarioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface IEditarUsuario
+    {
+        void Ejecutar (EditarUsuarioDTO usuarioDTO, AuditoriaDTO auditoriaDTO);
+    }
+}
+***********************************
+Archivo: IListadoUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\IListadoUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface IListadoUsuario
+    {
+        List<ListadoUsuarioDTO> Ejecutar ();
+    }
+}
+***********************************
+Archivo: ILoginUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\ILoginUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface ILoginUsuario
+    {
+        InformacionUsuarioLogueadoDTO Ejecutar (LoginUsuarioDTO usuarioDTO);
+    }
+}
+***********************************
+Archivo: IVerDetalleUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaAplicacion\InterfacesCasosUso\IUsuarioCU\IVerDetalleUsuario.cs
+***********************************
+using Compartido.DTOs.UsuarioDTO;
+
+namespace LogicaAplicacion.InterfacesCasosUso.IUsuarioCU
+{
+    public interface IVerDetalleUsuario
+    {
+        VerDetallesUsuarioDTO Ejecutar (int id);
+    }
+}
+***********************************
+Archivo: NombreAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ValueObject\Agencia\NombreAgencia.cs
+***********************************
+using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaNegocio.ValueObject
+{
+    [Owned]
+    public record NombreAgencia
+    {
+        public string Valor { get; private set; }
+
+        public NombreAgencia() { }
+
+        public NombreAgencia(string valor)
+        {
+            Valor = valor;
+            Validar();
+        }
+
+        private void Validar()
+        {
+            if (string.IsNullOrEmpty(Valor))
+            {
+                throw new AgenciaException("Nombre no valido");
+            }
+        }
+
+    }
+}
+***********************************
+Archivo: UbicacionAgencia.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ValueObject\Agencia\UbicacionAgencia.cs
+***********************************
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaNegocio.ValueObject
+{
+    [Owned]
+    public record UbicacionAgencia
+    {
+        public int CoordenadasLatitud { get; private set; }
+        public int CoordenadasLongitud { get; private set; }
+
+        public UbicacionAgencia() { }
+
+        public UbicacionAgencia(int coordenadasLatitud, int coordenadasLongitud)
+        {
+            CoordenadasLatitud = coordenadasLatitud;
+            CoordenadasLongitud = coordenadasLongitud;
+        }
+    }
+}
+***********************************
+Archivo: EmailUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ValueObject\Usuario\EmailUsuario.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+
+namespace LogicaNegocio.ValueObject
+{
+    [ComplexType]
+    public record EmailUsuario
+    {
+        public string Valor { get; init; }
+
+        public EmailUsuario(string valor)
+        {
+            Valor = valor;
+            Validar();
+        }
+
+        private void Validar()
+        {
+            if (string.IsNullOrEmpty(Valor))
+            {
+                throw new UsuarioException("Correo obligatorio");
+            }
+        }
+    }
+}
+***********************************
+Archivo: PasswordUsuario.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\LogicaNegocio\ValueObject\Usuario\PasswordUsuario.cs
+***********************************
+using System.ComponentModel.DataAnnotations.Schema;
+using LogicaNegocio.ExcepcionesEntidades;
+using Microsoft.EntityFrameworkCore;
+
+namespace LogicaNegocio.ValueObject
+{
+    [Owned]
+    public record PasswordUsuario
+    {
+        public string Valor { get; private set; }
+
+        public PasswordUsuario() { }
+
+        public PasswordUsuario(string valor)
+        {
+            Valor = valor;
+            Validar();
+        }
+
+        private void Validar() 
+        {
+            if (string.IsNullOrEmpty(Valor))
+            {
+                throw new UsuarioException("Contraseña obligatoria");
+            }
+            if (Valor.Length < 8)
+            {
+                throw new UsuarioException("Contraseña debe ser mayor a 8");
+            }
+            if (!Valor.Any(char.IsDigit))
+            {
+                throw new UsuarioException("Contraseña debe contener al menos un número");
+            }
+            if (!Valor.Any(char.IsUpper))
+            {
+                throw new UsuarioException("Contraseña debe contener al menos una letra mayúscula");
+            }
+        }
+    }
+}
+***********************************
+Archivo: AltaComunDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\ComunDTO\AltaComunDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO.ComunDTO
+{
+    public class AltaComunDTO : AltaEnvioDTO
+    {
+        public string NombreAgencia { get; set; }
+    }
+}
+***********************************
+Archivo: EditarComunDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\ComunDTO\EditarComunDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO.ComunDTO
+{
+    public class EditarComunDTO : EditarEnvioDTO
+    {
+        public int AgenciaId { get; set; }
+    }
+}
+***********************************
+Archivo: AltaUrgenteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\UrgenteDTO\AltaUrgenteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO.UrgenteDTO
+{
+    public class AltaUrgenteDTO : AltaEnvioDTO
+    {
+        public int DireccionPostal { get; set; }
+        public bool EntregaEficiente { get; set; }
+    }
+}
+***********************************
+Archivo: EditarUrgenteDTO.cs
+Carpeta: C:\Users\Bruno\Documents\Obligatorio-s3\ProjectWebApi\Compartido\DTOs\EnvioDTO\UrgenteDTO\EditarUrgenteDTO.cs
+***********************************
+namespace Compartido.DTOs.EnvioDTO.UrgenteDTO
+{
+    public class EditarUrgenteDTO : EditarEnvioDTO
+    {
+        public int DireccionPostal { get; set; }
+        public bool EntregaEficiente { get; set; }
+    }
+}

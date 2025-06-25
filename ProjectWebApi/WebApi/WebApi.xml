@@ -55,7 +55,7 @@
         </member>
         <member name="M:WebApi.Controllers.UsuarioController.Get">
             <summary>
-            Permite listar todos los usuarios
+            Permite listar todos los usuarios (no eliminados) a excepción de los administradores.
             </summary>
             <returns></returns>
         </member>

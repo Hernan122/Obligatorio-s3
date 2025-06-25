@@ -151,7 +151,6 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="envioId"></param>
         /// <returns></returns>
-        [Authorize]
         [HttpGet("ListadoSeguimientos/{envioId}")]
         public IActionResult ListadoSeguimientos(int envioId)
         {
