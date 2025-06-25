@@ -24,15 +24,14 @@ namespace MVC.Controllers
             IEnumerable<ListadoEnviosViewModel> listadoEnviosViewModel = [];
             try
             {
-                ResHttpViewModel datos = WebApi_Process(urlBase+"/FindAll");
-
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/FindAll");
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     listadoEnviosViewModel = JsonConvert.DeserializeObject<List<ListadoEnviosViewModel>>(datos.Datos) ?? [];
                 }
                 else
                 {
-                    ViewBag.Mensaje = datos;
+                    ViewBag.MensajeError = datos.Datos;
                 }
             }
             catch (Exception e)
@@ -208,7 +207,10 @@ namespace MVC.Controllers
             IEnumerable<ListadoEnviosDetalladosViewModel> listado = [];
             try
             {
-                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/ListadoEnviosDetallados/"+(int)HttpContext.Session.GetInt32("Id"));
+                HttpContext.Session.GetInt32("Id");
+
+                int usuarioId = (int)HttpContext.Session.GetInt32("Id");
+                ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/ListadoEnviosDetallados/"+usuarioId);
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
                     listado = JsonConvert.DeserializeObject<List<ListadoEnviosDetalladosViewModel>>(datos.Datos) ?? [];

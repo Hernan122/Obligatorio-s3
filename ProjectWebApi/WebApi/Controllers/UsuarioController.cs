@@ -41,7 +41,7 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Permite listar todos los usuarios
+        /// Permite listar todos los usuarios (no eliminados) a excepción de los administradores.
         /// </summary>
         /// <returns></returns>
         // GET api/<UsuarioController>/5

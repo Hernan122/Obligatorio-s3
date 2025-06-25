@@ -263,7 +263,8 @@ namespace MVC.Controllers
 
                 if (actualPassword != HttpContext.Session.GetString("ActualPassword"))
                     throw new Exception("Contraseña actual no coincide");
-                
+
+                int usuarioId = (int)HttpContext.Session.GetInt32("Id");
                 ResHttpViewModel datos = WebApi_Process_WithAuthentication(urlBase+"/CambiarPassword/"+(int)HttpContext.Session.GetInt32("Id"), newPassword, "PUT");
                 if (datos.Respuesta.IsSuccessStatusCode)
                 {
